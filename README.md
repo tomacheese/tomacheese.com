@@ -1,20 +1,6 @@
 # tomacheese.com
 
-## Build Setup
+2021年05月以降導入予定の新 [Tomachi Site](https://tomacheese.com) のフロントエンドコードです。
 
-```bash
-# install dependencies
-$ yarn install
+環境は ConoHa VPS + Nuxt.js + Vuetify + TypeScript + microCMS です。
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
