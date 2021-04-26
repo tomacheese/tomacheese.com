@@ -168,5 +168,9 @@ export default Vue.extend({
     margin: 20px 0;
     padding: 10px;
   }
+
+  img {
+    width: 100%;
+  }
 }
 </style>
