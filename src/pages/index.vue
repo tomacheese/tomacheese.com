@@ -21,16 +21,20 @@
       </v-container>
     </section>
     <section class="user-about">
-      <TopAbout />
+      <TopAbout :details="details" :timelines="timelines" />
     </section>
     <section class="nav-blog">
-      <TopBlogNav />
+      <TopBlogNav :articles="articles" />
     </section>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import axios from 'axios'
+import { Detail } from '@/components/TopAbout.vue'
+import { TimelineItem } from '@/components/TopAbout.vue'
+import { Article } from '@/components/TopBlogNav.vue'
 
 interface Card {
   title: string
@@ -38,20 +42,11 @@ interface Card {
   color: string
 }
 
-interface Article {
-  id: string
-  createdAt: Date
-  createdOverrideAt: Date | null
-  updatedAt: Date
-  publishedAt: Date
-  revisedAt: Date
-  title: string
-  contents: string
-}
-
 export default Vue.extend({
   data(): {
     cards: Card[]
+    details: Detail[]
+    timelines: TimelineItem[]
     articles: Article[]
   } {
     return {
@@ -67,6 +62,8 @@ export default Vue.extend({
           color: 'purple',
         },
       ],
+      details: [],
+      timelines: [],
       articles: [],
     }
   },
@@ -74,6 +71,41 @@ export default Vue.extend({
     return {
       title: 'トップページ',
     }
+  },
+  async asyncData({ $config }) {
+    const ret = { details: [], timelines: [], articles: [] }
+
+    {
+      const { data } = await axios.get(
+        `${$config.MICROCMS_API_URL}/top-details`,
+        {
+          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+        }
+      )
+      ret.details = data.contents
+    }
+
+    {
+      const { data } = await axios.get(
+        `${$config.MICROCMS_API_URL}/top-timelines`,
+        {
+          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+        }
+      )
+      ret.timelines = data.contents
+    }
+
+    {
+      const { data } = await axios.get(
+        `${$config.MICROCMS_API_URL}/blog`,
+        {
+          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+        }
+      )
+      ret.articles = data.contents
+    }
+
+    return ret
   },
 })
 </script>

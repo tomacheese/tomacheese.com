@@ -35,10 +35,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import axios from 'axios'
+import Vue, { PropType } from 'vue'
 
-interface Article {
+export interface Article {
   id: string
   createdAt: Date
   createdOverrideAt: Date | null
@@ -50,21 +49,11 @@ interface Article {
 }
 
 export default Vue.extend({
-  data(): {
-    articles: Article[]
-  } {
-    return {
-      articles: [],
-    }
-  },
-  mounted() {
-    axios
-      .get(`${this.$config.MICROCMS_API_URL}/blog`, {
-        headers: { 'X-API-KEY': this.$config.MICROCMS_API_KEY },
-      })
-      .then((result) => (this.articles = result.data.contents))
-      // eslint-disable-next-line no-console
-      .catch((reason) => console.error(reason))
+  props: {
+    articles: {
+      type: Array as PropType<Article[]>,
+      default: () => [],
+    },
   },
 })
 </script>

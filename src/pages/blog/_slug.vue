@@ -1,23 +1,23 @@
 <template>
   <div>
     <NonTopHeader
-      :title="title"
-      :published-at="publishedAt"
-      :updated-at="updatedAt"
+      :title="article.title"
+      :published-at="article.publishedAt"
+      :updated-at="article.updatedAt"
     />
     <v-container fluid fill-height>
       <div class="archive-meta mx-1">
         <v-chip
-          v-if="category != null"
+          v-if="article.category != null"
           class="ma-2"
           color="pink"
-          :to="`/search?category=${category.id}`"
+          :to="`/search?category=${article.category.id}`"
         >
           <v-icon left> mdi-package </v-icon>
-          {{ category.name }}
+          {{ article.category.name }}
         </v-chip>
         <v-chip
-          v-for="tag in tags"
+          v-for="tag in article.tags"
           :key="tag.id"
           class="ma-2"
           :to="`/search?tag=${tag.id}`"
@@ -30,11 +30,11 @@
         <v-col md="9" cols="12">
           <v-container
             class="content-container my-1 rounded-xl background"
-            v-html="contents"
+            v-html="article.contents"
           />
         </v-col>
         <v-col md="3" cols="12">
-          <Sidebar :toc="toc" />
+          <Sidebar :toc="article.toc" :categorys="categorys" :tags="tags" />
         </v-col>
       </v-row>
     </v-container>
@@ -49,6 +49,9 @@ import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/androidstudio.css'
 import NonTopHeader from '~/components/NonTopHeader.vue'
+import Category from '~/components/Sidebar.vue'
+import Tag from '~/components/Sidebar.vue'
+import SidebarArticle from '~/components/Sidebar.vue'
 
 interface Category {
   id: string | null
@@ -96,45 +99,103 @@ export default Vue.extend({
         ? `${$config.MICROCMS_API_URL}/blog/${params.slug}`
         : `${$config.MICROCMS_API_URL}/blog/${params.slug}?draftKey=${query.draftKey}`
     try {
-      const { data } = await axios.get(apiurl, {
-        headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
-      })
+      const ret = {
+        article: {
+          id: null,
+          createdAt: null,
+          updatedAt: null,
+          publishedAt: null,
+          revisedAt: null,
+          title: null,
+          contents: null,
+          category: null,
+          tags: [],
+          image: null,
+          toc: [],
+        },
+        categorys: [],
+        tags: [],
+      }
 
-      const $ = cheerio.load(data.contents)
-      $('pre code').each((_, elm) => {
-        const result = hljs.highlightAuto($(elm).text())
-        $(elm).html(result.value)
-        $(elm).addClass('hljs')
-      })
-      $('p').each((_, elm) => {
-        if (elm.children.length >= 1) {
-          // @ts-ignore
-          if (elm.children[0].name === 'br') {
-            $(elm.children[0]).remove()
+      {
+        const { data } = await axios.get(apiurl, {
+          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+        })
+
+        const $ = cheerio.load(data.contents)
+        $('pre code').each((_, elm) => {
+          const result = hljs.highlightAuto($(elm).text())
+          $(elm).html(result.value)
+          $(elm).addClass('hljs')
+        })
+        $('p').each((_, elm) => {
+          if (elm.children.length >= 1) {
+            // @ts-ignore
+            if (elm.children[0].name === 'br') {
+              $(elm.children[0]).remove()
+            }
           }
-        }
-      })
-      $('a').each((_, elm) => {
-        const href = $(elm).attr('href')
-        if (href && href[0] === '/') {
-          $(elm).removeAttr('target')
-          $(elm).removeAttr('rel')
-          $(elm).addClass('nuxt-link-active')
-        }
-      })
-      const headings = $('h2, h3').toArray()
-      data.toc = headings.map((data) => ({
-        // @ts-ignore
-        text: $(data).text(),
-        id: data.attribs.id,
-        name: data.name,
-      }))
-      data.contents = $.html()
-      data.createdAt = new Date(data.createdAt)
-      data.updatedAt = new Date(data.updatedAt)
-      data.publishedAt = new Date(data.publishedAt)
-      data.revisedAt = new Date(data.revisedAt)
-      return data
+        })
+        $('a').each((_, elm) => {
+          const href = $(elm).attr('href')
+          if (href && href[0] === '/') {
+            $(elm).removeAttr('target')
+            $(elm).removeAttr('rel')
+            $(elm).addClass('nuxt-link-active')
+          }
+        })
+        const headings = $('h2, h3').toArray()
+        data.toc = headings.map((data) => ({
+          // @ts-ignore
+          text: $(data).text(),
+          id: data.attribs.id,
+          name: data.name,
+        }))
+        data.contents = $.html()
+        data.createdAt = new Date(data.createdAt)
+        data.updatedAt = new Date(data.updatedAt)
+        data.publishedAt = new Date(data.publishedAt)
+        data.revisedAt = new Date(data.revisedAt)
+
+        ret.article = data
+      }
+
+/*
+      {
+        let { data } = await axios.get(`${$config.MICROCMS_API_URL}/blog`, {
+          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+        })
+        data = data.contents.map((article: SidebarArticle) => {
+          article.createdAt = new Date(article.createdAt)
+          article.createdOverrideAt = article.createdOverrideAt
+            ? new Date(article.createdOverrideAt)
+            : null
+          article.updatedAt = new Date(article.updatedAt)
+          article.publishedAt = new Date(article.publishedAt)
+          article.revisedAt = new Date(article.revisedAt)
+          return article
+        })
+        ret.categorys = data.contents
+      }
+*/
+
+      {
+        const { data } = await axios.get(
+          `${$config.MICROCMS_API_URL}/category`,
+          {
+            headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+          }
+        )
+        ret.categorys = data.contents
+      }
+
+      {
+        const { data } = await axios.get(`${$config.MICROCMS_API_URL}/tags`, {
+          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+        })
+        ret.tags = data.contents
+      }
+      return ret
     } catch (err) {
       if (err.response === undefined) {
         throw err
@@ -146,24 +207,32 @@ export default Vue.extend({
       return data
     }
   },
-  data(): Article {
+  data(): {
+    article: Article
+    categorys: Category[]
+    tags: Tag[]
+  } {
     return {
-      id: null,
-      createdAt: null,
-      updatedAt: null,
-      publishedAt: null,
-      revisedAt: null,
-      title: null,
-      contents: null,
-      category: null,
+      article: {
+        id: null,
+        createdAt: null,
+        updatedAt: null,
+        publishedAt: null,
+        revisedAt: null,
+        title: null,
+        contents: null,
+        category: null,
+        tags: [],
+        image: null,
+        toc: [],
+      },
+      categorys: [],
       tags: [],
-      image: null,
-      toc: [],
     }
   },
   head(): MetaInfo {
     return {
-      title: `${this.title}`,
+      title: `${this.article.title}`,
     }
   },
 })

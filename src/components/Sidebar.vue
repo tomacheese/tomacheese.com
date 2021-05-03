@@ -21,7 +21,7 @@
         @click:append-outer="search"
       />
     </v-form>
-
+<!--
     <h2 class="text-center mt-5 mb-1">Recent Posts</h2>
     <v-list>
       <v-list-item
@@ -41,7 +41,7 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-
+-->
     <h2 class="text-center mt-5 mb-1">Category</h2>
     <v-list>
       <v-list-item
@@ -70,7 +70,7 @@
 import Vue, { PropType } from 'vue'
 import axios from 'axios'
 
-interface Article {
+export interface SidebarArticle {
   id: string
   createdAt: Date
   createdOverrideAt: Date | null
@@ -81,7 +81,7 @@ interface Article {
   contents: string
 }
 
-interface Category {
+export interface Category {
   id: string
   createdAt: Date
   updatedAt: Date
@@ -90,7 +90,7 @@ interface Category {
   name: string
 }
 
-interface Tag {
+export interface Tag {
   id: string
   createdAt: Date
   updatedAt: Date
@@ -111,56 +111,25 @@ export default Vue.extend({
       type: Array as PropType<Toc[]>,
       default: () => [],
     },
+    articles: {
+      type: Array as PropType<SidebarArticle[]>,
+      default: () => [],
+    },
+    categorys: {
+      type: Array as PropType<Category[]>,
+      default: () => [],
+    },
+    tags: {
+      type: Array as PropType<Tag[]>,
+      default: () => [],
+    },
   },
   data(): {
-    articles: Article[]
-    categorys: Category[]
-    tags: Tag[]
     searchWord: string
   } {
     return {
-      articles: [],
-      categorys: [],
-      tags: [],
       searchWord: '',
     }
-  },
-  mounted(): void {
-    axios
-      .get(`${this.$config.MICROCMS_API_URL}/blog`, {
-        headers: { 'X-API-KEY': this.$config.MICROCMS_API_KEY },
-      })
-      .then((result) => {
-        const data = result.data.contents.map((article: Article) => {
-          article.createdAt = new Date(article.createdAt)
-          article.createdOverrideAt = article.createdOverrideAt
-            ? new Date(article.createdOverrideAt)
-            : null
-          article.updatedAt = new Date(article.updatedAt)
-          article.publishedAt = new Date(article.publishedAt)
-          article.revisedAt = new Date(article.revisedAt)
-          return article
-        })
-        this.articles = data
-      })
-      // eslint-disable-next-line no-console
-      .catch((reason) => console.error(reason))
-
-    axios
-      .get(`${this.$config.MICROCMS_API_URL}/category`, {
-        headers: { 'X-API-KEY': this.$config.MICROCMS_API_KEY },
-      })
-      .then((result) => (this.categorys = result.data.contents))
-      // eslint-disable-next-line no-console
-      .catch((reason) => console.error(reason))
-
-    axios
-      .get(`${this.$config.MICROCMS_API_URL}/tags`, {
-        headers: { 'X-API-KEY': this.$config.MICROCMS_API_KEY },
-      })
-      .then((result) => (this.tags = result.data.contents))
-      // eslint-disable-next-line no-console
-      .catch((reason) => console.error(reason))
   },
   methods: {
     formatDate(_date: Date) {

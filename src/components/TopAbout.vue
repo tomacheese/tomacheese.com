@@ -46,15 +46,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import axios from 'axios'
+import Vue, { PropType } from 'vue'
 
-interface Detail {
+export interface Detail {
   icon: string
   text: string
 }
 
-interface TimelineItem {
+export interface TimelineItem {
   date: string
   text: string
   icon: string
@@ -62,30 +61,15 @@ interface TimelineItem {
 }
 
 export default Vue.extend({
-  data(): {
-    details: Detail[]
-    timelines: TimelineItem[]
-  } {
-    return {
-      details: [],
-      timelines: [],
+  props: {
+    details: {
+      type: Array as PropType<Detail[]>,
+      default: () => [],
+    },
+    timelines: {
+      type: Array as PropType<TimelineItem[]>,
+      default: () => [],
     }
-  },
-  mounted() {
-    axios
-      .get(`${this.$config.MICROCMS_API_URL}/top-details`, {
-        headers: { 'X-API-KEY': this.$config.MICROCMS_API_KEY },
-      })
-      .then((result) => (this.details = result.data.contents))
-      // eslint-disable-next-line no-console
-      .catch((reason) => console.error(reason))
-    axios
-      .get(`${this.$config.MICROCMS_API_URL}/top-timelines`, {
-        headers: { 'X-API-KEY': this.$config.MICROCMS_API_KEY },
-      })
-      .then((result) => (this.timelines = result.data.contents))
-      // eslint-disable-next-line no-console
-      .catch((reason) => console.error(reason))
   },
 })
 </script>
