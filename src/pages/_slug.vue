@@ -30,6 +30,24 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/androidstudio.css'
 import NonTopHeader from '~/components/NonTopHeader.vue'
 
+interface Category {
+  id: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
+  publishedAt: Date | null
+  revisedAt: Date | null
+  name: string | null
+}
+
+interface Tag {
+  id: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
+  publishedAt: Date | null
+  revisedAt: Date | null
+  name: string | null
+}
+
 interface Toc {
   id: string
   text: string
@@ -120,7 +138,7 @@ export default Vue.extend({
         ret.article = data
       }
 
-/*
+      /*
       {
         let { data } = await axios.get(`${$config.MICROCMS_API_URL}/blog`, {
           headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
@@ -167,21 +185,29 @@ export default Vue.extend({
       return data
     }
   },
-  data(): Article {
+  data(): {
+    article: Article
+    categorys: Category[]
+    tags: Tag[]
+  } {
     return {
-      id: null,
-      createdAt: null,
-      updatedAt: null,
-      publishedAt: null,
-      revisedAt: null,
-      title: null,
-      contents: null,
-      toc: [],
+      article: {
+        id: null,
+        createdAt: null,
+        updatedAt: null,
+        publishedAt: null,
+        revisedAt: null,
+        title: null,
+        contents: null,
+        toc: [],
+      },
+      categorys: [],
+      tags: [],
     }
   },
   head(): MetaInfo {
     return {
-      title: `${this.title}`,
+      title: `${this.article.title}`,
     }
   },
 })

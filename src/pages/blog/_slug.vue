@@ -49,9 +49,6 @@ import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/androidstudio.css'
 import NonTopHeader from '~/components/NonTopHeader.vue'
-import Category from '~/components/Sidebar.vue'
-import Tag from '~/components/Sidebar.vue'
-import SidebarArticle from '~/components/Sidebar.vue'
 
 interface Category {
   id: string | null
