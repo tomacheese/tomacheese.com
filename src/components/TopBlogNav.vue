@@ -18,6 +18,7 @@
             :src="article.image"
             class="white--text align-end"
             height="200px"
+            contain
           >
           </v-img>
         </v-card>
