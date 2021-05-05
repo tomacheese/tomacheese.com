@@ -44,17 +44,29 @@ export default Vue.extend({
   },
   mounted() {
     axios
-      .get('https://tomacheese.com/articles')
+      .get('https://api.tomacheese.com/articles')
       .then((response) => {
         this.articles = []
-        for (const item of response.data.rss.channel.item) {
+        if (!Array.isArray(response.data.rss.channel.item)) {
           this.articles.push({
-            title: item.title,
-            link: item.link,
-            description: item.description,
-            pubDate: new Date(Date.parse(item.pubDate)),
-            image: item.enclosure.url,
+            title: response.data.rss.channel.item.title,
+            link: response.data.rss.channel.item.link,
+            description: response.data.rss.channel.item.description,
+            pubDate: new Date(
+              Date.parse(response.data.rss.channel.item.pubDate)
+            ),
+            image: response.data.rss.channel.item.enclosure.url,
           })
+        } else {
+          for (const item of response.data.rss.channel.item) {
+            this.articles.push({
+              title: item.title,
+              link: item.link,
+              description: item.description,
+              pubDate: new Date(Date.parse(item.pubDate)),
+              image: item.enclosure.url,
+            })
+          }
         }
       })
       // eslint-disable-next-line no-console

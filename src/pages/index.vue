@@ -3,7 +3,7 @@
     <section class="hero">
       <v-container fluid fill-height class="hero__content">
         <v-row justify="center">
-          <v-col class="hero__content-text" cols="12">
+          <v-col class="hero__content-text white--text" cols="12">
             <h1>Tomachi Site</h1>
             <p>The world is made up of IDEA.</p>
           </v-col>
