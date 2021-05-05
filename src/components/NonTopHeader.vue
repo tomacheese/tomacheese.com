@@ -65,7 +65,7 @@ export default Vue.extend({
 .hero__content {
   background: url('/images/top.jpg');
   background-size: cover;
-  background-position: center bottom;
+  background-position: center top;
   text-align: center;
   position: relative;
   width: 100%;

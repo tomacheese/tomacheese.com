@@ -3,19 +3,9 @@
     <section class="hero">
       <v-container fluid fill-height class="hero__content">
         <v-row justify="center">
-          <v-col class="hero__content-text white--text" cols="12">
+          <v-col class="hero__content-text" cols="12">
             <h1>Tomachi Site</h1>
             <p>The world is made up of IDEA.</p>
-          </v-col>
-
-          <v-col v-for="card in cards" :key="card.title" cols="12" sm="3">
-            <v-btn
-              :to="card.link"
-              :color="card.color"
-              class="white--text"
-              large
-              v-text="card.title"
-            />
           </v-col>
         </v-row>
       </v-container>
@@ -40,28 +30,16 @@ interface Card {
   title: string
   link: string
   color: string
+  cols: string
 }
 
 export default Vue.extend({
   data(): {
-    cards: Card[]
     details: Detail[]
     timelines: TimelineItem[]
     articles: Article[]
   } {
     return {
-      cards: [
-        {
-          title: 'About Me',
-          link: '/me',
-          color: 'pink',
-        },
-        {
-          title: 'About This Web Site',
-          link: '/about',
-          color: 'purple',
-        },
-      ],
       details: [],
       timelines: [],
       articles: [],
@@ -96,12 +74,9 @@ export default Vue.extend({
     }
 
     {
-      const { data } = await axios.get(
-        `${$config.MICROCMS_API_URL}/blog`,
-        {
-          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
-        }
-      )
+      const { data } = await axios.get(`${$config.MICROCMS_API_URL}/blog`, {
+        headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
+      })
       ret.articles = data.contents
     }
 

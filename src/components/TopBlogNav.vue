@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <h2>ブログ</h2>
-    <p>気が向いたときに書いてます。</p>
+    <p>
+      気が向いたときに書いてます。記事は
+      <a href="https://zenn.dev/book000">Zenn</a> にあります。
+    </p>
+
     <v-row>
       <v-col
         v-for="article in articles.slice(0, 3)"
@@ -9,25 +13,13 @@
         cols="12"
         sm="4"
       >
-        <v-card>
+        <v-card :href="article.link">
           <v-img
-            :src="
-              'image' in article ? article.image.url : '/images/default.jpg'
-            "
+            :src="article.image"
             class="white--text align-end"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.9)"
             height="200px"
           >
-            <v-card-title v-text="article.title" />
           </v-img>
-
-          <v-card-actions>
-            <v-spacer />
-
-            <v-btn :to="'/blog/' + article.id" text color="teal accent-4">
-              READ MORE
-            </v-btn>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -35,25 +27,38 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import Vue from 'vue'
+import axios from 'axios'
 
 export interface Article {
-  id: string
-  createdAt: Date
-  createdOverrideAt: Date | null
-  updatedAt: Date
-  publishedAt: Date
-  revisedAt: Date
   title: string
-  contents: string
+  link: string
+  description: string
+  pubDate: Date
+  image: string
 }
 
 export default Vue.extend({
-  props: {
-    articles: {
-      type: Array as PropType<Article[]>,
-      default: () => [],
-    },
+  data(): { articles: Article[] } {
+    return { articles: [] }
+  },
+  mounted() {
+    axios
+      .get('https://tomacheese.com/articles')
+      .then((response) => {
+        this.articles = []
+        for (const item of response.data.rss.channel.item) {
+          this.articles.push({
+            title: item.title,
+            link: item.link,
+            description: item.description,
+            pubDate: new Date(Date.parse(item.pubDate)),
+            image: item.enclosure.url,
+          })
+        }
+      })
+      // eslint-disable-next-line no-console
+      .catch((reason) => console.error(reason))
   },
 })
 </script>

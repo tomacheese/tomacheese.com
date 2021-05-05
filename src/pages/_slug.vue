@@ -138,25 +138,6 @@ export default Vue.extend({
         ret.article = data
       }
 
-      /*
-      {
-        let { data } = await axios.get(`${$config.MICROCMS_API_URL}/blog`, {
-          headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
-        })
-        data = data.contents.map((article: SidebarArticle) => {
-          article.createdAt = new Date(article.createdAt)
-          article.createdOverrideAt = article.createdOverrideAt
-            ? new Date(article.createdOverrideAt)
-            : null
-          article.updatedAt = new Date(article.updatedAt)
-          article.publishedAt = new Date(article.publishedAt)
-          article.revisedAt = new Date(article.revisedAt)
-          return article
-        })
-        ret.categorys = data.contents
-      }
-*/
-
       {
         const { data } = await axios.get(
           `${$config.MICROCMS_API_URL}/category`,

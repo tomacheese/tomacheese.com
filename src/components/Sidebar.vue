@@ -11,56 +11,13 @@
       </ul>
     </div>
 
-    <h2 class="text-center mb-1">Search</h2>
-    <v-form ref="form" lazy-validation>
-      <v-text-field
-        v-model="searchWord"
-        clearable
-        :rules="[(value) => !!value || '必須項目です']"
-        append-outer-icon="mdi-magnify"
-        @click:append-outer="search"
-      />
-    </v-form>
-<!--
-    <h2 class="text-center mt-5 mb-1">Recent Posts</h2>
+    <h2 class="text-center mt-5 mb-1">Links</h2>
     <v-list>
-      <v-list-item
-        v-for="(item, i) in articles.slice(0, 5)"
-        :key="i"
-        :to="'/blog/' + item.id"
-      >
-        <v-list-item-content :title="item.title">
-          <v-list-item-title v-text="item.title" />
-          <v-list-item-subtitle
-            v-text="
-              item.createdOverrideAt
-                ? formatDate(item.createdOverrideAt)
-                : formatDate(item.publishedAt)
-            "
-          />
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
--->
-    <h2 class="text-center mt-5 mb-1">Category</h2>
-    <v-list>
-      <v-list-item
-        v-for="(item, i) in categorys"
-        :key="i"
-        :to="'/search?category=' + item.id"
-      >
-        <v-list-item-content v-text="item.name" />
-      </v-list-item>
-    </v-list>
-
-    <h2 class="text-center mt-5 mb-1">Tags</h2>
-    <v-list>
-      <v-list-item
-        v-for="(item, i) in tags"
-        :key="i"
-        :to="'/search?tag=' + item.id"
-      >
-        <v-list-item-content v-text="item.name" />
+      <v-list-item v-for="(item, i) in links" :key="i" :href="item.url">
+        <v-list-item-icon>
+          <v-icon v-text="item.icon" />
+        </v-list-item-icon>
+        <v-list-item-content v-text="item.title" />
       </v-list-item>
     </v-list>
   </v-container>
@@ -68,41 +25,17 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import axios from 'axios'
-
-export interface SidebarArticle {
-  id: string
-  createdAt: Date
-  createdOverrideAt: Date | null
-  updatedAt: Date
-  publishedAt: Date
-  revisedAt: Date
-  title: string
-  contents: string
-}
-
-export interface Category {
-  id: string
-  createdAt: Date
-  updatedAt: Date
-  publishedAt: Date
-  revisedAt: Date
-  name: string
-}
-
-export interface Tag {
-  id: string
-  createdAt: Date
-  updatedAt: Date
-  publishedAt: Date
-  revisedAt: Date
-  name: string
-}
 
 interface Toc {
   id: string
   text: string
   name: string
+}
+
+interface Link {
+  icon: string
+  title: string
+  url: string
 }
 
 export default Vue.extend({
@@ -111,42 +44,36 @@ export default Vue.extend({
       type: Array as PropType<Toc[]>,
       default: () => [],
     },
-    articles: {
-      type: Array as PropType<SidebarArticle[]>,
-      default: () => [],
-    },
-    categorys: {
-      type: Array as PropType<Category[]>,
-      default: () => [],
-    },
-    tags: {
-      type: Array as PropType<Tag[]>,
-      default: () => [],
-    },
   },
   data(): {
     searchWord: string
+    links: Link[]
   } {
     return {
       searchWord: '',
+      links: [
+        {
+          icon: 'mdi-twitter',
+          title: 'Twitter',
+          url: 'https://twitter.com/book000',
+        },
+        {
+          icon: 'mdi-github',
+          title: 'GitHub',
+          url: 'https://github.com/book000',
+        },
+        {
+          icon: 'mdi-post',
+          title: 'Zenn.dev',
+          url: 'https://zenn.dev/book000',
+        },
+        {
+          icon: 'mdi-minecraft',
+          title: 'jao Minecraft Server',
+          url: 'https://jaoafa.com',
+        },
+      ],
     }
-  },
-  methods: {
-    formatDate(_date: Date) {
-      return (
-        _date.getFullYear() +
-        '/' +
-        ('0' + (_date.getMonth() + 1)).slice(-2) +
-        '/' +
-        ('0' + _date.getDate()).slice(-2)
-      )
-    },
-    search() {
-      if (!(this.$refs.form as Vue & { validate: () => boolean }).validate()) {
-        return
-      }
-      this.$router.push({ path: '/search', query: { q: this.searchWord } })
-    },
   },
 })
 </script>

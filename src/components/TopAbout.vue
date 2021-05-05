@@ -69,7 +69,7 @@ export default Vue.extend({
     timelines: {
       type: Array as PropType<TimelineItem[]>,
       default: () => [],
-    }
+    },
   },
 })
 </script>
@@ -93,6 +93,6 @@ h2.user-title {
   text-align: right !important;
 }
 a {
-  color: maincolor !important;
+  color: var(--v-maincolor-base) !important;
 }
 </style>

@@ -8,7 +8,10 @@
       <v-toolbar-items>
         <v-tooltip v-for="(item, i) in items" :key="i" bottom>
           <template #activator="{ on, attrs }">
-            <v-btn :to="item.to" v-bind="attrs" v-on="on">
+            <v-btn v-if="item.href" :href="item.href" v-bind="attrs" v-on="on">
+              <v-icon color="maincolor"> mdi-{{ item.icon }} </v-icon>
+            </v-btn>
+            <v-btn v-if="item.to" :to="item.to" v-bind="attrs" v-on="on">
               <v-icon color="maincolor"> mdi-{{ item.icon }} </v-icon>
             </v-btn>
           </template>
@@ -32,7 +35,7 @@ export default {
         {
           icon: 'post',
           title: 'Blog',
-          to: '/blog',
+          href: 'https://zenn.dev/book000',
         },
         {
           icon: 'account',
