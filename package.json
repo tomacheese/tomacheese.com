@@ -30,7 +30,7 @@
     "cheerio": "^1.0.0-rc.9",
     "core-js": "^3.12.1",
     "highlight.js": "^10.7.2",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.6",
     "nuxt-webfontloader": "^1.1.0",
     "vue-scrollto": "^2.20.0"
   },
