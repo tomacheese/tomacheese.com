@@ -23,11 +23,13 @@ export default Vue.extend({
       this.$vuetify.theme.dark = this.theme
     },
   },
+  /*
   mounted() {
     this.theme =
       window &&
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches
   },
+  */
 })
 </script>
