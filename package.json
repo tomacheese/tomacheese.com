@@ -28,7 +28,7 @@
     "@types/marked": "^2.0.2",
     "@types/xml2js": "^0.4.8",
     "cheerio": "^1.0.0-rc.9",
-    "core-js": "^3.12.1",
+    "core-js": "^3.17.3",
     "highlight.js": "^10.7.2",
     "nuxt": "^2.15.6",
     "nuxt-webfontloader": "^1.1.0",
