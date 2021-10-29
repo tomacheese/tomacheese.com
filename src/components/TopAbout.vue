@@ -32,8 +32,8 @@
             :icon="timeline.icon"
             large
           >
-            <template #opposite class="text-right">
-              <span class="headline" v-text="timeline.date" />
+            <template #opposite>
+              <span class="headline text-right" v-text="timeline.date" />
             </template>
             <div class="py-4">
               <h2 class="body-1 font-weight-light" v-html="timeline.text" />

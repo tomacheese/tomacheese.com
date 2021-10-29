@@ -19,8 +19,7 @@
             class="white--text align-end"
             height="200px"
             contain
-          >
-          </v-img>
+          />
         </v-card>
       </v-col>
     </v-row>

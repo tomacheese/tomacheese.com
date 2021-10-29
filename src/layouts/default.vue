@@ -1,9 +1,16 @@
 <template>
   <v-app>
-    <Header />
+    <TheHeader />
     <v-main>
       <Nuxt />
     </v-main>
-    <Footer />
+    <TheFooter />
   </v-app>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+  name: 'LayoutDefault',
+})
+</script>

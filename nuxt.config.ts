@@ -191,6 +191,8 @@ const config: NuxtConfig = {
   server: {
     host: '0.0.0.0',
   },
+
+  telemetry: false,
 }
 
 export default config

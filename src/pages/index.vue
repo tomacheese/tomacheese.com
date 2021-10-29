@@ -22,34 +22,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-import { Detail } from '@/components/TopAbout.vue'
-import { TimelineItem } from '@/components/TopAbout.vue'
+import { Detail, TimelineItem } from '@/components/TopAbout.vue'
+
 import { Article } from '@/components/TopBlogNav.vue'
 
-interface Card {
-  title: string
-  link: string
-  color: string
-  cols: string
-}
-
 export default Vue.extend({
-  data(): {
-    details: Detail[]
-    timelines: TimelineItem[]
-    articles: Article[]
-  } {
-    return {
-      details: [],
-      timelines: [],
-      articles: [],
-    }
-  },
-  head() {
-    return {
-      title: 'トップページ',
-    }
-  },
+  name: 'TopPage',
   async asyncData({ $config }) {
     const ret = { details: [], timelines: [], articles: [] }
 
@@ -81,6 +59,22 @@ export default Vue.extend({
     }
 
     return ret
+  },
+  data(): {
+    details: Detail[]
+    timelines: TimelineItem[]
+    articles: Article[]
+  } {
+    return {
+      details: [],
+      timelines: [],
+      articles: [],
+    }
+  },
+  head() {
+    return {
+      title: 'トップページ',
+    }
   },
 })
 </script>
