@@ -14,7 +14,7 @@
           />
         </v-col>
         <v-col md="3" cols="12" class="mt-10">
-          <Sidebar :toc="article.toc" :categorys="categorys" :tags="tags" />
+          <TheSidebar :toc="article.toc" :categorys="categorys" :tags="tags" />
         </v-col>
       </v-row>
     </v-container>
@@ -156,7 +156,7 @@ export default Vue.extend({
       }
       return ret
     } catch (err) {
-      if (err.response === undefined) {
+      if ((err as any).response === undefined) {
         throw err
       }
       const data = { title: '', contents: '' }
