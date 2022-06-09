@@ -1,5 +1,11 @@
 # tomacheese.com
 
-2021 年 05 月以降導入予定の新 [Tomachi Site](https://tomacheese.com) のフロントエンドコードです。
+Tomachi Site (tomacheese.com) のフロントエンドコードです。
 
-環境は ConoHa VPS + Nuxt.js + Vuetify + TypeScript + microCMS です。
+## 環境
+
+- ConoHa VPS
+- Nuxt.js
+- Vuetify
+- TypeScript
+- microCMS
