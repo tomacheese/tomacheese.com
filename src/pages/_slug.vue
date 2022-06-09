@@ -8,10 +8,9 @@
     <v-container fluid fill-height>
       <v-row align="start">
         <v-col md="9" cols="12">
-          <v-container
-            class="content-container my-9 rounded-xl background"
-            v-html="article.contents"
-          />
+          <v-container class="content-container my-9 rounded-xl background">
+            <div v-html="article.contents" />
+          </v-container>
         </v-col>
         <v-col md="3" cols="12" class="mt-10">
           <TheSidebar :toc="article.toc" :categorys="categorys" :tags="tags" />

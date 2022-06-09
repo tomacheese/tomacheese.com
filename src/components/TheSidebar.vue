@@ -15,9 +15,9 @@
     <v-list>
       <v-list-item v-for="(item, i) in links" :key="i" :href="item.url">
         <v-list-item-icon>
-          <v-icon v-text="item.icon" />
+          <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
-        <v-list-item-content v-text="item.title" />
+        <v-list-item-content>{{ item.title }}</v-list-item-content>
       </v-list-item>
     </v-list>
   </v-container>
