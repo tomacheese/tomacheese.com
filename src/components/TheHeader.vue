@@ -43,6 +43,11 @@ export default {
           to: '/me',
         },
         {
+          icon: 'devices',
+          title: 'Devices',
+          to: '/devices',
+        },
+        {
           icon: 'information-outline',
           title: 'About Site',
           to: '/about',

@@ -22,9 +22,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import axios from 'axios'
-import { Detail, TimelineItem } from '@/components/TopAbout.vue'
+import { Detail, TimelineItem } from '~/components/TopAbout.vue'
 
-import { Article } from '@/components/TopBlogNav.vue'
+import { Article } from '~/components/TopBlogNav.vue'
 
 export default Vue.extend({
   name: 'TopPage',

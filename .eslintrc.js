@@ -7,10 +7,9 @@ module.exports = {
   extends: [
     '@nuxtjs/eslint-config-typescript',
     'prettier',
-    'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
   ],
-  plugins: ['prettier'],
+  plugins: [],
   rules: {
     'vue/no-v-html': 'off',
     'vue/singleline-html-element-content-newline': 'off',
