@@ -11,6 +11,10 @@ on:
     paths:
       - '.github/workflows/deploy.yml'
 
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
