@@ -192,6 +192,10 @@ const config: NuxtConfig = {
     host: '0.0.0.0',
   },
 
+  generate: {
+    fallback: true
+  },
+
   telemetry: false,
 }
 

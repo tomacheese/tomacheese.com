@@ -45,9 +45,15 @@ jobs:
 
       - name: 🏗️ Nuxt build
         run: yarn build
+        env:
+          MICROCMS_API_URL: ${{ secrets.MICROCMS_API_URL }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
 
       - name: 🏭 Nuxt generate
         run: yarn generate
+        env:
+          MICROCMS_API_URL: ${{ secrets.MICROCMS_API_URL }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
 
       - name: 🆙 Upload Pages-artifact
         uses: actions/upload-pages-artifact@v1
