@@ -1,10 +1,6 @@
 <template>
   <div>
-    <NonTopHeader
-      :title="article.title"
-      :published-at="article.publishedAt"
-      :updated-at="article.updatedAt"
-    />
+    <NonTopHeader :title="article.title" :published-at="article.publishedAt" :updated-at="article.updatedAt" />
     <v-container fluid fill-height>
       <v-row align="start">
         <v-col md="9" cols="12">
@@ -24,7 +20,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import { MetaInfo } from 'vue-meta'
-import cheerio from 'cheerio'
+import { load } from 'cheerio'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/androidstudio.css'
 import NonTopHeader from '~/components/NonTopHeader.vue'
@@ -99,7 +95,7 @@ export default Vue.extend({
           headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
         })
 
-        const $ = cheerio.load(data.contents)
+        const $ = load(data.contents)
         $('pre code').each((_, elm) => {
           const result = hljs.highlightAuto($(elm).text())
           $(elm).html(result.value)

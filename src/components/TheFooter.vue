@@ -54,7 +54,7 @@ export default Vue.extend({
         {
           icon: 'discord',
           title: 'tomachi#0310',
-          href: 'https://discordapp.com/users/221991565567066112',
+          href: 'https://discord.com/users/221991565567066112',
         },
       ],
     }
