@@ -35,11 +35,11 @@ export default Vue.extend({
       required: true,
     },
     publishedAt: {
-      type: Date,
+      type: Object as () => Date,
       default: undefined,
     },
     updatedAt: {
-      type: Date,
+      type: Object as () => Date,
       default: undefined,
     },
   },
