@@ -1,61 +1,26 @@
 {
   "name": "tomacheese.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
-    "lint": "yarn lint:js && yarn lint:style",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix"
-  },
-  "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
-  "dependencies": {
-    "@nuxt/typescript-runtime": "3.0.0",
-    "@nuxtjs/axios": "5.13.6",
-    "@nuxtjs/google-analytics": "2.4.0",
-    "@types/marked": "4.0.8",
-    "@types/xml2js": "0.4.11",
-    "cheerio": "1.0.0-rc.10",
-    "core-js": "3.29.1",
-    "highlight.js": "11.7.0",
-    "nuxt": "2.15.8",
-    "nuxt-webfontloader": "1.1.0",
-    "vue-scrollto": "2.20.0"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --ext .js,.ts,.vue --ignore-path .gitignore . --fix"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.5.0",
-    "@commitlint/config-conventional": "17.4.4",
-    "@nuxt/types": "2.16.3",
-    "@nuxt/typescript-build": "3.0.0",
-    "@nuxtjs/eslint-config-typescript": "12.0.0",
-    "@nuxtjs/eslint-module": "4.0.2",
-    "@nuxtjs/stylelint-module": "5.0.1",
-    "@nuxtjs/vuetify": "1.12.3",
-    "@babel/eslint-parser": "7.21.3",
-    "eslint": "8.36.0",
-    "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-nuxt": "4.0.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-vue": "9.9.0",
-    "husky": "8.0.3",
-    "lint-staged": "13.2.0",
-    "postcss-html": "1.5.0",
-    "prettier": "2.8.6",
-    "stylelint": "15.3.0",
-    "stylelint-config-prettier": "9.0.5",
-    "stylelint-config-standard": "31.0.0"
+    "@mdi/font": "^7.2.96",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@types/node": "18.15.5",
+    "eslint": "^8.36.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "nuxt": "3.3.1",
+    "sass": "1.59.3",
+    "vite-plugin-eslint": "^1.8.1",
+    "vue-tsc": "1.2.0",
+    "vuetify": "^3.1.4"
   }
 }
