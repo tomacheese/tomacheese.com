@@ -30,7 +30,7 @@
     "@types/xml2js": "0.4.12",
     "cheerio": "1.0.0-rc.10",
     "core-js": "3.33.0",
-    "highlight.js": "11.8.0",
+    "highlight.js": "11.9.0",
     "nuxt": "2.15.8",
     "nuxt-webfontloader": "1.1.0",
     "vue-scrollto": "2.20.0"
