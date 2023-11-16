@@ -1802,12 +1802,12 @@
     fork-ts-checker-webpack-plugin "6.5.3"
     ts-loader "8.4.0"
 
-"@nuxt/typescript-runtime@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript-runtime/-/typescript-runtime-3.0.1.tgz#5f6add88e0c50ae67ef84ef92706c0bac0c57b89"
-  integrity sha512-tBnnxqRyx056B1/oWwnEOl7JLeF9WVXE4nxfCYpyq2B+ujIftt537KWyhKGBISHJpGR4NaBiRT+AF47B3U+h+w==
+"@nuxt/typescript-runtime@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript-runtime/-/typescript-runtime-3.0.2.tgz#b12b988c92f1cd5fea5fbdcf61cdd5c1ae1b6a65"
+  integrity sha512-G0lBmfLgw6bhyFAGbyz8dfULtoOlOXyRA6dGXNvB2qz5rtEBNCS4Y+P1ZDgvXiSB3oPvXBui9ZfVohJ+NalTZw==
   dependencies:
-    ts-node "9.1.1"
+    ts-node "10.9.1"
 
 "@nuxt/utils@2.15.8":
   version "2.15.8"
@@ -10747,7 +10747,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.17, source-map-support@~0.5.12, source-map-support@~0.5.20:
+source-map-support@~0.5.12, source-map-support@~0.5.20:
   version "0.5.21"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
   integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
@@ -11495,19 +11495,7 @@ ts-loader@8.4.0:
     micromatch "^4.0.0"
     semver "^7.3.4"
 
-ts-node@9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-9.1.1.tgz#51a9a450a3e959401bda5f004a72d54b936d376d"
-  integrity sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==
-  dependencies:
-    arg "^4.1.0"
-    create-require "^1.1.0"
-    diff "^4.0.1"
-    make-error "^1.1.1"
-    source-map-support "^0.5.17"
-    yn "3.1.1"
-
-ts-node@^10.8.1:
+ts-node@10.9.1, ts-node@^10.8.1:
   version "10.9.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.9.1.tgz#e73de9102958af9e1f0b168a6ff320e25adcff4b"
   integrity sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==
