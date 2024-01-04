@@ -44,29 +44,19 @@ export default Vue.extend({
   },
   mounted() {
     axios
-      .get('https://api.tomacheese.com/articles')
+      .get(
+        'http://api.rss2json.com/v1/api.json?rss_url=https://zenn.dev/book000/feed',
+      )
       .then((response) => {
         this.articles = []
-        if (!Array.isArray(response.data.rss.channel.item)) {
+        for (const item of response.data.items) {
           this.articles.push({
-            title: response.data.rss.channel.item.title,
-            link: response.data.rss.channel.item.link,
-            description: response.data.rss.channel.item.description,
-            pubDate: new Date(
-              Date.parse(response.data.rss.channel.item.pubDate)
-            ),
-            image: response.data.rss.channel.item.enclosure.url,
+            title: item.title,
+            link: item.link,
+            description: item.description,
+            pubDate: new Date(Date.parse(item.pubDate)),
+            image: item.enclosure.link,
           })
-        } else {
-          for (const item of response.data.rss.channel.item) {
-            this.articles.push({
-              title: item.title,
-              link: item.link,
-              description: item.description,
-              pubDate: new Date(Date.parse(item.pubDate)),
-              image: item.enclosure.url,
-            })
-          }
         }
       })
       // eslint-disable-next-line no-console
