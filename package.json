@@ -44,7 +44,7 @@
     "@nuxtjs/eslint-module": "4.1.0",
     "@nuxtjs/stylelint-module": "5.1.0",
     "@nuxtjs/vuetify": "1.12.3",
-    "@babel/eslint-parser": "7.27.0",
+    "@babel/eslint-parser": "7.27.1",
     "eslint": "8.57.1",
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-nuxt": "4.0.0",
