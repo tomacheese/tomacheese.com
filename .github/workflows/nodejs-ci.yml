@@ -1,4 +1,4 @@
-# Node.js でビルド・テストを実行する。バージョンは .node-version に記載されているものを利用する
+# Node.js CI with pnpm for Nuxt 3
 
 name: Node CI
 
@@ -14,7 +14,30 @@ on:
 
 jobs:
   node-ci:
-    name: Node CI
-    uses: book000/templates/.github/workflows/reusable-nodejs-ci.yml@master
-    with:
-      disabled-jobs: depcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: 'pnpm'
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: 👨🏻‍💻 Install dependencies
+        run: pnpm install
+
+      - name: 👀 Run linter
+        run: pnpm lint
+
+      - name: 🏗️ Build
+        run: pnpm build
+
+      - name: 🏭 Generate
+        run: pnpm generate
