@@ -102,6 +102,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       failOnError: false,
+      routes: ['/about', '/anime', '/devices', '/me']
     },
   },
 
