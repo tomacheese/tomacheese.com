@@ -193,6 +193,30 @@ useSeoMeta({
     padding-left: var(--space-8);
   }
 
+  ul {
+    list-style-type: disc;
+
+    ul {
+      list-style-type: circle;
+
+      ul {
+        list-style-type: square;
+      }
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+
+    ol {
+      list-style-type: lower-alpha;
+
+      ol {
+        list-style-type: lower-roman;
+      }
+    }
+  }
+
   li {
     margin-bottom: var(--space-2);
     color: var(--color-text-secondary);
