@@ -3,10 +3,11 @@ module.exports = {
     'stylelint-config-standard',
     'stylelint-config-prettier',
   ],
+  // Override configuration for Vue Single File Components (SFCs)
   overrides: [
     {
       files: ['**/*.vue'],
-      customSyntax: 'postcss-html',
+      customSyntax: 'postcss-html', // Required for parsing CSS within Vue SFCs
     },
   ],
   ignoreFiles: [
