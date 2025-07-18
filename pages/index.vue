@@ -7,18 +7,33 @@
       </div>
     </section>
     <section class="user-about">
-      <TopAbout :details="details" :timelines="timelines" />
+      <div v-if="loadError" class="error-message">
+        <p>⚠️ データの読み込みに失敗しました。しばらくしてからもう一度お試しください。</p>
+      </div>
+      <TopAbout v-else :details="details" :timelines="timelines" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 // データの読み込み
-const detailsData = await $fetch('/top-details.json')
-const timelinesData = await $fetch('/top-timelines.json')
+let details = []
+let timelines = []
+let loadError = false
 
-const details = detailsData?.body || []
-const timelines = timelinesData?.body || []
+try {
+  const detailsData = await $fetch('/top-details.json')
+  const timelinesData = await $fetch('/top-timelines.json')
+  
+  details = detailsData?.body || []
+  timelines = timelinesData?.body || []
+} catch (error) {
+  console.warn('Failed to load top page data:', error)
+  loadError = true
+  // Set empty arrays as fallback
+  details = []
+  timelines = []
+}
 
 // SEO
 useSeoMeta({
@@ -53,6 +68,21 @@ useSeoMeta({
   p {
     font-size: 18px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.error-message {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  color: #c33;
+
+  p {
+    margin: 0;
+    font-size: 16px;
   }
 }
 </style>
