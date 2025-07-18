@@ -1,5 +1,3 @@
-# Node.js CI with pnpm for Nuxt 3
-
 name: Node CI
 
 on:
@@ -11,31 +9,9 @@ on:
     branches:
       - main
       - master
+  merge_group:
 
 jobs:
   node-ci:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🛎 Checkout
-        uses: actions/checkout@v4
-
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: 🏗 Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: 'pnpm'
-
-      - name: 👨🏻‍💻 Install dependencies
-        run: pnpm install
-
-      - name: 👀 Run linter
-        run: pnpm lint
-
-      - name: 🏗️ Build
-        run: pnpm build
-
-      - name: 🏭 Generate
-        run: pnpm generate
+    name: Node CI
+    uses: book000/templates/.github/workflows/reusable-nodejs-ci-pnpm.yml@master
