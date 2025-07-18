@@ -7,7 +7,10 @@
       </div>
     </section>
     <section class="user-about">
-      <TopAbout :details="details" :timelines="timelines" />
+      <div v-if="loadError" class="error-message">
+        <p>⚠️ データの読み込みに失敗しました。しばらくしてからもう一度お試しください。</p>
+      </div>
+      <TopAbout v-else :details="details" :timelines="timelines" />
     </section>
   </div>
 </template>
@@ -16,6 +19,7 @@
 // データの読み込み
 let details = []
 let timelines = []
+let loadError = false
 
 try {
   const detailsData = await $fetch('/top-details.json')
@@ -25,7 +29,8 @@ try {
   timelines = timelinesData?.body || []
 } catch (error) {
   console.warn('Failed to load top page data:', error)
-  // Fallback data or empty arrays
+  loadError = true
+  // Set empty arrays as fallback
   details = []
   timelines = []
 }
@@ -63,6 +68,21 @@ useSeoMeta({
   p {
     font-size: 18px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.error-message {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  color: #c33;
+
+  p {
+    margin: 0;
+    font-size: 16px;
   }
 }
 </style>
