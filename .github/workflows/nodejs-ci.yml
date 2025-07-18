@@ -1,5 +1,3 @@
-# Node.js でビルド・テストを実行する。バージョンは .node-version に記載されているものを利用する
-
 name: Node CI
 
 on:
@@ -11,10 +9,11 @@ on:
     branches:
       - main
       - master
+  merge_group:
 
 jobs:
   node-ci:
     name: Node CI
-    uses: book000/templates/.github/workflows/reusable-nodejs-ci.yml@master
+    uses: book000/templates/.github/workflows/reusable-nodejs-ci-pnpm.yml@master
     with:
       disabled-jobs: depcheck

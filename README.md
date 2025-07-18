@@ -1,17 +1,23 @@
-# tomacheese.com
+# tomacheese.com v3
 
-Tomachi Site (tomacheese.com) のフロントエンドコードです。
+Nuxt.js v3 + Nuxt Content で構築された Tomachi Site のリニューアル版
 
-## 環境
+## 🛠️ 開発
 
-- Hosting
-  - [GitHub Pages](https://pages.github.com/)
-- Language
-  - Vue.js
-  - TypeScript
-  - SCSS
-- Framework
-  - Nuxt.js
-  - Vuetify
-- Contents Management System
-  - [microCMS](https://microcms.io/)
+### 依存関係のインストール
+
+```bash
+pnpm install
+```
+
+### 開発サーバー起動
+
+```bash
+pnpm dev
+```
+
+### ビルド（SPA）
+
+```bash
+pnpm generate
+```

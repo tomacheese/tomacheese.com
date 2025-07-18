@@ -28,25 +28,42 @@ jobs:
       - name: 🏗 Setup node env
         uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
+          node-version: 16
 
+      - name: 🛠 Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: |
+          # shellcheck disable=SC2086
+          echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: 📦 Cache node_modules
+        uses: actions/cache@v4
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: 👨🏻‍💻 Install dependencies
-        run: pnpm
+        run: yarn
 
       - name: 🏗️ Nuxt build
-        run: pnpm build
+        run: yarn build
+        env:
+          MICROCMS_API_URL: ${{ secrets.MICROCMS_API_URL }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
 
       - name: 🏭 Nuxt generate
-        run: pnpm generate
+        run: yarn generate
+        env:
+          MICROCMS_API_URL: ${{ secrets.MICROCMS_API_URL }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
 
       - name: 🆙 Upload Pages-artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: dist
-          path: .output/public/
+          path: dist
 
   deploy:
     runs-on: ubuntu-latest

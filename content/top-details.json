@@ -1,0 +1,31 @@
+{
+  "body": [
+    {
+      "id": "7f0w7esg_2wc",
+      "createdAt": "2021-04-26T02:48:22.946Z",
+      "updatedAt": "2021-04-26T02:49:08.015Z",
+      "publishedAt": "2021-04-26T02:48:22.946Z",
+      "revisedAt": "2021-04-26T02:48:22.946Z",
+      "icon": "mdi:cake-variant",
+      "text": "2001/03/10"
+    },
+    {
+      "id": "g4lv572nx",
+      "createdAt": "2021-04-26T02:48:38.357Z",
+      "updatedAt": "2021-04-26T02:49:13.277Z",
+      "publishedAt": "2021-04-26T02:48:38.357Z",
+      "revisedAt": "2021-04-26T02:48:38.357Z",
+      "icon": "mdi:heart",
+      "text": "コンピューター・読書・アニメ鑑賞・音楽鑑賞"
+    },
+    {
+      "id": "7e7976a8r_l0",
+      "createdAt": "2021-04-26T02:49:02.972Z",
+      "updatedAt": "2021-04-26T02:49:19.468Z",
+      "publishedAt": "2021-04-26T02:49:02.972Z",
+      "revisedAt": "2021-04-26T02:49:02.972Z",
+      "icon": "mdi:map-marker",
+      "text": "Yamanashi, Japan"
+    }
+  ]
+}
