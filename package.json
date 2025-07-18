@@ -9,8 +9,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint --ext \".js,.vue,.ts\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{vue,css,scss}\" --ignore-path .gitignore",
+    "lint:js": "eslint .",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "lint": "pnpm lint:js && pnpm lint:style",
     "lintfix": "prettier --write --list-different . && pnpm lint:js --fix && pnpm lint:style --fix"
   },

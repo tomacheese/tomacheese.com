@@ -1,6 +1,12 @@
-// @ts-check
-import withNuxt from './.nuxt/eslint.config.mjs'
-
-export default withNuxt(
-  // Your custom configs here
-)
+export default [
+  {
+    ignores: [
+      '.nuxt/**',
+      '.output/**',
+      'dist/**',
+      'node_modules/**',
+      '**/*.d.ts',
+      'pnpm-lock.yaml'
+    ]
+  }
+]
