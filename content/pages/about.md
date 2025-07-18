@@ -25,6 +25,6 @@ title: このサイトについて
 ## 寄付等について
 
 一応Paypal.MeのリンクとKyashのQRコードを置いておきます。  
-[PayPal.Me/tomacheese](https://paypal.me/tomacheese)  
-  
+[PayPal.Me/tomacheese](https://paypal.me/tomacheese)
+
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/ee43421bc23a4b90a53e3d9a76910a38/qrcode-300x300%5B1%5D.png)

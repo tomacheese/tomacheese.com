@@ -1,11 +1,7 @@
 <template>
   <div class="about-section">
     <div class="user-header">
-      <img 
-        src="/images/avatar.jpg" 
-        alt="Tomachi Avatar" 
-        class="avatar"
-      >
+      <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" />
       <h2 class="name">Tomachi</h2>
     </div>
 
@@ -21,9 +17,9 @@
 
       <div class="timeline-section">
         <div class="timeline">
-          <div 
-            v-for="(timeline, index) in timelines" 
-            :key="index" 
+          <div
+            v-for="(timeline, index) in timelines"
+            :key="index"
             class="timeline-item"
           >
             <div class="timeline-marker">
@@ -31,7 +27,7 @@
             </div>
             <div class="timeline-content">
               <div class="timeline-date">{{ timeline.date }}</div>
-              <div class="timeline-text" v-html="timeline.text"/>
+              <div class="timeline-text" v-html="timeline.text" />
             </div>
           </div>
         </div>
@@ -201,16 +197,16 @@ defineProps<Props>()
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .about-section {
     padding: 2rem;
   }
-  
+
   .avatar {
     width: 80px;
     height: 80px;
   }
-  
+
   .name {
     font-size: 1.5rem;
   }

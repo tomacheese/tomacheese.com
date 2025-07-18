@@ -90,9 +90,9 @@ PCを含む所持端末に関しては別ページでまとめています: [所
 - Twitter: [@book000](https://twitter.com/book000)
 - Discord: [tomachi#0310](https://discordapp.com/users/221991565567066112) (2018/05/24よりNitro)
 - Steam: [book000](https://steamcommunity.com/id/book000)
-- Minecraft Java Edition: mine\_book000
+- Minecraft Java Edition: mine_book000
 - YouTube: [toma chi](https://www.youtube.com/channel/UCdqXRBLM7MWgnZUzKflBWxQ)
-- Twitch: [toma\_chi](https://twitch.tv/toma_chi)
+- Twitch: [toma_chi](https://twitch.tv/toma_chi)
 - LastFM: [book000](https://www.last.fm/user/book000)
 - Mastodon
   - mstdn.jp: [@book000@mstdn.jp](https://mstdn.jp/@book000)

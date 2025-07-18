@@ -14,21 +14,23 @@
 
 <script setup lang="ts">
 // データの読み込み
-const detailsData = await $fetch('/api/top-details')
-const timelinesData = await $fetch('/api/top-timelines')
+const detailsData = await $fetch('/top-details.json')
+const timelinesData = await $fetch('/top-timelines.json')
 
 const details = detailsData?.body || []
 const timelines = timelinesData?.body || []
 
 // SEO
 useSeoMeta({
-  title: 'トップページ'
+  title: 'トップページ',
 })
 </script>
 
 <style lang="scss" scoped>
 .hero__content {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/top.jpg');
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('/images/top.jpg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;

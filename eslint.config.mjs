@@ -6,7 +6,7 @@ export default [
       'dist/**',
       'node_modules/**',
       '**/*.d.ts',
-      'pnpm-lock.yaml'
-    ]
-  }
+      'pnpm-lock.yaml',
+    ],
+  },
 ]

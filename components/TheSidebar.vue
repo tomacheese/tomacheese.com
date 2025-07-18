@@ -3,13 +3,13 @@
     <div v-if="toc && toc.length > 0" class="toc-container">
       <h3>Table Of Contents</h3>
       <ul class="toc-list">
-        <li 
-          v-for="item in toc" 
-          :key="item.id" 
+        <li
+          v-for="item in toc"
+          :key="item.id"
           :class="`toc-item ${item.depth}`"
         >
-          <a 
-            :href="`#${item.id}`" 
+          <a
+            :href="`#${item.id}`"
             class="toc-link"
             @click.prevent="scrollToElement(item.id)"
           >
@@ -23,12 +23,7 @@
       <h3>Links</h3>
       <ul class="links-list">
         <li v-for="link in links" :key="link.title" class="link-item">
-          <a 
-            :href="link.url" 
-            target="_blank" 
-            rel="noopener"
-            class="link"
-          >
+          <a :href="link.url" target="_blank" rel="noopener" class="link">
             <Icon :name="link.icon" size="20" />
             <span>{{ link.title }}</span>
           </a>
@@ -56,7 +51,7 @@ interface Props {
 }
 
 const _props = withDefaults(defineProps<Props>(), {
-  toc: () => []
+  toc: () => [],
 })
 
 const links: Link[] = [
@@ -101,7 +96,7 @@ function scrollToElement(id: string) {
   position: sticky;
   top: 2rem;
   transition: all var(--transition-normal);
-  
+
   .dark-theme & {
     background: var(--color-surface);
   }

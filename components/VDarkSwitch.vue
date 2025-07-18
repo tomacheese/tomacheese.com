@@ -1,12 +1,17 @@
 <template>
-  <button 
+  <button
     :title="isDark ? 'ライトモードに切り替え' : 'ダークモードに切り替え'"
     class="theme-toggle"
     @click="toggleTheme"
   >
     <div class="toggle-track">
       <div class="toggle-thumb">
-        <Icon :name="isDark ? 'mdi:moon-waning-crescent' : 'mdi:white-balance-sunny'" size="16" />
+        <Icon
+          :name="
+            isDark ? 'mdi:moon-waning-crescent' : 'mdi:white-balance-sunny'
+          "
+          size="16"
+        />
       </div>
     </div>
   </button>
@@ -42,7 +47,7 @@ watchEffect(() => {
   padding: var(--space-1);
   border-radius: var(--radius-lg);
   transition: all var(--transition-fast);
-  
+
   &:hover {
     background: var(--color-surface);
   }
@@ -55,7 +60,7 @@ watchEffect(() => {
   background: var(--color-gray-200);
   border-radius: 14px;
   transition: all var(--transition-normal);
-  
+
   .dark-theme & {
     background: var(--color-gray-600);
   }
@@ -76,7 +81,7 @@ watchEffect(() => {
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
   transform: translateX(0);
-  
+
   .dark-theme & {
     background: var(--color-gray-800);
     color: var(--color-yellow-400);
