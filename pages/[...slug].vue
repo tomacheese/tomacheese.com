@@ -7,7 +7,7 @@
         </div>
       </div>
     </section>
-    
+
     <div class="container">
       <div class="content-layout">
         <main class="main-content">
@@ -15,7 +15,7 @@
             <ContentRenderer :value="article" />
           </article>
         </main>
-        
+
         <aside class="sidebar-content">
           <TheSidebar :toc="article.body?.toc" />
         </aside>
@@ -51,18 +51,26 @@ useSeoMeta({
   description: article.description || `${article.title}についてのページ`,
   ogTitle: article.title,
   ogDescription: article.description || `${article.title}についてのページ`,
-  ogType: 'article'
+  ogType: 'article',
 })
 </script>
 
 <style scoped>
 .page-hero {
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-white) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-surface) 0%,
+    var(--color-white) 100%
+  );
   padding: var(--space-20) 0;
   text-align: center;
-  
+
   .dark-theme & {
-    background: linear-gradient(135deg, var(--color-gray-800) 0%, var(--color-surface) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-gray-800) 0%,
+      var(--color-surface) 100%
+    );
   }
 }
 
@@ -71,7 +79,7 @@ useSeoMeta({
   font-weight: 700;
   margin-bottom: var(--space-6);
   color: var(--color-text-primary);
-  
+
   @media (max-width: 768px) {
     font-size: var(--text-4xl);
   }
@@ -104,7 +112,7 @@ useSeoMeta({
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   line-height: 1.8;
-  
+
   .dark-theme & {
     background: var(--color-surface);
   }
@@ -120,11 +128,11 @@ useSeoMeta({
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .sidebar-content {
     position: static;
   }
-  
+
   .content-container {
     padding: var(--space-8);
   }
@@ -138,52 +146,58 @@ useSeoMeta({
 
 /* Content styling */
 :deep(.content-container) {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: var(--color-text-primary);
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
   }
-  
+
   h1 {
     font-size: var(--text-4xl);
     margin-top: 0;
   }
-  
+
   h2 {
     font-size: var(--text-3xl);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: var(--space-2);
   }
-  
+
   h3 {
     font-size: var(--text-2xl);
     color: var(--color-text-secondary);
   }
-  
+
   p {
     margin-bottom: var(--space-4);
     color: var(--color-text-secondary);
   }
-  
+
   a {
     color: var(--color-primary);
     text-decoration: none;
   }
-  
+
   a:hover {
     text-decoration: underline;
   }
-  
-  ul, ol {
+
+  ul,
+  ol {
     margin-bottom: var(--space-4);
     padding-left: var(--space-8);
   }
-  
+
   li {
     margin-bottom: var(--space-2);
     color: var(--color-text-secondary);
   }
-  
+
   blockquote {
     border-left: 4px solid var(--color-primary);
     padding-left: var(--space-4);
@@ -194,7 +208,7 @@ useSeoMeta({
     padding: var(--space-4);
     border-radius: var(--radius-md);
   }
-  
+
   pre {
     background: var(--color-gray-100);
     border: 1px solid var(--color-border);
@@ -203,51 +217,52 @@ useSeoMeta({
     overflow-x: auto;
     margin: var(--space-4) 0;
     font-size: var(--text-sm);
-    
+
     .dark-theme & {
       background: var(--color-gray-900);
       border-color: var(--color-gray-700);
       color: var(--color-gray-100);
     }
   }
-  
+
   code {
     background: var(--color-gray-100);
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.9em;
-    
+
     .dark-theme & {
       background: var(--color-gray-800);
       color: var(--color-gray-100);
     }
   }
-  
+
   pre code {
     background: none;
     padding: 0;
   }
-  
+
   img {
     max-width: 100%;
     height: auto;
     border-radius: var(--radius-md);
     margin: var(--space-4) 0;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
     margin: var(--space-4) 0;
   }
-  
-  th, td {
+
+  th,
+  td {
     border: 1px solid var(--color-border);
     padding: var(--space-3);
     text-align: left;
   }
-  
+
   th {
     background: var(--color-primary);
     color: white;

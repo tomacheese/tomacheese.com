@@ -1,6 +1,10 @@
 <template>
   <div>
-    <NonTopHeader :title="article.title" :published-at="article.publishedAt" :updated-at="article.updatedAt" />
+    <NonTopHeader
+      :title="article.title"
+      :published-at="article.publishedAt"
+      :updated-at="article.updatedAt"
+    />
     <v-container fluid fill-height>
       <v-row align="start">
         <v-col md="9" cols="12">
@@ -138,7 +142,7 @@ export default Vue.extend({
           `${$config.MICROCMS_API_URL}/category`,
           {
             headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
-          }
+          },
         )
         ret.categorys = data.contents
       }

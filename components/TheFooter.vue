@@ -11,7 +11,7 @@
               Developer of Discord bot applications, efficiency projects, etc.
             </p>
           </div>
-          
+
           <div class="footer-links">
             <div class="link-group">
               <h3 class="link-title">Navigation</h3>
@@ -21,28 +21,52 @@
                 <li><NuxtLink to="/about">About Site</NuxtLink></li>
               </ul>
             </div>
-            
+
             <div class="link-group">
               <h3 class="link-title">External</h3>
               <ul class="link-list">
-                <li><a href="https://github.com/book000" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="https://zenn.dev/book000" target="_blank" rel="noopener">Zenn</a></li>
-                <li><a href="https://twitter.com/book000" target="_blank" rel="noopener">Twitter</a></li>
+                <li>
+                  <a
+                    href="https://github.com/book000"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://zenn.dev/book000"
+                    target="_blank"
+                    rel="noopener"
+                    >Zenn</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/book000"
+                    target="_blank"
+                    rel="noopener"
+                    >Twitter</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
         </div>
-        
+
         <div class="footer-bottom">
           <div class="footer-copyright">
-            <p>&copy; {{ new Date().getFullYear() }} Tomachi. All rights reserved.</p>
+            <p>
+              &copy; {{ new Date().getFullYear() }} Tomachi. All rights
+              reserved.
+            </p>
           </div>
-          
+
           <div class="footer-social">
-            <a 
-              v-for="social in socialLinks" 
-              :key="social.name" 
-              :href="social.url" 
+            <a
+              v-for="social in socialLinks"
+              :key="social.name"
+              :href="social.url"
               :title="social.name"
               target="_blank"
               rel="noopener"
@@ -88,7 +112,7 @@ const socialLinks: SocialLink[] = [
   background: var(--color-gray-900);
   color: var(--color-gray-300);
   padding: var(--space-20) 0 var(--space-8);
-  
+
   .dark-theme & {
     background: var(--color-gray-950, #020617);
   }
@@ -104,7 +128,7 @@ const socialLinks: SocialLink[] = [
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-16);
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: var(--space-12);
@@ -128,7 +152,11 @@ const socialLinks: SocialLink[] = [
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   color: white;
   border-radius: var(--radius-lg);
 }
@@ -180,7 +208,7 @@ const socialLinks: SocialLink[] = [
   text-decoration: none;
   font-size: var(--text-sm);
   transition: color var(--transition-fast);
-  
+
   &:hover {
     color: var(--color-white);
   }
@@ -192,7 +220,7 @@ const socialLinks: SocialLink[] = [
   align-items: center;
   padding-top: var(--space-8);
   border-top: 1px solid var(--color-gray-800);
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: var(--space-4);
@@ -221,7 +249,7 @@ const socialLinks: SocialLink[] = [
   text-decoration: none;
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
-  
+
   &:hover {
     color: var(--color-white);
     background: var(--color-gray-800);

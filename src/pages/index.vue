@@ -36,7 +36,7 @@ export default Vue.extend({
         `${$config.MICROCMS_API_URL}/top-details`,
         {
           headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
-        }
+        },
       )
       ret.details = data.contents
     }
@@ -46,7 +46,7 @@ export default Vue.extend({
         `${$config.MICROCMS_API_URL}/top-timelines`,
         {
           headers: { 'X-API-KEY': $config.MICROCMS_API_KEY },
-        }
+        },
       )
       ret.timelines = data.contents
     }

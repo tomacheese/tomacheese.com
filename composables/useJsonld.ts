@@ -3,8 +3,8 @@ export const useJsonld = (jsonld: Record<string, any>) => {
     script: [
       {
         type: 'application/ld+json',
-        innerHTML: JSON.stringify(jsonld)
-      }
-    ]
+        innerHTML: JSON.stringify(jsonld),
+      },
+    ],
   })
 }
