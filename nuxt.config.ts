@@ -99,10 +99,33 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-11-01',
 
+  hooks: {
+    async 'nitro:config'(nitroConfig) {
+      if (!nitroConfig.prerender?.routes) {
+        nitroConfig.prerender = nitroConfig.prerender || {}
+        nitroConfig.prerender.routes = []
+      }
+      // contentディレクトリからページを自動検出
+      const { readdirSync } = await import('fs')
+      const path = await import('path')
+      try {
+        const pagesDir = path.resolve('./content/pages')
+        const files = readdirSync(pagesDir)
+        const routes = files
+          .filter(file => file.endsWith('.md'))
+          .map(file => `/${file.replace('.md', '')}`)
+        
+        nitroConfig.prerender.routes.push(...routes)
+      } catch {
+        // ディレクトリが存在しない場合のフォールバック
+        nitroConfig.prerender.routes.push('/about', '/anime', '/devices', '/me')
+      }
+    }
+  },
+
   nitro: {
     prerender: {
-      failOnError: false,
-      routes: ['/about', '/anime', '/devices', '/me']
+      failOnError: false
     },
   },
 
