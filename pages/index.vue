@@ -14,11 +14,21 @@
 
 <script setup lang="ts">
 // データの読み込み
-const detailsData = await $fetch('/top-details.json')
-const timelinesData = await $fetch('/top-timelines.json')
+let details = []
+let timelines = []
 
-const details = detailsData?.body || []
-const timelines = timelinesData?.body || []
+try {
+  const detailsData = await $fetch('/top-details.json')
+  const timelinesData = await $fetch('/top-timelines.json')
+  
+  details = detailsData?.body || []
+  timelines = timelinesData?.body || []
+} catch (error) {
+  console.warn('Failed to load top page data:', error)
+  // Fallback data or empty arrays
+  details = []
+  timelines = []
+}
 
 // SEO
 useSeoMeta({
