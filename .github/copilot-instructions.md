@@ -8,7 +8,7 @@
 - **スタイリング**: Tailwind CSS + Sass (SCSS)
 - **パッケージマネージャー**: pnpm
 - **言語**: 日本語メイン（コンテンツ、コメント等）
-- **デプロイ**: GitHub Workflow によって、GitHub Pages にデプロイされる
+- **デプロイ**: GitHub Workflow によって、静的サイトとして GitHub Pages にデプロイされる
 
 ## コミュニケーション規約
 
