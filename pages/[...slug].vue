@@ -36,13 +36,34 @@ if (Array.isArray(slug)) {
 // Handle special slug mappings (from original site)
 if (slug === 'pc') slug = 'devices'
 
-// Use Nuxt Content v2 syntax
+// Use Nuxt Content v2 syntax with improved error handling for SSG
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
   try {
     const result = await queryContent('pages', slug).findOne()
+    
+    // Additional validation to ensure we got valid content
+    if (!result || !result.title) {
+      console.warn(`[Content] Content found but missing title for ${slug}`)
+      return null
+    }
+    
     return result
   } catch (err) {
     console.error(`[Content] Error fetching content for ${slug}:`, err)
+    
+    // During SSG, try a direct query as fallback
+    if (process.prerender) {
+      try {
+        console.log(`[Content] Retrying direct query for ${slug}`)
+        const fallbackResult = await queryContent().where({ _path: `/pages/${slug}` }).findOne()
+        if (fallbackResult && fallbackResult.title) {
+          return fallbackResult
+        }
+      } catch (fallbackErr) {
+        console.error(`[Content] Fallback query also failed for ${slug}:`, fallbackErr)
+      }
+    }
+    
     return null
   }
 })

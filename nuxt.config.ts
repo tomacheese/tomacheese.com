@@ -105,27 +105,48 @@ export default defineNuxtConfig({
         nitroConfig.prerender = nitroConfig.prerender || {}
         nitroConfig.prerender.routes = []
       }
-      // contentディレクトリからページを自動検出
-      const { readdirSync } = await import('fs')
+      
+      // contentディレクトリからページを自動検出（より堅牢なアプローチ）
+      const { readdirSync, existsSync } = await import('fs')
       const path = await import('path')
+      
+      // 基本のルートを常に追加（フォールバック）
+      const essentialRoutes = ['/about', '/anime', '/devices', '/me']
+      nitroConfig.prerender.routes.push(...essentialRoutes)
+      
       try {
         const pagesDir = path.resolve('./content/pages')
-        const files = readdirSync(pagesDir)
-        const routes = files
-          .filter(file => file.endsWith('.md'))
-          .map(file => `/${file.replace('.md', '')}`)
         
-        nitroConfig.prerender.routes.push(...routes)
-      } catch {
-        // ディレクトリが存在しない場合のフォールバック
-        nitroConfig.prerender.routes.push('/about', '/anime', '/devices', '/me')
+        // ディレクトリの存在確認
+        if (existsSync(pagesDir)) {
+          const files = readdirSync(pagesDir)
+          const routes = files
+            .filter(file => file.endsWith('.md'))
+            .map(file => `/${file.replace('.md', '')}`)
+          
+          // 重複を避けて追加のルートを追加
+          const newRoutes = routes.filter(route => !essentialRoutes.includes(route))
+          if (newRoutes.length > 0) {
+            nitroConfig.prerender.routes.push(...newRoutes)
+          }
+          
+          console.log('[Nuxt] Detected content pages:', routes)
+        } else {
+          console.warn('[Nuxt] Content pages directory not found, using fallback routes')
+        }
+      } catch (error) {
+        console.error('[Nuxt] Error reading content directory:', error)
+        console.log('[Nuxt] Using fallback routes only')
       }
     }
   },
 
   nitro: {
     prerender: {
-      failOnError: false
+      failOnError: false,
+      crawlLinks: true,
+      // Ensure content is properly accessible during prerendering
+      routes: ['/about', '/anime', '/devices', '/me']
     },
     cloudflare: {
       // Initialize cloudflare config to prevent undefined access in preset
