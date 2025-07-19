@@ -36,6 +36,11 @@ if (Array.isArray(slug)) {
 // Handle special slug mappings (from original site)
 if (slug === 'pc') slug = 'devices'
 
+// Redirect devices to the dedicated static page
+if (slug === 'devices') {
+  await navigateTo('/devices', { redirectCode: 301 })
+}
+
 // Use Nuxt Content v2 syntax with improved error handling for SSG
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
   try {
