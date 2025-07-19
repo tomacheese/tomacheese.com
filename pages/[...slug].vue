@@ -38,15 +38,15 @@ if (slug === 'pc') slug = 'devices'
 
 console.log(`[DEBUG] Looking for content: pages/${slug}`)
 
-// Use asyncData pattern to fetch content
+// Use asyncData pattern to fetch content via API
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
   try {
-    console.log(`[DEBUG] Querying: pages/${slug}`)
-    const result = await queryContent(`pages/${slug}`).findOne()
-    console.log(`[DEBUG] Query result:`, result ? result.title : 'Not found')
+    console.log(`[DEBUG] Fetching via API: /api/content/${slug}`)
+    const result = await $fetch(`/api/content/${slug}`)
+    console.log(`[DEBUG] API result:`, result ? result.title : 'Not found')
     return result
   } catch (err) {
-    console.error(`[DEBUG] Query error:`, err)
+    console.error(`[DEBUG] API error:`, err)
     return null
   }
 })
