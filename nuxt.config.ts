@@ -67,6 +67,13 @@ export default defineNuxtConfig({
           type: 'image/x-icon',
           href: '/favicons/favicon.ico',
         },
+        // Preload critical fonts for better rendering
+        {
+          rel: 'preload',
+          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap',
+          as: 'style',
+          onload: "this.onload=null;this.rel='stylesheet'",
+        },
       ],
     },
   },
@@ -85,7 +92,13 @@ export default defineNuxtConfig({
 
   fonts: {
     google: {
-      families: ['Montserrat:wght@600', 'Noto+Sans+JP:wght@700'],
+      families: [
+        'Montserrat:wght@600',
+        'Noto+Sans+JP:wght@400;700',
+        'Inter:wght@300;400;500;600;700'
+      ],
+      display: 'swap',
+      preload: true,
     },
   },
 
