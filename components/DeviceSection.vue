@@ -84,7 +84,19 @@
       </p>
       <p v-if="device.notes">{{ device.notes }}</p>
       <p v-if="device.related">{{ device.related }}</p>
-      <p v-if="device.referralNote">{{ device.referralNote }}</p>
+      
+      <div v-if="device.links && device.links.length > 0" class="device-links">
+        <a 
+          v-for="(link, linkIndex) in device.links" 
+          :key="linkIndex"
+          :href="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="device-link"
+        >
+          {{ link.name }}
+        </a>
+      </div>
     </template>
 
     <!-- モバイルデバイス -->
@@ -92,7 +104,7 @@
       <ul v-if="device.devices">
         <li v-for="mobile in device.devices" :key="mobile.name">
           {{ mobile.name }}
-          <span v-if="mobile.note"> {{ mobile.note }}</span>
+          <span v-if="mobile.notes"> {{ mobile.notes }}</span>
           <span v-if="mobile.purchaseDate"> {{ mobile.purchaseDate }}購入</span>
         </li>
       </ul>

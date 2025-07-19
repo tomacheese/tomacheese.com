@@ -695,10 +695,14 @@
         "Storage: 100GB SSD"
       ],
       "extra": {
-        "契約日": "2018/04/08",
+        "契約日": "2018-04-08",
         "プロバイダー": "ConoHa"
       },
-      "referralNote": "ここから踏んでもらえると、2,000円分ConoHaのサービスを利用された場合に私に2,000円のクーポンが入るらしい？"
+      "notes": "ここから踏んでもらえると、2,000円分ConoHaのサービスを利用された場合に私に2,000円のクーポンが入るらしい？",
+      "links": [
+        {"name": "ConoHa", "url": "https://www.conoha.jp/"},
+        {"name": "紹介リンク", "url": "https://www.conoha.jp/referral/?token=jgFMtpuMmT6DChjaFLZbVtqlQ64whZFh8Q37WW1LtyKyuBamQBk-8RB"}
+      ]
     },
     "vpsOther": {
       "title": "ConoHa VPS Server",
@@ -727,12 +731,12 @@
     "mobileDevices": {
       "title": "所持スマートフォン・タブレットなど",
       "devices": [
-        {"name": "Google Pixel 8a", "note": "[メインスマホ]", "purchaseDate": "2024-05-18"},
-        {"name": "Apple iPad Air 6", "note": "[メインタブレット]", "purchaseDate": "2024-08-21"},
-        {"name": "Apple iPhone SE 3", "note": "[社用BYODスマホ]"},
-        {"name": "Google Pixel 3a", "note": "[寝るとき用サブスマホ]"},
-        {"name": "iPad mini 4", "note": "[ベッドサイドタブレット]"},
-        {"name": "iPhone 8", "note": "[パケットキャプチャ用スマホ]"},
+        {"name": "Google Pixel 8a", "notes": "[メインスマホ]", "purchaseDate": "2024-05-18"},
+        {"name": "Apple iPad Air 6", "notes": "[メインタブレット]", "purchaseDate": "2024-08-21"},
+        {"name": "Apple iPhone SE 3", "notes": "[社用BYODスマホ]"},
+        {"name": "Google Pixel 3a", "notes": "[寝るとき用サブスマホ]"},
+        {"name": "iPad mini 4", "notes": "[ベッドサイドタブレット]"},
+        {"name": "iPhone 8", "notes": "[パケットキャプチャ用スマホ]"},
         {"name": "iPad mini 2"},
         {"name": "iPod nano 第7世代"},
         {"name": "Google Pixel 7a"}
