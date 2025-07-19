@@ -150,9 +150,10 @@
 
 <script setup lang="ts">
 import { formatPrice } from '~/utils/formatters'
+import type { Device } from '~/src/types/devices'
 
 interface Props {
-  device: any
+  device: Device
   deviceType: string
 }
 
