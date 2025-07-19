@@ -259,10 +259,23 @@ defineProps<Props>()
   text-decoration: none;
   border-radius: var(--radius-sm);
   font-size: var(--text-xs);
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  border: 1px solid transparent;
   
   &:hover {
     background: var(--color-primary-dark);
+  }
+  
+  .dark-theme & {
+    background: var(--color-primary-light);
+    color: var(--color-gray-900);
+    border: 1px solid var(--color-primary);
+    
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary-light);
+    }
   }
 }
 
@@ -309,10 +322,23 @@ defineProps<Props>()
   text-decoration: none;
   border-radius: var(--radius-sm);
   font-size: var(--text-xs);
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  border: 1px solid transparent;
   
   &:hover {
     background: var(--color-primary-dark);
+  }
+  
+  .dark-theme & {
+    background: var(--color-primary-light);
+    color: var(--color-gray-900);
+    border: 1px solid var(--color-primary);
+    
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary-light);
+    }
   }
 }
 
