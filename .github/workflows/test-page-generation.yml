@@ -1,0 +1,85 @@
+name: Test Dynamic Page Generation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+permissions:
+  contents: read
+
+jobs:
+  test-page-generation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 'latest'
+        
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+      
+    - name: Generate static site
+      run: pnpm generate
+      
+    - name: Test required pages exist
+      run: |
+        # Check that required pages are generated
+        test -f .output/public/me/index.html || (echo "❌ /me page not generated" && exit 1)
+        test -f .output/public/about/index.html || (echo "❌ /about page not generated" && exit 1)
+        test -f .output/public/devices/index.html || (echo "❌ /devices page not generated" && exit 1)
+        test -f .output/public/anime/index.html || (echo "❌ /anime page not generated" && exit 1)
+        test -f .output/public/index.html || (echo "❌ /index page not generated" && exit 1)
+        echo "✅ All required pages generated successfully"
+        
+    - name: Test page content validity
+      run: |
+        # Check that pages contain expected content and are not 404 pages
+        if grep -q "404" .output/public/me/index.html; then
+          echo "❌ /me page contains 404 error"
+          exit 1
+        fi
+        if grep -q "404" .output/public/about/index.html; then
+          echo "❌ /about page contains 404 error"
+          exit 1
+        fi
+        if grep -q "404" .output/public/devices/index.html; then
+          echo "❌ /devices page contains 404 error"
+          exit 1
+        fi
+        if grep -q "404" .output/public/anime/index.html; then
+          echo "❌ /anime page contains 404 error"
+          exit 1
+        fi
+        echo "✅ All pages contain valid content (no 404 errors)"
+        
+    - name: Test page titles
+      run: |
+        # Check that pages have proper titles
+        if ! grep -q "私(Tomachi)について" .output/public/me/index.html; then
+          echo "❌ /me page missing expected title"
+          exit 1
+        fi
+        if ! grep -q "このサイトについて" .output/public/about/index.html; then
+          echo "❌ /about page missing expected title"
+          exit 1
+        fi
+        echo "✅ Pages contain expected titles"
+
+    - name: Upload generated site artifact
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: generated-site-debug
+        path: .output/public/
+        retention-days: 7
