@@ -3,7 +3,7 @@
     <section class="page-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">私（Tomachi）について</h1>
+          <h1 class="page-title">{{ article?.title }}</h1>
         </div>
       </div>
     </section>
@@ -12,12 +12,12 @@
       <div class="content-layout">
         <main class="main-content">
           <article class="content-container">
-            <div v-html="content"></div>
+            <ContentRenderer :value="article" />
           </article>
         </main>
 
         <aside class="sidebar-content">
-          <TheSidebar />
+          <TheSidebar :toc="article?.body?.toc" />
         </aside>
       </div>
     </div>
@@ -25,67 +25,46 @@
 </template>
 
 <script setup lang="ts">
-// Temporarily hard-code the content to fix the navigation issue
-// This can be replaced with proper content loading once the compatibility issue is resolved
-const content = `
-<p><a href="/devices">所持端末 (PC構成一覧)</a></p>
+const route = useRoute()
+let slug = route.params.slug as string | string[]
 
-<h2>概要</h2>
+// Handle slug array (catch-all route)
+if (Array.isArray(slug)) {
+  slug = slug.join('/')
+}
 
-<ul>
-<li>趣味 &amp; 業務（お仕事）プログラマ。</li>
-<li>Minecraftを数年にわたってプレイ・サーバ運営していた</li>
-<li>エンジョイ勢ゲーマー</li>
-<li>アニメはほのぼの系(日常系)を好む</li>
-<li>「VOICEROID+ 琴葉 茜・葵 (ダウンロード版)」を所持（2018/09/29購入）</li>
-<li>VOICEROIDでは琴葉葵・紲星あかり、CeVIOではさとうささら、すずきつづみ、ONEが好き</li>
-<li>チンアナゴ・ニシキアナゴ好き</li>
-</ul>
+// Handle special slug mappings (from original site)
+if (slug === 'pc') slug = 'devices'
 
-<h2>端末等</h2>
+console.log(`[DEBUG] Looking for content: pages/${slug}`)
 
-<p>PCを含む所持端末に関しては別ページでまとめています: <a href="/devices">所持端末</a></p>
+// Use asyncData pattern to fetch content
+const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
+  try {
+    console.log(`[DEBUG] Querying: pages/${slug}`)
+    const result = await queryContent(`pages/${slug}`).findOne()
+    console.log(`[DEBUG] Query result:`, result ? result.title : 'Not found')
+    return result
+  } catch (err) {
+    console.error(`[DEBUG] Query error:`, err)
+    return null
+  }
+})
 
-<h2>好きなもの</h2>
+console.log(`[DEBUG] Article data:`, article.value ? article.value.title : 'No article')
+console.log(`[DEBUG] Error:`, error.value)
 
-<ul>
-<li>Computer</li>
-<li>Anime</li>
-<li>Book / Comic</li>
-<li>Camera</li>
-<li>Music</li>
-<li>Game</li>
-<li>Programming</li>
-</ul>
-
-<h3>Programming</h3>
-
-<p>以下の言語をある程度使えます（当然完全ではない）。</p>
-
-<ul>
-<li>PHP</li>
-<li>Java</li>
-<li>JavaScript
-<ul>
-<li>TypeScript</li>
-<li>Vue.js</li>
-<li>Nuxt.js</li>
-</ul></li>
-<li>C#</li>
-<li>NodeJS</li>
-<li>Python</li>
-<li>Golang</li>
-</ul>
-
-<p>このサイトは Nuxt.js + TypeScript + Nuxt Content で制作・運用しています。フロントエンドのソースコードは <a href="https://github.com/tomacheese/tomacheese.com">tomacheese/tomacheese.com</a> にあります。</p>
-`
+if (error.value || !article.value) {
+  console.log(`[DEBUG] Throwing 404 for: ${slug}`)
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 
 // SEO
 useSeoMeta({
-  title: '私（Tomachi）について - Tomachi Site',
-  description: 'Tomachiの自己紹介・プロフィールページです。趣味や技術スタック、好きなものなどを紹介しています。',
-  ogTitle: '私（Tomachi）について',
-  ogDescription: 'Tomachiの自己紹介・プロフィールページです。趣味や技術スタック、好きなものなどを紹介しています。',
+  title: `${article.value.title} - Tomachi Site`,
+  description: article.value.description || `${article.value.title}についてのページ`,
+  ogTitle: article.value.title,
+  ogDescription: article.value.description || `${article.value.title}についてのページ`,
   ogType: 'article',
 })
 </script>
@@ -118,6 +97,14 @@ useSeoMeta({
   @media (max-width: 768px) {
     font-size: var(--text-4xl);
   }
+}
+
+.page-description {
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .content-layout {
