@@ -32,17 +32,21 @@
               <li 
                 v-for="(item, itemIndex) in category.items" 
                 :key="itemIndex"
-                :class="{ strikethrough: item.strikethrough }"
+                :class="{ unused: item.unused }"
                 class="component-item"
               >
                 <div class="component-header">
-                  <span class="component-name" :class="{ strikethrough: item.strikethrough }">
+                  <span class="component-name" :class="{ unused: item.unused }">
                     {{ item.name }}
                   </span>
                 </div>
                 <div class="component-details">
                   <span class="component-status">ステータス: {{ item.status }}</span>
-                  <span class="component-price">購入価格: {{ item.price }}</span>
+                  <span class="component-price">購入価格: {{ formatPrice(item.price) }}</span>
+                  <span v-if="item.originalPrice" class="component-original-price">元価格: {{ formatPrice(item.originalPrice) }}</span>
+                  <span v-if="item.discount" class="component-discount">割引: {{ formatPrice(item.discount) }}</span>
+                  <span v-if="item.warranty" class="component-warranty">保証: {{ formatPrice(item.warranty) }}</span>
+                  <span v-if="item.quantity" class="component-quantity">数量: {{ item.quantity }}</span>
                   <span class="component-date">購入日: {{ item.purchaseDate }}</span>
                   <span v-if="item.notes" class="component-notes">{{ item.notes }}</span>
                 </div>
@@ -102,7 +106,7 @@
             <span class="device-name">{{ watch.name }}</span>
           </div>
           <div class="device-details">
-            <span class="device-price">{{ watch.price }}</span>
+            <span class="device-price">{{ formatPrice(watch.price) }}</span>
             <span class="device-date">{{ watch.purchaseDate }}購入</span>
           </div>
           <div v-if="watch.links && watch.links.length > 0" class="device-links">
@@ -133,6 +137,8 @@
 </template>
 
 <script setup lang="ts">
+import { formatPrice } from '~/utils/formatters'
+
 interface Props {
   device: any
   deviceType: string
@@ -218,7 +224,7 @@ defineProps<Props>()
   font-weight: 600;
   color: var(--color-text-primary);
   
-  &.strikethrough {
+  &.unused {
     text-decoration: line-through;
     color: var(--color-text-tertiary);
   }
@@ -234,6 +240,10 @@ defineProps<Props>()
 
 .component-status,
 .component-price,
+.component-original-price,
+.component-discount,
+.component-warranty,
+.component-quantity,
 .component-date,
 .component-notes {
   color: var(--color-text-secondary);
@@ -310,7 +320,7 @@ defineProps<Props>()
   }
 }
 
-.strikethrough {
+.unused {
   text-decoration: line-through;
   opacity: 0.6;
 }

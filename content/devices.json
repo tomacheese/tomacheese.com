@@ -1,57 +1,56 @@
 {
   "title": "デバイス一覧",
-  "lastUpdated": "2025-01-18",
   "overview": {
     "title": "概要",
     "history": [
-      {"date": "2016/03/11", "description": "メインPC購入"},
-      {"date": "2017/03/06", "description": "サブディスプレイ購入"},
-      {"date": "2017/12/31", "description": "SSD購入"},
-      {"date": "2018/04/29", "description": "マウス買い替え"},
-      {"date": "2018/10/12", "description": "スマホ買い替え(充電口破損): Zenfone 3 Max → Zenfone 3 Zoom S"},
-      {"date": "2019/02/04", "description": "スマホ買い替え(画面破損): Zenfone 3 Zoom S → Zenfone 3 Zoom S"},
-      {"date": "2019/03/12", "description": "Amazon Echo購入"},
-      {"date": "2019/03/23", "description": "ノートPC購入"},
-      {"date": "2019/05/30", "description": "スマホ変更(画面ヒビ・親からの譲り受け): Zenfone 3 Zoom S → Galaxy Feel SC-04J"},
-      {"date": "2019/07/15", "description": "スマートウォッチ1代目購入"},
-      {"date": "2019/08/13", "description": "メインPCメモリ増設"},
-      {"date": "2019/09/24", "description": "スマートウォッチ2代目購入"},
-      {"date": "2019/09/28", "description": "SSD購入(クリーンインストール)"},
-      {"date": "2019/10/14", "description": "ローカル鯖クリーンインストール"},
-      {"date": "2019/12/08", "description": "スマホ購入・変更: Galaxy Feel SC-04J → SHARP AQUOS sense3 SH-M12"},
-      {"date": "2020/03/10", "description": "CPU・GPU・マザボ・CPUファン購入"},
-      {"date": "2020/04/23", "description": "ヘッドセット新規購入"},
-      {"date": "2020/06/23", "description": "iPad Air 3購入"},
-      {"date": "2020/09/14", "description": "Sony WI-C600Nイヤホン購入"},
-      {"date": "2020/09/19", "description": "Logicool G502 HEROマウス購入"},
-      {"date": "2020/10/10", "description": "Sony WI-C600Nイヤホン交換"},
-      {"date": "2020/11/16", "description": "AQUOS sense3を親に・Pixel 3aを親から譲り受け"},
-      {"date": "2020/12/17", "description": "Raspberry Pi 4を購入"},
-      {"date": "2020/12/19", "description": "メインPCのブートSSDとHDDを入れ替え"},
-      {"date": "2021/01/25", "description": "メインPCのメインディスプレイを買い替え"},
-      {"date": "2021/05/11", "description": "キーボード買い換え"},
-      {"date": "2021/06/21", "description": "キャプボ購入"},
-      {"date": "2021/10/31", "description": "スマートウォッチ Xiaomi Mi Watch 購入"},
-      {"date": "2022/04/24", "description": "スタンドマイク ATR2100x-USB購入"},
-      {"date": "2022/05/06", "description": "OSクリーンインストール"},
-      {"date": "2022/05/28", "description": "メインPCのCPU・マザボ・M.2 SSD購入"},
-      {"date": "2022/07/05", "description": "メインPCの電源ユニット・RAM購入"},
-      {"date": "2022/07/11", "description": "鯖機(Nuts) 組み上げ"},
-      {"date": "2022/12/17", "description": "Google Pixel 6a 購入"},
-      {"date": "2023/05/03", "description": "Sony XF-1000XM4 購入"},
-      {"date": "2023/10/14", "description": "ディスプレイ MSI MAG 274UPF 購入"},
-      {"date": "2023/11/26", "description": "Google Pixel 7aを親から譲り受け"},
-      {"date": "2024/05/01", "description": "GeForce RTX 4070 Ti SUPER購入"},
-      {"date": "2024/05/18", "description": "Google Pixel 8a購入"},
-      {"date": "2024/08/14", "description": "メインPCのブートSSDとHDDを入れ替え"},
-      {"date": "2024/08/21", "description": "iPad Air 6購入"},
-      {"date": "2024/10/23", "description": "エレコム UCAM-CF20FBBK購入"},
-      {"date": "2024/11/23", "description": "LinkBuds Fit WF-LS910N W購入"},
-      {"date": "2024/12/16", "description": "CooSpo 心拍計アームバンド 購入"},
-      {"date": "2025/07/11", "description": "ag COTSUBU for ASMR MK2購入"},
-      {"date": "2025/07/11", "description": "CORSAIR DDR4-3200MHz 16GB x 2購入"},
-      {"date": "2025/07/11", "description": "Logicool KEYS TO GO 2購入"},
-      {"date": "2025/07/13", "description": "Sony WH-CH720N購入"}
+      {"date": "2016-03-11", "description": "メインPC購入"},
+      {"date": "2017-03-06", "description": "サブディスプレイ購入"},
+      {"date": "2017-12-31", "description": "SSD購入"},
+      {"date": "2018-04-29", "description": "マウス買い替え"},
+      {"date": "2018-10-12", "description": "スマホ買い替え(充電口破損): Zenfone 3 Max → Zenfone 3 Zoom S"},
+      {"date": "2019-02-04", "description": "スマホ買い替え(画面破損): Zenfone 3 Zoom S → Zenfone 3 Zoom S"},
+      {"date": "2019-03-12", "description": "Amazon Echo購入"},
+      {"date": "2019-03-23", "description": "ノートPC購入"},
+      {"date": "2019-05-30", "description": "スマホ変更(画面ヒビ・親からの譲り受け): Zenfone 3 Zoom S → Galaxy Feel SC-04J"},
+      {"date": "2019-07-15", "description": "スマートウォッチ1代目購入"},
+      {"date": "2019-08-13", "description": "メインPCメモリ増設"},
+      {"date": "2019-09-24", "description": "スマートウォッチ2代目購入"},
+      {"date": "2019-09-28", "description": "SSD購入(クリーンインストール)"},
+      {"date": "2019-10-14", "description": "ローカル鯖クリーンインストール"},
+      {"date": "2019-12-08", "description": "スマホ購入・変更: Galaxy Feel SC-04J → SHARP AQUOS sense3 SH-M12"},
+      {"date": "2020-03-10", "description": "CPU・GPU・マザボ・CPUファン購入"},
+      {"date": "2020-04-23", "description": "ヘッドセット新規購入"},
+      {"date": "2020-06-23", "description": "iPad Air 3購入"},
+      {"date": "2020-09-14", "description": "Sony WI-C600Nイヤホン購入"},
+      {"date": "2020-09-19", "description": "Logicool G502 HEROマウス購入"},
+      {"date": "2020-10-10", "description": "Sony WI-C600Nイヤホン交換"},
+      {"date": "2020-11-16", "description": "AQUOS sense3を親に・Pixel 3aを親から譲り受け"},
+      {"date": "2020-12-17", "description": "Raspberry Pi 4を購入"},
+      {"date": "2020-12-19", "description": "メインPCのブートSSDとHDDを入れ替え"},
+      {"date": "2021-01-25", "description": "メインPCのメインディスプレイを買い替え"},
+      {"date": "2021-05-11", "description": "キーボード買い換え"},
+      {"date": "2021-06-21", "description": "キャプボ購入"},
+      {"date": "2021-10-31", "description": "スマートウォッチ Xiaomi Mi Watch 購入"},
+      {"date": "2022-04-24", "description": "スタンドマイク ATR2100x-USB購入"},
+      {"date": "2022-05-06", "description": "OSクリーンインストール"},
+      {"date": "2022-05-28", "description": "メインPCのCPU・マザボ・M.2 SSD購入"},
+      {"date": "2022-07-05", "description": "メインPCの電源ユニット・RAM購入"},
+      {"date": "2022-07-11", "description": "鯖機(Nuts) 組み上げ"},
+      {"date": "2022-12-17", "description": "Google Pixel 6a 購入"},
+      {"date": "2023-05-03", "description": "Sony XF-1000XM4 購入"},
+      {"date": "2023-10-14", "description": "ディスプレイ MSI MAG 274UPF 購入"},
+      {"date": "2023-11-26", "description": "Google Pixel 7aを親から譲り受け"},
+      {"date": "2024-05-01", "description": "GeForce RTX 4070 Ti SUPER購入"},
+      {"date": "2024-05-18", "description": "Google Pixel 8a購入"},
+      {"date": "2024-08-14", "description": "メインPCのブートSSDとHDDを入れ替え"},
+      {"date": "2024-08-21", "description": "iPad Air 6購入"},
+      {"date": "2024-10-23", "description": "エレコム UCAM-CF20FBBK購入"},
+      {"date": "2024-11-23", "description": "LinkBuds Fit WF-LS910N W購入"},
+      {"date": "2024-12-16", "description": "CooSpo 心拍計アームバンド 購入"},
+      {"date": "2025-07-11", "description": "ag COTSUBU for ASMR MK2購入"},
+      {"date": "2025-07-11", "description": "CORSAIR DDR4-3200MHz 16GB x 2購入"},
+      {"date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入"},
+      {"date": "2025-07-13", "description": "Sony WH-CH720N購入"}
     ]
   },
   "devices": {
@@ -90,8 +89,8 @@
                 {
                   "name": "AMD Ryzen 9 5900X BOX",
                   "status": "使用中",
-                  "price": "57,300円",
-                  "purchaseDate": "2022/05/28",
+                  "price": 57300,
+                  "purchaseDate": "2022-05-28",
                   "notes": "ドスパラ店舗で購入",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08164VTWH"},
@@ -101,8 +100,8 @@
                 {
                   "name": "Intel CPU Core i7-9700K BOX",
                   "status": "使用中 (鯖機にて)",
-                  "price": "46,900円",
-                  "purchaseDate": "2020/03/04",
+                  "price": 46900,
+                  "purchaseDate": "2020-03-04",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07HHN6KBZ"}
                   ]
@@ -110,9 +109,9 @@
                 {
                   "name": "Intel CPU Core i7-6700 BOX",
                   "status": "保管",
-                  "price": "36,980円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 36980,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/inRVMuu"}
                   ]
@@ -125,8 +124,8 @@
                 {
                   "name": "MSI GeForce RTX 4070 Ti SUPER 16G VENTUS 3X OC",
                   "status": "使用中",
-                  "price": "142,980円",
-                  "purchaseDate": "2024/05/01",
+                  "price": 142980,
+                  "purchaseDate": "2024-05-01",
                   "links": [
                     {"name": "Dospara", "url": "https://www.dospara.co.jp/SBR1753/IC497654.html"}
                   ]
@@ -134,9 +133,9 @@
                 {
                   "name": "ASUS NVIDIA GeForce GTX 1660 Super TUF-GTX1660S-O6G-GAMING",
                   "status": "保管",
-                  "price": "28,490円",
-                  "purchaseDate": "2020/03/06",
-                  "strikethrough": true,
+                  "price": 28490,
+                  "purchaseDate": "2020-03-06",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B081SPGMBD"},
                     {"name": "Tsukumo", "url": "https://shop.tsukumo.co.jp/goods/0192876551615"}
@@ -145,9 +144,9 @@
                 {
                   "name": "ASUS NVIDIA GeForce GTX 960 STRIX-GTX960-DC2OC-2GD5",
                   "status": "保管",
-                  "price": "25,534円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 25534,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/htyvab7"}
                   ]
@@ -160,8 +159,8 @@
                 {
                   "name": "CFD W4U3200CM-16GR 32GB (16GB x 2枚)",
                   "status": "使用中",
-                  "price": "15,440円",
-                  "purchaseDate": "2022/07/05",
+                  "price": 15440,
+                  "purchaseDate": "2022-07-05",
                   "links": [
                     {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001005960894/"}
                   ]
@@ -169,8 +168,9 @@
                 {
                   "name": "PATRIOT DDR4 2666MHz PC4-21300 32GB (16GBx2枚) CL19",
                   "status": "使用中",
-                  "price": "15,802円 (割引前: 16,200円)",
-                  "purchaseDate": "2019/08/13",
+                  "price": 15802,
+                  "originalPrice": 16200,
+                  "purchaseDate": "2019-08-13",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07Q286BGH"}
                   ]
@@ -178,8 +178,8 @@
                 {
                   "name": "CFD-Panram DDR4 PC4-17000 CL15 16GB (8GB x 2枚) W4U2133PS-8G",
                   "status": "使用中(鯖機にて)",
-                  "price": "9,050円",
-                  "purchaseDate": "2016/03/11",
+                  "price": 9050,
+                  "purchaseDate": "2016-03-11",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/9nc3Oj2"}
                   ]
@@ -192,8 +192,8 @@
                 {
                   "name": "ASUS TUF GAMING B550-PLUS",
                   "status": "使用中",
-                  "price": "18,288円",
-                  "purchaseDate": "2022/05/28",
+                  "price": 18288,
+                  "purchaseDate": "2022-05-28",
                   "notes": "TSUKUMO Webにて購入",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B089Y4YH6F"},
@@ -203,8 +203,8 @@
                 {
                   "name": "ASUS Intel Z390搭載 TUF Z390-PLUS GAMING",
                   "status": "使用中 (鯖機にて)",
-                  "price": "16,040円",
-                  "purchaseDate": "2020/03/04",
+                  "price": 16040,
+                  "purchaseDate": "2020-03-04",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07J6571RK"}
                   ]
@@ -212,9 +212,9 @@
                 {
                   "name": "ASUS Intel H170搭載 H170-PRO",
                   "status": "保管",
-                  "price": "13,057円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 13057,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/7guKuF6"}
                   ]
@@ -227,8 +227,8 @@
                 {
                   "name": "FSP HG2-850 (80 PLUS GOLD)",
                   "status": "使用中",
-                  "price": "14,030円",
-                  "purchaseDate": "2022/07/05",
+                  "price": 14030,
+                  "purchaseDate": "2022-07-05",
                   "links": [
                     {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001005934625/"}
                   ]
@@ -236,8 +236,8 @@
                 {
                   "name": "オウルテック 80PLUS SILVER取得 HASWELL対応 ATX電源ユニット 750W RA-750S",
                   "status": "使用中 (鯖機にて)",
-                  "price": "8,508円",
-                  "purchaseDate": "2016/03/11",
+                  "price": 8508,
+                  "purchaseDate": "2016-03-11",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/7BlSUED"}
                   ]
@@ -250,8 +250,8 @@
                 {
                   "name": "Western Digital Blue SN5000 500GB",
                   "status": "使用中 (ブートドライブとして)",
-                  "price": "10,980円",
-                  "purchaseDate": "2024/08/14",
+                  "price": 10980,
+                  "purchaseDate": "2024-08-14",
                   "notes": "ドスパラ店舗にて購入",
                   "links": [
                     {"name": "Dospara", "url": "https://www.dospara.co.jp/SBR1144/IC509481.html"}
@@ -260,8 +260,8 @@
                 {
                   "name": "Western Digital 8TB WD80EAAZ",
                   "status": "使用中 (データ保存用として)",
-                  "price": "18,380円",
-                  "purchaseDate": "2024/08/14",
+                  "price": 18380,
+                  "purchaseDate": "2024-08-14",
                   "notes": "ドスパラ店舗にて購入",
                   "links": [
                     {"name": "Dospara", "url": "https://www.dospara.co.jp/SBR172/IC497872.html"}
@@ -270,8 +270,8 @@
                 {
                   "name": "Samsung SSD 500GB 850 EVO MZ-75E500B/IT",
                   "status": "使用中 (ゲームデータ保存用として)",
-                  "price": "14,844円",
-                  "purchaseDate": "2017/12/28",
+                  "price": 14844,
+                  "purchaseDate": "2017-12-28",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/d5bH31E"}
                   ]
@@ -279,8 +279,8 @@
                 {
                   "name": "Samsung SSD 500GB 860 EVO MZ-76E500B/EC",
                   "status": "使用中 (鯖機にて)",
-                  "price": "5,880円",
-                  "purchaseDate": "2020/11/30",
+                  "price": 5880,
+                  "purchaseDate": "2020-11-30",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07969N2W9"}
                   ]
@@ -288,10 +288,10 @@
                 {
                   "name": "Western Digital Blue SN570 M.2 SSD MVMe 500GB",
                   "status": "保管",
-                  "price": "7,250円",
-                  "purchaseDate": "2022/05/28",
+                  "price": 7250,
+                  "purchaseDate": "2022-05-28",
                   "notes": "TSUKUMO Webにて購入",
-                  "strikethrough": true,
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B09JGDBPJG"},
                     {"name": "Tsukumo", "url": "https://shop.tsukumo.co.jp/goods/0718037883878"}
@@ -300,9 +300,9 @@
                 {
                   "name": "Western Digital HDD 4TB WD Blue PC 3.5インチ WD40EZRZ-EC",
                   "status": "保管",
-                  "price": "7,960円",
-                  "purchaseDate": "2020/12/19",
-                  "strikethrough": true,
+                  "price": 7960,
+                  "purchaseDate": "2020-12-19",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/BRWY2WT"}
                   ]
@@ -310,9 +310,9 @@
                 {
                   "name": "Samsung SSD 500GB 860 EVO MZ-76E500B/EC",
                   "status": "保管",
-                  "price": "7,050円",
-                  "purchaseDate": "2019/09/28",
-                  "strikethrough": true,
+                  "price": 7050,
+                  "purchaseDate": "2019-09-28",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07969N2W9"}
                   ]
@@ -320,9 +320,9 @@
                 {
                   "name": "WD HDD 3.5インチ 2TB WD Blue WD20EZRZ/AFP",
                   "status": "保管",
-                  "price": "7,580円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 7580,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/40EVCS2"}
                   ]
@@ -335,8 +335,8 @@
                 {
                   "name": "MSI MAG 274UPF 4K UHD 27インチ 144Hz",
                   "status": "使用中",
-                  "price": "79,800円",
-                  "purchaseDate": "2023/10/14",
+                  "price": 79800,
+                  "purchaseDate": "2023-10-14",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0CDKWFXQ7"}
                   ]
@@ -344,8 +344,9 @@
                 {
                   "name": "ASUS TUF GAMING VG259Q 24.5インチワイド 液晶モニター",
                   "status": "使用中 (2ndモニタとして)",
-                  "price": "28,597円 (割引500円込)",
-                  "purchaseDate": "2021/01/23",
+                  "price": 28597,
+                  "discount": 500,
+                  "purchaseDate": "2021-01-23",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0847YWV1G"},
                     {"name": "Dospara", "url": "https://www.dospara.co.jp/5shopping/detail_parts.php?ic=464625&lf=0"}
@@ -354,8 +355,8 @@
                 {
                   "name": "iiyama ディスプレイ モニター E1780SD-B1 17インチ/SXGA/LED/スクエア型",
                   "status": "使用中 (3rdモニタとして)",
-                  "price": "13,435円",
-                  "purchaseDate": "2017/03/06",
+                  "price": 13435,
+                  "purchaseDate": "2017-03-06",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/cbsrKTK"}
                   ]
@@ -363,8 +364,8 @@
                 {
                   "name": "グリーンハウス 液晶 モニターアーム 4軸 クランプ式 GH-AMC03",
                   "status": "使用中",
-                  "price": "2,828円",
-                  "purchaseDate": "2017/03/06",
+                  "price": 2828,
+                  "purchaseDate": "2017-03-06",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/c6laGck"}
                   ]
@@ -372,9 +373,9 @@
                 {
                   "name": "iiyama IPS モニター ディスプレイ XU2390HS-B2 23インチ/フルHD/スリムベゼル/HDMI端子付",
                   "status": "保管",
-                  "price": "18,704円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 18704,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/9zP0H6P"}
                   ]
@@ -387,8 +388,8 @@
                 {
                   "name": "Logicool ワイヤレス キーボード K295GP グラファイト",
                   "status": "使用中",
-                  "price": "2,673円",
-                  "purchaseDate": "2021/05/11",
+                  "price": 2673,
+                  "purchaseDate": "2021-05-11",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08K2CHMWK"}
                   ]
@@ -396,9 +397,9 @@
                 {
                   "name": "マイクロソフト キーボード 有線/USB接続/防滴 Wired Keyboard 600 ANB-00040",
                   "status": "保管 (一部キーの不具合有)",
-                  "price": "1,264円",
-                  "purchaseDate": "2017/05/05",
-                  "strikethrough": true,
+                  "price": 1264,
+                  "purchaseDate": "2017-05-05",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/9VL9k5Y"}
                   ]
@@ -406,9 +407,9 @@
                 {
                   "name": "マイクロソフト キーボード 有線/USB接続/防滴 Wired Keyboard 600 ANB-00039",
                   "status": "保管・一部破損 (背面角度変更部品破損)",
-                  "price": "991円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 991,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/b00aRNB"}
                   ]
@@ -421,8 +422,8 @@
                 {
                   "name": "Logicool G502 HERO 有線 G502RGBhr ブラック",
                   "status": "使用中",
-                  "price": "8,340円",
-                  "purchaseDate": "2022/11/14",
+                  "price": 8340,
+                  "purchaseDate": "2022-11-14",
                   "links": [
                     {"name": "Yodobashi", "url": "https://www.yodobashi.com/product-detail/100000001005717597/"}
                   ]
@@ -430,9 +431,9 @@
                 {
                   "name": "Logicool G502 HERO 有線 G502RGBhr ブラック",
                   "status": "破壊",
-                  "price": "7,900円",
-                  "purchaseDate": "2020/09/19",
-                  "strikethrough": true,
+                  "price": 7900,
+                  "purchaseDate": "2020-09-19",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08CKZ9TSY"}
                   ]
@@ -440,9 +441,9 @@
                 {
                   "name": "マイクロソフト マウス 有線/USB接続 ブラック Basic Optical Mouse for Business 4YH-00003",
                   "status": "保管",
-                  "price": "926円",
-                  "purchaseDate": "2016/03/11",
-                  "strikethrough": true,
+                  "price": 926,
+                  "purchaseDate": "2016-03-11",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/9DEKu5I"}
                   ]
@@ -450,9 +451,9 @@
                 {
                   "name": "エレコム 有線マウス 5ボタン BlueLED Lサイズ 握りの極み ブラック M-XGL10UBBK",
                   "status": "保管 (クリック不安定)",
-                  "price": "2,138円",
-                  "purchaseDate": "2018/04/29",
-                  "strikethrough": true,
+                  "price": 2138,
+                  "purchaseDate": "2018-04-29",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/j3MiJHo"}
                   ]
@@ -465,8 +466,8 @@
                 {
                   "name": "Scythe 旋風 SCY-CFS3-BK",
                   "status": "使用中",
-                  "price": "6,150円",
-                  "purchaseDate": "2020/03/09",
+                  "price": 6150,
+                  "purchaseDate": "2020-03-09",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0721MG72Q"},
                     {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001003588688/"}
@@ -475,8 +476,8 @@
                 {
                   "name": "ANTEC ATX対応ミドルタワーPCケース Performance One Series P70",
                   "status": "使用中 (鯖機にて)",
-                  "price": "7,980円",
-                  "purchaseDate": "2016/03/11",
+                  "price": 7980,
+                  "purchaseDate": "2016-03-11",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/0DwZSlp"}
                   ]
@@ -489,8 +490,8 @@
                 {
                   "name": "audio-technica ATR2100x-USB",
                   "status": "使用中",
-                  "price": "10,800円",
-                  "purchaseDate": "2022/04/24",
+                  "price": 10800,
+                  "purchaseDate": "2022-04-24",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08KDVW9Z3"}
                   ]
@@ -498,8 +499,8 @@
                 {
                   "name": "サンワサプライ マルチメディアヘッドホン 3.5mmステレオミニプラグ(L型) MM-HP207N",
                   "status": "使用中 (メインPC用)",
-                  "price": "1,009円",
-                  "purchaseDate": "2021/11/08",
+                  "price": 1009,
+                  "purchaseDate": "2021-11-08",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B00TJPYIP0"}
                   ]
@@ -507,8 +508,8 @@
                 {
                   "name": "Elecom マイクフレキシブルアームスタンド HS-DSZARMBK",
                   "status": "使用中",
-                  "price": "2,172円",
-                  "purchaseDate": "2022/04/26",
+                  "price": 2172,
+                  "purchaseDate": "2022-04-26",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B09GJZT6DP"}
                   ]
@@ -516,8 +517,9 @@
                 {
                   "name": "Sony XF-1000XM4 プラチナシルバー",
                   "status": "使用中",
-                  "price": "24,433円（+5年保証 1,225円）",
-                  "purchaseDate": "2023/05/03",
+                  "price": 24433,
+                  "warranty": 1225,
+                  "purchaseDate": "2023-05-03",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B095SLJHDH"}
                   ]
@@ -525,8 +527,8 @@
                 {
                   "name": "Sony WH-CH720N",
                   "status": "使用中",
-                  "price": "14,980円",
-                  "purchaseDate": "2025/07/13",
+                  "price": 14980,
+                  "purchaseDate": "2025-07-13",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0BVPNJP1C"}
                   ]
@@ -534,9 +536,9 @@
                 {
                   "name": "Sony WI-C600N ブラック",
                   "status": "破損（温度計測系が壊れたようで充電できなくなった）",
-                  "price": "12,700円",
+                  "price": 12700,
                   "purchaseDate": "2020/09/14, 2020/10/09交換申請",
-                  "strikethrough": true,
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07MGZSJ9N"}
                   ]
@@ -544,9 +546,9 @@
                 {
                   "name": "HyperX Cloud Stinger Wireless HX-HSCSW-BK",
                   "status": "保管",
-                  "price": "2,688円",
-                  "purchaseDate": "2019/04/23",
-                  "strikethrough": true,
+                  "price": 2688,
+                  "purchaseDate": "2019-04-23",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07JX12SY4"}
                   ]
@@ -554,9 +556,9 @@
                 {
                   "name": "NUBWO USB ゲーミングヘッドセット（シルバー(USB))",
                   "status": "保管",
-                  "price": "2,688円",
-                  "purchaseDate": "2017/09/06",
-                  "strikethrough": true,
+                  "price": 2688,
+                  "purchaseDate": "2017-09-06",
+                  "unused": true,
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B073Z9BBS9"}
                   ]
@@ -569,8 +571,9 @@
                 {
                   "name": "ノバック 5インチベイ対応 3.5インチSATA HDDラック はい~るKIT 量産型楽太郎2 NV-SR303B",
                   "status": "使用中 (1つのみ)",
-                  "price": "1,350円 x2",
-                  "purchaseDate": "2016/03/11",
+                  "price": 1350,
+                  "quantity": 2,
+                  "purchaseDate": "2016-03-11",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/8bob4cV"}
                   ]
@@ -578,8 +581,8 @@
                 {
                   "name": "LITEON IHAS324-17 IHAS324-17",
                   "status": "使用中",
-                  "price": "2,553円",
-                  "purchaseDate": "2016/03/11",
+                  "price": 2553,
+                  "purchaseDate": "2016-03-11",
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/4q2WclN"}
                   ]
@@ -587,8 +590,8 @@
                 {
                   "name": "CPUクーラー 虎徹 Mark II",
                   "status": "使用中",
-                  "price": "4,106円",
-                  "purchaseDate": "2020/03/06",
+                  "price": 4106,
+                  "purchaseDate": "2020-03-06",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B072PWL5YF"}
                   ]
@@ -596,8 +599,8 @@
                 {
                   "name": "CPUクーラー Deepcool R-AK400-BKNNMN-G-1 AK400",
                   "status": "使用中",
-                  "price": "4,000円",
-                  "purchaseDate": "2022/07/05",
+                  "price": 4000,
+                  "purchaseDate": "2022-07-05",
                   "links": [
                     {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001007103490/"}
                   ]
@@ -605,8 +608,8 @@
                 {
                   "name": "キャプチャーボード HSV320",
                   "status": "使用中",
-                  "price": "3,439円",
-                  "purchaseDate": "2021/06/21",
+                  "price": 3439,
+                  "purchaseDate": "2021-06-21",
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08ZCM6QRW"}
                   ]
@@ -714,8 +717,8 @@
     "mobileDevices": {
       "title": "所持スマートフォン・タブレットなど",
       "devices": [
-        {"name": "Google Pixel 8a", "note": "[メインスマホ]", "purchaseDate": "2024/05/18"},
-        {"name": "Apple iPad Air 6", "note": "[メインタブレット]", "purchaseDate": "2024/08/21"},
+        {"name": "Google Pixel 8a", "note": "[メインスマホ]", "purchaseDate": "2024-05-18"},
+        {"name": "Apple iPad Air 6", "note": "[メインタブレット]", "purchaseDate": "2024-08-21"},
         {"name": "Apple iPhone SE 3", "note": "[社用BYODスマホ]"},
         {"name": "Google Pixel 3a", "note": "[寝るとき用サブスマホ]"},
         {"name": "iPad mini 4", "note": "[ベッドサイドタブレット]"},
@@ -730,14 +733,14 @@
       "devices": [
         {
           "name": "Xiaomi Mi band 4",
-          "price": "4,499円",
-          "purchaseDate": "2019/09/24",
+          "price": 4499,
+          "purchaseDate": "2019-09-24",
           "links": [{"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07T67V3KX"}]
         },
         {
           "name": "Xiaomi Mi Watch",
-          "price": "11,682円",
-          "purchaseDate": "2021/10/31",
+          "price": 11682,
+          "purchaseDate": "2021-10-31",
           "links": [{"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08TMP1L15"}]
         }
       ]

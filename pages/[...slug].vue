@@ -33,7 +33,7 @@ if (Array.isArray(slug)) {
   slug = slug.join('/')
 }
 
-// Handle special slug mappings (from original site)  
+// Handle special slug mappings (from original site)
 if (slug === 'pc') slug = 'devices'
 
 // Redirect devices to the dedicated static page
