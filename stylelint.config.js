@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+  extends: ['stylelint-config-standard'],
   // Override configuration for Vue Single File Components (SFCs)
   overrides: [
     {
@@ -24,6 +24,7 @@ module.exports = {
     ],
     'media-feature-range-notation': null,
     'color-function-notation': null,
+    'color-function-alias-notation': null,
     'alpha-value-notation': null,
     'font-family-name-quotes': null,
     'declaration-block-no-shorthand-property-overrides': null,
