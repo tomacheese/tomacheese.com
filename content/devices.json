@@ -53,5 +53,29 @@
       "Logicool KEYS TO GO 2購入: 2025/07/11",
       "Sony WH-CH720N購入: 2025/07/13"
     ]
+  },
+  "devices": {
+    "mainPc": {
+      "title": "メインPC (ICHIGO)",
+      "description": "自作メインPC。",
+      "summary": [
+        "PC名: ICHIGO",
+        "CPU: AMD Ryzen 9 5900X BOX",
+        "GPU: GeForce RTX 4070 Ti SUPER 16G",
+        "RAM: 64GB (16x4 | CFD W4U3200CM-16GR x 2枚 + PATRIOT DDR4 2666MHz PC4-21300 16GB x 2枚)",
+        "SSD(OSブート): Western Digital Blue SN5000 500GB",
+        "SSD(ゲーム保存用): Samsung SSD 500GB 850 EVO",
+        "HDD: Western Digital 8TB WD80EAAZ",
+        "マザーボード: ASUS TUF GAMING B550-PLUS",
+        "筐体: Scythe 旋風 SCY-CFS3-BK",
+        "CPUクーラー: 虎徹 Mark II",
+        "メインディスプレイ: MSI MAG 274UPF 4K UHD 27インチ",
+        "サブディスプレイ: ASUS TUF GAMING VG259Q 24.5インチワイド",
+        "サブディスプレイ: iiyama 17インチディスプレイ スクエア型",
+        "キーボード: Logicool ワイヤレス キーボード K295GP グラファイト",
+        "マウス: Logicool G502 HERO 有線 G502RGBhr ブラック",
+        "電源: FSP HG2-850 (80 PLUS GOLD)"
+      ]
+    }
   }
 }

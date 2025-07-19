@@ -22,9 +22,22 @@
               </ul>
             </section>
 
-            <!-- TODO: 他のデバイスセクションも順次追加 -->
+            <!-- メインPCセクション -->
+            <section v-if="devicesData?.devices?.mainPc">
+              <h2>{{ devicesData.devices.mainPc.title }}</h2>
+              <p>{{ devicesData.devices.mainPc.description }}</p>
+              
+              <h3>簡潔に</h3>
+              <ul>
+                <li v-for="item in devicesData.devices.mainPc.summary" :key="item">
+                  {{ item }}
+                </li>
+              </ul>
+            </section>
+
+            <!-- TODO: 詳細コンポーネントも順次追加 -->
             <div class="placeholder-notice">
-              <p>メインPCなどの詳細なデバイス情報も順次移行予定</p>
+              <p>内容品などの詳細なデバイス情報も順次移行予定</p>
             </div>
           </article>
         </main>
