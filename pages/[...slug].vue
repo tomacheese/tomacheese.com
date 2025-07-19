@@ -38,15 +38,15 @@ if (slug === 'pc') slug = 'devices'
 
 console.log(`[DEBUG] Looking for content: pages/${slug}`)
 
-// Use asyncData pattern to fetch content via API
+// Use Nuxt Content v2 syntax which should work with Nuxt 3
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
   try {
-    console.log(`[DEBUG] Fetching via API: /api/content/${slug}`)
-    const result = await $fetch(`/api/content/${slug}`)
-    console.log(`[DEBUG] API result:`, result ? result.title : 'Not found')
+    console.log(`[DEBUG] Fetching with $content: pages/${slug}`)
+    const result = await $content(`pages/${slug}`).fetch()
+    console.log(`[DEBUG] Result:`, result ? result.title : 'Not found')
     return result
   } catch (err) {
-    console.error(`[DEBUG] API error:`, err)
+    console.error(`[DEBUG] Error:`, err)
     return null
   }
 })
