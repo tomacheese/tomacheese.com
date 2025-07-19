@@ -169,8 +169,10 @@
                   "name": "PATRIOT DDR4 2666MHz PC4-21300 32GB (16GBx2枚) CL19",
                   "status": "使用中",
                   "price": 15802,
-                  "originalPrice": 16200,
                   "purchaseDate": "2019-08-13",
+                  "extra": {
+                    "元価格": 16200
+                  },
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07Q286BGH"}
                   ]
@@ -345,8 +347,10 @@
                   "name": "ASUS TUF GAMING VG259Q 24.5インチワイド 液晶モニター",
                   "status": "使用中 (2ndモニタとして)",
                   "price": 28597,
-                  "discount": 500,
                   "purchaseDate": "2021-01-23",
+                  "extra": {
+                    "割引": 500
+                  },
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0847YWV1G"},
                     {"name": "Dospara", "url": "https://www.dospara.co.jp/5shopping/detail_parts.php?ic=464625&lf=0"}
@@ -518,8 +522,10 @@
                   "name": "Sony XF-1000XM4 プラチナシルバー",
                   "status": "使用中",
                   "price": 24433,
-                  "warranty": 1225,
                   "purchaseDate": "2023-05-03",
+                  "extra": {
+                    "保証": 1225
+                  },
                   "links": [
                     {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B095SLJHDH"}
                   ]
@@ -572,8 +578,10 @@
                   "name": "ノバック 5インチベイ対応 3.5インチSATA HDDラック はい~るKIT 量産型楽太郎2 NV-SR303B",
                   "status": "使用中 (1つのみ)",
                   "price": 1350,
-                  "quantity": 2,
                   "purchaseDate": "2016-03-11",
+                  "extra": {
+                    "数量": 2
+                  },
                   "links": [
                     {"name": "Amazon", "url": "http://amzn.asia/8bob4cV"}
                   ]

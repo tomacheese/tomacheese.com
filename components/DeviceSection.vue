@@ -43,10 +43,9 @@
                 <div class="component-details">
                   <span class="component-status">ステータス: {{ item.status }}</span>
                   <span class="component-price">購入価格: {{ formatPrice(item.price) }}</span>
-                  <span v-if="item.originalPrice" class="component-original-price">元価格: {{ formatPrice(item.originalPrice) }}</span>
-                  <span v-if="item.discount" class="component-discount">割引: {{ formatPrice(item.discount) }}</span>
-                  <span v-if="item.warranty" class="component-warranty">保証: {{ formatPrice(item.warranty) }}</span>
-                  <span v-if="item.quantity" class="component-quantity">数量: {{ item.quantity }}</span>
+                  <span v-for="(value, key) in item.extra" :key="key" class="component-extra">
+                    {{ key }}: {{ typeof value === 'number' ? formatPrice(value) : value }}
+                  </span>
                   <span class="component-date">購入日: {{ item.purchaseDate }}</span>
                   <span v-if="item.notes" class="component-notes">{{ item.notes }}</span>
                 </div>
@@ -240,10 +239,7 @@ defineProps<Props>()
 
 .component-status,
 .component-price,
-.component-original-price,
-.component-discount,
-.component-warranty,
-.component-quantity,
+.component-extra,
 .component-date,
 .component-notes {
   color: var(--color-text-secondary);
