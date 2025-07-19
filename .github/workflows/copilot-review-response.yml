@@ -127,7 +127,7 @@ jobs:
             
             jq -r '
             .[] | 
-            "**Review ID: \(.id)** (submitted: \(.submitted_at))\n\(.body | gsub("\n"; "\n> "; "g"))\n\n---\n"
+            "**Review ID: \(.id)** (submitted: \(.submitted_at))\n\(.body | gsub("\n"; "\n> "))\n\n---\n"
             ' review_comments.json >> comment_body.md
           fi
 
@@ -138,7 +138,7 @@ jobs:
             
             jq -r '
             .[] | 
-            "**File: `\(.path)` (Line \(.line))**\n> \(.body | gsub("\n"; "\n> "; "g"))\n\n---\n"
+            "**File: `\(.path)` (Line \(.line))**\n> \(.body | gsub("\n"; "\n> "))\n\n---\n"
             ' inline_comments.json >> comment_body.md
           fi
 
