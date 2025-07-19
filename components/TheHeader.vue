@@ -154,7 +154,7 @@ function closeMobileMenu() {
   align-items: center;
   gap: var(--space-8);
 
-  @media (max-width: 768px) {
+  @media (max-width: 850px) {
     display: none;
   }
 }
@@ -206,7 +206,7 @@ function closeMobileMenu() {
     color: var(--color-text-primary);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 850px) {
     display: flex;
   }
 }
@@ -216,7 +216,7 @@ function closeMobileMenu() {
   padding: var(--space-4) 0;
   border-top: 1px solid var(--color-border);
 
-  @media (max-width: 768px) {
+  @media (max-width: 850px) {
     display: block;
   }
 }
