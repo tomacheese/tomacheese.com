@@ -2,9 +2,9 @@ name: Test Dynamic Page Generation
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, master ]
 
 permissions:
   contents: read
