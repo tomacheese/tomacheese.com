@@ -35,7 +35,7 @@ jobs:
     - name: Tree
       run: |
         sudo apt-get update && sudo apt-get install -y tree
-        tree --gitignore
+        tree --gitignore -a
       
     - name: Test required pages exist
       run: |
