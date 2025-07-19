@@ -1,5 +1,18 @@
 // Modern Design System for tomacheese.com-v3
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+// Remove duplicate font import since we're using @nuxt/fonts
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Ensure Japanese fonts are loaded for fallback
+@font-face {
+  font-family: 'System Japanese';
+  src: local('Noto Sans CJK JP'),
+       local('IPAGothic'),
+       local('Hiragino Kaku Gothic ProN'),
+       local('Yu Gothic'),
+       local('Meiryo'),
+       local('MS Gothic');
+  font-display: block;
+}
 
 // Design tokens
 :root {
@@ -107,10 +120,31 @@
 body {
   font-family:
     'Inter',
+    'System Japanese',
+    'Noto Sans JP',
+    'Noto Sans CJK JP',
+    'IPAGothic',
+    'IPAPGothic',
+    'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans',
+    'Yu Gothic',
+    'Meiryo',
+    'MS Gothic',
+    'MS PGothic',
+    'MS UI Gothic',
+    'DejaVu Sans',
+    'Liberation Sans',
+    'Droid Sans Fallback',
+    'Takao Gothic',
+    'VL Gothic',
+    'TakaoPGothic',
+    'Ubuntu',
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
     Roboto,
+    'Helvetica Neue',
+    Arial,
     sans-serif;
   background-color: var(--color-background);
   color: var(--color-text-primary);
@@ -127,7 +161,29 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Inter', sans-serif;
+  font-family: 
+    'Inter', 
+    'System Japanese',
+    'Noto Sans JP',
+    'Noto Sans CJK JP',
+    'IPAGothic',
+    'IPAPGothic',
+    'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans',
+    'Yu Gothic',
+    'Meiryo',
+    'MS Gothic',
+    'MS PGothic',
+    'MS UI Gothic',
+    'DejaVu Sans',
+    'Liberation Sans',
+    'Droid Sans Fallback',
+    'Takao Gothic',
+    'VL Gothic',
+    'TakaoPGothic',
+    'Ubuntu',
+    Arial,
+    sans-serif;
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.2;
