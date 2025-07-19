@@ -33,8 +33,13 @@ if (Array.isArray(slug)) {
   slug = slug.join('/')
 }
 
-// Handle special slug mappings (from original site)
+// Handle special slug mappings (from original site)  
 if (slug === 'pc') slug = 'devices'
+
+// Redirect devices to the dedicated static page
+if (slug === 'devices') {
+  throw createError({ statusCode: 404, statusMessage: 'Page moved to /devices' })
+}
 
 // Use Nuxt Content v2 syntax with improved error handling for SSG
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
