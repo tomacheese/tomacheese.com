@@ -17,7 +17,7 @@
         </main>
 
         <aside class="sidebar-content">
-          <TheSidebar :toc="article?.body?.toc" />
+          <TheSidebar :toc="article?.body?.toc?.links" />
         </aside>
       </div>
     </div>
