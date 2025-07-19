@@ -3,7 +3,7 @@
     <section class="page-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">{{ article.title }}</h1>
+          <h1 class="page-title">このサイトについて</h1>
         </div>
       </div>
     </section>
@@ -12,12 +12,12 @@
       <div class="content-layout">
         <main class="main-content">
           <article class="content-container">
-            <ContentRenderer :value="article" />
+            <div v-html="content"></div>
           </article>
         </main>
 
         <aside class="sidebar-content">
-          <TheSidebar :toc="article.body?.toc" />
+          <TheSidebar />
         </aside>
       </div>
     </div>
@@ -25,32 +25,39 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-let slug = route.params.slug as string | string[]
+const content = `
+<p>このサイトは Tomachi (以下、運営者と記します)が運営するサイトです。Nuxt.js v3 + Nuxt Content の環境下で運用しています。</p>
 
-// Handle slug array (catch-all route)
-if (Array.isArray(slug)) {
-  slug = slug.join('/')
-}
+<h2>運営者について</h2>
 
-// Handle special slug mappings (from original site)
-if (slug === 'pc') slug = 'devices'
+<p>運営者の解説については、<a href="/me">こちら</a> からご覧ください。</p>
 
-// Try to find content
-let article: any = null
+<h2>免責事項</h2>
 
-try {
-  article = await queryContent(slug).findOne()
-} catch {
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
-}
+<p>当サイトに掲載した情報などについて、運営者は一切の責任を負わず、それによって発生した如何なる不利益についても責任は負いません。<br>
+また、運営者は運営者の判断によって当サイトの一部もしくはすべての変更、または運営を中断・終了することができます。</p>
+
+<h2>アクセス解析ツールの使用について</h2>
+
+<p>当サイトにはアクセス解析ツールである「<code>Google Analytics</code>」を設置し解析しております。このため、Cookieなどを使用し、匿名で閲覧データ（IPアドレス、大まかな地域情報、アクセス先ページ、検索ワード、使用ブラウザ、リファラーなど）を収集しておりますが、個人を特定するものでありません。<br>
+詳しくは <a href="https://www.google.com/analytics/terms/jp.html">Google Analytics の利用規約</a> をご確認ください。</p>
+
+<h2>問い合わせ等について</h2>
+
+<p>当サイトに関する問い合わせについては、<code>info[AT]tomacheese.com</code> (<code>[AT]</code>を<code>@</code>に置換) か <a href="https://twitter.com/book000">Twitter @book000</a> よりお願いいたします。</p>
+
+<h2>寄付等について</h2>
+
+<p>一応Paypal.MeのリンクとKyashのQRコードを置いておきます。<br>
+<a href="https://paypal.me/tomacheese">PayPal.Me/tomacheese</a></p>
+`
 
 // SEO
 useSeoMeta({
-  title: `${article.title} - Tomachi Site`,
-  description: article.description || `${article.title}についてのページ`,
-  ogTitle: article.title,
-  ogDescription: article.description || `${article.title}についてのページ`,
+  title: 'このサイトについて - Tomachi Site',
+  description: 'このサイトの運営者情報、免責事項、問い合わせ先などについて説明しています。',
+  ogTitle: 'このサイトについて',
+  ogDescription: 'このサイトの運営者情報、免責事項、問い合わせ先などについて説明しています。',
   ogType: 'article',
 })
 </script>
@@ -83,14 +90,6 @@ useSeoMeta({
   @media (max-width: 768px) {
     font-size: var(--text-4xl);
   }
-}
-
-.page-description {
-  font-size: var(--text-xl);
-  color: var(--color-text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
 }
 
 .content-layout {
@@ -187,68 +186,6 @@ useSeoMeta({
     text-decoration: underline;
   }
 
-  ul,
-  ol {
-    margin-bottom: var(--space-4);
-    padding-left: var(--space-8);
-  }
-
-  ul {
-    list-style-type: disc;
-
-    ul {
-      list-style-type: circle;
-
-      ul {
-        list-style-type: square;
-      }
-    }
-  }
-
-  ol {
-    list-style-type: decimal;
-
-    ol {
-      list-style-type: lower-alpha;
-
-      ol {
-        list-style-type: lower-roman;
-      }
-    }
-  }
-
-  li {
-    margin-bottom: var(--space-2);
-    color: var(--color-text-secondary);
-  }
-
-  blockquote {
-    border-left: 4px solid var(--color-primary);
-    padding-left: var(--space-4);
-    margin: var(--space-6) 0;
-    font-style: italic;
-    color: var(--color-text-secondary);
-    background-color: var(--color-surface);
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
-  }
-
-  pre {
-    background: var(--color-gray-100);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-4);
-    overflow-x: auto;
-    margin: var(--space-4) 0;
-    font-size: var(--text-sm);
-
-    .dark-theme & {
-      background: var(--color-gray-900);
-      border-color: var(--color-gray-700);
-      color: var(--color-gray-100);
-    }
-  }
-
   code {
     background: var(--color-gray-100);
     padding: var(--space-1) var(--space-2);
@@ -260,37 +197,6 @@ useSeoMeta({
       background: var(--color-gray-800);
       color: var(--color-gray-100);
     }
-  }
-
-  pre code {
-    background: none;
-    padding: 0;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
-    margin: var(--space-4) 0;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: var(--space-4) 0;
-  }
-
-  th,
-  td {
-    border: 1px solid var(--color-border);
-    padding: var(--space-3);
-    text-align: left;
-  }
-
-  th {
-    background: var(--color-primary);
-    color: white;
-    font-weight: 600;
   }
 }
 </style>

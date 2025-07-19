@@ -3,7 +3,7 @@
     <section class="page-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">{{ article.title }}</h1>
+          <h1 class="page-title">私（Tomachi）について</h1>
         </div>
       </div>
     </section>
@@ -12,12 +12,12 @@
       <div class="content-layout">
         <main class="main-content">
           <article class="content-container">
-            <ContentRenderer :value="article" />
+            <div v-html="content"></div>
           </article>
         </main>
 
         <aside class="sidebar-content">
-          <TheSidebar :toc="article.body?.toc" />
+          <TheSidebar />
         </aside>
       </div>
     </div>
@@ -25,25 +25,67 @@
 </template>
 
 <script setup lang="ts">
-// Debug: query all content to see what's available
-const { data: allContent } = await useAsyncData('debug-all', () => queryContent().find())
-console.log('All available content:', allContent.value?.map((item: any) => ({ _path: item._path, title: item.title })))
+// Temporarily hard-code the content to fix the navigation issue
+// This can be replaced with proper content loading once the compatibility issue is resolved
+const content = `
+<p><a href="/devices">所持端末 (PC構成一覧)</a></p>
 
-// Try to find the me content
-const { data: article } = await useAsyncData('me', () => queryContent('me').findOne())
-console.log('Me article result:', article.value)
+<h2>概要</h2>
 
-if (!article.value) {
-  console.log('Article not found, available paths:', allContent.value?.map((item: any) => item._path))
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
-}
+<ul>
+<li>趣味 &amp; 業務（お仕事）プログラマ。</li>
+<li>Minecraftを数年にわたってプレイ・サーバ運営していた</li>
+<li>エンジョイ勢ゲーマー</li>
+<li>アニメはほのぼの系(日常系)を好む</li>
+<li>「VOICEROID+ 琴葉 茜・葵 (ダウンロード版)」を所持（2018/09/29購入）</li>
+<li>VOICEROIDでは琴葉葵・紲星あかり、CeVIOではさとうささら、すずきつづみ、ONEが好き</li>
+<li>チンアナゴ・ニシキアナゴ好き</li>
+</ul>
+
+<h2>端末等</h2>
+
+<p>PCを含む所持端末に関しては別ページでまとめています: <a href="/devices">所持端末</a></p>
+
+<h2>好きなもの</h2>
+
+<ul>
+<li>Computer</li>
+<li>Anime</li>
+<li>Book / Comic</li>
+<li>Camera</li>
+<li>Music</li>
+<li>Game</li>
+<li>Programming</li>
+</ul>
+
+<h3>Programming</h3>
+
+<p>以下の言語をある程度使えます（当然完全ではない）。</p>
+
+<ul>
+<li>PHP</li>
+<li>Java</li>
+<li>JavaScript
+<ul>
+<li>TypeScript</li>
+<li>Vue.js</li>
+<li>Nuxt.js</li>
+</ul></li>
+<li>C#</li>
+<li>NodeJS</li>
+<li>Python</li>
+<li>Golang</li>
+</ul>
+
+<p>このサイトは Nuxt.js + TypeScript + Nuxt Content で制作・運用しています。フロントエンドのソースコードは <a href="https://github.com/tomacheese/tomacheese.com">tomacheese/tomacheese.com</a> にあります。</p>
+`
 
 // SEO
 useSeoMeta({
-  title: `${article.value.title} - Tomachi Site`,
-  description: article.value.description || `${article.value.title}についてのページ`,
-  ogTitle: article.value.title,
-  ogDescription: article.value.description || `${article.value.title}についてのページ`,
+  title: '私（Tomachi）について - Tomachi Site',
+  description: 'Tomachiの自己紹介・プロフィールページです。趣味や技術スタック、好きなものなどを紹介しています。',
+  ogTitle: '私（Tomachi）について',
+  ogDescription: 'Tomachiの自己紹介・プロフィールページです。趣味や技術スタック、好きなものなどを紹介しています。',
   ogType: 'article',
 })
 </script>
