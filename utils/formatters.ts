@@ -8,15 +8,14 @@ export function formatPrice(price: number): string {
 }
 
 /**
- * Format date string in Japanese format
+ * Format date string in yyyy/MM/dd format
  * @param dateString - Date in YYYY-MM-DD format
- * @returns Formatted date string in Japanese format (e.g., "2024年12月16日")
+ * @returns Formatted date string in yyyy/MM/dd format (e.g., "2024/12/16")
  */
 export function formatDate(dateString: string): string {
   const date = new Date(dateString)
-  return date.toLocaleDateString('ja-JP', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}/${month}/${day}`
 }
