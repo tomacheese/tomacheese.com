@@ -17,23 +17,33 @@
 
 <script setup lang="ts">
 // データの読み込み
-let details = []
-let timelines = []
-let loadError = false
+const details = ref([])
+const timelines = ref([])
+const loadError = ref(false)
 
-try {
-  const detailsData = await $fetch('/top-details.json')
-  const timelinesData = await $fetch('/top-timelines.json')
-  
-  details = detailsData?.body || []
-  timelines = timelinesData?.body || []
-} catch (error) {
-  console.warn('Failed to load top page data:', error)
-  loadError = true
-  // Set empty arrays as fallback
-  details = []
-  timelines = []
+// データ読み込み関数
+const loadData = async () => {
+  try {
+    const [detailsData, timelinesData] = await Promise.all([
+      $fetch('/top-details.json'),
+      $fetch('/top-timelines.json')
+    ])
+    
+    details.value = detailsData?.body || []
+    timelines.value = timelinesData?.body || []
+    loadError.value = false
+  } catch (error) {
+    console.warn('Failed to load top page data:', error)
+    loadError.value = true
+    details.value = []
+    timelines.value = []
+  }
 }
+
+// クライアントサイドでデータ読み込み
+onMounted(() => {
+  loadData()
+})
 
 // SEO
 useSeoMeta({
