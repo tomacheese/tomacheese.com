@@ -26,25 +26,25 @@ pnpm generate
 
 ### GitHub Pages（プロダクション）
 
-masterブランチへのpushにより自動的にGitHub Pagesにデプロイされます。
+master ブランチへの push により自動的に GitHub Pages にデプロイされます。
 
 ### Cloudflare Pages（プレビュー）
 
-PRの作成・更新時にCloudflare Pagesにプレビューデプロイメントが作成されます。
+PR の作成・更新時に Cloudflare Pages にプレビューデプロイメントが作成されます。
 
 **セットアップ手順:**
 
-1. Cloudflareで新しいPagesプロジェクトを作成（プロジェクト名: `tomacheese-com-preview`）
-2. Cloudflare API Tokenを生成（`Pages:Edit` 権限が必要）
-3. GitHub SecretsにCloudflare認証情報を追加:
+1. Cloudflare で新しい Pages プロジェクトを作成（プロジェクト名: `tomacheese-com-preview`）
+2. Cloudflare API Token を生成（`Pages:Edit` 権限が必要）
+3. GitHub Secrets に Cloudflare 認証情報を追加:
    - `CLOUDFLARE_API_TOKEN`: Cloudflare API Token
-   - `CLOUDFLARE_ACCOUNT_ID`: CloudflareのAccount ID
+   - `CLOUDFLARE_ACCOUNT_ID`: Cloudflare の Account ID
 
-**プレビューURL形式:**
+**プレビュー URL 形式:**
 ```
-https://pr-{PR番号}.tomacheese-com-preview.pages.dev
+https://pr-{PR 番号}.tomacheese-com-preview.pages.dev
 ```
 
 **動作:**
-- PR作成・更新時: プレビューデプロイメント作成 + コメント投稿/更新
-- PR終了時: クリーンアップ通知コメント投稿
+- PR 作成・更新時: プレビューデプロイメント作成 + コメント投稿/更新
+- PR 終了時: クリーンアップ通知コメント投稿
