@@ -3,7 +3,7 @@
     <section class="page-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">{{ article.title }}</h1>
+          <h1 class="page-title">{{ article?.title }}</h1>
         </div>
       </div>
     </section>
@@ -17,7 +17,7 @@
         </main>
 
         <aside class="sidebar-content">
-          <TheSidebar :toc="article.body?.toc" />
+          <TheSidebar :toc="article?.body?.toc" />
         </aside>
       </div>
     </div>
@@ -36,21 +36,35 @@ if (Array.isArray(slug)) {
 // Handle special slug mappings (from original site)
 if (slug === 'pc') slug = 'devices'
 
-// Try to find content in main directory only
-let article: any = null
+console.log(`[DEBUG] Looking for content: pages/${slug}`)
 
-try {
-  article = await queryContent(`/pages/${slug}`).findOne()
-} catch {
+// Use Nuxt Content v2 syntax which should work with Nuxt 3
+const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
+  try {
+    console.log(`[DEBUG] Fetching with $content: pages/${slug}`)
+    const result = await $content(`pages/${slug}`).fetch()
+    console.log(`[DEBUG] Result:`, result ? result.title : 'Not found')
+    return result
+  } catch (err) {
+    console.error(`[DEBUG] Error:`, err)
+    return null
+  }
+})
+
+console.log(`[DEBUG] Article data:`, article.value ? article.value.title : 'No article')
+console.log(`[DEBUG] Error:`, error.value)
+
+if (error.value || !article.value) {
+  console.log(`[DEBUG] Throwing 404 for: ${slug}`)
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
 // SEO
 useSeoMeta({
-  title: `${article.title} - Tomachi Site`,
-  description: article.description || `${article.title}についてのページ`,
-  ogTitle: article.title,
-  ogDescription: article.description || `${article.title}についてのページ`,
+  title: `${article.value.title} - Tomachi Site`,
+  description: article.value.description || `${article.value.title}についてのページ`,
+  ogTitle: article.value.title,
+  ogDescription: article.value.description || `${article.value.title}についてのページ`,
   ogType: 'article',
 })
 </script>
