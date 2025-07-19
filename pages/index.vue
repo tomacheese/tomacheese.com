@@ -66,18 +66,19 @@ useSeoMeta({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
 
   h1 {
     font-size: 64px;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 16px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: white !important;
   }
 
   p {
     font-size: 18px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    color: white !important;
   }
 }
 
