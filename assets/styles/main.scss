@@ -1,8 +1,6 @@
-// Modern Design System for tomacheese.com-v3
-// Remove duplicate font import since we're using @nuxt/fonts
-// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+// tomacheese.com-v3 のモダンデザインシステム
 
-// Ensure Japanese fonts are loaded for fallback
+// フォールバック用の日本語フォントを読み込み
 @font-face {
   font-family: 'System Japanese';
   src: local('Noto Sans CJK JP'),
@@ -14,16 +12,16 @@
   font-display: block;
 }
 
-// Design tokens
+// デザイントークン
 :root {
-  // Colors - Modern palette
+  // カラー - モダンパレット
   --color-primary: #0ea5e9;
   --color-primary-light: #38bdf8;
   --color-primary-dark: #0284c7;
   --color-secondary: #8b5cf6;
   --color-accent: #f59e0b;
 
-  // Neutral colors
+  // ニュートラルカラー
   --color-white: #ffffff;
   --color-gray-50: #f8fafc;
   --color-gray-100: #f1f5f9;
@@ -36,13 +34,13 @@
   --color-gray-800: #1e293b;
   --color-gray-900: #0f172a;
 
-  // Semantic colors
+  // セマンティックカラー
   --color-success: #22c55e;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-yellow-400: #facc15;
 
-  // Theme variables
+  // テーマ変数
   --color-text-primary: var(--color-gray-900);
   --color-text-secondary: var(--color-gray-600);
   --color-text-muted: var(--color-gray-400);
@@ -52,7 +50,7 @@
   --color-maincolor: var(--color-gray-900);
   --color-archive-title: #ff8f00;
 
-  // Spacing scale
+  // スペーシングスケール
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -66,7 +64,7 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  // Typography scale
+  // タイポグラフィスケール
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -78,14 +76,14 @@
   --text-5xl: 3rem;
   --text-6xl: 3.75rem;
 
-  // Border radius
+  // ボーダー半径
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
 
-  // Shadows
+  // シャドウ
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg:
@@ -93,13 +91,13 @@
   --shadow-xl:
     0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
-  // Transitions
+  // トランジション
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// Dark theme
+// ダークテーマ
 .dark-theme {
   --color-text-primary: var(--color-gray-100);
   --color-text-secondary: var(--color-gray-300);
@@ -110,7 +108,7 @@
   --color-maincolor: var(--color-gray-100);
 }
 
-// Reset and base styles
+// リセットとベーススタイル
 * {
   margin: 0;
   padding: 0;
@@ -225,7 +223,7 @@ a {
   }
 }
 
-// Layout utilities
+// レイアウトユーティリティ
 .container {
   max-width: 1200px;
   margin: 0 auto;
