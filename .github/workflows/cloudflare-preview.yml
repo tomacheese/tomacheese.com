@@ -1,0 +1,106 @@
+name: Deploy Preview to Cloudflare Pages
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+      - master
+
+concurrency:
+  group: cloudflare-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    if: github.event.action != 'closed'
+    
+    steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🏗 Setup node env
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+
+      - name: 👨🏻‍💻 Install dependencies
+        run: pnpm install
+
+      - name: 🏗️ Nuxt build
+        run: pnpm build
+
+      - name: 🏭 Nuxt generate
+        run: pnpm generate
+
+      - name: 🚀 Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .output/public --project-name=tomacheese-com-preview --branch=pr-${{ github.event.pull_request.number }} --compatibility-date=2024-11-01
+
+      - name: 💬 Comment Preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const branchName = `pr-${prNumber}`;
+            const deploymentUrl = `https://${branchName}.tomacheese-com-preview.pages.dev`;
+            
+            // First, try to find existing comments from this workflow
+            const comments = await github.rest.issues.listComments({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            
+            const existingComment = comments.data.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('🚀 Preview deployment is ready!')
+            );
+            
+            const commentBody = `🚀 Preview deployment is ready!\n\n**Preview URL:** ${deploymentUrl}\n\n_This preview will be updated when new commits are pushed._`;
+            
+            if (existingComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                comment_id: existingComment.id,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: commentBody
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: commentBody
+              });
+            }
+
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'closed'
+    
+    steps:
+      - name: 💬 Comment Cleanup
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🧹 Preview deployment has been cleaned up as the PR was closed.\n\n_Note: Cloudflare Pages automatically manages preview deployments and will clean up unused branches._`
+            });
