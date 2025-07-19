@@ -47,6 +47,7 @@
 - ag COTSUBU for ASMR MK2購入: 2025/07/11
 - CORSAIR DDR4-3200MHz 16GB x 2購入: 2025/07/11
 - Logicool KEYS TO GO 2購入: 2025/07/11
+- Sony WH-CH720N購入: 2025/07/13
 
 ## メインPC (ICHIGO)
 
@@ -312,6 +313,11 @@
   - 購入価格: 24,433円（+5年保証 1,225円）
   - 購入日: 2023/05/03
   - [Amazon](https://www.amazon.co.jp/dp/B095SLJHDH)
+- Sony WH-CH720N
+  - ステータス: 使用中
+  - 購入価格: 14,980円
+  - 購入日: 2025/07/13
+  - [Amazon](https://www.amazon.co.jp/dp/B0BVPNJP1C)
 - ~~Sony WI-C600N ブラック~~
   - ステータス: 破損（温度計測系が壊れたようで充電できなくなった）
   - 購入価格: 12,700円
