@@ -79,8 +79,9 @@
       <p v-if="device.warranty"><strong>保証:</strong> {{ device.warranty }}</p>
       <p v-if="device.totalPrice"><strong>総額:</strong> {{ device.totalPrice }}</p>
       <p v-if="device.purchaseInfo"><strong>購入情報:</strong> {{ device.purchaseInfo }}</p>
-      <p v-if="device.contractDate"><strong>契約日:</strong> {{ device.contractDate }}</p>
-      <p v-if="device.provider"><strong>プロバイダー:</strong> {{ device.provider }}</p>
+      <p v-for="(value, key) in device.extra" :key="key">
+        <strong>{{ key }}:</strong> {{ typeof value === 'number' ? formatPrice(value) : value }}
+      </p>
       <p v-if="device.notes">{{ device.notes }}</p>
       <p v-if="device.related">{{ device.related }}</p>
       <p v-if="device.referralNote">{{ device.referralNote }}</p>
@@ -343,7 +344,6 @@ defineProps<Props>()
 }
 
 .unused {
-  text-decoration: line-through;
   opacity: 0.6;
 }
 

@@ -694,8 +694,10 @@
         "RAM: 1GB",
         "Storage: 100GB SSD"
       ],
-      "contractDate": "2018/04/08",
-      "provider": "ConoHa",
+      "extra": {
+        "契約日": "2018/04/08",
+        "プロバイダー": "ConoHa"
+      },
       "referralNote": "ここから踏んでもらえると、2,000円分ConoHaのサービスを利用された場合に私に2,000円のクーポンが入るらしい？"
     },
     "vpsOther": {
