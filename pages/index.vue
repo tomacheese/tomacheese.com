@@ -17,23 +17,40 @@
 
 <script setup lang="ts">
 // データの読み込み
-let details = []
-let timelines = []
-let loadError = false
+const details = ref([])
+const timelines = ref([])
+const loadError = ref(false)
 
-try {
-  const detailsData = await $fetch('/top-details.json')
-  const timelinesData = await $fetch('/top-timelines.json')
+// データ読み込み関数
+const loadData = async () => {
+  const [detailsResult, timelinesResult] = await Promise.allSettled([
+    $fetch('/top-details.json'),
+    $fetch('/top-timelines.json')
+  ])
   
-  details = detailsData?.body || []
-  timelines = timelinesData?.body || []
-} catch (error) {
-  console.warn('Failed to load top page data:', error)
-  loadError = true
-  // Set empty arrays as fallback
-  details = []
-  timelines = []
+  // 個別の結果を処理
+  if (detailsResult.status === 'fulfilled') {
+    details.value = detailsResult.value?.body || []
+  } else {
+    console.warn('Failed to load details data:', detailsResult.reason)
+    details.value = []
+  }
+  
+  if (timelinesResult.status === 'fulfilled') {
+    timelines.value = timelinesResult.value?.body || []
+  } else {
+    console.warn('Failed to load timelines data:', timelinesResult.reason)
+    timelines.value = []
+  }
+  
+  // 両方とも失敗した場合のみエラー状態に設定
+  loadError.value = detailsResult.status === 'rejected' && timelinesResult.status === 'rejected'
 }
+
+// クライアントサイドでデータ読み込み
+onMounted(() => {
+  loadData()
+})
 
 // SEO
 useSeoMeta({
@@ -56,18 +73,19 @@ useSeoMeta({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
 
   h1 {
     font-size: 64px;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 16px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: white !important;
   }
 
   p {
     font-size: 18px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    color: white !important;
   }
 }
 
