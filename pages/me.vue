@@ -25,32 +25,25 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-let slug = route.params.slug as string | string[]
+// Debug: query all content to see what's available
+const { data: allContent } = await useAsyncData('debug-all', () => queryContent().find())
+console.log('All available content:', allContent.value?.map((item: any) => ({ _path: item._path, title: item.title })))
 
-// Handle slug array (catch-all route)
-if (Array.isArray(slug)) {
-  slug = slug.join('/')
-}
+// Try to find the me content
+const { data: article } = await useAsyncData('me', () => queryContent('me').findOne())
+console.log('Me article result:', article.value)
 
-// Handle special slug mappings (from original site)
-if (slug === 'pc') slug = 'devices'
-
-// Try to find content
-let article: any = null
-
-try {
-  article = await queryContent(slug).findOne()
-} catch {
+if (!article.value) {
+  console.log('Article not found, available paths:', allContent.value?.map((item: any) => item._path))
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
 // SEO
 useSeoMeta({
-  title: `${article.title} - Tomachi Site`,
-  description: article.description || `${article.title}についてのページ`,
-  ogTitle: article.title,
-  ogDescription: article.description || `${article.title}についてのページ`,
+  title: `${article.value.title} - Tomachi Site`,
+  description: article.value.description || `${article.value.title}についてのページ`,
+  ogTitle: article.value.title,
+  ogDescription: article.value.description || `${article.value.title}についてのページ`,
   ogType: 'article',
 })
 </script>
@@ -83,14 +76,6 @@ useSeoMeta({
   @media (max-width: 768px) {
     font-size: var(--text-4xl);
   }
-}
-
-.page-description {
-  font-size: var(--text-xl);
-  color: var(--color-text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
 }
 
 .content-layout {
