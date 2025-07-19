@@ -11,6 +11,10 @@ concurrency:
   group: cloudflare-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
@@ -50,9 +54,13 @@ jobs:
       - name: 💬 Comment Preview URL
         if: success()
         uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
         with:
           script: |
-            const prNumber = context.payload.pull_request.number;
+            const prNumber = parseInt(process.env.PR_NUMBER);
+            const commitSha = process.env.COMMIT_SHA;
             const branchName = `pr-${prNumber}`;
             const deploymentUrl = `https://${branchName}.tomacheese-com-preview.pages.dev`;
             
@@ -68,7 +76,7 @@ jobs:
               comment.body.includes('🚀 Preview deployment is ready!')
             );
             
-            const commentBody = `🚀 Preview deployment is ready!\n\n**Preview URL:** ${deploymentUrl}\n\n_This preview will be updated when new commits are pushed._\n\n---\n\n_Deployed from commit: ${context.sha.slice(0, 7)}_`;
+            const commentBody = `🚀 Preview deployment is ready!\n\n**Preview URL:** ${deploymentUrl}\n\n_This preview will be updated when new commits are pushed._\n\n---\n\n_Deployed from commit: ${commitSha.slice(0, 7)}_`;
             
             if (existingComment) {
               // Update existing comment
@@ -91,27 +99,39 @@ jobs:
       - name: 💬 Comment Deployment Failure
         if: failure()
         uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SERVER_URL: ${{ github.server_url }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
         with:
           script: |
-            const prNumber = context.payload.pull_request.number;
+            const prNumber = parseInt(process.env.PR_NUMBER);
+            const serverUrl = process.env.SERVER_URL;
+            const repository = process.env.REPOSITORY;
+            const runId = process.env.RUN_ID;
             
             github.rest.issues.createComment({
               issue_number: prNumber,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `❌ Preview deployment failed!\n\nPlease check the [workflow run](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.\n\n_You may need to configure Cloudflare Pages project and GitHub secrets._`
+              body: `❌ Preview deployment failed!\n\nPlease check the [workflow run](${serverUrl}/${repository}/actions/runs/${runId}) for details.\n\n_You may need to configure Cloudflare Pages project and GitHub secrets._`
             });
 
   cleanup-preview:
     runs-on: ubuntu-latest
     if: github.event.action == 'closed'
+    permissions:
+      pull-requests: write
     
     steps:
       - name: 💬 Comment Cleanup
         uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         with:
           script: |
-            const prNumber = context.payload.pull_request.number;
+            const prNumber = parseInt(process.env.PR_NUMBER);
             
             github.rest.issues.createComment({
               issue_number: prNumber,
