@@ -36,26 +36,18 @@ if (Array.isArray(slug)) {
 // Handle special slug mappings (from original site)
 if (slug === 'pc') slug = 'devices'
 
-console.log(`[DEBUG] Looking for content: pages/${slug}`)
-
-// Use Nuxt Content v2 syntax which should work with Nuxt 3
+// Use Nuxt Content v2 syntax
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
   try {
-    console.log(`[DEBUG] Fetching with $content: pages/${slug}`)
-    const result = await $content(`pages/${slug}`).fetch()
-    console.log(`[DEBUG] Result:`, result ? result.title : 'Not found')
+    const result = await queryContent('pages', slug).findOne()
     return result
   } catch (err) {
-    console.error(`[DEBUG] Error:`, err)
+    console.error(`[Content] Error fetching content for ${slug}:`, err)
     return null
   }
 })
 
-console.log(`[DEBUG] Article data:`, article.value ? article.value.title : 'No article')
-console.log(`[DEBUG] Error:`, error.value)
-
 if (error.value || !article.value) {
-  console.log(`[DEBUG] Throwing 404 for: ${slug}`)
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
 
