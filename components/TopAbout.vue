@@ -177,7 +177,8 @@ defineProps<Props>()
 }
 
 .dark-theme .timeline-content {
-  background-color: rgba(25, 118, 210, 0.1);
+  background-color: rgba(25, 118, 210, 0.2);
+  border-color: var(--color-primary);
 }
 
 .timeline-date {
