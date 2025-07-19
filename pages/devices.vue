@@ -16,29 +16,98 @@
             <section v-if="devicesData?.overview">
               <h2>{{ devicesData.overview.title }}</h2>
               <ul>
-                <li v-for="item in devicesData.overview.history" :key="item">
-                  {{ item }}
+                <li v-for="item in devicesData.overview.history" :key="`${item.date}-${item.description}`">
+                  {{ item.description }}: {{ item.date }}
                 </li>
               </ul>
             </section>
 
-            <!-- メインPCセクション -->
-            <section v-if="devicesData?.devices?.mainPc">
-              <h2>{{ devicesData.devices.mainPc.title }}</h2>
-              <p>{{ devicesData.devices.mainPc.description }}</p>
-              
-              <h3>簡潔に</h3>
-              <ul>
-                <li v-for="item in devicesData.devices.mainPc.summary" :key="item">
-                  {{ item }}
-                </li>
-              </ul>
-            </section>
+            <!-- デバイスセクション -->
+            <template v-if="devicesData?.devices">
+              <!-- メインPC -->
+              <DeviceSection 
+                v-if="devicesData.devices.mainPc"
+                :device="devicesData.devices.mainPc"
+                device-type="mainPc"
+              />
 
-            <!-- TODO: 詳細コンポーネントも順次追加 -->
-            <div class="placeholder-notice">
-              <p>内容品などの詳細なデバイス情報も順次移行予定</p>
-            </div>
+              <!-- ノートPC -->
+              <DeviceSection 
+                v-if="devicesData.devices.notebookPc"
+                :device="devicesData.devices.notebookPc"
+                device-type="notebookPc"
+              />
+
+              <!-- サブPC (Banana) -->
+              <DeviceSection 
+                v-if="devicesData.devices.subPcBanana"
+                :device="devicesData.devices.subPcBanana"
+                device-type="subPcBanana"
+              />
+
+              <!-- サブPC (CHOCO) -->
+              <DeviceSection 
+                v-if="devicesData.devices.subPcChoco"
+                :device="devicesData.devices.subPcChoco"
+                device-type="subPcChoco"
+              />
+
+              <!-- 自宅サーバ -->
+              <DeviceSection 
+                v-if="devicesData.devices.homeServer"
+                :device="devicesData.devices.homeServer"
+                device-type="homeServer"
+              />
+
+              <!-- ConoHa VPS Server (Comet) -->
+              <DeviceSection 
+                v-if="devicesData.devices.vpsComet"
+                :device="devicesData.devices.vpsComet"
+                device-type="vpsComet"
+              />
+
+              <!-- ConoHa VPS Server -->
+              <DeviceSection 
+                v-if="devicesData.devices.vpsOther"
+                :device="devicesData.devices.vpsOther"
+                device-type="vpsOther"
+              />
+
+              <!-- Raspberry Pi (TomaPi) -->
+              <DeviceSection 
+                v-if="devicesData.devices.raspberryPiTomaPi"
+                :device="devicesData.devices.raspberryPiTomaPi"
+                device-type="raspberryPiTomaPi"
+              />
+
+              <!-- Raspberry Pi (Orange) -->
+              <DeviceSection 
+                v-if="devicesData.devices.raspberryPiOrange"
+                :device="devicesData.devices.raspberryPiOrange"
+                device-type="raspberryPiOrange"
+              />
+
+              <!-- モバイルデバイス -->
+              <DeviceSection 
+                v-if="devicesData.devices.mobileDevices"
+                :device="devicesData.devices.mobileDevices"
+                device-type="mobileDevices"
+              />
+
+              <!-- スマートウォッチ -->
+              <DeviceSection 
+                v-if="devicesData.devices.smartWatches"
+                :device="devicesData.devices.smartWatches"
+                device-type="smartWatches"
+              />
+
+              <!-- その他デバイス -->
+              <DeviceSection 
+                v-if="devicesData.devices.otherDevices"
+                :device="devicesData.devices.otherDevices"
+                device-type="otherDevices"
+              />
+            </template>
           </article>
         </main>
 

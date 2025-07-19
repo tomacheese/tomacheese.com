@@ -38,7 +38,7 @@ if (slug === 'pc') slug = 'devices'
 
 // Redirect devices to the dedicated static page
 if (slug === 'devices') {
-  throw createError({ statusCode: 404, statusMessage: 'Page moved to /devices' })
+  await navigateTo('/devices', { redirectCode: 301 })
 }
 
 // Use Nuxt Content v2 syntax with improved error handling for SSG
