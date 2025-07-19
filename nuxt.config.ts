@@ -127,6 +127,9 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false
     },
+    cloudflare: {
+      // Initialize cloudflare config to prevent undefined access in preset
+    },
   },
 
   ssr: true,
