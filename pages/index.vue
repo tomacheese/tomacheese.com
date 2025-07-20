@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import { logger } from '~/utils/logger'
+
 // データの読み込み
 interface ApiResponse<T> {
   body?: T
@@ -50,14 +52,14 @@ const loadData = async () => {
   if (detailsResult.status === 'fulfilled') {
     details.value = (detailsResult.value as ApiResponse<Detail[]>)?.body || []
   } else {
-    console.warn('Failed to load details data:', detailsResult.reason)
+    logger.warn('Failed to load details data', detailsResult.reason)
     details.value = []
   }
   
   if (timelinesResult.status === 'fulfilled') {
     timelines.value = (timelinesResult.value as ApiResponse<Timeline[]>)?.body || []
   } else {
-    console.warn('Failed to load timelines data:', timelinesResult.reason)
+    logger.warn('Failed to load timelines data', timelinesResult.reason)
     timelines.value = []
   }
   
