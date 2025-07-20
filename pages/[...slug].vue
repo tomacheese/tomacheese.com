@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { isValidArticle } from '~/utils/validation'
+import { logger } from '~/utils/logger'
 
 const route = useRoute()
 let slug = route.params.slug as string | string[]
@@ -55,7 +56,7 @@ const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async
     
     return null
   } catch (err) {
-    console.error(`[Content] Error fetching content for ${slug}:`, err)
+    logger.error(`Content: Error fetching content for ${slug}`, err)
     return null
   }
 })

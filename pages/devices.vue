@@ -120,13 +120,15 @@
 </template>
 
 <script setup lang="ts">
+import { logger } from '~/utils/logger'
+
 // JSONファイルからデバイスデータを読み込み
 const { data: devicesData, error } = await useLazyAsyncData('devices', async () => {
   try {
     const result = await $fetch('/api/devices')
     return result
   } catch (err) {
-    console.error('[Devices] Error fetching devices data:', err)
+    logger.error('Devices: Error fetching devices data', err)
     return null
   }
 })

@@ -1,3 +1,5 @@
+import { logger } from './utils/logger'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -133,13 +135,13 @@ export default defineNuxtConfig({
             nitroConfig.prerender.routes.push(...newRoutes)
           }
           
-          console.log('[Nuxt] Detected content pages:', routes)
+          logger.info('Nuxt: Detected content pages', routes)
         } else {
-          console.warn('[Nuxt] Content pages directory not found, using fallback routes')
+          logger.warn('Nuxt: Content pages directory not found, using fallback routes')
         }
       } catch (error) {
-        console.error('[Nuxt] Error reading content directory:', error)
-        console.log('[Nuxt] Using fallback routes only')
+        logger.error('Nuxt: Error reading content directory', error)
+        logger.info('Nuxt: Using fallback routes only')
       }
     }
   },
