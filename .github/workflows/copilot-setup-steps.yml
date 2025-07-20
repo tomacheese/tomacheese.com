@@ -1,6 +1,7 @@
+---
 name: "Copilot Setup Steps"
 
-on:
+"on":
   workflow_dispatch:
   push:
     paths:
@@ -28,11 +29,11 @@ jobs:
             fonts-ipafont \
             fonts-ipaexfont \
             locales
-          
+
           # Configure UTF-8 Japanese locale
           sudo locale-gen ja_JP.UTF-8
-          echo "LANG=ja_JP.UTF-8" | sudo tee -a /etc/environment
-          echo "LC_ALL=ja_JP.UTF-8" | sudo tee -a /etc/environment
+          echo "LANG=ja_JP.UTF-8" >> $GITHUB_ENV
+          echo "LC_ALL=ja_JP.UTF-8" >> $GITHUB_ENV
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -53,5 +54,17 @@ jobs:
       - name: Verify Japanese fonts installation
         run: |
           echo "📝 Checking installed Japanese fonts..."
-          fc-list :lang=ja | head -10
-          echo "✅ Japanese fonts verification completed"
+          total_fonts=$(fc-list :lang=ja | wc -l)
+          echo "Total Japanese fonts installed: $total_fonts"
+          if fc-list :lang=ja | grep -q "Noto Sans CJK"; then
+            echo "✅ 'Noto Sans CJK' font is installed."
+          else
+            echo "❌ 'Noto Sans CJK' font is missing."
+            exit 1
+          fi
+          if fc-list :lang=ja | grep -q "IPAexMincho"; then
+            echo "✅ 'IPAexMincho' font is installed."
+          else
+            echo "❌ 'IPAexMincho' font is missing."
+            exit 1
+          fi
