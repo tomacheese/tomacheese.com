@@ -9,7 +9,7 @@ export const logger = {
    * @param data - Optional additional data to log
    */
   info: (message: string, data?: unknown) => {
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.dev) {
       if (data !== undefined) {
         // eslint-disable-next-line no-console
         console.log(`[INFO] ${message}`, data)
@@ -26,7 +26,7 @@ export const logger = {
    * @param data - Optional additional data to log
    */
   warn: (message: string, data?: unknown) => {
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.dev) {
       if (data !== undefined) {
         console.warn(`[WARN] ${message}`, data)
       } else {

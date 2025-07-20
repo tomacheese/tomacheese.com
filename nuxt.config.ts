@@ -137,7 +137,7 @@ export default defineNuxtConfig({
           
           logger.info('Nuxt: Detected content pages', routes)
         } else {
-          logger.error('Nuxt: Content pages directory not found, using fallback routes')
+          logger.warn('Nuxt: Content pages directory not found, using fallback routes')
         }
       } catch (error) {
         logger.error('Nuxt: Error reading content directory', error)
