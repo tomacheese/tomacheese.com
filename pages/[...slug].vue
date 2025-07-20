@@ -25,6 +25,8 @@
 </template>
 
 <script setup lang="ts">
+import { isValidArticle } from '~/utils/validation'
+
 const route = useRoute()
 let slug = route.params.slug as string | string[]
 
@@ -47,7 +49,7 @@ const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async
     // Query by path using the correct field name
     const result = await queryCollection('content').where('path', '=', `/pages/${slug}`).first()
     
-    if (result && result.title) {
+    if (isValidArticle(result)) {
       return result
     }
     
