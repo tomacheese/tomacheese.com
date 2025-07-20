@@ -90,6 +90,17 @@ export default defineNuxtConfig({
     // Content configuration
   },
 
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['better-sqlite3', '@sqlite.org/sqlite-wasm'],
+      },
+    },
+    optimizeDeps: {
+      exclude: ['better-sqlite3', '@sqlite.org/sqlite-wasm'],
+    },
+  },
+
   fonts: {
     // Fonts configuration will be auto-detected from CSS
   },
