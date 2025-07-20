@@ -126,7 +126,6 @@ const { data: devicesData, error } = await useLazyAsyncData('devices', async () 
     const result = await $fetch('/api/devices')
     return result
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error('[Devices] Error fetching devices data:', err)
     return null
   }

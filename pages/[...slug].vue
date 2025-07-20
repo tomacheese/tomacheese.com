@@ -55,7 +55,6 @@ const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async
     
     return null
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(`[Content] Error fetching content for ${slug}:`, err)
     return null
   }

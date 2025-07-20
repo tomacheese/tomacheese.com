@@ -32,7 +32,6 @@ const loadData = async () => {
   if (detailsResult.status === 'fulfilled') {
     details.value = detailsResult.value?.body || []
   } else {
-    // eslint-disable-next-line no-console
     console.warn('Failed to load details data:', detailsResult.reason)
     details.value = []
   }
@@ -40,7 +39,6 @@ const loadData = async () => {
   if (timelinesResult.status === 'fulfilled') {
     timelines.value = timelinesResult.value?.body || []
   } else {
-    // eslint-disable-next-line no-console
     console.warn('Failed to load timelines data:', timelinesResult.reason)
     timelines.value = []
   }

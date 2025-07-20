@@ -143,16 +143,12 @@ export default defineNuxtConfig({
             nitroConfig.prerender.routes.push(...newRoutes)
           }
           
-          // eslint-disable-next-line no-console
           console.log('[Nuxt] Detected content pages:', routes)
         } else {
-          // eslint-disable-next-line no-console
           console.warn('[Nuxt] Content pages directory not found, using fallback routes')
         }
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error('[Nuxt] Error reading content directory:', error)
-        // eslint-disable-next-line no-console
         console.log('[Nuxt] Using fallback routes only')
       }
     }
