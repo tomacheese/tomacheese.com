@@ -102,10 +102,10 @@
     <!-- モバイルデバイス -->
     <template v-else-if="deviceType === 'mobileDevices'">
       <ul v-if="device.devices">
-        <li v-for="mobile in device.devices" :key="mobile.name">
-          {{ mobile.name }}
-          <span v-if="mobile.notes"> {{ mobile.notes }}</span>
-          <span v-if="mobile.purchaseDate"> {{ mobile.purchaseDate }}購入</span>
+        <li v-for="mobile in (device.devices as any[])" :key="(mobile as any).name">
+          {{ (mobile as any).name }}
+          <span v-if="(mobile as any).notes"> {{ (mobile as any).notes }}</span>
+          <span v-if="(mobile as any).purchaseDate"> {{ (mobile as any).purchaseDate }}購入</span>
         </li>
       </ul>
     </template>
@@ -113,17 +113,17 @@
     <!-- スマートウォッチ -->
     <template v-else-if="deviceType === 'smartWatches'">
       <ul v-if="device.devices">
-        <li v-for="watch in device.devices" :key="watch.name" class="smartwatch-item">
+        <li v-for="watch in (device.devices as any[])" :key="(watch as any).name" class="smartwatch-item">
           <div class="device-header">
-            <span class="device-name">{{ watch.name }}</span>
+            <span class="device-name">{{ (watch as any).name }}</span>
           </div>
           <div class="device-details">
-            <span class="device-price">{{ formatPrice(watch.price) }}</span>
-            <span class="device-date">{{ watch.purchaseDate }}購入</span>
+            <span class="device-price">{{ formatPrice((watch as any).price) }}</span>
+            <span class="device-date">{{ (watch as any).purchaseDate }}購入</span>
           </div>
-          <div v-if="watch.links && watch.links.length > 0" class="device-links">
+          <div v-if="(watch as any).links && (watch as any).links.length > 0" class="device-links">
             <a 
-              v-for="(link, linkIndex) in watch.links" 
+              v-for="(link, linkIndex) in (watch as any).links" 
               :key="linkIndex"
               :href="link.url"
               target="_blank"
@@ -140,7 +140,7 @@
     <!-- その他デバイス -->
     <template v-else-if="deviceType === 'otherDevices'">
       <ul v-if="device.devices">
-        <li v-for="other in device.devices" :key="other">
+        <li v-for="(other, index) in (device.devices as any[])" :key="index">
           {{ other }}
         </li>
       </ul>

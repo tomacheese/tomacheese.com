@@ -17,8 +17,21 @@
 
 <script setup lang="ts">
 // データの読み込み
-const details = ref([])
-const timelines = ref([])
+interface Detail {
+  id: string
+  icon: string
+  text: string
+}
+
+interface Timeline {
+  icon: string
+  date: string
+  text: string
+  color?: string
+}
+
+const details = ref<Detail[]>([])
+const timelines = ref<Timeline[]>([])
 const loadError = ref(false)
 
 // データ読み込み関数
@@ -30,14 +43,14 @@ const loadData = async () => {
   
   // 個別の結果を処理
   if (detailsResult.status === 'fulfilled') {
-    details.value = detailsResult.value?.body || []
+    details.value = (detailsResult.value as { body?: Detail[] })?.body || []
   } else {
     console.warn('Failed to load details data:', detailsResult.reason)
     details.value = []
   }
   
   if (timelinesResult.status === 'fulfilled') {
-    timelines.value = timelinesResult.value?.body || []
+    timelines.value = (timelinesResult.value as { body?: Timeline[] })?.body || []
   } else {
     console.warn('Failed to load timelines data:', timelinesResult.reason)
     timelines.value = []
