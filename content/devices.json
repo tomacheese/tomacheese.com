@@ -3,54 +3,102 @@
   "overview": {
     "title": "概要",
     "history": [
-      {"date": "2016-03-11", "description": "メインPC購入"},
-      {"date": "2017-03-06", "description": "サブディスプレイ購入"},
-      {"date": "2017-12-31", "description": "SSD購入"},
-      {"date": "2018-04-29", "description": "マウス買い替え"},
-      {"date": "2018-10-12", "description": "スマホ買い替え(充電口破損): Zenfone 3 Max → Zenfone 3 Zoom S"},
-      {"date": "2019-02-04", "description": "スマホ買い替え(画面破損): Zenfone 3 Zoom S → Zenfone 3 Zoom S"},
-      {"date": "2019-03-12", "description": "Amazon Echo購入"},
-      {"date": "2019-03-23", "description": "ノートPC購入"},
-      {"date": "2019-05-30", "description": "スマホ変更(画面ヒビ・親からの譲り受け): Zenfone 3 Zoom S → Galaxy Feel SC-04J"},
-      {"date": "2019-07-15", "description": "スマートウォッチ1代目購入"},
-      {"date": "2019-08-13", "description": "メインPCメモリ増設"},
-      {"date": "2019-09-24", "description": "スマートウォッチ2代目購入"},
-      {"date": "2019-09-28", "description": "SSD購入(クリーンインストール)"},
-      {"date": "2019-10-14", "description": "ローカル鯖クリーンインストール"},
-      {"date": "2019-12-08", "description": "スマホ購入・変更: Galaxy Feel SC-04J → SHARP AQUOS sense3 SH-M12"},
-      {"date": "2020-03-10", "description": "CPU・GPU・マザボ・CPUファン購入"},
-      {"date": "2020-04-23", "description": "ヘッドセット新規購入"},
-      {"date": "2020-06-23", "description": "iPad Air 3購入"},
-      {"date": "2020-09-14", "description": "Sony WI-C600Nイヤホン購入"},
-      {"date": "2020-09-19", "description": "Logicool G502 HEROマウス購入"},
-      {"date": "2020-10-10", "description": "Sony WI-C600Nイヤホン交換"},
-      {"date": "2020-11-16", "description": "AQUOS sense3を親に・Pixel 3aを親から譲り受け"},
-      {"date": "2020-12-17", "description": "Raspberry Pi 4を購入"},
-      {"date": "2020-12-19", "description": "メインPCのブートSSDとHDDを入れ替え"},
-      {"date": "2021-01-25", "description": "メインPCのメインディスプレイを買い替え"},
-      {"date": "2021-05-11", "description": "キーボード買い換え"},
-      {"date": "2021-06-21", "description": "キャプボ購入"},
-      {"date": "2021-10-31", "description": "スマートウォッチ Xiaomi Mi Watch 購入"},
-      {"date": "2022-04-24", "description": "スタンドマイク ATR2100x-USB購入"},
-      {"date": "2022-05-06", "description": "OSクリーンインストール"},
-      {"date": "2022-05-28", "description": "メインPCのCPU・マザボ・M.2 SSD購入"},
-      {"date": "2022-07-05", "description": "メインPCの電源ユニット・RAM購入"},
-      {"date": "2022-07-11", "description": "鯖機(Nuts) 組み上げ"},
-      {"date": "2022-12-17", "description": "Google Pixel 6a 購入"},
-      {"date": "2023-05-03", "description": "Sony XF-1000XM4 購入"},
-      {"date": "2023-10-14", "description": "ディスプレイ MSI MAG 274UPF 購入"},
-      {"date": "2023-11-26", "description": "Google Pixel 7aを親から譲り受け"},
-      {"date": "2024-05-01", "description": "GeForce RTX 4070 Ti SUPER購入"},
-      {"date": "2024-05-18", "description": "Google Pixel 8a購入"},
-      {"date": "2024-08-14", "description": "メインPCのブートSSDとHDDを入れ替え"},
-      {"date": "2024-08-21", "description": "iPad Air 6購入"},
-      {"date": "2024-10-23", "description": "エレコム UCAM-CF20FBBK購入"},
-      {"date": "2024-11-23", "description": "LinkBuds Fit WF-LS910N W購入"},
-      {"date": "2024-12-16", "description": "CooSpo 心拍計アームバンド 購入"},
-      {"date": "2025-07-11", "description": "ag COTSUBU for ASMR MK2購入"},
-      {"date": "2025-07-11", "description": "CORSAIR DDR4-3200MHz 16GB x 2購入"},
-      {"date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入"},
-      {"date": "2025-07-13", "description": "Sony WH-CH720N購入"}
+      { "date": "2016-03-11", "description": "メインPC購入" },
+      { "date": "2017-03-06", "description": "サブディスプレイ購入" },
+      { "date": "2017-12-31", "description": "SSD購入" },
+      { "date": "2018-04-29", "description": "マウス買い替え" },
+      {
+        "date": "2018-10-12",
+        "description": "スマホ買い替え(充電口破損): Zenfone 3 Max → Zenfone 3 Zoom S"
+      },
+      {
+        "date": "2019-02-04",
+        "description": "スマホ買い替え(画面破損): Zenfone 3 Zoom S → Zenfone 3 Zoom S"
+      },
+      { "date": "2019-03-12", "description": "Amazon Echo購入" },
+      { "date": "2019-03-23", "description": "ノートPC購入" },
+      {
+        "date": "2019-05-30",
+        "description": "スマホ変更(画面ヒビ・親からの譲り受け): Zenfone 3 Zoom S → Galaxy Feel SC-04J"
+      },
+      { "date": "2019-07-15", "description": "スマートウォッチ1代目購入" },
+      { "date": "2019-08-13", "description": "メインPCメモリ増設" },
+      { "date": "2019-09-24", "description": "スマートウォッチ2代目購入" },
+      { "date": "2019-09-28", "description": "SSD購入(クリーンインストール)" },
+      { "date": "2019-10-14", "description": "ローカル鯖クリーンインストール" },
+      {
+        "date": "2019-12-08",
+        "description": "スマホ購入・変更: Galaxy Feel SC-04J → SHARP AQUOS sense3 SH-M12"
+      },
+      {
+        "date": "2020-03-10",
+        "description": "CPU・GPU・マザボ・CPUファン購入"
+      },
+      { "date": "2020-04-23", "description": "ヘッドセット新規購入" },
+      { "date": "2020-06-23", "description": "iPad Air 3購入" },
+      { "date": "2020-09-14", "description": "Sony WI-C600Nイヤホン購入" },
+      { "date": "2020-09-19", "description": "Logicool G502 HEROマウス購入" },
+      { "date": "2020-10-10", "description": "Sony WI-C600Nイヤホン交換" },
+      {
+        "date": "2020-11-16",
+        "description": "AQUOS sense3を親に・Pixel 3aを親から譲り受け"
+      },
+      { "date": "2020-12-17", "description": "Raspberry Pi 4を購入" },
+      {
+        "date": "2020-12-19",
+        "description": "メインPCのブートSSDとHDDを入れ替え"
+      },
+      {
+        "date": "2021-01-25",
+        "description": "メインPCのメインディスプレイを買い替え"
+      },
+      { "date": "2021-05-11", "description": "キーボード買い換え" },
+      { "date": "2021-06-21", "description": "キャプボ購入" },
+      {
+        "date": "2021-10-31",
+        "description": "スマートウォッチ Xiaomi Mi Watch 購入"
+      },
+      {
+        "date": "2022-04-24",
+        "description": "スタンドマイク ATR2100x-USB購入"
+      },
+      { "date": "2022-05-06", "description": "OSクリーンインストール" },
+      {
+        "date": "2022-05-28",
+        "description": "メインPCのCPU・マザボ・M.2 SSD購入"
+      },
+      {
+        "date": "2022-07-05",
+        "description": "メインPCの電源ユニット・RAM購入"
+      },
+      { "date": "2022-07-11", "description": "鯖機(Nuts) 組み上げ" },
+      { "date": "2022-12-17", "description": "Google Pixel 6a 購入" },
+      { "date": "2023-05-03", "description": "Sony XF-1000XM4 購入" },
+      {
+        "date": "2023-10-14",
+        "description": "ディスプレイ MSI MAG 274UPF 購入"
+      },
+      {
+        "date": "2023-11-26",
+        "description": "Google Pixel 7aを親から譲り受け"
+      },
+      { "date": "2024-05-01", "description": "GeForce RTX 4070 Ti SUPER購入" },
+      { "date": "2024-05-18", "description": "Google Pixel 8a購入" },
+      {
+        "date": "2024-08-14",
+        "description": "メインPCのブートSSDとHDDを入れ替え"
+      },
+      { "date": "2024-08-21", "description": "iPad Air 6購入" },
+      { "date": "2024-10-23", "description": "エレコム UCAM-CF20FBBK購入" },
+      { "date": "2024-11-23", "description": "LinkBuds Fit WF-LS910N W購入" },
+      { "date": "2024-12-16", "description": "CooSpo 心拍計アームバンド 購入" },
+      { "date": "2025-07-11", "description": "ag COTSUBU for ASMR MK2購入" },
+      {
+        "date": "2025-07-11",
+        "description": "CORSAIR DDR4-3200MHz 16GB x 2購入"
+      },
+      { "date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入" },
+      { "date": "2025-07-13", "description": "Sony WH-CH720N購入" }
     ]
   },
   "devices": {
@@ -93,8 +141,14 @@
                   "purchaseDate": "2022-05-28",
                   "notes": "ドスパラ店舗で購入",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08164VTWH"},
-                    {"name": "Dospara", "url": "https://www.dospara.co.jp/5shopping/detail_parts.php?ic=469250"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B08164VTWH"
+                    },
+                    {
+                      "name": "Dospara",
+                      "url": "https://www.dospara.co.jp/5shopping/detail_parts.php?ic=469250"
+                    }
                   ]
                 },
                 {
@@ -103,7 +157,10 @@
                   "price": 46900,
                   "purchaseDate": "2020-03-04",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07HHN6KBZ"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B07HHN6KBZ"
+                    }
                   ]
                 },
                 {
@@ -113,7 +170,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/inRVMuu"}
+                    { "name": "Amazon", "url": "http://amzn.asia/inRVMuu" }
                   ]
                 }
               ]
@@ -127,7 +184,10 @@
                   "price": 142980,
                   "purchaseDate": "2024-05-01",
                   "links": [
-                    {"name": "Dospara", "url": "https://www.dospara.co.jp/SBR1753/IC497654.html"}
+                    {
+                      "name": "Dospara",
+                      "url": "https://www.dospara.co.jp/SBR1753/IC497654.html"
+                    }
                   ]
                 },
                 {
@@ -137,8 +197,14 @@
                   "purchaseDate": "2020-03-06",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B081SPGMBD"},
-                    {"name": "Tsukumo", "url": "https://shop.tsukumo.co.jp/goods/0192876551615"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B081SPGMBD"
+                    },
+                    {
+                      "name": "Tsukumo",
+                      "url": "https://shop.tsukumo.co.jp/goods/0192876551615"
+                    }
                   ]
                 },
                 {
@@ -148,7 +214,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/htyvab7"}
+                    { "name": "Amazon", "url": "http://amzn.asia/htyvab7" }
                   ]
                 }
               ]
@@ -162,7 +228,10 @@
                   "price": 15440,
                   "purchaseDate": "2022-07-05",
                   "links": [
-                    {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001005960894/"}
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product/100000001005960894/"
+                    }
                   ]
                 },
                 {
@@ -174,7 +243,10 @@
                     "元価格": 16200
                   },
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07Q286BGH"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/gp/product/B07Q286BGH"
+                    }
                   ]
                 },
                 {
@@ -183,7 +255,7 @@
                   "price": 9050,
                   "purchaseDate": "2016-03-11",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/9nc3Oj2"}
+                    { "name": "Amazon", "url": "http://amzn.asia/9nc3Oj2" }
                   ]
                 }
               ]
@@ -198,8 +270,14 @@
                   "purchaseDate": "2022-05-28",
                   "notes": "TSUKUMO Webにて購入",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B089Y4YH6F"},
-                    {"name": "Tsukumo", "url": "https://shop.tsukumo.co.jp/goods/0192876782347"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B089Y4YH6F"
+                    },
+                    {
+                      "name": "Tsukumo",
+                      "url": "https://shop.tsukumo.co.jp/goods/0192876782347"
+                    }
                   ]
                 },
                 {
@@ -208,7 +286,10 @@
                   "price": 16040,
                   "purchaseDate": "2020-03-04",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07J6571RK"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B07J6571RK"
+                    }
                   ]
                 },
                 {
@@ -218,7 +299,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/7guKuF6"}
+                    { "name": "Amazon", "url": "http://amzn.asia/7guKuF6" }
                   ]
                 }
               ]
@@ -232,7 +313,10 @@
                   "price": 14030,
                   "purchaseDate": "2022-07-05",
                   "links": [
-                    {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001005934625/"}
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product/100000001005934625/"
+                    }
                   ]
                 },
                 {
@@ -241,7 +325,7 @@
                   "price": 8508,
                   "purchaseDate": "2016-03-11",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/7BlSUED"}
+                    { "name": "Amazon", "url": "http://amzn.asia/7BlSUED" }
                   ]
                 }
               ]
@@ -256,7 +340,10 @@
                   "purchaseDate": "2024-08-14",
                   "notes": "ドスパラ店舗にて購入",
                   "links": [
-                    {"name": "Dospara", "url": "https://www.dospara.co.jp/SBR1144/IC509481.html"}
+                    {
+                      "name": "Dospara",
+                      "url": "https://www.dospara.co.jp/SBR1144/IC509481.html"
+                    }
                   ]
                 },
                 {
@@ -266,7 +353,10 @@
                   "purchaseDate": "2024-08-14",
                   "notes": "ドスパラ店舗にて購入",
                   "links": [
-                    {"name": "Dospara", "url": "https://www.dospara.co.jp/SBR172/IC497872.html"}
+                    {
+                      "name": "Dospara",
+                      "url": "https://www.dospara.co.jp/SBR172/IC497872.html"
+                    }
                   ]
                 },
                 {
@@ -275,7 +365,7 @@
                   "price": 14844,
                   "purchaseDate": "2017-12-28",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/d5bH31E"}
+                    { "name": "Amazon", "url": "http://amzn.asia/d5bH31E" }
                   ]
                 },
                 {
@@ -284,7 +374,10 @@
                   "price": 5880,
                   "purchaseDate": "2020-11-30",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07969N2W9"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/gp/product/B07969N2W9"
+                    }
                   ]
                 },
                 {
@@ -295,8 +388,14 @@
                   "notes": "TSUKUMO Webにて購入",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B09JGDBPJG"},
-                    {"name": "Tsukumo", "url": "https://shop.tsukumo.co.jp/goods/0718037883878"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B09JGDBPJG"
+                    },
+                    {
+                      "name": "Tsukumo",
+                      "url": "https://shop.tsukumo.co.jp/goods/0718037883878"
+                    }
                   ]
                 },
                 {
@@ -306,7 +405,10 @@
                   "purchaseDate": "2020-12-19",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/BRWY2WT"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/gp/product/BRWY2WT"
+                    }
                   ]
                 },
                 {
@@ -316,7 +418,10 @@
                   "purchaseDate": "2019-09-28",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/gp/product/B07969N2W9"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/gp/product/B07969N2W9"
+                    }
                   ]
                 },
                 {
@@ -326,7 +431,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/40EVCS2"}
+                    { "name": "Amazon", "url": "http://amzn.asia/40EVCS2" }
                   ]
                 }
               ]
@@ -340,7 +445,10 @@
                   "price": 79800,
                   "purchaseDate": "2023-10-14",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0CDKWFXQ7"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B0CDKWFXQ7"
+                    }
                   ]
                 },
                 {
@@ -352,8 +460,14 @@
                     "割引": 500
                   },
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0847YWV1G"},
-                    {"name": "Dospara", "url": "https://www.dospara.co.jp/5shopping/detail_parts.php?ic=464625&lf=0"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B0847YWV1G"
+                    },
+                    {
+                      "name": "Dospara",
+                      "url": "https://www.dospara.co.jp/5shopping/detail_parts.php?ic=464625&lf=0"
+                    }
                   ]
                 },
                 {
@@ -362,7 +476,7 @@
                   "price": 13435,
                   "purchaseDate": "2017-03-06",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/cbsrKTK"}
+                    { "name": "Amazon", "url": "http://amzn.asia/cbsrKTK" }
                   ]
                 },
                 {
@@ -371,7 +485,7 @@
                   "price": 2828,
                   "purchaseDate": "2017-03-06",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/c6laGck"}
+                    { "name": "Amazon", "url": "http://amzn.asia/c6laGck" }
                   ]
                 },
                 {
@@ -381,7 +495,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/9zP0H6P"}
+                    { "name": "Amazon", "url": "http://amzn.asia/9zP0H6P" }
                   ]
                 }
               ]
@@ -395,7 +509,10 @@
                   "price": 2673,
                   "purchaseDate": "2021-05-11",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08K2CHMWK"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B08K2CHMWK"
+                    }
                   ]
                 },
                 {
@@ -405,7 +522,7 @@
                   "purchaseDate": "2017-05-05",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/9VL9k5Y"}
+                    { "name": "Amazon", "url": "http://amzn.asia/9VL9k5Y" }
                   ]
                 },
                 {
@@ -415,7 +532,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/b00aRNB"}
+                    { "name": "Amazon", "url": "http://amzn.asia/b00aRNB" }
                   ]
                 }
               ]
@@ -429,7 +546,10 @@
                   "price": 8340,
                   "purchaseDate": "2022-11-14",
                   "links": [
-                    {"name": "Yodobashi", "url": "https://www.yodobashi.com/product-detail/100000001005717597/"}
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product-detail/100000001005717597/"
+                    }
                   ]
                 },
                 {
@@ -439,7 +559,10 @@
                   "purchaseDate": "2020-09-19",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08CKZ9TSY"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B08CKZ9TSY"
+                    }
                   ]
                 },
                 {
@@ -449,7 +572,7 @@
                   "purchaseDate": "2016-03-11",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/9DEKu5I"}
+                    { "name": "Amazon", "url": "http://amzn.asia/9DEKu5I" }
                   ]
                 },
                 {
@@ -459,7 +582,7 @@
                   "purchaseDate": "2018-04-29",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/j3MiJHo"}
+                    { "name": "Amazon", "url": "http://amzn.asia/j3MiJHo" }
                   ]
                 }
               ]
@@ -473,8 +596,14 @@
                   "price": 6150,
                   "purchaseDate": "2020-03-09",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0721MG72Q"},
-                    {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001003588688/"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B0721MG72Q"
+                    },
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product/100000001003588688/"
+                    }
                   ]
                 },
                 {
@@ -483,7 +612,7 @@
                   "price": 7980,
                   "purchaseDate": "2016-03-11",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/0DwZSlp"}
+                    { "name": "Amazon", "url": "http://amzn.asia/0DwZSlp" }
                   ]
                 }
               ]
@@ -497,7 +626,10 @@
                   "price": 10800,
                   "purchaseDate": "2022-04-24",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08KDVW9Z3"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B08KDVW9Z3"
+                    }
                   ]
                 },
                 {
@@ -506,7 +638,10 @@
                   "price": 1009,
                   "purchaseDate": "2021-11-08",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B00TJPYIP0"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B00TJPYIP0"
+                    }
                   ]
                 },
                 {
@@ -515,7 +650,10 @@
                   "price": 2172,
                   "purchaseDate": "2022-04-26",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B09GJZT6DP"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B09GJZT6DP"
+                    }
                   ]
                 },
                 {
@@ -527,7 +665,10 @@
                     "保証": 1225
                   },
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B095SLJHDH"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B095SLJHDH"
+                    }
                   ]
                 },
                 {
@@ -536,7 +677,10 @@
                   "price": 14980,
                   "purchaseDate": "2025-07-13",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B0BVPNJP1C"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B0BVPNJP1C"
+                    }
                   ]
                 },
                 {
@@ -546,7 +690,10 @@
                   "purchaseDate": "2020/09/14, 2020/10/09交換申請",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07MGZSJ9N"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B07MGZSJ9N"
+                    }
                   ]
                 },
                 {
@@ -556,7 +703,10 @@
                   "purchaseDate": "2019-04-23",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07JX12SY4"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B07JX12SY4"
+                    }
                   ]
                 },
                 {
@@ -566,7 +716,10 @@
                   "purchaseDate": "2017-09-06",
                   "unused": true,
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B073Z9BBS9"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B073Z9BBS9"
+                    }
                   ]
                 }
               ]
@@ -583,7 +736,7 @@
                     "数量": 2
                   },
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/8bob4cV"}
+                    { "name": "Amazon", "url": "http://amzn.asia/8bob4cV" }
                   ]
                 },
                 {
@@ -592,7 +745,7 @@
                   "price": 2553,
                   "purchaseDate": "2016-03-11",
                   "links": [
-                    {"name": "Amazon", "url": "http://amzn.asia/4q2WclN"}
+                    { "name": "Amazon", "url": "http://amzn.asia/4q2WclN" }
                   ]
                 },
                 {
@@ -601,7 +754,10 @@
                   "price": 4106,
                   "purchaseDate": "2020-03-06",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B072PWL5YF"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B072PWL5YF"
+                    }
                   ]
                 },
                 {
@@ -610,7 +766,10 @@
                   "price": 4000,
                   "purchaseDate": "2022-07-05",
                   "links": [
-                    {"name": "Yodobashi", "url": "https://www.yodobashi.com/product/100000001007103490/"}
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product/100000001007103490/"
+                    }
                   ]
                 },
                 {
@@ -619,7 +778,10 @@
                   "price": 3439,
                   "purchaseDate": "2021-06-21",
                   "links": [
-                    {"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08ZCM6QRW"}
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B08ZCM6QRW"
+                    }
                   ]
                 }
               ]
@@ -700,46 +862,47 @@
       },
       "notes": "ここから踏んでもらえると、2,000円分ConoHaのサービスを利用された場合に私に2,000円のクーポンが入るらしい？",
       "links": [
-        {"name": "ConoHa", "url": "https://www.conoha.jp/"},
-        {"name": "紹介リンク", "url": "https://www.conoha.jp/referral/?token=jgFMtpuMmT6DChjaFLZbVtqlQ64whZFh8Q37WW1LtyKyuBamQBk-8RB"}
+        { "name": "ConoHa", "url": "https://www.conoha.jp/" },
+        {
+          "name": "紹介リンク",
+          "url": "https://www.conoha.jp/referral/?token=jgFMtpuMmT6DChjaFLZbVtqlQ64whZFh8Q37WW1LtyKyuBamQBk-8RB"
+        }
       ]
     },
     "vpsOther": {
       "title": "ConoHa VPS Server",
       "description": "別用途利用で契約",
-      "specs": [
-        "OS: Ubuntu 20.04",
-        "RAM: 512MB",
-        "Storage: 100GB SSD"
-      ]
+      "specs": ["OS: Ubuntu 20.04", "RAM: 512MB", "Storage: 100GB SSD"]
     },
     "raspberryPiTomaPi": {
       "title": "Raspberry Pi 4 model B (TomaPi)",
       "purchaseInfo": "2020/12/17購入・本体9,400円",
-      "specs": [
-        "RAM: 8GB",
-        "3TB HDDと6TB HDDを接続"
-      ]
+      "specs": ["RAM: 8GB", "3TB HDDと6TB HDDを接続"]
     },
     "raspberryPiOrange": {
       "title": "Raspberry Pi 4 model B (Orange)",
-      "specs": [
-        "RAM: 8GB",
-        "HDD 1TBを接続"
-      ]
+      "specs": ["RAM: 8GB", "HDD 1TBを接続"]
     },
     "mobileDevices": {
       "title": "所持スマートフォン・タブレットなど",
       "devices": [
-        {"name": "Google Pixel 8a", "notes": "[メインスマホ]", "purchaseDate": "2024-05-18"},
-        {"name": "Apple iPad Air 6", "notes": "[メインタブレット]", "purchaseDate": "2024-08-21"},
-        {"name": "Apple iPhone SE 3", "notes": "[社用BYODスマホ]"},
-        {"name": "Google Pixel 3a", "notes": "[寝るとき用サブスマホ]"},
-        {"name": "iPad mini 4", "notes": "[ベッドサイドタブレット]"},
-        {"name": "iPhone 8", "notes": "[パケットキャプチャ用スマホ]"},
-        {"name": "iPad mini 2"},
-        {"name": "iPod nano 第7世代"},
-        {"name": "Google Pixel 7a"}
+        {
+          "name": "Google Pixel 8a",
+          "notes": "[メインスマホ]",
+          "purchaseDate": "2024-05-18"
+        },
+        {
+          "name": "Apple iPad Air 6",
+          "notes": "[メインタブレット]",
+          "purchaseDate": "2024-08-21"
+        },
+        { "name": "Apple iPhone SE 3", "notes": "[社用BYODスマホ]" },
+        { "name": "Google Pixel 3a", "notes": "[寝るとき用サブスマホ]" },
+        { "name": "iPad mini 4", "notes": "[ベッドサイドタブレット]" },
+        { "name": "iPhone 8", "notes": "[パケットキャプチャ用スマホ]" },
+        { "name": "iPad mini 2" },
+        { "name": "iPod nano 第7世代" },
+        { "name": "Google Pixel 7a" }
       ]
     },
     "smartWatches": {
@@ -749,13 +912,23 @@
           "name": "Xiaomi Mi band 4",
           "price": 4499,
           "purchaseDate": "2019-09-24",
-          "links": [{"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B07T67V3KX"}]
+          "links": [
+            {
+              "name": "Amazon",
+              "url": "https://www.amazon.co.jp/dp/B07T67V3KX"
+            }
+          ]
         },
         {
           "name": "Xiaomi Mi Watch",
           "price": 11682,
           "purchaseDate": "2021-10-31",
-          "links": [{"name": "Amazon", "url": "https://www.amazon.co.jp/dp/B08TMP1L15"}]
+          "links": [
+            {
+              "name": "Amazon",
+              "url": "https://www.amazon.co.jp/dp/B08TMP1L15"
+            }
+          ]
         }
       ]
     },

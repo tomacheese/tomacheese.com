@@ -45,21 +45,26 @@ if (slug === 'devices') {
 }
 
 // Use Nuxt Content v3 syntax with correct schema
-const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
-  try {
-    // Query by path using the correct field name
-    const result = await queryCollection('content').where('path', '=', `/pages/${slug}`).first()
-    
-    if (isValidArticle(result)) {
-      return result
+const { data: article, error } = await useLazyAsyncData(
+  `content-${slug}`,
+  async () => {
+    try {
+      // Query by path using the correct field name
+      const result = await queryCollection('content')
+        .where('path', '=', `/pages/${slug}`)
+        .first()
+
+      if (isValidArticle(result)) {
+        return result
+      }
+
+      return null
+    } catch (err) {
+      logger.error(`Content: Error fetching content for ${slug}`, err)
+      return null
     }
-    
-    return null
-  } catch (err) {
-    logger.error(`Content: Error fetching content for ${slug}`, err)
-    return null
-  }
-})
+  },
+)
 
 if (error.value || !article.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
@@ -68,9 +73,11 @@ if (error.value || !article.value) {
 // SEO
 useSeoMeta({
   title: `${article.value.title} - Tomachi Site`,
-  description: article.value.description || `${article.value.title}についてのページ`,
+  description:
+    article.value.description || `${article.value.title}についてのページ`,
   ogTitle: article.value.title,
-  ogDescription: article.value.description || `${article.value.title}についてのページ`,
+  ogDescription:
+    article.value.description || `${article.value.title}についてのページ`,
   ogType: 'article',
 })
 </script>

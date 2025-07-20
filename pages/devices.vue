@@ -16,7 +16,10 @@
             <section v-if="devicesData?.overview">
               <h2>{{ devicesData.overview.title }}</h2>
               <ul>
-                <li v-for="item in devicesData.overview.history" :key="`${item.date}-${item.description}`">
+                <li
+                  v-for="item in devicesData.overview.history"
+                  :key="`${item.date}-${item.description}`"
+                >
                   {{ item.description }}: {{ item.date }}
                 </li>
               </ul>
@@ -25,84 +28,84 @@
             <!-- デバイスセクション -->
             <template v-if="devicesData?.devices">
               <!-- メインPC -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.mainPc"
                 :device="devicesData.devices.mainPc"
                 device-type="mainPc"
               />
 
               <!-- ノートPC -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.notebookPc"
                 :device="devicesData.devices.notebookPc"
                 device-type="notebookPc"
               />
 
               <!-- サブPC (Banana) -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.subPcBanana"
                 :device="devicesData.devices.subPcBanana"
                 device-type="subPcBanana"
               />
 
               <!-- サブPC (CHOCO) -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.subPcChoco"
                 :device="devicesData.devices.subPcChoco"
                 device-type="subPcChoco"
               />
 
               <!-- 自宅サーバ -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.homeServer"
                 :device="devicesData.devices.homeServer"
                 device-type="homeServer"
               />
 
               <!-- ConoHa VPS Server (Comet) -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.vpsComet"
                 :device="devicesData.devices.vpsComet"
                 device-type="vpsComet"
               />
 
               <!-- ConoHa VPS Server -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.vpsOther"
                 :device="devicesData.devices.vpsOther"
                 device-type="vpsOther"
               />
 
               <!-- Raspberry Pi (TomaPi) -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.raspberryPiTomaPi"
                 :device="devicesData.devices.raspberryPiTomaPi"
                 device-type="raspberryPiTomaPi"
               />
 
               <!-- Raspberry Pi (Orange) -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.raspberryPiOrange"
                 :device="devicesData.devices.raspberryPiOrange"
                 device-type="raspberryPiOrange"
               />
 
               <!-- モバイルデバイス -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.mobileDevices"
                 :device="devicesData.devices.mobileDevices"
                 device-type="mobileDevices"
               />
 
               <!-- スマートウォッチ -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.smartWatches"
                 :device="devicesData.devices.smartWatches"
                 device-type="smartWatches"
               />
 
               <!-- その他デバイス -->
-              <DeviceSection 
+              <DeviceSection
                 v-if="devicesData.devices.otherDevices"
                 :device="devicesData.devices.otherDevices"
                 device-type="otherDevices"
@@ -123,18 +126,24 @@
 import { logger } from '~/utils/logger'
 
 // JSONファイルからデバイスデータを読み込み
-const { data: devicesData, error } = await useLazyAsyncData('devices', async () => {
-  try {
-    const result = await $fetch('/api/devices')
-    return result
-  } catch (err) {
-    logger.error('Devices: Error fetching devices data', err)
-    return null
-  }
-})
+const { data: devicesData, error } = await useLazyAsyncData(
+  'devices',
+  async () => {
+    try {
+      const result = await $fetch('/api/devices')
+      return result
+    } catch (err) {
+      logger.error('Devices: Error fetching devices data', err)
+      return null
+    }
+  },
+)
 
 if (error.value || !devicesData.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Devices data not found' })
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Devices data not found',
+  })
 }
 
 // SEO

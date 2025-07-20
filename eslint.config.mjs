@@ -5,8 +5,7 @@ export default createConfigForNuxt({
     typescript: true,
     vue: true,
   },
-})
-.append({
+}).append({
   rules: {
     'vue/multi-word-component-names': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
@@ -23,5 +22,5 @@ export default createConfigForNuxt({
         },
       },
     ], // 既存の.eslintrc.jsの設定を移行
-  }
+  },
 })

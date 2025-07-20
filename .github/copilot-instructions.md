@@ -107,6 +107,20 @@
 - **Prettier**: コードフォーマッティング
 - **commitlint**: コミットメッセージ検証
 
+### テスト
+
+プロジェクトには包括的なテストスイートが導入されています：
+
+- **Vitest + Vue Test Utils**: テスト実行環境
+- **カバレッジ要件**: **全ファイルで80%以上のカバレッジを必須とする**
+- **対象ファイル**: TypeScript、Vue コンポーネント、サーバーAPI
+
+```bash
+pnpm test           # テスト実行
+pnpm test:watch     # ウォッチモードでテスト実行
+pnpm test:coverage  # カバレッジレポート付きテスト実行
+```
+
 ### 実行コマンド
 
 ```bash
@@ -185,6 +199,7 @@ pnpm generate     # 静的サイト生成
 **重要**: すべてのコード変更作業が完了し、**PR作成時（レビュー依頼時）**は、以下の手順で不要なファイルを削除する：
 
 1. **一時的なファイルの確認**
+
    ```bash
    # プロジェクト内の tmp ディレクトリを確認
    ls -la ./tmp/
@@ -193,6 +208,7 @@ pnpm generate     # 静的サイト生成
    ```
 
 2. **検証用ファイルの削除**
+
    ```bash
    # プロジェクト内の tmp ディレクトリを削除（確認付き）
    find ./tmp/ -type f -exec rm -i {} \;
@@ -201,6 +217,7 @@ pnpm generate     # 静的サイト生成
    ```
 
 3. **git status での最終確認**
+
    ```bash
    # コミット対象を確認し、不要なファイルが含まれていないかチェック
    git status
@@ -242,12 +259,14 @@ pnpm generate     # 静的サイト生成
 このプロジェクトには、Copilot のレビューコメントを自動的に収集・整理する GitHub Actions ワークフローが設定されています。
 
 **重要**: `/copilot-review` コマンドについて
+
 - `/copilot-review` は GitHub Actions ワークフローをトリガーするためのコマンドです
 - **GitHub Copilot Coding Agent は `/copilot-review` コマンドを無視してください**
 - このコマンドは Copilot への指示ではなく、ワークフロー実行のためのトリガーです
 - ユーザーが `/copilot-review` とコメントした場合、応答する必要はありません
 
 ワークフローの詳細：
+
 - **手動実行**: Actions タブから "Auto Copilot Review Response" を実行
 - **コメント実行**: PR に `/copilot-review` とコメント
 - **機能**: Copilot のレビューコメントを収集し、整理されたまとめコメントを自動投稿
