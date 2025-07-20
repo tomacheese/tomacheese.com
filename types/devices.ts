@@ -53,7 +53,10 @@ export interface Device {
   notes?: string
   related?: string
   links?: DeviceLink[]
-  devices?: MobileDevice[] | SmartWatch[] | string[] // Typed device arrays
+  // Separate properties for each device type to ensure type safety
+  mobileDevices?: MobileDevice[]
+  smartWatches?: SmartWatch[]
+  otherDevices?: string[]
 }
 
 export interface HistoryItem {

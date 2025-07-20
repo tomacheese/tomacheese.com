@@ -33,15 +33,22 @@ export interface ValidArticle {
  * @returns True if the result is a valid article with required fields
  */
 export function isValidArticle(result: unknown): result is ValidArticle {
+  if (
+    result === null ||
+    result === undefined ||
+    typeof result !== 'object' ||
+    !result
+  ) {
+    return false
+  }
+
+  const resultObject = result as Record<string, unknown>
+
   return (
-    result !== null &&
-    result !== undefined &&
-    typeof result === 'object' &&
-    result &&
-    'title' in result &&
-    typeof (result as Record<string, unknown>).title === 'string' &&
-    ((result as Record<string, unknown>).title as string).trim() !== '' &&
-    'path' in result &&
-    typeof (result as Record<string, unknown>).path === 'string'
+    'title' in resultObject &&
+    typeof resultObject.title === 'string' &&
+    resultObject.title.trim() !== '' &&
+    'path' in resultObject &&
+    typeof resultObject.path === 'string'
   )
 }
