@@ -1,7 +1,7 @@
 ---
-name: "Copilot Setup Steps"
+name: 'Copilot Setup Steps'
 
-"on":
+'on':
   workflow_dispatch:
   push:
     paths:
@@ -28,12 +28,11 @@ jobs:
             fonts-noto-cjk \
             fonts-ipafont \
             fonts-ipaexfont \
-            locales
+            locales  # Required for locale-gen command
 
           # Configure UTF-8 Japanese locale
           sudo locale-gen ja_JP.UTF-8
           echo "LANG=ja_JP.UTF-8" >> $GITHUB_ENV
-          echo "LC_ALL=ja_JP.UTF-8" >> $GITHUB_ENV
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
