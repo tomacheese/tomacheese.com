@@ -29,7 +29,9 @@ jobs:
         github.event.pull_request.user.login == 'copilot-swe-agent[bot]') &&
        ((github.event.review.user.login == 'copilot-pull-request-reviewer[bot]' && 
          (github.event.review.state == 'COMMENTED' || 
-          github.event.review.state == 'CHANGES_REQUESTED')) ||
+          github.event.review.state == 'commented' ||
+          github.event.review.state == 'CHANGES_REQUESTED' ||
+          github.event.review.state == 'changes_requested')) ||
         (github.event.comment.user.login == 'copilot-pull-request-reviewer[bot]' || 
          github.event.comment.user.login == 'Copilot')))
     
@@ -58,7 +60,8 @@ jobs:
             [
               .[] | 
               select(.user.login == "copilot-pull-request-reviewer[bot]") |
-              select(.state == "COMMENTED" or .state == "CHANGES_REQUESTED") |
+              select(.state == "COMMENTED" or .state == "commented" or 
+                     .state == "CHANGES_REQUESTED" or .state == "changes_requested") |
               {
                 id: .id,
                 body: .body,
