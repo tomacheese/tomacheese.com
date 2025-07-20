@@ -8,7 +8,12 @@ vi.mock('dompurify', () => ({
     sanitize: vi.fn((html: string, options: { ALLOWED_TAGS?: string[]; ALLOWED_ATTR?: string[] }) => {
       // 実際のサニタイゼーション動作をシミュレート
       if (html.includes('<script')) {
-        return html.replace(/<script[^>]*>.*?<\/script>/gi, '') // scriptタグを除去
+        let sanitizedHtml = html;
+        do {
+          html = sanitizedHtml;
+          sanitizedHtml = html.replace(/<script[^>]*>.*?<\/script>/gi, ''); // scriptタグを除去
+        } while (sanitizedHtml !== html);
+        return sanitizedHtml;
       }
       if (html.includes('onclick')) {
         return html.replace(/onclick="[^"]*"/gi, '') // onclick属性を除去
