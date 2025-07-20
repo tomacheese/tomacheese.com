@@ -63,7 +63,7 @@ defineProps<Props>()
   background-color: white;
   border-radius: 12px;
   padding: 3rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.1);
 }
 
 .dark-theme .about-section {
@@ -112,11 +112,11 @@ defineProps<Props>()
   align-items: center;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgb(0, 0, 0, 0.1);
 }
 
 .dark-theme .detail-item {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgb(255, 255, 255, 0.1);
 }
 
 .detail-item:last-child {
@@ -166,18 +166,18 @@ defineProps<Props>()
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.2);
 }
 
 .timeline-content {
-  background-color: rgba(25, 118, 210, 0.05);
+  background-color: rgb(25, 118, 210, 0.05);
   border-radius: 8px;
   padding: 1rem;
   border-left: 3px solid var(--color-primary);
 }
 
 .dark-theme .timeline-content {
-  background-color: rgba(25, 118, 210, 0.2);
+  background-color: rgb(25, 118, 210, 0.2);
   border-color: var(--color-primary);
 }
 

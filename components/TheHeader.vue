@@ -103,13 +103,13 @@ function closeMobileMenu() {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgb(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-4) 0;
 
   .dark-theme & {
-    background: rgba(15, 23, 42, 0.8);
+    background: rgb(15, 23, 42, 0.8);
   }
 }
 
@@ -175,7 +175,7 @@ function closeMobileMenu() {
 
   &.router-link-active {
     color: var(--color-primary);
-    background: rgba(14, 165, 233, 0.1);
+    background: rgb(14, 165, 233, 0.1);
   }
 }
 
