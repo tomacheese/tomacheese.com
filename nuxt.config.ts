@@ -159,6 +159,17 @@ export default defineNuxtConfig({
     cloudflare: {
       // Initialize cloudflare config to prevent undefined access in preset
     },
+    routeRules: {
+      '/**': {
+        headers: {
+          'Content-Security-Policy': "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline' www.googletagmanager.com; connect-src 'self' www.google-analytics.com; frame-ancestors 'none';",
+          'X-Frame-Options': 'DENY',
+          'X-Content-Type-Options': 'nosniff',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
+        }
+      }
+    }
   },
 
   ssr: true,
