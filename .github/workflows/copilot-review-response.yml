@@ -25,10 +25,13 @@ jobs:
     # または手動実行の場合
     if: >
       github.event_name == 'workflow_dispatch' ||
-      ((github.event.pull_request.user.login == 'Copilot' || github.event.pull_request.user.login == 'copilot-swe-agent[bot]') &&
+      ((github.event.pull_request.user.login == 'Copilot' || 
+        github.event.pull_request.user.login == 'copilot-swe-agent[bot]') &&
        ((github.event.review.user.login == 'copilot-pull-request-reviewer[bot]' && 
-         (github.event.review.state == 'commented' || github.event.review.state == 'changes_requested')) ||
-        (github.event.comment.user.login == 'copilot-pull-request-reviewer[bot]' || github.event.comment.user.login == 'Copilot')))
+         (github.event.review.state == 'commented' || 
+          github.event.review.state == 'changes_requested')) ||
+        (github.event.comment.user.login == 'copilot-pull-request-reviewer[bot]' || 
+         github.event.comment.user.login == 'Copilot')))
     
     steps:
       - name: Checkout repository
@@ -38,7 +41,8 @@ jobs:
         id: collect-reviews
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
+          PR_NUMBER: >-
+            ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
           REPO_NAME: ${{ github.repository }}
         run: |
           echo "🔍 Collecting Copilot review comments for PR #${PR_NUMBER}..."
@@ -70,7 +74,8 @@ jobs:
             --jq '
             [
               .[] | 
-              select(.user.login == "copilot-pull-request-reviewer[bot]" or .user.login == "Copilot") |
+              select(.user.login == "copilot-pull-request-reviewer[bot]" or 
+                     .user.login == "Copilot") |
               {
                 id: .id,
                 body: .body,
@@ -103,16 +108,20 @@ jobs:
 
       - name: Generate Copilot Response Comment
         id: generate-comment
-        if: steps.collect-reviews.outputs.review_count > 0 || steps.collect-reviews.outputs.inline_count > 0
+        if: >-
+          steps.collect-reviews.outputs.review_count > 0 || 
+          steps.collect-reviews.outputs.inline_count > 0
         env:
-          PR_NUMBER: ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
+          PR_NUMBER: >-
+            ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
           REVIEW_COUNT: ${{ steps.collect-reviews.outputs.review_count }}
           INLINE_COUNT: ${{ steps.collect-reviews.outputs.inline_count }}
         run: |
           # 既存のCopilot再依頼コメントをチェック
           EXISTING_COMMENT=$(gh pr view ${PR_NUMBER} --json comments --jq '
             .comments[] | 
-            select(.author.login == "github-actions[bot]" and (.body | contains("@Copilot 以下のレビューコメントを修正してください"))) |
+            select(.author.login == "github-actions[bot]" and 
+                   (.body | contains("@Copilot 以下のレビューコメントを修正してください"))) |
             .id
           ' | head -1)
           
@@ -167,10 +176,14 @@ jobs:
           echo "skip_comment=false" >> $GITHUB_OUTPUT
 
       - name: Post Comment to PR
-        if: steps.generate-comment.outputs.skip_comment != 'true' && (steps.collect-reviews.outputs.review_count > 0 || steps.collect-reviews.outputs.inline_count > 0)
+        if: >-
+          steps.generate-comment.outputs.skip_comment != 'true' && 
+          (steps.collect-reviews.outputs.review_count > 0 || 
+           steps.collect-reviews.outputs.inline_count > 0)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
+          PR_NUMBER: >-
+            ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
         run: |
           echo "📤 Posting comment to PR #${PR_NUMBER}..."
           
