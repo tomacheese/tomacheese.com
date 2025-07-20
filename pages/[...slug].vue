@@ -11,13 +11,13 @@
     <div class="container">
       <div class="content-layout">
         <main class="main-content">
-          <article class="content-container">
-            <ContentRenderer :value="article as any" />
+          <article v-if="article" class="content-container">
+            <ContentRenderer :value="article" />
           </article>
         </main>
 
         <aside class="sidebar-content">
-          <TheSidebar :toc="(article?.body?.toc?.links as any)" />
+          <TheSidebar :toc="article?.body?.toc?.links" />
         </aside>
       </div>
     </div>
@@ -49,7 +49,7 @@ const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async
     // Query by path using the correct field name
     const result = await queryCollection('content').where('path', '=', `/pages/${slug}`).first()
     
-    if (isValidArticle(result as unknown as Record<string, unknown>)) {
+    if (isValidArticle(result)) {
       return result
     }
     

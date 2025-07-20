@@ -17,6 +17,11 @@
 
 <script setup lang="ts">
 // データの読み込み
+interface ApiResponse<T> {
+  body?: T
+  [key: string]: unknown
+}
+
 interface Detail {
   id: string
   icon: string
@@ -43,14 +48,14 @@ const loadData = async () => {
   
   // 個別の結果を処理
   if (detailsResult.status === 'fulfilled') {
-    details.value = (detailsResult.value as { body?: Detail[] })?.body || []
+    details.value = (detailsResult.value as ApiResponse<Detail[]>)?.body || []
   } else {
     console.warn('Failed to load details data:', detailsResult.reason)
     details.value = []
   }
   
   if (timelinesResult.status === 'fulfilled') {
-    timelines.value = (timelinesResult.value as { body?: Timeline[] })?.body || []
+    timelines.value = (timelinesResult.value as ApiResponse<Timeline[]>)?.body || []
   } else {
     console.warn('Failed to load timelines data:', timelinesResult.reason)
     timelines.value = []

@@ -26,6 +26,20 @@ export interface DeviceSection {
   categories?: Record<string, DeviceCategory>
 }
 
+// Specific device types for better type safety
+export interface MobileDevice {
+  name: string
+  notes?: string
+  purchaseDate?: string
+}
+
+export interface SmartWatch {
+  name: string
+  price?: number
+  purchaseDate?: string
+  links?: DeviceLink[]
+}
+
 export interface Device {
   title: string
   description?: string
@@ -39,7 +53,7 @@ export interface Device {
   notes?: string
   related?: string
   links?: DeviceLink[]
-  devices?: unknown[] // For mobile devices, smart watches, etc.
+  devices?: MobileDevice[] | SmartWatch[] | string[] // Typed device arrays
 }
 
 export interface HistoryItem {
