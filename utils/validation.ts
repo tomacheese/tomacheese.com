@@ -10,25 +10,27 @@ export interface ValidArticle {
   path: string
   body?: {
     toc?: {
-      links?: any[]
+      links?: unknown[]
     }
   }
   description?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 /**
  * Validates if a content result is a valid article
- * @param result - Result from queryCollection query
+ * @param result - Result from queryCollection query (ParsedContent or similar content object)
  * @returns True if the result is a valid article with required fields
  */
-export function isValidArticle(result: any): result is ValidArticle {
+export function isValidArticle(result: Record<string, string | unknown> | null | undefined): result is ValidArticle {
   return (
     result !== null &&
     result !== undefined &&
     typeof result === 'object' &&
+    'title' in result &&
     typeof result.title === 'string' &&
     result.title.trim() !== '' &&
+    'path' in result &&
     typeof result.path === 'string'
   )
 }
