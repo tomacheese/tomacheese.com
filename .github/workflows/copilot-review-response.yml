@@ -20,7 +20,7 @@ jobs:
   check-copilot-reviews:
     name: Check and Respond to Copilot Reviews
     runs-on: ubuntu-latest
-    
+
     # copilot-swe-agent[bot]が作成したPRで、Copilot reviewからのコメントのみ処理
     # または手動実行の場合
     if: >
@@ -29,7 +29,7 @@ jobs:
        ((github.event.review.user.login == 'copilot-pull-request-reviewer[bot]' && 
          (github.event.review.state == 'commented' || github.event.review.state == 'changes_requested')) ||
         (github.event.comment.user.login == 'copilot-pull-request-reviewer[bot]')))
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
           REPO_NAME: ${{ github.repository }}
         run: |
           echo "🔍 Collecting Copilot review comments for PR #${PR_NUMBER}..."
-          
+
           # PRの一般的なレビューコメントを取得
           REVIEW_COMMENTS=$(gh api \
             "/repos/${REPO_NAME}/pulls/${PR_NUMBER}/reviews" \
@@ -80,13 +80,13 @@ jobs:
           # コメント数をカウント
           REVIEW_COUNT=$(echo "$REVIEW_COMMENTS" | jq 'length')
           INLINE_COUNT=$(echo "$INLINE_COMMENTS" | jq 'length')
-          
+
           echo "📝 Found ${REVIEW_COUNT} review comments and ${INLINE_COUNT} inline comments"
-          
+
           # 結果を環境変数に保存
           echo "review_count=${REVIEW_COUNT}" >> $GITHUB_OUTPUT
           echo "inline_count=${INLINE_COUNT}" >> $GITHUB_OUTPUT
-          
+
           # コメントデータをファイルに保存（複数行データのため）
           echo "$REVIEW_COMMENTS" > review_comments.json
           echo "$INLINE_COMMENTS" > inline_comments.json
@@ -105,7 +105,7 @@ jobs:
             select(.author.login == "github-actions[bot]" and (.body | contains("@Copilot 以下のレビューコメントを修正してください"))) |
             .id
           ' | head -1)
-          
+
           if [ -n "$EXISTING_COMMENT" ]; then
             echo "⚠️ 既に自動生成されたCopilot再依頼コメントが存在します (ID: $EXISTING_COMMENT)"
             echo "skip_comment=true" >> $GITHUB_OUTPUT
@@ -163,10 +163,10 @@ jobs:
           PR_NUMBER: ${{ github.event.inputs.pr_number || github.event.pull_request.number }}
         run: |
           echo "📤 Posting comment to PR #${PR_NUMBER}..."
-          
+
           # PRにコメントを投稿
           gh pr comment ${PR_NUMBER} --body-file comment_body.md
-          
+
           echo "✅ Successfully posted Copilot review response comment"
 
       - name: Clean up temporary files

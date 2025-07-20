@@ -2,7 +2,7 @@
   <v-container>
     <h2 class="user-title text-center my-5">
       <v-avatar>
-        <img alt="avatar" class="ma-10" src="/images/avatar.jpg" />
+        <img alt="avatar" class="ma-10" src="/images/avatar.jpg" >
       </v-avatar>
       <span class="display-1 name">Tomachi</span>
     </h2>

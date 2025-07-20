@@ -2,9 +2,9 @@ name: Test Dynamic Page Generation
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 permissions:
   contents: read
@@ -12,110 +12,110 @@ permissions:
 jobs:
   test-page-generation:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install pnpm
-      uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup node env
-      uses: actions/setup-node@v4
-      with:
-        node-version-file: .node-version
-        cache: 'pnpm'
-        cache-dependency-path: 'pnpm-lock.yaml'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
-      
-    - name: Generate static site
-      run: pnpm generate
+      - name: Setup node env
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
 
-    - name: Tree
-      run: |
-        sudo apt-get update && sudo apt-get install -y tree
-        tree -a .output/public/
-      
-    - name: Test required pages exist
-      run: |
-        # Check that required pages are generated
-        test -f .output/public/me/index.html || (echo "❌ /me page not generated" && exit 1)
-        test -f .output/public/about/index.html || (echo "❌ /about page not generated" && exit 1)
-        test -f .output/public/devices/index.html || (echo "❌ /devices page not generated" && exit 1)
-        test -f .output/public/anime/index.html || (echo "❌ /anime page not generated" && exit 1)
-        test -f .output/public/index.html || (echo "❌ /index page not generated" && exit 1)
-        echo "✅ All required pages generated successfully"
-        
-    - name: Test page content validity
-      run: |
-        # Check that pages contain expected content and are not 404 pages
-        echo "🔍 Checking page content validity..."
-        
-        # Function to check for 404 errors with better debugging
-        check_page_404() {
-          local page=$1
-          local file=$2
-          if grep -q "404\|Page Not Found\|statusCode.*404" "$file"; then
-            echo "❌ $page page contains 404 error"
-            echo "📄 Content preview of $page:"
-            head -20 "$file" | grep -E "(title|h1|404)" || echo "No relevant content found"
-            return 1
-          fi
-          return 0
-        }
-        
-        check_page_404 "/me" ".output/public/me/index.html"
-        check_page_404 "/about" ".output/public/about/index.html"
-        check_page_404 "/devices" ".output/public/devices/index.html"
-        check_page_404 "/anime" ".output/public/anime/index.html"
-        
-        echo "✅ All pages contain valid content (no 404 errors)"
-        
-    - name: Test page titles
-      run: |
-        # Check that pages have proper titles with better debugging
-        echo "🔍 Checking page titles..."
-        
-        # Function to check page title with debugging
-        check_page_title() {
-          local page=$1
-          local file=$2
-          local expected_title=$3
-          
-          if ! grep -q "$expected_title" "$file"; then
-            echo "❌ $page page missing expected title '$expected_title'"
-            echo "📄 Found titles in $page:"
-            grep -o '<title>.*</title>' "$file" || echo "No title tag found"
-            grep -o '<h1[^>]*>.*</h1>' "$file" || echo "No h1 tag found"
-            return 1
-          fi
-          echo "✅ $page page has correct title"
-          return 0
-        }
-        
-        check_page_title "/me" ".output/public/me/index.html" "私(Tomachi)について"
-        check_page_title "/about" ".output/public/about/index.html" "このサイトについて"
-        
-        echo "✅ All pages contain expected titles"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-    - name: Debug build output (on failure)
-      if: failure()
-      run: |
-        echo "🐛 Debug information:"
-        echo "Content pages directory:"
-        ls -la content/pages/ || echo "content/pages directory not found"
-        echo ""
-        echo "Generated routes:"
-        find .output/public/ -name "index.html" -type f
-        echo ""
-        echo "Sample page content (first 50 lines of /me page):"
-        head -50 .output/public/me/index.html || echo "Cannot read /me page"
+      - name: Generate static site
+        run: pnpm generate
 
-    - name: Upload generated site artifact
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: generated-site-debug
-        path: .output/public/
-        retention-days: 7
+      - name: Tree
+        run: |
+          sudo apt-get update && sudo apt-get install -y tree
+          tree -a .output/public/
+
+      - name: Test required pages exist
+        run: |
+          # Check that required pages are generated
+          test -f .output/public/me/index.html || (echo "❌ /me page not generated" && exit 1)
+          test -f .output/public/about/index.html || (echo "❌ /about page not generated" && exit 1)
+          test -f .output/public/devices/index.html || (echo "❌ /devices page not generated" && exit 1)
+          test -f .output/public/anime/index.html || (echo "❌ /anime page not generated" && exit 1)
+          test -f .output/public/index.html || (echo "❌ /index page not generated" && exit 1)
+          echo "✅ All required pages generated successfully"
+
+      - name: Test page content validity
+        run: |
+          # Check that pages contain expected content and are not 404 pages
+          echo "🔍 Checking page content validity..."
+
+          # Function to check for 404 errors with better debugging
+          check_page_404() {
+            local page=$1
+            local file=$2
+            if grep -q "404\|Page Not Found\|statusCode.*404" "$file"; then
+              echo "❌ $page page contains 404 error"
+              echo "📄 Content preview of $page:"
+              head -20 "$file" | grep -E "(title|h1|404)" || echo "No relevant content found"
+              return 1
+            fi
+            return 0
+          }
+
+          check_page_404 "/me" ".output/public/me/index.html"
+          check_page_404 "/about" ".output/public/about/index.html"
+          check_page_404 "/devices" ".output/public/devices/index.html"
+          check_page_404 "/anime" ".output/public/anime/index.html"
+
+          echo "✅ All pages contain valid content (no 404 errors)"
+
+      - name: Test page titles
+        run: |
+          # Check that pages have proper titles with better debugging
+          echo "🔍 Checking page titles..."
+
+          # Function to check page title with debugging
+          check_page_title() {
+            local page=$1
+            local file=$2
+            local expected_title=$3
+            
+            if ! grep -q "$expected_title" "$file"; then
+              echo "❌ $page page missing expected title '$expected_title'"
+              echo "📄 Found titles in $page:"
+              grep -o '<title>.*</title>' "$file" || echo "No title tag found"
+              grep -o '<h1[^>]*>.*</h1>' "$file" || echo "No h1 tag found"
+              return 1
+            fi
+            echo "✅ $page page has correct title"
+            return 0
+          }
+
+          check_page_title "/me" ".output/public/me/index.html" "私(Tomachi)について"
+          check_page_title "/about" ".output/public/about/index.html" "このサイトについて"
+
+          echo "✅ All pages contain expected titles"
+
+      - name: Debug build output (on failure)
+        if: failure()
+        run: |
+          echo "🐛 Debug information:"
+          echo "Content pages directory:"
+          ls -la content/pages/ || echo "content/pages directory not found"
+          echo ""
+          echo "Generated routes:"
+          find .output/public/ -name "index.html" -type f
+          echo ""
+          echo "Sample page content (first 50 lines of /me page):"
+          head -50 .output/public/me/index.html || echo "Cannot read /me page"
+
+      - name: Upload generated site artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-site-debug
+          path: .output/public/
+          retention-days: 7

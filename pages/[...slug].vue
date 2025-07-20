@@ -42,36 +42,44 @@ if (slug === 'devices') {
 }
 
 // Use Nuxt Content v2 syntax with improved error handling for SSG
-const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
-  try {
-    const result = await queryContent('pages', slug).findOne()
-    
-    // Additional validation to ensure we got valid content
-    if (!result || !result.title) {
-      console.warn(`[Content] Content found but missing title for ${slug}`)
+const { data: article, error } = await useLazyAsyncData(
+  `content-${slug}`,
+  async () => {
+    try {
+      const result = await queryContent('pages', slug).findOne()
+
+      // Additional validation to ensure we got valid content
+      if (!result || !result.title) {
+        console.warn(`[Content] Content found but missing title for ${slug}`)
+        return null
+      }
+
+      return result
+    } catch (err) {
+      console.error(`[Content] Error fetching content for ${slug}:`, err)
+
+      // During SSG, try a direct query as fallback
+      if (import.meta.prerender) {
+        try {
+          console.log(`[Content] Retrying direct query for ${slug}`)
+          const fallbackResult = await queryContent()
+            .where({ _path: `/pages/${slug}` })
+            .findOne()
+          if (fallbackResult && fallbackResult.title) {
+            return fallbackResult
+          }
+        } catch (fallbackErr) {
+          console.error(
+            `[Content] Fallback query also failed for ${slug}:`,
+            fallbackErr,
+          )
+        }
+      }
+
       return null
     }
-    
-    return result
-  } catch (err) {
-    console.error(`[Content] Error fetching content for ${slug}:`, err)
-    
-    // During SSG, try a direct query as fallback
-    if (process.prerender) {
-      try {
-        console.log(`[Content] Retrying direct query for ${slug}`)
-        const fallbackResult = await queryContent().where({ _path: `/pages/${slug}` }).findOne()
-        if (fallbackResult && fallbackResult.title) {
-          return fallbackResult
-        }
-      } catch (fallbackErr) {
-        console.error(`[Content] Fallback query also failed for ${slug}:`, fallbackErr)
-      }
-    }
-    
-    return null
-  }
-})
+  },
+)
 
 if (error.value || !article.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
@@ -80,9 +88,11 @@ if (error.value || !article.value) {
 // SEO
 useSeoMeta({
   title: `${article.value.title} - Tomachi Site`,
-  description: article.value.description || `${article.value.title}についてのページ`,
+  description:
+    article.value.description || `${article.value.title}についてのページ`,
   ogTitle: article.value.title,
-  ogDescription: article.value.description || `${article.value.title}についてのページ`,
+  ogDescription:
+    article.value.description || `${article.value.title}についてのページ`,
   ogType: 'article',
 })
 </script>

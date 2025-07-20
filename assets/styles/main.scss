@@ -3,12 +3,10 @@
 // フォールバック用の日本語フォントを読み込み
 @font-face {
   font-family: 'System Japanese';
-  src: local('Noto Sans CJK JP'),
-       local('IPAGothic'),
-       local('Hiragino Kaku Gothic ProN'),
-       local('Yu Gothic'),
-       local('Meiryo'),
-       local('MS Gothic');
+  src:
+    local('Noto Sans CJK JP'), local('IPAGothic'),
+    local('Hiragino Kaku Gothic ProN'), local('Yu Gothic'), local('Meiryo'),
+    local('MS Gothic');
   font-display: block;
 }
 
@@ -159,29 +157,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 
-    'Inter', 
-    'System Japanese',
-    'Noto Sans JP',
-    'Noto Sans CJK JP',
-    'IPAGothic',
-    'IPAPGothic',
-    'Hiragino Kaku Gothic ProN',
-    'Hiragino Sans',
-    'Yu Gothic',
-    'Meiryo',
-    'MS Gothic',
-    'MS PGothic',
-    'MS UI Gothic',
-    'DejaVu Sans',
-    'Liberation Sans',
-    'Droid Sans Fallback',
-    'Takao Gothic',
-    'VL Gothic',
-    'TakaoPGothic',
-    'Ubuntu',
-    Arial,
-    sans-serif;
+  font-family:
+    'Inter', 'System Japanese', 'Noto Sans JP', 'Noto Sans CJK JP', 'IPAGothic',
+    'IPAPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic',
+    'Meiryo', 'MS Gothic', 'MS PGothic', 'MS UI Gothic', 'DejaVu Sans',
+    'Liberation Sans', 'Droid Sans Fallback', 'Takao Gothic', 'VL Gothic',
+    'TakaoPGothic', 'Ubuntu', Arial, sans-serif;
   font-weight: 600;
   color: var(--color-text-primary);
   line-height: 1.2;

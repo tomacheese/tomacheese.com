@@ -1,7 +1,7 @@
 <template>
   <div class="about-section">
     <div class="user-header">
-      <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" />
+      <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" >
       <h2 class="name">Tomachi</h2>
     </div>
 

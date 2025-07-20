@@ -8,7 +8,10 @@
     </section>
     <section class="user-about">
       <div v-if="loadError" class="error-message">
-        <p>⚠️ データの読み込みに失敗しました。しばらくしてからもう一度お試しください。</p>
+        <p>
+          ⚠️
+          データの読み込みに失敗しました。しばらくしてからもう一度お試しください。
+        </p>
       </div>
       <TopAbout v-else :details="details" :timelines="timelines" />
     </section>
@@ -25,9 +28,9 @@ const loadError = ref(false)
 const loadData = async () => {
   const [detailsResult, timelinesResult] = await Promise.allSettled([
     $fetch('/top-details.json'),
-    $fetch('/top-timelines.json')
+    $fetch('/top-timelines.json'),
   ])
-  
+
   // 個別の結果を処理
   if (detailsResult.status === 'fulfilled') {
     details.value = detailsResult.value?.body || []
@@ -35,16 +38,17 @@ const loadData = async () => {
     console.warn('Failed to load details data:', detailsResult.reason)
     details.value = []
   }
-  
+
   if (timelinesResult.status === 'fulfilled') {
     timelines.value = timelinesResult.value?.body || []
   } else {
     console.warn('Failed to load timelines data:', timelinesResult.reason)
     timelines.value = []
   }
-  
+
   // 両方とも失敗した場合のみエラー状態に設定
-  loadError.value = detailsResult.status === 'rejected' && timelinesResult.status === 'rejected'
+  loadError.value =
+    detailsResult.status === 'rejected' && timelinesResult.status === 'rejected'
 }
 
 // クライアントサイドでデータ読み込み
