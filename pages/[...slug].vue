@@ -25,6 +25,8 @@
 </template>
 
 <script setup lang="ts">
+import { isValidArticle } from '~/utils/validation'
+
 const route = useRoute()
 let slug = route.params.slug as string | string[]
 
@@ -41,34 +43,19 @@ if (slug === 'devices') {
   await navigateTo('/devices', { redirectCode: 301 })
 }
 
-// Use Nuxt Content v2 syntax with improved error handling for SSG
+// Use Nuxt Content v3 syntax with correct schema
 const { data: article, error } = await useLazyAsyncData(`content-${slug}`, async () => {
   try {
-    const result = await queryContent('pages', slug).findOne()
+    // Query by path using the correct field name
+    const result = await queryCollection('content').where('path', '=', `/pages/${slug}`).first()
     
-    // Additional validation to ensure we got valid content
-    if (!result || !result.title) {
-      console.warn(`[Content] Content found but missing title for ${slug}`)
-      return null
+    if (isValidArticle(result)) {
+      return result
     }
     
-    return result
+    return null
   } catch (err) {
     console.error(`[Content] Error fetching content for ${slug}:`, err)
-    
-    // During SSG, try a direct query as fallback
-    if (process.prerender) {
-      try {
-        console.log(`[Content] Retrying direct query for ${slug}`)
-        const fallbackResult = await queryContent().where({ _path: `/pages/${slug}` }).findOne()
-        if (fallbackResult && fallbackResult.title) {
-          return fallbackResult
-        }
-      } catch (fallbackErr) {
-        console.error(`[Content] Fallback query also failed for ${slug}:`, fallbackErr)
-      }
-    }
-    
     return null
   }
 })

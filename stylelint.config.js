@@ -12,7 +12,6 @@ module.exports = {
     '.nuxt/**',
     '.output/**',
     'dist/**',
-    'src/**',
     '**/*.scss',
   ],
   rules: {
