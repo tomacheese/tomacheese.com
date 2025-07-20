@@ -85,21 +85,11 @@ export default defineNuxtConfig({
   },
 
   content: {
-    highlight: {
-      theme: 'github-light',
-    },
+    // Content configuration
   },
 
   fonts: {
-    google: {
-      families: [
-        'Montserrat:wght@600',
-        'Noto+Sans+JP:wght@400;700',
-        'Inter:wght@300;400;500;600;700'
-      ],
-      display: 'swap',
-      preload: true,
-    },
+    // Fonts configuration will be auto-detected from CSS
   },
 
   runtimeConfig: {

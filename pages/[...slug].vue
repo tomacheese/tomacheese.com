@@ -11,7 +11,7 @@
     <div class="container">
       <div class="content-layout">
         <main class="main-content">
-          <article class="content-container">
+          <article v-if="article" class="content-container">
             <ContentRenderer :value="article" />
           </article>
         </main>

@@ -3,6 +3,16 @@
  */
 
 /**
+ * Type definition for table of contents link
+ */
+export interface TocLink {
+  id: string
+  depth: string
+  text: string
+  children?: TocLink[]
+}
+
+/**
  * Type definition for a valid article from @nuxt/content
  */
 export interface ValidArticle {
@@ -10,7 +20,7 @@ export interface ValidArticle {
   path: string
   body?: {
     toc?: {
-      links?: unknown[]
+      links?: TocLink[]
     }
   }
   description?: string
@@ -22,15 +32,23 @@ export interface ValidArticle {
  * @param result - Result from queryCollection query (ParsedContent or similar content object)
  * @returns True if the result is a valid article with required fields
  */
-export function isValidArticle(result: Record<string, string | unknown> | null | undefined): result is ValidArticle {
+export function isValidArticle(result: unknown): result is ValidArticle {
+  if (
+    result === null ||
+    result === undefined ||
+    typeof result !== 'object' ||
+    !result
+  ) {
+    return false
+  }
+
+  const resultObject = result as Record<string, unknown>
+
   return (
-    result !== null &&
-    result !== undefined &&
-    typeof result === 'object' &&
-    'title' in result &&
-    typeof result.title === 'string' &&
-    result.title.trim() !== '' &&
-    'path' in result &&
-    typeof result.path === 'string'
+    'title' in resultObject &&
+    typeof resultObject.title === 'string' &&
+    resultObject.title.trim() !== '' &&
+    'path' in resultObject &&
+    typeof resultObject.path === 'string'
   )
 }

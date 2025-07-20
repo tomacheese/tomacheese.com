@@ -160,3 +160,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Temporary files and directories for testing/verification
+tmp/
