@@ -5,10 +5,24 @@ import TopAbout from '~/components/TopAbout.vue'
 // DOMPurifyのモック
 vi.mock('dompurify', () => ({
   default: {
-    sanitize: vi.fn((html: string, options: { ALLOWED_TAGS?: string[]; ALLOWED_ATTR?: string[] }) => {
-      // 実際のサニタイゼーション動作をDOMPurifyに委譲
-      const DOMPurify = require('dompurify').default;
-      return DOMPurify.sanitize(html, options);
+    sanitize: vi.fn((html: string, options?: { ALLOWED_TAGS?: string[]; ALLOWED_ATTR?: string[] }) => {
+      // テスト環境での簡略化されたサニタイゼーション処理
+      let sanitized = html
+      
+      // scriptタグを除去
+      sanitized = sanitized.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      
+      // イベントハンドラを除去
+      sanitized = sanitized.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '')
+      
+      // 許可されていないタグを除去（options.ALLOWED_TAGSに基づく）
+      if (options?.ALLOWED_TAGS) {
+        const allowedTags = options.ALLOWED_TAGS.join('|')
+        const tagPattern = new RegExp(`<(?!/?(?:${allowedTags})\\b)[^>]*>`, 'gi')
+        sanitized = sanitized.replace(tagPattern, '')
+      }
+      
+      return sanitized
     }),
   },
 }))
