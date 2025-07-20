@@ -194,10 +194,10 @@ pnpm generate     # 静的サイト生成
 
 2. **検証用ファイルの削除**
    ```bash
-   # プロジェクト内の tmp ディレクトリを削除
-   rm -rf ./tmp/
-   # または システムの /tmp 内の作成したファイルを削除
-   rm -rf /tmp/test-* /tmp/verify-* /tmp/experiment-*
+   # プロジェクト内の tmp ディレクトリを削除（確認付き）
+   find ./tmp/ -type f -exec rm -i {} \;
+   # または システムの /tmp 内の作成したファイルを削除（安全な方法）
+   find /tmp -type f \( -name "test-*" -o -name "verify-*" -o -name "experiment-*" \) -delete
    ```
 
 3. **git status での最終確認**
