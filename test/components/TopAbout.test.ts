@@ -6,22 +6,9 @@ import TopAbout from '~/components/TopAbout.vue'
 vi.mock('dompurify', () => ({
   default: {
     sanitize: vi.fn((html: string, options: { ALLOWED_TAGS?: string[]; ALLOWED_ATTR?: string[] }) => {
-      // 実際のサニタイゼーション動作をシミュレート
-      if (html.includes('<script')) {
-        let sanitizedHtml = html;
-        do {
-          html = sanitizedHtml;
-          sanitizedHtml = html.replace(/<script[^>]*>.*?<\/script[\s\S]*?>/gi, ''); // scriptタグを除去（終端タグのバリエーションにも対応）
-        } while (sanitizedHtml !== html);
-        return sanitizedHtml;
-      }
-      if (html.includes('onclick')) {
-        return html.replace(/onclick="[^"]*"/gi, '') // onclick属性を除去
-      }
-      if (options.ALLOWED_TAGS?.includes('a') && html.includes('<a')) {
-        return html // 安全なHTMLタグは通す
-      }
-      return html
+      // 実際のサニタイゼーション動作をDOMPurifyに委譲
+      const DOMPurify = require('dompurify').default;
+      return DOMPurify.sanitize(html, options);
     }),
   },
 }))
