@@ -1,5 +1,16 @@
 import { logger } from './utils/logger'
 
+// Content Security Policy for enhanced security
+const CSP_POLICY = [
+  "default-src 'self'",
+  "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+  "font-src 'self' fonts.gstatic.com",
+  "img-src 'self' data:",
+  "script-src 'self' 'unsafe-inline' www.googletagmanager.com",
+  "connect-src 'self' www.google-analytics.com",
+  "frame-ancestors 'none'"
+].join('; ') + ';'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -170,6 +181,17 @@ export default defineNuxtConfig({
     cloudflare: {
       // Initialize cloudflare config to prevent undefined access in preset
     },
+    routeRules: {
+      '/**': {
+        headers: {
+          'Content-Security-Policy': CSP_POLICY,
+          'X-Frame-Options': 'DENY',
+          'X-Content-Type-Options': 'nosniff',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
+        }
+      }
+    }
   },
 
   ssr: true,
