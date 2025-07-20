@@ -41,9 +41,9 @@
       <!-- Mobile menu -->
       <div v-if="mobileMenuOpen" class="mobile-menu">
         <component
+          :is="item.to.startsWith('http') ? 'a' : 'NuxtLink'"
           v-for="item in items"
           :key="item.title"
-          :is="item.to.startsWith('http') ? 'a' : 'NuxtLink'"
           :to="item.to.startsWith('http') ? undefined : item.to"
           :href="item.to.startsWith('http') ? item.to : undefined"
           :target="item.to.startsWith('http') ? '_blank' : undefined"
