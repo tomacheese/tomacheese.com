@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import VDarkSwitch from '~/components/VDarkSwitch.vue'
 
@@ -6,7 +6,7 @@ import VDarkSwitch from '~/components/VDarkSwitch.vue'
 const IconStub = {
   name: 'Icon',
   props: ['name', 'size'],
-  template: '<div class="mock-icon" :data-name="name" :data-size="size"></div>'
+  template: '<div class="mock-icon" :data-name="name" :data-size="size"></div>',
 }
 
 describe('VDarkSwitch', () => {
@@ -14,9 +14,9 @@ describe('VDarkSwitch', () => {
     const wrapper = mount(VDarkSwitch, {
       global: {
         stubs: {
-          Icon: IconStub
-        }
-      }
+          Icon: IconStub,
+        },
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -27,9 +27,9 @@ describe('VDarkSwitch', () => {
     const wrapper = mount(VDarkSwitch, {
       global: {
         stubs: {
-          Icon: IconStub
-        }
-      }
+          Icon: IconStub,
+        },
+      },
     })
 
     expect(wrapper.find('button').classes()).toContain('theme-toggle')
@@ -39,9 +39,9 @@ describe('VDarkSwitch', () => {
     const wrapper = mount(VDarkSwitch, {
       global: {
         stubs: {
-          Icon: IconStub
-        }
-      }
+          Icon: IconStub,
+        },
+      },
     })
 
     expect(wrapper.find('.toggle-track').exists()).toBe(true)
@@ -53,15 +53,17 @@ describe('VDarkSwitch', () => {
     const wrapper = mount(VDarkSwitch, {
       global: {
         stubs: {
-          Icon: IconStub
-        }
-      }
+          Icon: IconStub,
+        },
+      },
     })
 
     const button = wrapper.find('button')
     const title = button.attributes('title')
-    
+
     // Title should be either light or dark mode switch text
-    expect(title === 'ライトモードに切り替え' || title === 'ダークモードに切り替え').toBe(true)
+    expect(
+      title === 'ライトモードに切り替え' || title === 'ダークモードに切り替え',
+    ).toBe(true)
   })
 })

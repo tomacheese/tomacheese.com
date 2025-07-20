@@ -1,7 +1,7 @@
 <template>
   <section class="device-section">
     <h2>{{ device.title }}</h2>
-    
+
     <p v-if="device.description">{{ device.description }}</p>
 
     <!-- メインPCの詳細表示 -->
@@ -19,18 +19,24 @@
       <!-- 内容品セクション -->
       <div v-if="device.sections?.components">
         <h3>{{ device.sections.components.title }}</h3>
-        <p v-if="device.sections.components.description">{{ device.sections.components.description }}</p>
-        
-        <div v-if="device.sections.components.categories" class="components-categories">
-          <div 
-            v-for="(category, categoryKey) in device.sections.components.categories" 
+        <p v-if="device.sections.components.description">
+          {{ device.sections.components.description }}
+        </p>
+
+        <div
+          v-if="device.sections.components.categories"
+          class="components-categories"
+        >
+          <div
+            v-for="(category, categoryKey) in device.sections.components
+              .categories"
             :key="categoryKey"
             class="component-category"
           >
             <h4>{{ category.title }}</h4>
             <ul class="component-list">
-              <li 
-                v-for="(item, itemIndex) in category.items" 
+              <li
+                v-for="(item, itemIndex) in category.items"
                 :key="itemIndex"
                 :class="{ unused: item.unused }"
                 class="component-item"
@@ -41,17 +47,33 @@
                   </span>
                 </div>
                 <div class="component-details">
-                  <span class="component-status">ステータス: {{ item.status }}</span>
-                  <span class="component-price">購入価格: {{ formatPrice(item.price) }}</span>
-                  <span v-for="(value, key) in item.extra" :key="key" class="component-extra">
-                    {{ key }}: {{ typeof value === 'number' ? formatPrice(value) : value }}
+                  <span class="component-status"
+                    >ステータス: {{ item.status }}</span
+                  >
+                  <span class="component-price"
+                    >購入価格: {{ formatPrice(item.price) }}</span
+                  >
+                  <span
+                    v-for="(value, key) in item.extra"
+                    :key="key"
+                    class="component-extra"
+                  >
+                    {{ key }}:
+                    {{ typeof value === 'number' ? formatPrice(value) : value }}
                   </span>
-                  <span class="component-date">購入日: {{ item.purchaseDate }}</span>
-                  <span v-if="item.notes" class="component-notes">{{ item.notes }}</span>
+                  <span class="component-date"
+                    >購入日: {{ item.purchaseDate }}</span
+                  >
+                  <span v-if="item.notes" class="component-notes">{{
+                    item.notes
+                  }}</span>
                 </div>
-                <div v-if="item.links && item.links.length > 0" class="component-links">
-                  <a 
-                    v-for="(link, linkIndex) in item.links" 
+                <div
+                  v-if="item.links && item.links.length > 0"
+                  class="component-links"
+                >
+                  <a
+                    v-for="(link, linkIndex) in item.links"
                     :key="linkIndex"
                     :href="link.url"
                     target="_blank"
@@ -69,25 +91,43 @@
     </template>
 
     <!-- ノートPC、サブPC、サーバ等のシンプルなスペック表示 -->
-    <template v-else-if="['notebookPc', 'subPcBanana', 'subPcChoco', 'homeServer', 'vpsComet', 'vpsOther', 'raspberryPiTomaPi', 'raspberryPiOrange'].includes(deviceType)">
+    <template
+      v-else-if="
+        [
+          'notebookPc',
+          'subPcBanana',
+          'subPcChoco',
+          'homeServer',
+          'vpsComet',
+          'vpsOther',
+          'raspberryPiTomaPi',
+          'raspberryPiOrange',
+        ].includes(deviceType)
+      "
+    >
       <ul v-if="device.specs">
         <li v-for="spec in device.specs" :key="spec">
           {{ spec }}
         </li>
       </ul>
-      
+
       <p v-if="device.warranty"><strong>保証:</strong> {{ device.warranty }}</p>
-      <p v-if="device.totalPrice"><strong>総額:</strong> {{ device.totalPrice }}</p>
-      <p v-if="device.purchaseInfo"><strong>購入情報:</strong> {{ device.purchaseInfo }}</p>
+      <p v-if="device.totalPrice">
+        <strong>総額:</strong> {{ device.totalPrice }}
+      </p>
+      <p v-if="device.purchaseInfo">
+        <strong>購入情報:</strong> {{ device.purchaseInfo }}
+      </p>
       <p v-for="(value, key) in device.extra" :key="key">
-        <strong>{{ key }}:</strong> {{ typeof value === 'number' ? formatPrice(value) : value }}
+        <strong>{{ key }}:</strong>
+        {{ typeof value === 'number' ? formatPrice(value) : value }}
       </p>
       <p v-if="device.notes">{{ device.notes }}</p>
       <p v-if="device.related">{{ device.related }}</p>
-      
+
       <div v-if="device.links && device.links.length > 0" class="device-links">
-        <a 
-          v-for="(link, linkIndex) in device.links" 
+        <a
+          v-for="(link, linkIndex) in device.links"
           :key="linkIndex"
           :href="link.url"
           target="_blank"
@@ -113,7 +153,11 @@
     <!-- スマートウォッチ -->
     <template v-else-if="deviceType === 'smartWatches'">
       <ul v-if="device.smartWatches">
-        <li v-for="watch in device.smartWatches" :key="watch.name" class="smartwatch-item">
+        <li
+          v-for="watch in device.smartWatches"
+          :key="watch.name"
+          class="smartwatch-item"
+        >
           <div class="device-header">
             <span class="device-name">{{ watch.name }}</span>
           </div>
@@ -121,9 +165,12 @@
             <span class="device-price">{{ formatPrice(watch.price) }}</span>
             <span class="device-date">{{ watch.purchaseDate }}購入</span>
           </div>
-          <div v-if="watch.links && watch.links.length > 0" class="device-links">
-            <a 
-              v-for="(link, linkIndex) in watch.links" 
+          <div
+            v-if="watch.links && watch.links.length > 0"
+            class="device-links"
+          >
+            <a
+              v-for="(link, linkIndex) in watch.links"
               :key="linkIndex"
               :href="link.url"
               target="_blank"
@@ -223,7 +270,7 @@ defineProps<Props>()
   border-radius: var(--radius-md);
   padding: var(--space-4);
   margin-bottom: var(--space-3);
-  
+
   .dark-theme & {
     background: var(--color-gray-800);
   }
@@ -236,7 +283,7 @@ defineProps<Props>()
 .component-name {
   font-weight: 600;
   color: var(--color-text-primary);
-  
+
   &.unused {
     text-decoration: line-through;
     color: var(--color-text-tertiary);
@@ -275,16 +322,16 @@ defineProps<Props>()
   font-size: var(--text-xs);
   transition: all 0.2s;
   border: 1px solid transparent;
-  
+
   &:hover {
     background: var(--color-primary-dark);
   }
-  
+
   .dark-theme & {
     background: var(--color-primary-light);
     color: var(--color-gray-900);
     border: 1px solid var(--color-primary);
-    
+
     &:hover {
       background: var(--color-primary);
       color: white;
@@ -300,7 +347,7 @@ defineProps<Props>()
   border-radius: var(--radius-md);
   padding: var(--space-3);
   margin-bottom: var(--space-2);
-  
+
   .dark-theme & {
     background: var(--color-gray-800);
   }
@@ -338,16 +385,16 @@ defineProps<Props>()
   font-size: var(--text-xs);
   transition: all 0.2s;
   border: 1px solid transparent;
-  
+
   &:hover {
     background: var(--color-primary-dark);
   }
-  
+
   .dark-theme & {
     background: var(--color-primary-light);
     color: var(--color-gray-900);
     border: 1px solid var(--color-primary);
-    
+
     &:hover {
       background: var(--color-primary);
       color: white;
@@ -364,12 +411,12 @@ defineProps<Props>()
   .component-details {
     font-size: var(--text-xs);
   }
-  
+
   .device-details {
     flex-direction: column;
     gap: var(--space-1);
   }
-  
+
   .component-links,
   .device-links {
     flex-direction: column;

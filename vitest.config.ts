@@ -16,7 +16,7 @@ export default defineConfig({
         '**/*.config.*',
         'types/',
         'content/',
-        'public/'
+        'public/',
       ],
       threshold: {
         global: {
@@ -35,6 +35,6 @@ export default defineConfig({
     alias: {
       '~': new URL('./', import.meta.url).pathname,
       '@': new URL('./', import.meta.url).pathname,
-    }
-  }
+    },
+  },
 })

@@ -3,7 +3,7 @@ import { describe, expect, it, vi, beforeEach } from 'vitest'
 // Mock defineEventHandler before importing the handler
 vi.mock('h3', () => ({
   defineEventHandler: vi.fn((handler) => handler),
-  createError: vi.fn((error) => new Error(error.statusMessage))
+  createError: vi.fn((error) => new Error(error.statusMessage)),
 }))
 
 // Mock the devices data
@@ -11,18 +11,18 @@ const mockDevicesData = {
   title: 'テストデバイス一覧',
   overview: {
     title: '概要',
-    history: []
+    history: [],
   },
   devices: {
     mainPc: {
       title: 'メインPC',
-      description: 'テスト用PC'
-    }
-  }
+      description: 'テスト用PC',
+    },
+  },
 }
 
 vi.mock('~/content/devices.json', () => ({
-  default: mockDevicesData
+  default: mockDevicesData,
 }))
 
 // Import after mocking

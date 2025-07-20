@@ -5,21 +5,23 @@ import type { Device } from '~/types/devices'
 
 // Mock formatPrice utility
 vi.mock('~/utils/formatters', () => ({
-  formatPrice: vi.fn((price) => price ? `${price.toLocaleString('ja-JP')}円` : '')
+  formatPrice: vi.fn((price) =>
+    price ? `${price.toLocaleString('ja-JP')}円` : '',
+  ),
 }))
 
 describe('DeviceSection', () => {
   const mockDevice: Device = {
     title: 'テストデバイス',
-    description: 'テスト用のデバイスです'
+    description: 'テスト用のデバイスです',
   }
 
   it('正常にマウントされる', () => {
     const wrapper = mount(DeviceSection, {
       props: {
         device: mockDevice,
-        deviceType: 'test'
-      }
+        deviceType: 'test',
+      },
     })
 
     expect(wrapper.exists()).toBe(true)
@@ -30,8 +32,8 @@ describe('DeviceSection', () => {
     const wrapper = mount(DeviceSection, {
       props: {
         device: mockDevice,
-        deviceType: 'test'
-      }
+        deviceType: 'test',
+      },
     })
 
     expect(wrapper.find('h2').text()).toBe('テストデバイス')
@@ -41,8 +43,8 @@ describe('DeviceSection', () => {
     const wrapper = mount(DeviceSection, {
       props: {
         device: mockDevice,
-        deviceType: 'test'
-      }
+        deviceType: 'test',
+      },
     })
 
     expect(wrapper.text()).toContain('テスト用のデバイスです')
@@ -55,7 +57,7 @@ describe('DeviceSection', () => {
       sections: {
         summary: {
           title: '概要',
-          items: ['高性能PC', '最新スペック']
+          items: ['高性能PC', '最新スペック'],
         },
         components: {
           title: '構成品',
@@ -69,21 +71,21 @@ describe('DeviceSection', () => {
                   status: '現役',
                   price: 50000,
                   purchaseDate: '2023-01-01',
-                  links: [{ name: 'Amazon', url: 'https://amazon.com' }]
-                }
-              ]
-            }
-          }
-        }
-      }
+                  links: [{ name: 'Amazon', url: 'https://amazon.com' }],
+                },
+              ],
+            },
+          },
+        },
+      },
     }
 
     it('メインPCの概要セクションが表示される', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: mainPcDevice,
-          deviceType: 'mainPc'
-        }
+          deviceType: 'mainPc',
+        },
       })
 
       expect(wrapper.text()).toContain('概要')
@@ -95,8 +97,8 @@ describe('DeviceSection', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: mainPcDevice,
-          deviceType: 'mainPc'
-        }
+          deviceType: 'mainPc',
+        },
       })
 
       expect(wrapper.text()).toContain('構成品')
@@ -109,8 +111,8 @@ describe('DeviceSection', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: mainPcDevice,
-          deviceType: 'mainPc'
-        }
+          deviceType: 'mainPc',
+        },
       })
 
       expect(wrapper.text()).toContain('ステータス: 現役')
@@ -122,8 +124,8 @@ describe('DeviceSection', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: mainPcDevice,
-          deviceType: 'mainPc'
-        }
+          deviceType: 'mainPc',
+        },
       })
 
       const link = wrapper.find('a[href="https://amazon.com"]')
@@ -141,15 +143,15 @@ describe('DeviceSection', () => {
       warranty: '3年保証',
       totalPrice: 150000,
       purchaseInfo: 'Amazon購入',
-      notes: 'モバイル用'
+      notes: 'モバイル用',
     }
 
     it('ノートPCのスペックが表示される', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: simpleDevice,
-          deviceType: 'notebookPc'
-        }
+          deviceType: 'notebookPc',
+        },
       })
 
       expect(wrapper.text()).toContain('CPU: Intel Core i5')
@@ -161,8 +163,8 @@ describe('DeviceSection', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: simpleDevice,
-          deviceType: 'notebookPc'
-        }
+          deviceType: 'notebookPc',
+        },
       })
 
       expect(wrapper.text()).toContain('保証: 3年保証')
@@ -177,16 +179,16 @@ describe('DeviceSection', () => {
       title: 'モバイルデバイス',
       mobileDevices: [
         { name: 'iPhone 14', notes: 'メイン使用', purchaseDate: '2023-03-01' },
-        { name: 'iPad Air', purchaseDate: '2023-02-01' }
-      ]
+        { name: 'iPad Air', purchaseDate: '2023-02-01' },
+      ],
     }
 
     it('モバイルデバイス一覧が表示される', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: mobileDevice,
-          deviceType: 'mobileDevices'
-        }
+          deviceType: 'mobileDevices',
+        },
       })
 
       expect(wrapper.text()).toContain('iPhone 14')
@@ -205,17 +207,17 @@ describe('DeviceSection', () => {
           name: 'Apple Watch Series 8',
           price: 50000,
           purchaseDate: '2023-01-15',
-          links: [{ name: 'Apple Store', url: 'https://apple.com' }]
-        }
-      ]
+          links: [{ name: 'Apple Store', url: 'https://apple.com' }],
+        },
+      ],
     }
 
     it('スマートウォッチ情報が表示される', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: smartWatchDevice,
-          deviceType: 'smartWatches'
-        }
+          deviceType: 'smartWatches',
+        },
       })
 
       expect(wrapper.text()).toContain('Apple Watch Series 8')
@@ -226,8 +228,8 @@ describe('DeviceSection', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: smartWatchDevice,
-          deviceType: 'smartWatches'
-        }
+          deviceType: 'smartWatches',
+        },
       })
 
       const link = wrapper.find('a[href="https://apple.com"]')
@@ -239,15 +241,15 @@ describe('DeviceSection', () => {
   describe('その他デバイス表示', () => {
     const otherDevice: Device = {
       title: 'その他デバイス',
-      otherDevices: ['キーボード', 'マウス', 'ヘッドセット']
+      otherDevices: ['キーボード', 'マウス', 'ヘッドセット'],
     }
 
     it('その他デバイス一覧が表示される', () => {
       const wrapper = mount(DeviceSection, {
         props: {
           device: otherDevice,
-          deviceType: 'otherDevices'
-        }
+          deviceType: 'otherDevices',
+        },
       })
 
       expect(wrapper.text()).toContain('キーボード')

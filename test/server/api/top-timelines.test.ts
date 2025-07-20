@@ -4,20 +4,20 @@ import { describe, expect, it, vi, beforeEach } from 'vitest'
 const mockReadFileSync = vi.fn()
 vi.mock('fs', () => ({
   default: {
-    readFileSync: mockReadFileSync
-  }
+    readFileSync: mockReadFileSync,
+  },
 }))
 
 vi.mock('path', () => ({
   default: {
-    join: vi.fn((...paths) => paths.join('/'))
-  }
+    join: vi.fn((...paths) => paths.join('/')),
+  },
 }))
 
 // Mock Nuxt utilities
 vi.mock('h3', () => ({
   defineEventHandler: vi.fn((handler) => handler),
-  createError: vi.fn((error) => new Error(error.statusMessage))
+  createError: vi.fn((error) => new Error(error.statusMessage)),
 }))
 
 // Create a mock handler function that simulates the API logic
@@ -43,9 +43,19 @@ describe('server/api/top-timelines', () => {
   it('正常にtop-timelinesデータを返す', async () => {
     const mockData = {
       timelines: [
-        { id: 'timeline1', date: '2024-01-01', title: 'Test Timeline 1', description: 'Test description 1' },
-        { id: 'timeline2', date: '2024-02-01', title: 'Test Timeline 2', description: 'Test description 2' }
-      ]
+        {
+          id: 'timeline1',
+          date: '2024-01-01',
+          title: 'Test Timeline 1',
+          description: 'Test description 1',
+        },
+        {
+          id: 'timeline2',
+          date: '2024-02-01',
+          title: 'Test Timeline 2',
+          description: 'Test description 2',
+        },
+      ],
     }
 
     mockReadFileSync.mockReturnValue(JSON.stringify(mockData))
@@ -79,9 +89,19 @@ describe('server/api/top-timelines', () => {
   it('タイムライン配列データを処理できる', async () => {
     const mockData = {
       timelines: [
-        { id: 'tl1', date: '2023-12-25', title: 'Christmas', description: 'Holiday' },
-        { id: 'tl2', date: '2024-01-01', title: 'New Year', description: 'Celebration' }
-      ]
+        {
+          id: 'tl1',
+          date: '2023-12-25',
+          title: 'Christmas',
+          description: 'Holiday',
+        },
+        {
+          id: 'tl2',
+          date: '2024-01-01',
+          title: 'New Year',
+          description: 'Celebration',
+        },
+      ],
     }
     mockReadFileSync.mockReturnValue(JSON.stringify(mockData))
 

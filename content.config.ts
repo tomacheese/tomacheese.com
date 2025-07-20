@@ -9,5 +9,5 @@ export default defineContentConfig({
   // - Custom field validation
   // - Specific collection schemas
   // - Custom transformers or parsers
-  collections: {}
+  collections: {},
 })

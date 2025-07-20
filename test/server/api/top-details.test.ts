@@ -4,20 +4,20 @@ import { describe, expect, it, vi, beforeEach } from 'vitest'
 const mockReadFileSync = vi.fn()
 vi.mock('fs', () => ({
   default: {
-    readFileSync: mockReadFileSync
-  }
+    readFileSync: mockReadFileSync,
+  },
 }))
 
 vi.mock('path', () => ({
   default: {
-    join: vi.fn((...paths) => paths.join('/'))
-  }
+    join: vi.fn((...paths) => paths.join('/')),
+  },
 }))
 
 // Mock Nuxt utilities
 vi.mock('h3', () => ({
   defineEventHandler: vi.fn((handler) => handler),
-  createError: vi.fn((error) => new Error(error.statusMessage))
+  createError: vi.fn((error) => new Error(error.statusMessage)),
 }))
 
 // Create a mock handler function that simulates the API logic
@@ -44,8 +44,8 @@ describe('server/api/top-details', () => {
     const mockData = {
       details: [
         { id: 'test1', icon: 'test-icon', text: 'Test detail 1' },
-        { id: 'test2', icon: 'test-icon-2', text: 'Test detail 2' }
-      ]
+        { id: 'test2', icon: 'test-icon-2', text: 'Test detail 2' },
+      ],
     }
 
     mockReadFileSync.mockReturnValue(JSON.stringify(mockData))
@@ -79,7 +79,7 @@ describe('server/api/top-details', () => {
   it('配列データも処理できる', async () => {
     const mockData = [
       { id: 'test1', text: 'Test 1' },
-      { id: 'test2', text: 'Test 2' }
+      { id: 'test2', text: 'Test 2' },
     ]
     mockReadFileSync.mockReturnValue(JSON.stringify(mockData))
 
