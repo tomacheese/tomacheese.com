@@ -28,8 +28,10 @@ export const logger = {
   warn: (message: string, data?: unknown) => {
     if (import.meta.dev) {
       if (data !== undefined) {
+        // eslint-disable-next-line no-console
         console.warn(`[WARN] ${message}`, data)
       } else {
+        // eslint-disable-next-line no-console
         console.warn(`[WARN] ${message}`)
       }
     }
@@ -42,8 +44,10 @@ export const logger = {
    */
   error: (message: string, error?: unknown) => {
     if (error !== undefined) {
+      // eslint-disable-next-line no-console
       console.error(`[ERROR] ${message}`, error)
     } else {
+      // eslint-disable-next-line no-console
       console.error(`[ERROR] ${message}`)
     }
   }

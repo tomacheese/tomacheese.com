@@ -10,7 +10,7 @@ export default createConfigForNuxt({
   rules: {
     'vue/multi-word-component-names': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
-    'no-console': ['error', { allow: ['warn', 'error'] }], // Prohibit console.log, allow only console.warn and console.error
+    'no-console': 'error',
     'no-debugger': 'error', // Prohibit debugger statements
     'vue/no-v-html': 'off', // 既存の.eslintrc.jsの設定を移行
     'vue/singleline-html-element-content-newline': 'off', // 既存の.eslintrc.jsの設定を移行
