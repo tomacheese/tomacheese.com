@@ -11,7 +11,7 @@ vi.mock('dompurify', () => ({
         let sanitizedHtml = html;
         do {
           html = sanitizedHtml;
-          sanitizedHtml = html.replace(/<script[^>]*>.*?<\/script>/gi, ''); // scriptタグを除去
+          sanitizedHtml = html.replace(/<script[^>]*>.*?<\/script[\s\S]*?>/gi, ''); // scriptタグを除去（終端タグのバリエーションにも対応）
         } while (sanitizedHtml !== html);
         return sanitizedHtml;
       }
