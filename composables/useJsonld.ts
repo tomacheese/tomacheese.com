@@ -1,4 +1,4 @@
-export const useJsonld = (jsonld: Record<string, any>) => {
+export const useJsonld = (jsonld: Record<string, unknown>) => {
   useHead({
     script: [
       {

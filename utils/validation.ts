@@ -10,11 +10,11 @@ export interface ValidArticle {
   path: string
   body?: {
     toc?: {
-      links?: any[]
+      links?: unknown[]
     }
   }
   description?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 /**
@@ -22,7 +22,7 @@ export interface ValidArticle {
  * @param result - Result from queryCollection query
  * @returns True if the result is a valid article with required fields
  */
-export function isValidArticle(result: any): result is ValidArticle {
+export function isValidArticle(result: unknown): result is ValidArticle {
   return (
     result !== null &&
     result !== undefined &&
