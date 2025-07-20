@@ -11,7 +11,7 @@ export interface DeviceItem {
   notes?: string
   unused?: boolean
   links?: DeviceLink[]
-  extra?: Record<string, string>
+  extra?: Record<string, string | number>
 }
 
 export interface DeviceCategory {
@@ -26,10 +26,37 @@ export interface DeviceSection {
   categories?: Record<string, DeviceCategory>
 }
 
+// Specific device types for better type safety
+export interface MobileDevice {
+  name: string
+  notes?: string
+  purchaseDate?: string
+}
+
+export interface SmartWatch {
+  name: string
+  price?: number
+  purchaseDate?: string
+  links?: DeviceLink[]
+}
+
 export interface Device {
   title: string
-  description: string
-  sections: Record<string, DeviceSection>
+  description?: string
+  sections?: Record<string, DeviceSection>
+  // Additional properties for different device types
+  specs?: string[]
+  warranty?: string
+  totalPrice?: number | string
+  purchaseInfo?: string
+  extra?: Record<string, string | number>
+  notes?: string
+  related?: string
+  links?: DeviceLink[]
+  // Separate properties for each device type to ensure type safety
+  mobileDevices?: MobileDevice[]
+  smartWatches?: SmartWatch[]
+  otherDevices?: string[]
 }
 
 export interface HistoryItem {

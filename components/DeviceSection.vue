@@ -101,8 +101,8 @@
 
     <!-- モバイルデバイス -->
     <template v-else-if="deviceType === 'mobileDevices'">
-      <ul v-if="device.devices">
-        <li v-for="mobile in device.devices" :key="mobile.name">
+      <ul v-if="device.mobileDevices">
+        <li v-for="mobile in device.mobileDevices" :key="mobile.name">
           {{ mobile.name }}
           <span v-if="mobile.notes"> {{ mobile.notes }}</span>
           <span v-if="mobile.purchaseDate"> {{ mobile.purchaseDate }}購入</span>
@@ -112,8 +112,8 @@
 
     <!-- スマートウォッチ -->
     <template v-else-if="deviceType === 'smartWatches'">
-      <ul v-if="device.devices">
-        <li v-for="watch in device.devices" :key="watch.name" class="smartwatch-item">
+      <ul v-if="device.smartWatches">
+        <li v-for="watch in device.smartWatches" :key="watch.name" class="smartwatch-item">
           <div class="device-header">
             <span class="device-name">{{ watch.name }}</span>
           </div>
@@ -139,8 +139,8 @@
 
     <!-- その他デバイス -->
     <template v-else-if="deviceType === 'otherDevices'">
-      <ul v-if="device.devices">
-        <li v-for="other in device.devices" :key="other">
+      <ul v-if="device.otherDevices">
+        <li v-for="(other, index) in device.otherDevices" :key="index">
           {{ other }}
         </li>
       </ul>
