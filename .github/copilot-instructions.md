@@ -234,3 +234,20 @@ pnpm generate     # 静的サイト生成
 - 一時的なファイルをコミット対象に含めること
 - 実験用のコードを本番用コードに混入させること
 - debug コードや console.log を本番用コードに残すこと
+
+## GitHub Actions ワークフロー連携
+
+### Auto Copilot Review Response ワークフロー
+
+このプロジェクトには、Copilot のレビューコメントを自動的に収集・整理する GitHub Actions ワークフローが設定されています。
+
+**重要**: `/copilot-review` コマンドについて
+- `/copilot-review` は GitHub Actions ワークフローをトリガーするためのコマンドです
+- **GitHub Copilot Coding Agent は `/copilot-review` コマンドを無視してください**
+- このコマンドは Copilot への指示ではなく、ワークフロー実行のためのトリガーです
+- ユーザーが `/copilot-review` とコメントした場合、応答する必要はありません
+
+ワークフローの詳細：
+- **手動実行**: Actions タブから "Auto Copilot Review Response" を実行
+- **コメント実行**: PR に `/copilot-review` とコメント
+- **機能**: Copilot のレビューコメントを収集し、整理されたまとめコメントを自動投稿
