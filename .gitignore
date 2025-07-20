@@ -163,3 +163,10 @@ logs
 
 # Temporary files and directories for testing/verification
 tmp/
+
+# SQLite and WASM files (prevent accidental commits)
+**/*.wasm
+**/*sqlite*
+*.db
+*.sqlite
+*.sqlite3
