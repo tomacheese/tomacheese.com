@@ -1,12 +1,6 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
-// Mock defineEventHandler before importing the handler
-vi.mock('h3', () => ({
-  defineEventHandler: vi.fn((handler) => handler),
-  createError: vi.fn((error) => new Error(error.statusMessage)),
-}))
-
-// Mock the devices data
+// Mock the JSON data first
 const mockDevicesData = {
   title: 'テストデバイス一覧',
   overview: {
@@ -21,19 +15,22 @@ const mockDevicesData = {
   },
 }
 
+// Mock the content import
 vi.mock('~/content/devices.json', () => ({
   default: mockDevicesData,
 }))
 
-// Import after mocking
-const handler = vi.fn().mockImplementation(() => mockDevicesData)
+// Mock h3 functions
+vi.mock('h3', () => ({
+  defineEventHandler: vi.fn((handler) => handler),
+}))
 
 describe('server/api/devices', () => {
-  beforeEach(() => {
-    vi.clearAllMocks()
-  })
-
   it('デバイスデータを正常に返す', async () => {
+    // Import the actual handler after mocking
+    const devicesHandler = await import('~/server/api/devices')
+    const handler = devicesHandler.default
+
     const result = handler()
 
     expect(result).toBeDefined()
@@ -45,6 +42,9 @@ describe('server/api/devices', () => {
   })
 
   it('デバイスデータの構造が正しい', async () => {
+    const devicesHandler = await import('~/server/api/devices')
+    const handler = devicesHandler.default
+
     const result = handler()
 
     expect(typeof result.title).toBe('string')
@@ -53,6 +53,9 @@ describe('server/api/devices', () => {
   })
 
   it('メインPCデータが含まれる', async () => {
+    const devicesHandler = await import('~/server/api/devices')
+    const handler = devicesHandler.default
+
     const result = handler()
 
     expect(result.devices.mainPc).toBeDefined()
