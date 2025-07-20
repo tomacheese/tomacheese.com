@@ -1,10 +1,11 @@
+---
 name: Test Dynamic Page Generation
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 permissions:
   contents: read
@@ -12,271 +13,284 @@ permissions:
 jobs:
   test-page-generation:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install pnpm
-      uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v4
 
-    - name: Setup node env
-      uses: actions/setup-node@v4
-      with:
-        node-version-file: .node-version
-        cache: 'pnpm'
-        cache-dependency-path: 'pnpm-lock.yaml'
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
-      
-    - name: Verify critical files before build
-      run: |
-        # Verify that critical files exist before attempting to build
-        echo "🔍 Verifying critical files exist before build..."
-        
-        # Check content files
-        test -f content/devices.json || (echo "❌ content/devices.json missing" && exit 1)
-        echo "✅ content/devices.json exists"
-        
-        # Check Vue components
-        test -f pages/devices.vue || (echo "❌ pages/devices.vue missing" && exit 1)
-        echo "✅ pages/devices.vue exists"
-        
-        test -f components/DeviceSection.vue || (echo "❌ components/DeviceSection.vue missing" && exit 1)
-        echo "✅ components/DeviceSection.vue exists"
-        
-        # Check API endpoint
-        test -f server/api/devices.ts || (echo "❌ server/api/devices.ts missing" && exit 1)
-        echo "✅ server/api/devices.ts exists"
-        
-        # Check utilities and types
-        test -f utils/formatters.ts || (echo "❌ utils/formatters.ts missing" && exit 1)
-        echo "✅ utils/formatters.ts exists"
-        
-        test -f types/devices.ts || (echo "❌ types/devices.ts missing" && exit 1)
-        echo "✅ types/devices.ts exists"
-        
-        echo "✅ All critical files verified successfully"
-      
-    - name: Generate static site
-      run: pnpm generate
+      - name: Setup node env
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
 
-    - name: Tree
-      run: |
-        sudo apt-get update && sudo apt-get install -y tree
-        tree -a .output/public/
-      
-    - name: Test required pages exist
-      run: |
-        # Check that required pages are generated with retry logic
-        echo "🔍 Checking that all required pages are generated..."
-        
-        # Function to check file existence with retry
-        check_file_exists() {
-          local page=$1
-          local file=$2
-          local max_attempts=3
-          local attempt=1
-          
-          while [ $attempt -le $max_attempts ]; do
-            if [ -f "$file" ]; then
-              echo "✅ $page page exists (attempt $attempt)"
-              return 0
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify critical files before build
+        run: |
+          # Verify that critical files exist before attempting to build
+          echo "🔍 Verifying critical files exist before build..."
+
+          # Check content files
+          test -f content/devices.json || \
+            (echo "❌ content/devices.json missing" && exit 1)
+          echo "✅ content/devices.json exists"
+
+          # Check Vue components
+          test -f pages/devices.vue || \
+            (echo "❌ pages/devices.vue missing" && exit 1)
+          echo "✅ pages/devices.vue exists"
+
+          test -f components/DeviceSection.vue || \
+            (echo "❌ components/DeviceSection.vue missing" && exit 1)
+          echo "✅ components/DeviceSection.vue exists"
+
+          # Check API endpoint
+          test -f server/api/devices.ts || \
+            (echo "❌ server/api/devices.ts missing" && exit 1)
+          echo "✅ server/api/devices.ts exists"
+
+          # Check utilities and types
+          test -f utils/formatters.ts || \
+            (echo "❌ utils/formatters.ts missing" && exit 1)
+          echo "✅ utils/formatters.ts exists"
+
+          test -f types/devices.ts || \
+            (echo "❌ types/devices.ts missing" && exit 1)
+          echo "✅ types/devices.ts exists"
+
+          echo "✅ All critical files verified successfully"
+
+      - name: Generate static site
+        run: pnpm generate
+
+      - name: Tree
+        run: |
+          sudo apt-get update && sudo apt-get install -y tree
+          tree -a .output/public/
+
+      - name: Test required pages exist
+        run: |
+          # Check that required pages are generated with retry logic
+          echo "🔍 Checking that all required pages are generated..."
+
+          # Function to check file existence with retry
+          check_file_exists() {
+            local page=$1
+            local file=$2
+            local max_attempts=3
+            local attempt=1
+
+            while [ $attempt -le $max_attempts ]; do
+              if [ -f "$file" ]; then
+                echo "✅ $page page exists (attempt $attempt)"
+                return 0
+              fi
+              echo "⏳ $page page not found on attempt $attempt, waiting 1 second..."
+              sleep 1
+              attempt=$((attempt + 1))
+            done
+
+            echo "❌ $page page not generated after $max_attempts attempts"
+            echo "📁 Directory contents:"
+            ls -la "$(dirname "$file")" || echo "Directory does not exist"
+            return 1
+          }
+
+          # Check each required page
+          check_file_exists "/me" ".output/public/me/index.html"
+          check_file_exists "/about" ".output/public/about/index.html"
+          check_file_exists "/devices" ".output/public/devices/index.html"
+          check_file_exists "/anime" ".output/public/anime/index.html"
+          check_file_exists "/index" ".output/public/index.html"
+
+          echo "✅ All required pages generated successfully"
+
+      - name: Test page content validity
+        run: |
+          # Check that pages contain expected content and are not 404 pages
+          echo "🔍 Checking page content validity..."
+
+          # Function to check for 404 errors with better debugging
+          check_page_404() {
+            local page=$1
+            local file=$2
+
+            echo "🔍 Checking $page page content..."
+
+            # Check file size first
+            local file_size=$(stat -c%s "$file" 2>/dev/null || echo "0")
+            echo "📏 File size: $file_size bytes"
+
+            if [ "$file_size" -lt 100 ]; then
+              echo "❌ $page page is too small (likely empty or corrupt)"
+              echo "📄 Content:"
+              cat "$file" || echo "Cannot read file"
+              return 1
             fi
-            echo "⏳ $page page not found on attempt $attempt, waiting 1 second..."
-            sleep 1
-            attempt=$((attempt + 1))
-          done
-          
-          echo "❌ $page page not generated after $max_attempts attempts"
-          echo "📁 Directory contents:"
-          ls -la "$(dirname "$file")" || echo "Directory does not exist"
-          return 1
-        }
-        
-        # Check each required page
-        check_file_exists "/me" ".output/public/me/index.html"
-        check_file_exists "/about" ".output/public/about/index.html"
-        check_file_exists "/devices" ".output/public/devices/index.html"
-        check_file_exists "/anime" ".output/public/anime/index.html"
-        check_file_exists "/index" ".output/public/index.html"
-        
-        echo "✅ All required pages generated successfully"
-        
-    - name: Test page content validity
-      run: |
-        # Check that pages contain expected content and are not 404 pages
-        echo "🔍 Checking page content validity..."
-        
-        # Function to check for 404 errors with better debugging
-        check_page_404() {
-          local page=$1
-          local file=$2
-          
-          echo "🔍 Checking $page page content..."
-          
-          # Check file size first
-          local file_size=$(stat -c%s "$file" 2>/dev/null || echo "0")
-          echo "📏 File size: $file_size bytes"
-          
-          if [ "$file_size" -lt 100 ]; then
-            echo "❌ $page page is too small (likely empty or corrupt)"
-            echo "📄 Content:"
-            cat "$file" || echo "Cannot read file"
-            return 1
-          fi
-          
-          # Check for 404 errors
-          if grep -q "404\|Page Not Found\|statusCode.*404" "$file"; then
-            echo "❌ $page page contains 404 error"
-            echo "📄 Content preview of $page:"
-            head -20 "$file" | grep -E "(title|h1|404)" || echo "No relevant content found"
-            return 1
-          fi
-          
-          # Check for basic HTML structure
-          if ! grep -q "<html" "$file"; then
-            echo "❌ $page page missing HTML structure"
-            echo "📄 Content preview:"
-            head -10 "$file"
-            return 1
-          fi
-          
-          echo "✅ $page page content is valid"
-          return 0
-        }
-        
-        check_page_404 "/me" ".output/public/me/index.html"
-        check_page_404 "/about" ".output/public/about/index.html"
-        check_page_404 "/devices" ".output/public/devices/index.html"
-        check_page_404 "/anime" ".output/public/anime/index.html"
-        
-        echo "✅ All pages contain valid content (no 404 errors)"
-        
-    - name: Test devices page specific content
-      run: |
-        # Specific validation for devices page to ensure it's properly generated
-        echo "🔍 Validating devices page specific content..."
-        
-        devices_file=".output/public/devices/index.html"
-        
-        # Check if devices page contains expected Japanese content
-        if ! grep -q "デバイス一覧" "$devices_file"; then
-          echo "❌ Devices page missing title 'デバイス一覧'"
-          echo "📄 Title content in devices page:"
-          grep -o '<title>.*</title>' "$devices_file" || echo "No title found"
-          grep -o '<h1[^>]*>.*</h1>' "$devices_file" || echo "No h1 found"
-          exit 1
-        fi
-        
-        # Check if devices page contains component content
-        if ! grep -q "メインPC\|ノートPC\|サーバ" "$devices_file"; then
-          echo "❌ Devices page missing expected device sections"
-          echo "📄 Device sections in page:"
-          grep -o '<h[2-4][^>]*>.*</h[2-4]>' "$devices_file" | head -10 || echo "No device sections found"
-          exit 1
-        fi
-        
-        # Check if devices API endpoint was called successfully (payload should exist)
-        devices_payload=".output/public/devices/_payload.json"
-        if [ ! -f "$devices_payload" ]; then
-          echo "❌ Devices payload file not found"
-          echo "📁 Devices directory contents:"
-          ls -la ".output/public/devices/" || echo "Directory does not exist"
-          exit 1
-        fi
-        
-        echo "✅ Devices page contains expected content and payload"
-        
-    - name: Test page titles
-      run: |
-        # Check that pages have proper titles with better debugging
-        echo "🔍 Checking page titles..."
-        
-        # Function to check page title with debugging
-        check_page_title() {
-          local page=$1
-          local file=$2
-          local expected_title=$3
-          
-          if ! grep -q "$expected_title" "$file"; then
-            echo "❌ $page page missing expected title '$expected_title'"
-            echo "📄 Found titles in $page:"
-            grep -o '<title>.*</title>' "$file" || echo "No title tag found"
-            grep -o '<h1[^>]*>.*</h1>' "$file" || echo "No h1 tag found"
-            return 1
-          fi
-          echo "✅ $page page has correct title"
-          return 0
-        }
-        
-        check_page_title "/me" ".output/public/me/index.html" "私(Tomachi)について"
-        check_page_title "/about" ".output/public/about/index.html" "このサイトについて"
-        
-        echo "✅ All pages contain expected titles"
 
-    - name: Debug build output (on failure)
-      if: failure()
-      run: |
-        echo "🐛 Debug information:"
-        echo "=============================="
-        
-        echo "📁 Content pages directory:"
-        ls -la content/pages/ || echo "content/pages directory not found"
-        echo ""
-        
-        echo "📁 Content root directory:"
-        ls -la content/ || echo "content directory not found"
-        echo ""
-        
-        echo "🗂️ Generated routes:"
-        find .output/public/ -name "index.html" -type f | sort
-        echo ""
-        
-        echo "📋 Build output directory structure:"
-        tree .output/public/ -L 3 || ls -la .output/public/
-        echo ""
-        
-        echo "🔍 Devices-specific debug info:"
-        echo "Devices JSON file:"
-        ls -la content/devices.json || echo "content/devices.json not found"
-        if [ -f content/devices.json ]; then
-          echo "First 100 characters of devices.json:"
-          head -c 100 content/devices.json
-          echo "..."
-        fi
-        echo ""
-        
-        echo "Devices API endpoint:"
-        ls -la server/api/devices.ts || echo "server/api/devices.ts not found"
-        echo ""
-        
-        echo "Devices Vue page:"
-        ls -la pages/devices.vue || echo "pages/devices.vue not found"
-        echo ""
-        
-        echo "DeviceSection component:"
-        ls -la components/DeviceSection.vue || echo "components/DeviceSection.vue not found"
-        echo ""
-        
-        echo "📄 Sample page content (first 50 lines of /me page):"
-        head -50 .output/public/me/index.html || echo "Cannot read /me page"
-        echo ""
-        
-        echo "📄 Sample devices page content (if exists):"
-        if [ -f .output/public/devices/index.html ]; then
-          echo "File size: $(stat -c%s .output/public/devices/index.html) bytes"
-          echo "First 200 characters:"
-          head -c 200 .output/public/devices/index.html
-          echo "..."
-        else
-          echo ".output/public/devices/index.html does not exist"
-        fi
+            # Check for 404 errors
+            if grep -q "404\|Page Not Found\|statusCode.*404" "$file"; then
+              echo "❌ $page page contains 404 error"
+              echo "📄 Content preview of $page:"
+              head -20 "$file" | grep -E "(title|h1|404)" || \
+                echo "No relevant content found"
+              return 1
+            fi
 
-    - name: Upload generated site artifact
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: generated-site-debug
-        path: .output/public/
-        retention-days: 7
+            # Check for basic HTML structure
+            if ! grep -q "<html" "$file"; then
+              echo "❌ $page page missing HTML structure"
+              echo "📄 Content preview:"
+              head -10 "$file"
+              return 1
+            fi
+
+            echo "✅ $page page content is valid"
+            return 0
+          }
+
+          check_page_404 "/me" ".output/public/me/index.html"
+          check_page_404 "/about" ".output/public/about/index.html"
+          check_page_404 "/devices" ".output/public/devices/index.html"
+          check_page_404 "/anime" ".output/public/anime/index.html"
+
+          echo "✅ All pages contain valid content (no 404 errors)"
+
+      - name: Test devices page specific content
+        run: |
+          # Specific validation for devices page to ensure it's properly generated
+          echo "🔍 Validating devices page specific content..."
+
+          devices_file=".output/public/devices/index.html"
+
+          # Check if devices page contains expected Japanese content
+          if ! grep -q "デバイス一覧" "$devices_file"; then
+            echo "❌ Devices page missing title 'デバイス一覧'"
+            echo "📄 Title content in devices page:"
+            grep -o '<title>.*</title>' "$devices_file" || \
+              echo "No title found"
+            grep -o '<h1[^>]*>.*</h1>' "$devices_file" || \
+              echo "No h1 found"
+            exit 1
+          fi
+
+          # Check if devices page contains component content
+          if ! grep -q "メインPC\|ノートPC\|サーバ" "$devices_file"; then
+            echo "❌ Devices page missing expected device sections"
+            echo "📄 Device sections in page:"
+            grep -o '<h[2-4][^>]*>.*</h[2-4]>' "$devices_file" | head -10 || \
+              echo "No device sections found"
+            exit 1
+          fi
+
+          # Check if devices API endpoint was called successfully
+          devices_payload=".output/public/devices/_payload.json"
+          if [ ! -f "$devices_payload" ]; then
+            echo "❌ Devices payload file not found"
+            echo "📁 Devices directory contents:"
+            ls -la ".output/public/devices/" || echo "Directory does not exist"
+            exit 1
+          fi
+
+          echo "✅ Devices page contains expected content and payload"
+
+      - name: Test page titles
+        run: |
+          # Check that pages have proper titles with better debugging
+          echo "🔍 Checking page titles..."
+
+          # Function to check page title with debugging
+          check_page_title() {
+            local page=$1
+            local file=$2
+            local expected_title=$3
+
+            if ! grep -q "$expected_title" "$file"; then
+              echo "❌ $page page missing expected title '$expected_title'"
+              echo "📄 Found titles in $page:"
+              grep -o '<title>.*</title>' "$file" || echo "No title tag found"
+              grep -o '<h1[^>]*>.*</h1>' "$file" || echo "No h1 tag found"
+              return 1
+            fi
+            echo "✅ $page page has correct title"
+            return 0
+          }
+
+          check_page_title "/me" ".output/public/me/index.html" \
+            "私(Tomachi)について"
+          check_page_title "/about" ".output/public/about/index.html" \
+            "このサイトについて"
+
+          echo "✅ All pages contain expected titles"
+
+      - name: Debug build output (on failure)
+        if: failure()
+        run: |
+          echo "🐛 Debug information:"
+          echo "=============================="
+
+          echo "📁 Content pages directory:"
+          ls -la content/pages/ || echo "content/pages directory not found"
+          echo ""
+
+          echo "📁 Content root directory:"
+          ls -la content/ || echo "content directory not found"
+          echo ""
+
+          echo "🗂️ Generated routes:"
+          find .output/public/ -name "index.html" -type f | sort
+          echo ""
+
+          echo "📋 Build output directory structure:"
+          tree .output/public/ -L 3 || ls -la .output/public/
+          echo ""
+
+          echo "🔍 Devices-specific debug info:"
+          echo "Devices JSON file:"
+          ls -la content/devices.json || echo "content/devices.json not found"
+          if [ -f content/devices.json ]; then
+            echo "First 100 characters of devices.json:"
+            head -c 100 content/devices.json
+            echo "..."
+          fi
+          echo ""
+
+          echo "Devices API endpoint:"
+          ls -la server/api/devices.ts || echo "server/api/devices.ts not found"
+          echo ""
+
+          echo "Devices Vue page:"
+          ls -la pages/devices.vue || echo "pages/devices.vue not found"
+          echo ""
+
+          echo "DeviceSection component:"
+          ls -la components/DeviceSection.vue || \
+            echo "components/DeviceSection.vue not found"
+          echo ""
+
+          echo "📄 Sample page content (first 50 lines of /me page):"
+          head -50 .output/public/me/index.html || echo "Cannot read /me page"
+          echo ""
+
+          echo "📄 Sample devices page content (if exists):"
+          if [ -f .output/public/devices/index.html ]; then
+            echo "File size: $(stat -c%s .output/public/devices/index.html) bytes"
+            echo "First 200 characters:"
+            head -c 200 .output/public/devices/index.html
+            echo "..."
+          else
+            echo ".output/public/devices/index.html does not exist"
+          fi
+
+      - name: Upload generated site artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-site-debug
+          path: .output/public/
+          retention-days: 7
