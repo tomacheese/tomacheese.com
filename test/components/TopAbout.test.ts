@@ -96,6 +96,7 @@ describe('TopAbout.vue', () => {
 
     // 最初のdetail項目をチェック
     const firstDetail = detailItems[0]
+    expect(firstDetail).toBeDefined()
     expect(firstDetail.find('.detail-text').text()).toBe('テストユーザー')
 
     // アイコンの属性をチェック
@@ -122,6 +123,7 @@ describe('TopAbout.vue', () => {
 
     // 最初のtimeline項目をチェック
     const firstTimeline = timelineItems[0]
+    expect(firstTimeline).toBeDefined()
     expect(firstTimeline.find('.timeline-date').text()).toBe('2001')
     expect(firstTimeline.find('.timeline-text').text()).toBe('山梨県で生まれる')
   })
