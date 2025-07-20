@@ -1,9 +1,12 @@
 /**
  * Format price number as Japanese yen currency
- * @param price - Price as number
- * @returns Formatted price string with yen symbol
+ * @param price - Price as number or undefined
+ * @returns Formatted price string with yen symbol, or empty string if undefined
  */
-export function formatPrice(price: number): string {
+export function formatPrice(price: number | undefined): string {
+  if (price === undefined || price === null) {
+    return ''
+  }
   return `${price.toLocaleString('ja-JP')}円`
 }
 
