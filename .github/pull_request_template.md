@@ -43,7 +43,7 @@
 
 ### プロジェクト規約
 
-- [ ] [GitHub Copilot Instructions](/.github/copilot-instructions.md) に従って実装した
+- [ ] [GitHub Copilot Instructions](.github/copilot-instructions.md) に従って実装した
 - [ ] Conventional Commits 形式でコミットメッセージを作成した
 - [ ] 最小限の変更に留めた
 - [ ] 適切なコンポーネント構造を維持した
