@@ -1,5 +1,16 @@
 import { logger } from './utils/logger'
 
+// Content Security Policy for enhanced security
+const CSP_POLICY = [
+  "default-src 'self'",
+  "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+  "font-src 'self' fonts.gstatic.com",
+  "img-src 'self' data:",
+  "script-src 'self' 'unsafe-inline' www.googletagmanager.com",
+  "connect-src 'self' www.google-analytics.com",
+  "frame-ancestors 'none'"
+].join('; ') + ';'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -162,7 +173,7 @@ export default defineNuxtConfig({
     routeRules: {
       '/**': {
         headers: {
-          'Content-Security-Policy': "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline' www.googletagmanager.com; connect-src 'self' www.google-analytics.com; frame-ancestors 'none';",
+          'Content-Security-Policy': CSP_POLICY,
           'X-Frame-Options': 'DENY',
           'X-Content-Type-Options': 'nosniff',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
