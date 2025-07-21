@@ -23,8 +23,8 @@ global.useFetch = vi.fn(() => ({
 
 // Mock @nuxt/ui Icon component
 vi.mock('#components', () => ({
-  Icon: {
-    name: 'Icon',
+  UIcon: {
+    name: 'UIcon',
     props: ['name', 'size'],
     template:
       '<div class="mock-icon" data-testid="icon" :data-name="name" :data-size="size"></div>',
