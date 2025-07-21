@@ -27,7 +27,7 @@
             </div>
             <div class="timeline-content">
               <div class="timeline-date">{{ timeline.date }}</div>
-              <div class="timeline-text" v-html="timeline.text" />
+              <div class="timeline-text" v-html="sanitizeHtml(timeline.text)" />
             </div>
           </div>
         </div>
@@ -37,6 +37,8 @@
 </template>
 
 <script setup lang="ts">
+import DOMPurify from 'dompurify'
+
 interface Detail {
   id: string
   icon: string
@@ -56,6 +58,18 @@ interface Props {
 }
 
 defineProps<Props>()
+
+/**
+ * HTMLをサニタイズして安全にする関数
+ * XSS攻撃を防ぐために、許可されたタグと属性のみを維持する
+ */
+const sanitizeHtml = (html: string): string => {
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ['a', 'strong', 'em', 'b', 'i'],
+    ALLOWED_ATTR: ['href', 'target', 'rel'],
+    ADD_ATTR: ['target', 'rel'], // 外部リンクのセキュリティ属性を追加
+  })
+}
 </script>
 
 <style scoped>
