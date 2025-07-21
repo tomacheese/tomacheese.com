@@ -13,10 +13,7 @@ const TheFooterStub = {
   template: '<div class="footer">Mock Footer</div>',
 }
 
-const SlotStub = {
-  name: 'slot',
-  template: '<div class="slot-content">Mock Content</div>',
-}
+
 
 describe('layouts/default.vue', () => {
   it('正常にマウントされる', () => {
@@ -28,7 +25,7 @@ describe('layouts/default.vue', () => {
         },
       },
       slots: {
-        default: SlotStub,
+        default: '<div class="slot-content">Mock Content</div>',
       },
     })
 
@@ -44,7 +41,7 @@ describe('layouts/default.vue', () => {
         },
       },
       slots: {
-        default: SlotStub,
+        default: '<div class="slot-content">Mock Content</div>',
       },
     })
 
@@ -61,7 +58,7 @@ describe('layouts/default.vue', () => {
         },
       },
       slots: {
-        default: SlotStub,
+        default: '<div class="slot-content">Mock Content</div>',
       },
     })
 
