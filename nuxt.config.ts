@@ -103,6 +103,8 @@ export default defineNuxtConfig({
 
   vite: {
     build: {
+      // プロダクション環境ではソースマップを無効化してTailwindCSS警告を抑制
+      sourcemap: process.env.NODE_ENV === 'development',
       rollupOptions: {
         external: ['better-sqlite3', '@sqlite.org/sqlite-wasm'],
       },
