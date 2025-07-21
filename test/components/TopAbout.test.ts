@@ -10,7 +10,10 @@ vi.mock('dompurify', () => ({
       let sanitized = html
       
       // scriptタグを除去
-      sanitized = sanitized.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      do {
+        let previous = sanitized;
+        sanitized = sanitized.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+      } while (sanitized !== previous);
       
       // イベントハンドラを除去
       sanitized = sanitized.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '')
