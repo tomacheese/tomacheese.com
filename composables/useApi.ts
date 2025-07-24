@@ -32,7 +32,7 @@ export const useApi = () => {
   const fetchWithErrorHandling = async <T>(url: string): Promise<T | null> => {
     try {
       const data = await $fetch<ApiResponse<T>>(url)
-      return data.body || null
+      return data.body !== undefined ? data.body : null
     } catch (error) {
       logger.error('API fetch failed', handleApiError(error))
       return null

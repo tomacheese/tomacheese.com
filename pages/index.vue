@@ -30,6 +30,11 @@ const loadData = async () => {
     fetchWithErrorHandling<TimelineItem[]>('/top-timelines.json'),
   ])
 
+  // 結果をチェックするヘルパー関数
+  const isDataLoadFailure = (result: PromiseSettledResult<DetailItem[] | TimelineItem[] | null>) => {
+    return result.status === 'rejected' || !result.value
+  }
+
   // 個別の結果を処理
   if (detailsResult.status === 'fulfilled' && detailsResult.value) {
     details.value = detailsResult.value
@@ -44,9 +49,7 @@ const loadData = async () => {
   }
 
   // 両方とも失敗した場合のみエラー状態に設定
-  loadError.value =
-    (detailsResult.status === 'rejected' || !detailsResult.value) &&
-    (timelinesResult.status === 'rejected' || !timelinesResult.value)
+  loadError.value = isDataLoadFailure(detailsResult) && isDataLoadFailure(timelinesResult)
 }
 
 // クライアントサイドでデータ読み込み
