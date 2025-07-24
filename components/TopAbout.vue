@@ -38,23 +38,11 @@
 
 <script setup lang="ts">
 import DOMPurify from 'dompurify'
-
-interface Detail {
-  id: string
-  icon: string
-  text: string
-}
-
-interface Timeline {
-  icon: string
-  date: string
-  text: string
-  color?: string
-}
+import type { DetailItem, TimelineItem } from '~/types/content'
 
 interface Props {
-  details: Detail[]
-  timelines: Timeline[]
+  details: DetailItem[]
+  timelines: TimelineItem[]
 }
 
 defineProps<Props>()
