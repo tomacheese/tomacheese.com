@@ -7,69 +7,49 @@
       </div>
     </section>
     <section class="user-about">
-      <div v-if="loadError" class="error-message">
-        <p>
-          ⚠️
-          データの読み込みに失敗しました。しばらくしてからもう一度お試しください。
-        </p>
-      </div>
+      <ErrorMessage v-if="loadError" />
       <TopAbout v-else :details="details" :timelines="timelines" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { logger } from '~/utils/logger'
+import type { DetailItem, TimelineItem } from '~/types/content'
 
 // データの読み込み
-interface ApiResponse<T> {
-  body?: T
-  [key: string]: unknown
-}
+const { fetchWithErrorHandling } = useApi()
 
-interface Detail {
-  id: string
-  icon: string
-  text: string
-}
-
-interface Timeline {
-  icon: string
-  date: string
-  text: string
-  color?: string
-}
-
-const details = ref<Detail[]>([])
-const timelines = ref<Timeline[]>([])
+const details = ref<DetailItem[]>([])
+const timelines = ref<TimelineItem[]>([])
 const loadError = ref(false)
 
 // データ読み込み関数
 const loadData = async () => {
   const [detailsResult, timelinesResult] = await Promise.allSettled([
-    $fetch('/top-details.json'),
-    $fetch('/top-timelines.json'),
+    fetchWithErrorHandling<DetailItem[]>('/top-details.json'),
+    fetchWithErrorHandling<TimelineItem[]>('/top-timelines.json'),
   ])
 
+  // 結果をチェックするヘルパー関数
+  const isDataLoadFailure = (result: PromiseSettledResult<DetailItem[] | TimelineItem[] | null>) => {
+    return result.status === 'rejected' || !result.value
+  }
+
   // 個別の結果を処理
-  if (detailsResult.status === 'fulfilled') {
-    details.value = (detailsResult.value as ApiResponse<Detail[]>)?.body || []
+  if (detailsResult.status === 'fulfilled' && detailsResult.value) {
+    details.value = detailsResult.value
   } else {
-    logger.warn('Failed to load details data', detailsResult.reason)
     details.value = []
   }
 
-  if (timelinesResult.status === 'fulfilled') {
-    timelines.value =
-      (timelinesResult.value as ApiResponse<Timeline[]>)?.body || []
+  if (timelinesResult.status === 'fulfilled' && timelinesResult.value) {
+    timelines.value = timelinesResult.value
   } else {
-    logger.warn('Failed to load timelines data', timelinesResult.reason)
     timelines.value = []
   }
 
   // 両方とも失敗した場合のみエラー状態に設定
-  loadError.value =
-    detailsResult.status === 'rejected' && timelinesResult.status === 'rejected'
+  loadError.value = isDataLoadFailure(detailsResult) && isDataLoadFailure(timelinesResult)
 }
 
 // クライアントサイドでデータ読み込み
@@ -111,21 +91,6 @@ useSeoMeta({
     font-size: 18px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     color: white !important;
-  }
-}
-
-.error-message {
-  text-align: center;
-  padding: 20px;
-  margin: 20px;
-  background-color: #fee;
-  border: 1px solid #fcc;
-  border-radius: 8px;
-  color: #c33;
-
-  p {
-    margin: 0;
-    font-size: 16px;
   }
 }
 </style>

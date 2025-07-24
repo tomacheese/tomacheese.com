@@ -11,6 +11,23 @@ const CSP_POLICY = [
   "frame-ancestors 'none'"
 ].join('; ') + ';'
 
+// Runtime config type safety
+interface RuntimeConfig {
+  public: {
+    baseName: string
+    baseUrl: string
+    baseDescription: string
+  }
+}
+
+const config: RuntimeConfig = {
+  public: {
+    baseName: process.env.BASE_NAME || 'Tomachi Site',
+    baseUrl: process.env.BASE_URL || 'https://tomacheese.com',
+    baseDescription: process.env.BASE_DESCRIPTION || 'Tomachiの個人サイト',
+  }
+}
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
@@ -118,13 +135,7 @@ export default defineNuxtConfig({
     // Fonts configuration will be auto-detected from CSS
   },
 
-  runtimeConfig: {
-    public: {
-      baseName: process.env.BASE_NAME || 'Tomachi Site',
-      baseUrl: process.env.BASE_URL || 'https://tomacheese.com',
-      baseDescription: process.env.BASE_DESCRIPTION || 'Tomachiの個人サイト',
-    },
-  },
+  runtimeConfig: config,
 
   compatibilityDate: '2024-11-01',
 
