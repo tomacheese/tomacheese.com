@@ -119,7 +119,6 @@
 
 ```bash
 pnpm test           # テスト実行
-pnpm test:watch     # ウォッチモードでテスト実行
 pnpm test:coverage  # カバレッジレポート付きテスト実行
 ```
 
