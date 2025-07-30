@@ -684,6 +684,18 @@
                   ]
                 },
                 {
+                  "name": "Sony LinkBuds Fit WF-LS910N W",
+                  "status": "使用中",
+                  "price": 29700,
+                  "purchaseDate": "2024-11-23",
+                  "links": [
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product/100000001008744092/"
+                    }
+                  ]
+                },
+                {
                   "name": "Sony WI-C600N ブラック",
                   "status": "破損（温度計測系が壊れたようで充電できなくなった）",
                   "price": 12700,
