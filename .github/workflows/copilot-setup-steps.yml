@@ -46,9 +46,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Playwright browsers with dependencies
-        run: pnpm exec playwright install --with-deps
-
       - name: Prepare Nuxt
         run: pnpm postinstall
 
