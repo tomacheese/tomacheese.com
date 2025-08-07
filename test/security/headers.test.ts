@@ -48,14 +48,14 @@ describe('Security Headers Configuration', () => {
     // Check that the CSP policy allows Google Fonts
     expect(configContent).toContain('fonts.googleapis.com')
     expect(configContent).toContain('fonts.gstatic.com')
-    
+
     // Check that data URIs are allowed for images
     expect(configContent).toContain('data:')
-    
+
     // Check that Google Analytics is allowed
     expect(configContent).toContain('www.googletagmanager.com')
     expect(configContent).toContain('www.google-analytics.com')
-    
+
     // Check that unsafe-inline is allowed for styles (required for Vue SFCs)
     expect(configContent).toContain("'unsafe-inline'")
   })
@@ -63,10 +63,10 @@ describe('Security Headers Configuration', () => {
   it('CSP follows security best practices', () => {
     // Ensure frame-ancestors is set to none to prevent clickjacking
     expect(configContent).toContain("frame-ancestors 'none'")
-    
+
     // Ensure default-src is restricted to self
     expect(configContent).toContain("default-src 'self'")
-    
+
     // Ensure script-src includes necessary domains but not unsafe-eval
     expect(configContent).toContain('script-src')
     expect(configContent).not.toContain("'unsafe-eval'")

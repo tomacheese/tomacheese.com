@@ -31,7 +31,9 @@ const loadData = async () => {
   ])
 
   // 結果をチェックするヘルパー関数
-  const isDataLoadFailure = (result: PromiseSettledResult<DetailItem[] | TimelineItem[] | null>) => {
+  const isDataLoadFailure = (
+    result: PromiseSettledResult<DetailItem[] | TimelineItem[] | null>,
+  ) => {
     return result.status === 'rejected' || !result.value
   }
 
@@ -49,7 +51,8 @@ const loadData = async () => {
   }
 
   // 両方とも失敗した場合のみエラー状態に設定
-  loadError.value = isDataLoadFailure(detailsResult) && isDataLoadFailure(timelinesResult)
+  loadError.value =
+    isDataLoadFailure(detailsResult) && isDataLoadFailure(timelinesResult)
 }
 
 // クライアントサイドでデータ読み込み
@@ -91,6 +94,17 @@ useSeoMeta({
     font-size: 18px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     color: white !important;
+  }
+
+  // モバイル対応 - 固定背景を無効化し、高さを調整
+  @media (max-width: 768px) {
+    background-attachment: scroll;
+    height: 50vh;
+  }
+
+  // 更にタブレットサイズでの最適化
+  @media (max-width: 1024px) and (min-width: 769px) {
+    height: 60vh;
   }
 }
 </style>

@@ -106,11 +106,70 @@
   --color-maincolor: var(--color-gray-100);
 }
 
+// システムの設定に基づく自動ダークモード対応
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-theme) {
+    --color-text-primary: var(--color-gray-100);
+    --color-text-secondary: var(--color-gray-300);
+    --color-text-muted: var(--color-gray-500);
+    --color-background: var(--color-gray-900);
+    --color-surface: var(--color-gray-800);
+    --color-border: var(--color-gray-700);
+    --color-maincolor: var(--color-gray-100);
+  }
+}
+
+// 高コントラストモード対応
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #0066cc;
+    --color-text-primary: #000000;
+    --color-text-secondary: #333333;
+    --color-background: #ffffff;
+    --color-border: #000000;
+  }
+
+  .dark-theme,
+  :root:not(.light-theme) {
+    --color-primary: #66b3ff;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-background: #000000;
+    --color-border: #ffffff;
+  }
+}
+
 // リセットとベーススタイル
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+// アクセシビリティ - フォーカススタイル
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  transition: outline var(--transition-fast);
+}
+
+// フォーカス表示を改善 - ブラウザデフォルトスタイルを保持しながら強化
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// スクリーンリーダー専用クラス
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 body {

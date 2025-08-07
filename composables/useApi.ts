@@ -15,12 +15,12 @@ export const useApi = () => {
     if (error instanceof Error) {
       return {
         status: 500,
-        message: error.message
+        message: error.message,
       }
     }
     return {
       status: 500,
-      message: 'Unknown error occurred'
+      message: 'Unknown error occurred',
     }
   }
 
@@ -41,6 +41,6 @@ export const useApi = () => {
 
   return {
     fetchWithErrorHandling,
-    handleApiError
+    handleApiError,
   }
 }

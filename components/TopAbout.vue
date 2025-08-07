@@ -1,39 +1,56 @@
 <template>
-  <div class="about-section">
-    <div class="user-header">
+  <section class="about-section" aria-labelledby="about-heading">
+    <h2 id="about-heading" class="sr-only">プロフィール情報</h2>
+
+    <header class="user-header">
       <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" />
-      <h2 class="name">Tomachi</h2>
-    </div>
+      <h3 class="name">Tomachi</h3>
+    </header>
 
     <div class="content-grid">
-      <div class="details-section">
-        <ul class="details-list">
-          <li v-for="item in details" :key="item.id" class="detail-item">
-            <Icon :name="item.icon" size="24" class="detail-icon" />
+      <section class="details-section" aria-labelledby="details-heading">
+        <h4 id="details-heading" class="sr-only">詳細情報</h4>
+        <ul class="details-list" role="list">
+          <li
+            v-for="item in details"
+            :key="item.id"
+            class="detail-item"
+            role="listitem"
+          >
+            <Icon
+              :name="item.icon"
+              size="24"
+              class="detail-icon"
+              aria-hidden="true"
+            />
             <span class="detail-text">{{ item.text }}</span>
           </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="timeline-section">
-        <div class="timeline">
-          <div
+      <section class="timeline-section" aria-labelledby="timeline-heading">
+        <h4 id="timeline-heading" class="sr-only">活動履歴</h4>
+        <div class="timeline" role="list" aria-label="活動履歴">
+          <article
             v-for="(timeline, index) in timelines"
             :key="index"
             class="timeline-item"
+            role="listitem"
           >
-            <div class="timeline-marker">
+            <div class="timeline-marker" aria-hidden="true">
               <Icon :name="timeline.icon" size="20" />
             </div>
             <div class="timeline-content">
-              <div class="timeline-date">{{ timeline.date }}</div>
+              <time class="timeline-date" :datetime="timeline.date">{{
+                timeline.date
+              }}</time>
               <div class="timeline-text" v-html="sanitizeHtml(timeline.text)" />
             </div>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
