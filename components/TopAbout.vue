@@ -1,7 +1,10 @@
 <template>
   <div class="about-section">
     <div class="user-header">
-      <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" />
+      <picture>
+        <source srcset="/images/avatar.webp" type="image/webp" />
+        <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" loading="lazy" />
+      </picture>
       <h2 class="name">Tomachi</h2>
     </div>
 

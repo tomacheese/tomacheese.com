@@ -67,7 +67,7 @@ useSeoMeta({
 .hero__content {
   background:
     linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('/images/top.jpg');
+    url('/images/top.webp'), url('/images/top.jpg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;

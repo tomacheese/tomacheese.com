@@ -97,13 +97,7 @@ export default defineNuxtConfig({
           type: 'image/x-icon',
           href: '/favicons/favicon.ico',
         },
-        // Preload critical fonts for better rendering
-        {
-          rel: 'preload',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;700&display=swap',
-          as: 'style',
-          onload: "this.onload=null;this.rel='stylesheet'",
-        },
+        // Fonts are now handled by @nuxt/fonts module for better performance
       ],
     },
   },
@@ -132,7 +126,16 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    // Fonts configuration will be auto-detected from CSS
+    google: {
+      families: {
+        Inter: [300, 400, 500, 600, 700],
+        'Noto Sans JP': [400, 700]
+      },
+      display: 'swap',
+      preload: true,
+      prefetch: false,
+      preconnect: false
+    }
   },
 
   runtimeConfig: config,
