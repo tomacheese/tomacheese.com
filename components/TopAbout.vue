@@ -32,7 +32,7 @@
         <h4 id="timeline-heading" class="sr-only">活動履歴</h4>
         <div class="timeline" role="list" aria-label="活動履歴">
           <article
-            v-for="(timeline, index) in timelines"
+            v-for="(timeline, index) in timelinesWithIsoDate"
             :key="index"
             class="timeline-item"
             role="listitem"
@@ -41,7 +41,7 @@
               <Icon :name="timeline.icon" size="20" />
             </div>
             <div class="timeline-content">
-              <time class="timeline-date" :datetime="timeline.date">{{
+              <time class="timeline-date" :datetime="timeline.isoDate">{{
                 timeline.date
               }}</time>
               <div class="timeline-text" v-html="sanitizeHtml(timeline.text)" />
@@ -62,7 +62,7 @@ interface Props {
   timelines: TimelineItem[]
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 /**
  * HTMLをサニタイズして安全にする関数
@@ -75,6 +75,16 @@ const sanitizeHtml = (html: string): string => {
     ADD_ATTR: ['target', 'rel'], // 外部リンクのセキュリティ属性を追加
   })
 }
+
+/**
+ * タイムラインアイテムに ISO 8601 形式の datetime 属性を追加
+ */
+const timelinesWithIsoDate = computed(() => {
+  return props.timelines.map((timeline) => ({
+    ...timeline,
+    isoDate: timeline.date.length === 4 ? `${timeline.date}-01-01` : timeline.date,
+  }))
+})
 </script>
 
 <style scoped>
