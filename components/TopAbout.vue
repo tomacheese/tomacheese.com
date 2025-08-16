@@ -3,7 +3,10 @@
     <h2 id="about-heading" class="sr-only">プロフィール情報</h2>
 
     <header class="user-header">
-      <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" />
+      <picture>
+        <source srcset="/images/avatar.webp" type="image/webp" />
+        <img src="/images/avatar.jpg" alt="Tomachi Avatar" class="avatar" loading="lazy" />
+      </picture>
       <h3 class="name">Tomachi</h3>
     </header>
 
@@ -88,6 +91,18 @@ const timelinesWithIsoDate = computed(() => {
 </script>
 
 <style scoped>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .about-section {
   background-color: white;
   border-radius: 12px;

@@ -1,7 +1,12 @@
 <template>
   <div>
     <section class="hero">
-      <div class="hero__content">
+      <div 
+        class="hero__content" 
+        :style="{ 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${backgroundImageUrl}')` 
+        }"
+      >
         <h1>Tomachi Site</h1>
         <p>The world is made up of IDEA.</p>
       </div>
@@ -22,6 +27,18 @@ const { fetchWithErrorHandling } = useApi()
 const details = ref<DetailItem[]>([])
 const timelines = ref<TimelineItem[]>([])
 const loadError = ref(false)
+const supportsWebP = ref(false)
+
+// WebP サポート検出関数
+const detectWebPSupport = () => {
+  return new Promise<boolean>((resolve) => {
+    const webp = new Image()
+    webp.onload = webp.onerror = () => {
+      resolve(webp.height === 2)
+    }
+    webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
+  })
+}
 
 // データ読み込み関数
 const loadData = async () => {
@@ -55,9 +72,19 @@ const loadData = async () => {
     isDataLoadFailure(detailsResult) && isDataLoadFailure(timelinesResult)
 }
 
-// クライアントサイドでデータ読み込み
-onMounted(() => {
-  loadData()
+// 背景画像のURL計算
+const backgroundImageUrl = computed(() => {
+  return supportsWebP.value ? '/images/top.webp' : '/images/top.jpg'
+})
+
+// クライアントサイドでデータ読み込みと WebP 検出
+onMounted(async () => {
+  // WebP サポートを並行して検出
+  const webpSupported = await detectWebPSupport()
+  supportsWebP.value = webpSupported
+  
+  // データ読み込み
+  await loadData()
 })
 
 // SEO
@@ -68,9 +95,6 @@ useSeoMeta({
 
 <style lang="scss" scoped>
 .hero__content {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('/images/top.jpg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
