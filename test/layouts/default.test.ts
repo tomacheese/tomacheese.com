@@ -13,8 +13,6 @@ const TheFooterStub = {
   template: '<div class="footer">Mock Footer</div>',
 }
 
-
-
 describe('layouts/default.vue', () => {
   it('正常にマウントされる', () => {
     const wrapper = mount(DefaultLayout, {

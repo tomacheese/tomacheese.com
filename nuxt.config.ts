@@ -1,15 +1,16 @@
 import { logger } from './utils/logger'
 
 // Content Security Policy for enhanced security
-const CSP_POLICY = [
-  "default-src 'self'",
-  "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-  "font-src 'self' fonts.gstatic.com",
-  "img-src 'self' data:",
-  "script-src 'self' 'unsafe-inline' www.googletagmanager.com",
-  "connect-src 'self' www.google-analytics.com",
-  "frame-ancestors 'none'"
-].join('; ') + ';'
+const CSP_POLICY =
+  [
+    "default-src 'self'",
+    "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+    "font-src 'self' fonts.gstatic.com",
+    "img-src 'self' data:",
+    "script-src 'self' 'unsafe-inline' www.googletagmanager.com",
+    "connect-src 'self' www.google-analytics.com",
+    "frame-ancestors 'none'",
+  ].join('; ') + ';'
 
 // Runtime config type safety
 interface RuntimeConfig {
@@ -25,7 +26,7 @@ const config: RuntimeConfig = {
     baseName: process.env.BASE_NAME || 'Tomachi Site',
     baseUrl: process.env.BASE_URL || 'https://tomacheese.com',
     baseDescription: process.env.BASE_DESCRIPTION || 'Tomachiの個人サイト',
-  }
+  },
 }
 
 export default defineNuxtConfig({
@@ -204,10 +205,10 @@ export default defineNuxtConfig({
           'X-Frame-Options': 'DENY',
           'X-Content-Type-Options': 'nosniff',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
-          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
-        }
-      }
-    }
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+        },
+      },
+    },
   },
 
   ssr: true,

@@ -78,11 +78,12 @@ describe('VDarkSwitch', () => {
 
     const icon = wrapper.find('.mock-icon')
     expect(icon.attributes('data-size')).toBe('16')
-    
+
     // Icon name should be either sun or moon
     const iconName = icon.attributes('data-name')
     expect(
-      iconName === 'mdi:white-balance-sunny' || iconName === 'mdi:moon-waning-crescent'
+      iconName === 'mdi:white-balance-sunny' ||
+        iconName === 'mdi:moon-waning-crescent',
     ).toBe(true)
   })
 
@@ -97,7 +98,7 @@ describe('VDarkSwitch', () => {
 
     const button = wrapper.find('button')
     await button.trigger('click')
-    
+
     // After click, the component should still exist
     expect(wrapper.exists()).toBe(true)
   })

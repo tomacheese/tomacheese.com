@@ -1,9 +1,7 @@
 <!-- 共通エラーメッセージコンポーネント -->
 <template>
   <div class="error-card" role="alert">
-    <p>
-      {{ icon }} {{ message }}
-    </p>
+    <p>{{ icon }} {{ message }}</p>
     <button v-if="retry" class="retry-button" @click="$emit('retry')">
       再試行
     </button>
@@ -18,9 +16,10 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  message: 'データの読み込みに失敗しました。しばらくしてからもう一度お試しください。',
+  message:
+    'データの読み込みに失敗しました。しばらくしてからもう一度お試しください。',
   icon: '⚠️',
-  retry: false
+  retry: false,
 })
 
 defineEmits<{
