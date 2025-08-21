@@ -177,7 +177,7 @@ describe('DeviceSection', () => {
   describe('モバイルデバイス表示', () => {
     const mobileDevice: Device = {
       title: 'モバイルデバイス',
-      mobileDevices: [
+      devices: [
         { name: 'iPhone 14', notes: 'メイン使用', purchaseDate: '2023-03-01' },
         { name: 'iPad Air', purchaseDate: '2023-02-01' },
       ],
@@ -202,7 +202,7 @@ describe('DeviceSection', () => {
   describe('スマートウォッチ表示', () => {
     const smartWatchDevice: Device = {
       title: 'スマートウォッチ',
-      smartWatches: [
+      devices: [
         {
           name: 'Apple Watch Series 8',
           price: 50000,
@@ -241,7 +241,7 @@ describe('DeviceSection', () => {
   describe('その他デバイス表示', () => {
     const otherDevice: Device = {
       title: 'その他デバイス',
-      otherDevices: ['キーボード', 'マウス', 'ヘッドセット'],
+      devices: ['キーボード', 'マウス', 'ヘッドセット'],
     }
 
     it('その他デバイス一覧が表示される', () => {
