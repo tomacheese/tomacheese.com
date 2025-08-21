@@ -897,7 +897,7 @@
     },
     "mobileDevices": {
       "title": "所持スマートフォン・タブレットなど",
-      "mobileDevices": [
+      "devices": [
         {
           "name": "Google Pixel 8a",
           "notes": "[メインスマホ]",
@@ -919,7 +919,7 @@
     },
     "smartWatches": {
       "title": "スマートウォッチ",
-      "smartWatches": [
+      "devices": [
         {
           "name": "Xiaomi Mi band 4",
           "price": 4499,
@@ -946,7 +946,7 @@
     },
     "otherDevices": {
       "title": "その他",
-      "otherDevices": [
+      "devices": [
         "Meta Quest 2",
         "ラズパイでの録画用サーバ (親管理)",
         "MacBook Air M1 (家族共用)"
