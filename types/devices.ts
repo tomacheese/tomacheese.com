@@ -53,6 +53,8 @@ export interface Device {
   notes?: string
   related?: string
   links?: DeviceLink[]
+  // Generic devices property that can hold different types of devices
+  devices?: MobileDevice[] | SmartWatch[] | string[]
   // Separate properties for each device type to ensure type safety
   mobileDevices?: MobileDevice[]
   smartWatches?: SmartWatch[]
