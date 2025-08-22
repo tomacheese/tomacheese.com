@@ -19,6 +19,7 @@ interface RuntimeConfig {
     baseUrl: string
     baseDescription: string
   }
+  [key: string]: any
 }
 
 const config: RuntimeConfig = {
@@ -128,14 +129,8 @@ export default defineNuxtConfig({
 
   fonts: {
     google: {
-      families: {
-        Inter: [300, 400, 500, 600, 700],
-        'Noto Sans JP': [400, 700]
-      },
-      display: 'swap',
-      preload: true,
-      prefetch: false,
-      preconnect: false
+      Inter: [300, 400, 500, 600, 700],
+      'Noto+Sans+JP': [400, 700]
     }
   },
 
