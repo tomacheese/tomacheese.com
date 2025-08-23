@@ -98,7 +98,8 @@
         "description": "CORSAIR DDR4-3200MHz 16GB x 2購入"
       },
       { "date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入" },
-      { "date": "2025-07-13", "description": "Sony WH-CH720N購入" }
+      { "date": "2025-07-13", "description": "Sony WH-CH720N購入" },
+      { "date": "2025-08-21", "description": "JAPANNEXT JN-MD-IPS1564FHDR-T購入" }
     ]
   },
   "devices": {
@@ -439,6 +440,18 @@
             "monitors": {
               "title": "モニター + 関連器具",
               "items": [
+                {
+                  "name": "JAPANNEXT JN-MD-IPS1564FHDR-T 15.6インチ",
+                  "status": "使用中",
+                  "price": 24980,
+                  "purchaseDate": "2025-08-21",
+                  "links": [
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product-detail/100000001008222998/"
+                    }
+                  ]
+                },
                 {
                   "name": "MSI MAG 274UPF 4K UHD 27インチ 144Hz",
                   "status": "使用中",
