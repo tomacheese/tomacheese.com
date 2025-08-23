@@ -6,6 +6,7 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     coverage: {
+      provider: 'v8',
       reporter: ['text', 'html'],
       exclude: [
         'node_modules/',
@@ -18,7 +19,7 @@ export default defineConfig({
         'content/',
         'public/',
       ],
-      threshold: {
+      thresholds: {
         global: {
           branches: 80,
           functions: 80,
