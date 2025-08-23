@@ -19,6 +19,7 @@ interface RuntimeConfig {
     baseUrl: string
     baseDescription: string
   }
+  [key: string]: unknown
 }
 
 const config: RuntimeConfig = {
@@ -133,9 +134,7 @@ export default defineNuxtConfig({
         'Noto Sans JP': [400, 700]
       },
       display: 'swap',
-      preload: true,
-      prefetch: false,
-      preconnect: false
+      preload: true
     }
   },
 
