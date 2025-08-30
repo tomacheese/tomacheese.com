@@ -40,19 +40,27 @@
 
       <!-- Mobile menu -->
       <div v-if="mobileMenuOpen" class="mobile-menu">
-        <component
-          :is="item.to.startsWith('http') ? 'a' : 'NuxtLink'"
-          v-for="item in items"
-          :key="item.title"
-          :to="item.to.startsWith('http') ? undefined : item.to"
-          :href="item.to.startsWith('http') ? item.to : undefined"
-          :target="item.to.startsWith('http') ? '_blank' : undefined"
-          :rel="item.to.startsWith('http') ? 'noopener' : undefined"
-          class="mobile-link"
-          @click="closeMobileMenu"
-        >
-          {{ item.title }}
-        </component>
+        <template v-for="item in items" :key="item.title">
+          <NuxtLink
+            v-if="!item.to.startsWith('http')"
+            :to="item.to"
+            class="mobile-link"
+            exact-active-class="router-link-active"
+            @click="closeMobileMenu"
+          >
+            {{ item.title }}
+          </NuxtLink>
+          <a
+            v-else
+            :href="item.to"
+            target="_blank"
+            rel="noopener"
+            class="mobile-link"
+            @click="closeMobileMenu"
+          >
+            {{ item.title }}
+          </a>
+        </template>
       </div>
     </div>
   </header>
