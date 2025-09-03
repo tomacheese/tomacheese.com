@@ -112,6 +112,7 @@ PCを含む所持端末に関しては別ページでまとめています: [所
 - 2023年12月 [応用情報技術者試験](https://www.ipa.go.jp/shiken/kubun/list.html)
 - 2024年02月 [Azure Data Fundamentals (DP-900)](https://learn.microsoft.com/ja-jp/credentials/certifications/exams/dp-900/)
 - 2024年11月 [Azure Fundamentals (AZ-900)](https://learn.microsoft.com/ja-jp/credentials/certifications/azure-fundamentals/)
+- 2025年09月 [Azure AI Fundamentals (AI-900)](https://learn.microsoft.com/ja-jp/credentials/certifications/azure-ai-fundamentals/)
 
 ## スタッフなど
 
