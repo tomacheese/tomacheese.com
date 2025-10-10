@@ -511,6 +511,18 @@
                   "links": [
                     { "name": "Amazon", "url": "http://amzn.asia/9zP0H6P" }
                   ]
+                },
+                {
+                  "name": "NOMVDIC R150 モバイルプロジェクター",
+                  "status": "使用中",
+                  "price": 5999,
+                  "purchaseDate": "2025-10-05",
+                  "links": [
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B0BYS5J1NS"
+                    }
+                  ]
                 }
               ]
             },
@@ -963,8 +975,7 @@
       "devices": [
         "Meta Quest 2",
         "ラズパイでの録画用サーバ (親管理)",
-        "MacBook Air M1 (家族共用)",
-        "NOMVDIC R150 モバイルプロジェクター (2025-10-05購入、¥5,999)"
+        "MacBook Air M1 (家族共用)"
       ]
     }
   }
