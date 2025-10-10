@@ -99,7 +99,8 @@
       },
       { "date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入" },
       { "date": "2025-07-13", "description": "Sony WH-CH720N購入" },
-      { "date": "2025-08-21", "description": "JAPANNEXT JN-MD-IPS1564FHDR-T購入" }
+      { "date": "2025-08-21", "description": "JAPANNEXT JN-MD-IPS1564FHDR-T購入" },
+      { "date": "2025-10-05", "description": "NOMVDIC R150 モバイルプロジェクター購入" }
     ]
   },
   "devices": {
@@ -962,7 +963,8 @@
       "devices": [
         "Meta Quest 2",
         "ラズパイでの録画用サーバ (親管理)",
-        "MacBook Air M1 (家族共用)"
+        "MacBook Air M1 (家族共用)",
+        "NOMVDIC R150 モバイルプロジェクター (2025-10-05購入、¥5,999)"
       ]
     }
   }
