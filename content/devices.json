@@ -99,7 +99,8 @@
       },
       { "date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入" },
       { "date": "2025-07-13", "description": "Sony WH-CH720N購入" },
-      { "date": "2025-08-21", "description": "JAPANNEXT JN-MD-IPS1564FHDR-T購入" }
+      { "date": "2025-08-21", "description": "JAPANNEXT JN-MD-IPS1564FHDR-T購入" },
+      { "date": "2025-10-05", "description": "NOMVDIC R150 モバイルプロジェクター購入" }
     ]
   },
   "devices": {
@@ -509,6 +510,18 @@
                   "unused": true,
                   "links": [
                     { "name": "Amazon", "url": "http://amzn.asia/9zP0H6P" }
+                  ]
+                },
+                {
+                  "name": "NOMVDIC R150 モバイルプロジェクター",
+                  "status": "使用中",
+                  "price": 5999,
+                  "purchaseDate": "2025-10-05",
+                  "links": [
+                    {
+                      "name": "Amazon",
+                      "url": "https://www.amazon.co.jp/dp/B0BYS5J1NS"
+                    }
                   ]
                 }
               ]
