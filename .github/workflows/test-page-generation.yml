@@ -288,7 +288,7 @@ jobs:
 
       - name: Upload generated site artifact
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: generated-site-debug
           path: .output/public/
