@@ -15,8 +15,8 @@ importers:
         specifier: 3.8.2
         version: 3.8.2(better-sqlite3@12.4.5)(magicast@0.5.1)
       '@nuxt/ui':
-        specifier: 4.2.0
-        version: 4.2.0(@babel/parser@7.28.5)(@nuxt/content@3.8.2(better-sqlite3@12.4.5)(magicast@0.5.1))(change-case@5.4.4)(db0@0.3.4(better-sqlite3@12.4.5))(embla-carousel@8.6.0)(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3)(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.1)(yaml@2.8.1))(vue-router@4.6.3(vue@3.5.24(typescript@5.9.3)))(vue@3.5.24(typescript@5.9.3))(zod@3.25.76)
+        specifier: 4.2.1
+        version: 4.2.1(@babel/parser@7.28.5)(@nuxt/content@3.8.2(better-sqlite3@12.4.5)(magicast@0.5.1))(change-case@5.4.4)(db0@0.3.4(better-sqlite3@12.4.5))(embla-carousel@8.6.0)(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3)(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.1)(yaml@2.8.1))(vue-router@4.6.3(vue@3.5.24(typescript@5.9.3)))(vue@3.5.24(typescript@5.9.3))(zod@3.25.76)
       '@vueuse/nuxt':
         specifier: 14.0.0
         version: 14.0.0(magicast@0.5.1)(nuxt@4.2.1(@parcel/watcher@2.5.1)(@types/node@24.10.1)(@vue/compiler-sfc@3.5.24)(better-sqlite3@12.4.5)(db0@0.3.4(better-sqlite3@12.4.5))(eslint@9.39.1(jiti@2.6.1))(ioredis@5.8.2)(lightningcss@1.30.2)(magicast@0.5.1)(meow@13.2.0)(optionator@0.9.4)(rollup@4.53.3)(sass-embedded@1.93.3)(sass@1.93.3)(stylelint@16.25.0(typescript@5.9.3))(terser@5.44.1)(typescript@5.9.3)(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.1)(yaml@2.8.1))(yaml@2.8.1))(vue@3.5.24(typescript@5.9.3))
@@ -860,8 +860,8 @@ packages:
       vitest:
         optional: true
 
-  '@nuxt/ui@4.2.0':
-    resolution: {integrity: sha512-376Qs1HpNTjVb3UmEcUMGDLldfbgXitd/P1G99R3mPzq9y2lb5u7+9U/XofF51V4vDqpX+wbYhMxf/x6kDAWcw==}
+  '@nuxt/ui@4.2.1':
+    resolution: {integrity: sha512-H5/0w1ktRDGk4ORKmGegqhNsR8DZEc+3Bb9a8aHsQVzDkGKqEJLh2iUJtalKs4QdUGkocDXaQy/xRudajOD4kg==}
     hasBin: true
     peerDependencies:
       '@inertiajs/vue3': ^2.0.7
@@ -7484,7 +7484,7 @@ snapshots:
       - magicast
       - typescript
 
-  '@nuxt/ui@4.2.0(@babel/parser@7.28.5)(@nuxt/content@3.8.2(better-sqlite3@12.4.5)(magicast@0.5.1))(change-case@5.4.4)(db0@0.3.4(better-sqlite3@12.4.5))(embla-carousel@8.6.0)(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3)(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.1)(yaml@2.8.1))(vue-router@4.6.3(vue@3.5.24(typescript@5.9.3)))(vue@3.5.24(typescript@5.9.3))(zod@3.25.76)':
+  '@nuxt/ui@4.2.1(@babel/parser@7.28.5)(@nuxt/content@3.8.2(better-sqlite3@12.4.5)(magicast@0.5.1))(change-case@5.4.4)(db0@0.3.4(better-sqlite3@12.4.5))(embla-carousel@8.6.0)(ioredis@5.8.2)(magicast@0.5.1)(typescript@5.9.3)(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.1)(yaml@2.8.1))(vue-router@4.6.3(vue@3.5.24(typescript@5.9.3)))(vue@3.5.24(typescript@5.9.3))(zod@3.25.76)':
     dependencies:
       '@iconify/vue': 5.0.0(vue@3.5.24(typescript@5.9.3))
       '@internationalized/date': 3.10.0
