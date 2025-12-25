@@ -102,17 +102,18 @@ PCを含む所持端末に関しては別ページでまとめています: [所
 ## 既取得免許・資格系状況
 
 - 2019年06月 普通自動車第一種運転免許（AT限定）
-- 2020年12月 [ITパスポート試験](https://www3.jitec.ipa.go.jp/JitesCbt/index.html)
+- 2020年12月 [ITパスポート試験](https://www.ipa.go.jp/shiken/kubun/ip.html)
 - 2021年05月 [Microsoft Office Specialist - Associate](https://mos.odyssey-com.co.jp/about/master.html#associate)
   - 2021年02月 [Microsoft Office Specialist Excel 2019](https://mos.odyssey-com.co.jp/outline/excel365and2019.html)
   - 2021年03月 [Microsoft Office Specialist Word 2019](https://mos.odyssey-com.co.jp/outline/word365and2019.html)
   - 2021年05月 [Microsoft Office Specialist PowerPoint 2019](https://mos.odyssey-com.co.jp/outline/powerpoint365and2019.html)
-- 2021年08月 [情報セキュリティマネジメント試験](https://www.jitec.ipa.go.jp/1_11seido/sg.html)
-- 2021年12月 [基本情報技術者試験](https://www.jitec.ipa.go.jp/1_11seido/fe.html)
-- 2023年12月 [応用情報技術者試験](https://www.ipa.go.jp/shiken/kubun/list.html)
+- 2021年08月 [情報セキュリティマネジメント試験](https://www.ipa.go.jp/shiken/kubun/sg.html)
+- 2021年12月 [基本情報技術者試験](https://www.ipa.go.jp/shiken/kubun/fe.html)
+- 2023年12月 [応用情報技術者試験](https://www.ipa.go.jp/shiken/kubun/ap.html)
 - 2024年02月 [Azure Data Fundamentals (DP-900)](https://learn.microsoft.com/ja-jp/credentials/certifications/exams/dp-900/)
 - 2024年11月 [Azure Fundamentals (AZ-900)](https://learn.microsoft.com/ja-jp/credentials/certifications/azure-fundamentals/)
 - 2025年09月 [Azure AI Fundamentals (AI-900)](https://learn.microsoft.com/ja-jp/credentials/certifications/azure-ai-fundamentals/)
+- 2025年12月 [データベーススペシャリスト試験](https://www.ipa.go.jp/shiken/kubun/db.html)
 
 ## スタッフなど
 
