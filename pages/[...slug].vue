@@ -182,6 +182,11 @@ useSeoMeta({
     color: var(--color-text-primary);
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
+
+    /* Hide the hash icon in heading anchors */
+    a[href^='#'] > span:first-child {
+      display: none;
+    }
   }
 
   h1 {
@@ -193,11 +198,6 @@ useSeoMeta({
     font-size: var(--text-3xl);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: var(--space-2);
-
-    /* Hide the hash icon in heading anchors */
-    a[href^='#'] > span:first-child {
-      display: none;
-    }
   }
 
   h3 {
