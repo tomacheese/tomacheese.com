@@ -195,8 +195,8 @@ useSeoMeta({
     padding-bottom: var(--space-2);
 
     /* Hide the hash icon in heading anchors */
-    a > span:first-child {
-      display: none !important;
+    a[href^='#'] > span:first-child {
+      display: none;
     }
   }
 
