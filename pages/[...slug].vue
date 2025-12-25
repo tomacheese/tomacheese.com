@@ -193,6 +193,11 @@ useSeoMeta({
     font-size: var(--text-3xl);
     border-bottom: 2px solid var(--color-border);
     padding-bottom: var(--space-2);
+
+    /* Hide the hash icon in heading anchors */
+    a > span:first-child {
+      display: none !important;
+    }
   }
 
   h3 {
