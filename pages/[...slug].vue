@@ -182,6 +182,11 @@ useSeoMeta({
     color: var(--color-text-primary);
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
+
+    /* Hide the hash icon in heading anchors (Nuxt UI prose component) */
+    a[href^='#'] > span:has(.iconify) {
+      display: none;
+    }
   }
 
   h1 {
