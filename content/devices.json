@@ -595,9 +595,10 @@
                 },
                 {
                   "name": "Logicool G502 HERO 有線 G502RGBhr ブラック",
-                  "status": "使用中",
+                  "status": "保管",
                   "price": 8340,
                   "purchaseDate": "2022-11-14",
+                  "unused": true,
                   "links": [
                     {
                       "name": "Yodobashi",
