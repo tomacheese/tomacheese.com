@@ -100,7 +100,8 @@
       { "date": "2025-07-11", "description": "Logicool KEYS TO GO 2購入" },
       { "date": "2025-07-13", "description": "Sony WH-CH720N購入" },
       { "date": "2025-08-21", "description": "JAPANNEXT JN-MD-IPS1564FHDR-T購入" },
-      { "date": "2025-10-05", "description": "NOMVDIC R150 モバイルプロジェクター購入" }
+      { "date": "2025-10-05", "description": "NOMVDIC R150 モバイルプロジェクター購入" },
+      { "date": "2025-12-25", "description": "Logicool G502 LIGHTSPEED購入 (2個)" }
     ]
   },
   "devices": {
@@ -125,7 +126,7 @@
             "サブディスプレイ: ASUS TUF GAMING VG259Q 24.5インチワイド",
             "サブディスプレイ: iiyama 17インチディスプレイ スクエア型",
             "キーボード: Logicool ワイヤレス キーボード K295GP グラファイト",
-            "マウス: Logicool G502 HERO 有線 G502RGBhr ブラック",
+            "マウス: Logicool G502 LIGHTSPEED ワイヤレス G502WL ブラック",
             "電源: FSP HG2-850 (80 PLUS GOLD)"
           ]
         },
@@ -567,10 +568,37 @@
               "title": "マウス",
               "items": [
                 {
-                  "name": "Logicool G502 HERO 有線 G502RGBhr ブラック",
+                  "name": "Logicool G502 LIGHTSPEED ワイヤレス G502WL ブラック",
                   "status": "使用中",
+                  "price": 14000,
+                  "purchaseDate": "2025-12-25",
+                  "notes": "自宅メインPC用",
+                  "links": [
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product-detail/100000001004412041/"
+                    }
+                  ]
+                },
+                {
+                  "name": "Logicool G502 LIGHTSPEED ワイヤレス G502WL ブラック",
+                  "status": "使用中 (会社用)",
+                  "price": 14000,
+                  "purchaseDate": "2025-12-25",
+                  "notes": "会社用",
+                  "links": [
+                    {
+                      "name": "Yodobashi",
+                      "url": "https://www.yodobashi.com/product-detail/100000001004412041/"
+                    }
+                  ]
+                },
+                {
+                  "name": "Logicool G502 HERO 有線 G502RGBhr ブラック",
+                  "status": "保管",
                   "price": 8340,
                   "purchaseDate": "2022-11-14",
+                  "unused": true,
                   "links": [
                     {
                       "name": "Yodobashi",
