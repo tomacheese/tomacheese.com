@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@eslint/plugin-kit': 0.5.0
+  '@eslint/plugin-kit': 0.5.1
 
 importers:
 
@@ -765,8 +765,8 @@ packages:
     resolution: {integrity: sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/plugin-kit@0.5.0':
-    resolution: {integrity: sha512-rSXBsAcmx80jI9OUevyNBU0f5pZRQJkNmk4bLX6hCbm1qKe5Z/TcU7vwXc2nR8814mhRlgbZIHL1+HSiYS0VkQ==}
+  '@eslint/plugin-kit@0.5.1':
+    resolution: {integrity: sha512-hZ2uC1jbf6JMSsF2ZklhRQqf6GLpYyux6DlzegnW/aFlpu6qJj5GO7ub7WOETCrEl6pl6DAX7RgTgj/fyG+6BQ==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
   '@floating-ui/core@1.7.3':
@@ -7617,7 +7617,7 @@ snapshots:
 
   '@eslint/object-schema@2.1.7': {}
 
-  '@eslint/plugin-kit@0.5.0':
+  '@eslint/plugin-kit@0.5.1':
     dependencies:
       '@eslint/core': 1.0.1
       levn: 0.4.1
@@ -10850,7 +10850,7 @@ snapshots:
     dependencies:
       '@babel/helper-validator-identifier': 7.28.5
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
-      '@eslint/plugin-kit': 0.5.0
+      '@eslint/plugin-kit': 0.5.1
       change-case: 5.4.4
       ci-info: 4.3.1
       clean-regexp: 1.0.0
@@ -10912,7 +10912,7 @@ snapshots:
       '@eslint/core': 0.17.0
       '@eslint/eslintrc': 3.3.3
       '@eslint/js': 9.39.2
-      '@eslint/plugin-kit': 0.5.0
+      '@eslint/plugin-kit': 0.5.1
       '@humanfs/node': 0.16.7
       '@humanwhocodes/module-importer': 1.0.1
       '@humanwhocodes/retry': 0.4.3
