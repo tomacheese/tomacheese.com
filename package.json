@@ -45,7 +45,7 @@
     "@nuxt/test-utils": "3.23.0",
     "@nuxtjs/stylelint-module": "5.2.1",
     "@vitejs/plugin-vue": "6.0.3",
-    "@vitest/coverage-v8": "4.0.16",
+    "@vitest/coverage-v8": "4.0.17",
     "@vue/test-utils": "2.4.6",
     "better-sqlite3": "12.6.0",
     "eslint": "9.39.2",
@@ -60,7 +60,7 @@
     "stylelint": "16.26.1",
     "stylelint-config-standard": "39.0.1",
     "typescript": "5.9.3",
-    "vitest": "4.0.16"
+    "vitest": "4.0.17"
   },
   "pnpm": {
     "overrides": {
