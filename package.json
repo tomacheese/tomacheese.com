@@ -50,7 +50,7 @@
     "better-sqlite3": "12.6.0",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-prettier": "5.5.5",
     "happy-dom": "20.1.0",
     "husky": "9.1.7",
     "lint-staged": "16.2.7",
