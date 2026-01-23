@@ -25,4 +25,9 @@
 - ログに機密情報を出力しない。
 
 ## リポジトリ固有
-- 目的: Nuxt.js v3 + Nuxt Content で構築された Tomachi Site のリニューアル版
+- 概要: My website
+- 公開 URL: https://tomacheese.com
+- 主要言語: TypeScript
+- フレームワーク: Nuxt
+- パッケージマネージャー: pnpm
+- CI 定義: `.github/workflows/` を参照
