@@ -17,8 +17,8 @@
 ### 基本ルール
 
 - **すべての会話は日本語で行う**（PR 本文、コミット詳細、レビューコメント、Issue コメント等）
-- **PR タイトルは英語で記載**し、Conventional Commits 仕様に準拠する
-- **コミットメッセージは英語**で、Conventional Commits 仕様に準拠する
+- **PR タイトルは Conventional Commits 仕様に準拠**し、**`<description>` は日本語** で記載する
+- **コミットメッセージは Conventional Commits 仕様に準拠**し、**`<description>` は日本語** で記載する
 
 ### Conventional Commits 仕様
 
@@ -45,9 +45,18 @@
 
 **例:**
 
-- `feat: add new anime page component`
-- `fix: resolve header navigation mobile layout issue`
-- `docs: update README installation instructions`
+- `feat: アニメページのコンポーネントを追加`
+- `fix: ヘッダーナビゲーションのモバイルレイアウトを修正`
+- `docs: README のインストール手順を更新`
+
+## 共通ルール
+
+- **コード内コメント**: 日本語で記載する
+- **エラーメッセージ**: 原則英語で記載する
+- **日本語と英数字の間**: 必ず半角スペースを挿入する
+- **TypeScript**: `skipLibCheck` を有効にして回避することは禁止。型安全性を重視し、`any` 型の使用を避ける
+- **ドキュメント**: 関数やインターフェースには docstring (JSDoc 等) を日本語で記載する
+- **ブランチ命名**: [Conventional Branch](https://conventional-branch.github.io) に従い、`<type>/<description>` 形式とする。`<type>` は短縮形 (feat, fix) を使用する
 
 ## ディレクトリ構造とファイル命名規則
 
