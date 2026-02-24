@@ -48,7 +48,7 @@
     "@vitest/coverage-v8": "4.0.18",
     "@vue/test-utils": "2.4.6",
     "better-sqlite3": "12.6.2",
-    "eslint": "9.39.2",
+    "eslint": "9.39.3",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.5",
     "happy-dom": "20.3.7",
