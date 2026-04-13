@@ -34,7 +34,7 @@ jobs:
           echo "LANG=ja_JP.UTF-8" >> $GITHUB_ENV
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
