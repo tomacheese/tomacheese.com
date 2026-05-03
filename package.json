@@ -32,7 +32,7 @@
     "@nuxt/ui": "4.7.1",
     "@vueuse/nuxt": "14.2.1",
     "dompurify": "3.4.1",
-    "nuxt": "4.4.2",
+    "nuxt": "4.4.4",
     "nuxt-gtag": "4.1.0",
     "vue": "3.5.33",
     "vue-router": "5.0.6"
