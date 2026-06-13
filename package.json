@@ -40,7 +40,7 @@
   "devDependencies": {
     "@commitlint/cli": "21.0.2",
     "@commitlint/config-conventional": "21.0.2",
-    "@nuxt/eslint-config": "1.15.2",
+    "@nuxt/eslint-config": "1.16.0",
     "@nuxt/fonts": "0.14.0",
     "@nuxt/test-utils": "4.0.3",
     "@nuxtjs/stylelint-module": "5.2.1",
