@@ -1,311 +1,48 @@
-# GitHub Copilot Instructions
+# GitHub Copilot コードレビュー指示書
 
-このファイルは GitHub Copilot 向けのプロジェクト指示書です。
+`tomacheese.com` — Nuxt 4 + Nuxt Content で構築した個人サイト。GitHub Pages に静的サイトとしてデプロイする。このファイルは Copilot のコードレビューが参照する。指摘・要約は日本語で行う。
 
-このプロジェクト（tomacheese.com）は、Nuxt.js v3 + Nuxt Content を使用した Tomachi の個人サイトです。
+## 技術スタック (前提)
 
-## プロジェクト概要
+- Nuxt 4 / Vue 3 / TypeScript / pnpm
+- Nuxt UI 4 (Tailwind CSS v4 ベース) + Sass (SCSS)
+- Nuxt Content 3、Vitest + happy-dom
 
-**技術スタック**: Nuxt.js v3, Vue.js 3, TypeScript, Nuxt Content  
-**スタイリング**: Tailwind CSS + Sass (SCSS)  
-**パッケージマネージャー**: pnpm  
-**言語**: 日本語メイン（コンテンツ、コメント等）  
-**デプロイ**: GitHub Workflow によって、静的サイトとして GitHub Pages にデプロイされる
+## レビューで重点的に確認する点
 
-## コミュニケーション規約
+### TypeScript / Vue
 
-### 基本ルール
+- `any` の新規追加、`@ts-ignore` や `skipLibCheck` による型エラーの握り潰しを指摘する
+- コンポーネントは SFC + `<script setup>` + Composition API。Options API の新規追加を指摘する
+- コンポーネント名は PascalCase
 
-- **すべての会話は日本語で行う**（PR 本文、コミット詳細、レビューコメント、Issue コメント等）
-- **PR タイトルは Conventional Commits 仕様に準拠**し、**`<description>` は日本語** で記載する
-- **コミットメッセージは Conventional Commits 仕様に準拠**し、**`<description>` は日本語** で記載する
+### Lint で機械的に落ちるもの (指摘優先度高)
 
-### Conventional Commits 仕様
+- `console.*` と `debugger` の残存は ESLint で `error`。本番コードにあれば必ず指摘する (ロギングは `utils/logger.ts`)
+- Prettier / ESLint / Stylelint のフォーマット逸脱
 
-以下の形式でコミットメッセージと PR タイトルを作成してください。
+### セキュリティ
 
-```
-<type>[optional scope]: <description>
-
-[optional body]
-
-[optional footer(s)]
-```
-
-**主要な type:**
-
-- `feat`: 新機能追加
-- `fix`: バグ修正
-- `docs`: ドキュメントのみの変更
-- `style`: コードの意味に影響しない変更（空白、フォーマット、セミコロン等）
-- `refactor`: バグ修正でも機能追加でもないコードの変更
-- `perf`: パフォーマンス向上のための変更
-- `test`: テストの追加・修正
-- `chore`: ビルドプロセスや補助ツールの変更
-
-**例:**
-
-- `feat: アニメページのコンポーネントを追加`
-- `fix: ヘッダーナビゲーションのモバイルレイアウトを修正`
-- `docs: README のインストール手順を更新`
-
-## 共通ルール
-
-- **コード内コメント**: 日本語で記載する
-- **エラーメッセージ**: 原則英語で記載する
-- **日本語と英数字の間**: 必ず半角スペースを挿入する
-- **TypeScript**: `skipLibCheck` を有効にして回避することは禁止。型安全性を重視し、`any` 型の使用を避ける
-- **ドキュメント**: 関数やインターフェースには docstring (JSDoc 等) を日本語で記載する
-- **ブランチ命名**: [Conventional Branch](https://conventional-branch.github.io) に従い、`<type>/<description>` 形式とする。`<type>` は短縮形 (feat, fix) を使用する
-
-## ディレクトリ構造とファイル命名規則
-
-```
-プロジェクトルートディレクトリ構造:
-├── .github/                 # GitHub 設定ファイル
-├── assets/                  # 静的アセット（画像、スタイル等）
-├── components/              # Vue.js コンポーネント
-│   ├── The*.vue            # レイアウト系コンポーネント（TheHeader, TheFooter 等）
-│   ├── Top*.vue            # トップページ用コンポーネント
-│   └── V*.vue              # 汎用コンポーネント（VDarkSwitch 等）
-├── content/                 # Nuxt Content ファイル
-│   ├── pages/              # ページコンテンツ（Markdown）
-│   └── *.json              # 構造化データ
-├── layouts/                 # Nuxt レイアウト
-├── pages/                   # Nuxt ページ（ルーティング）
-├── public/                  # 公開静的ファイル
-├── server/                  # サーバーサイドコード
-└── types/                   # TypeScript 型定義等
-```
-
-## コーディング規約
-
-### Vue.js / Nuxt.js
-
-- **Single File Component (SFC)** 形式を使用
-- `<script setup>` 構文を優先使用
-- Composition API を使用
-- TypeScript を必須とする
-- コンポーネント名は PascalCase で命名
-
-### TypeScript
-
-- 型安全性を重視し、`any` 型の使用を避ける
-- 適切な型定義を `types/` に配置
-- インターフェースは `I` プレフィックスなしで命名
-
-### スタイリング
-
-- **Tailwind CSS** を基本とし、カスタムスタイルは **Sass (SCSS)** で記述
-- `assets/styles/main.scss` にグローバルスタイル
-- コンポーネントレベルのスタイルは `<style scoped>` 内に記述
-- CSS クラス名は kebab-case で命名
-
-### Nuxt Content
-
-- Markdown ファイルは `content/pages/` に配置
-- Front matter で `title` 等のメタデータを設定
-- 日本語コンテンツをメインとする
-
-## 品質管理
-
-### リンティング・フォーマッティング
-
-以下のツールが設定済みです：
-
-- **ESLint**: JavaScript/TypeScript コード品質
-- **Stylelint**: CSS/SCSS スタイル品質
-- **Prettier**: コードフォーマッティング
-- **commitlint**: コミットメッセージ検証
+- `v-html` は DOMPurify でサニタイズ必須 (既存例: `components/TopAbout.vue`)。未サニタイズの `v-html` は必ず指摘する
+- `nuxt.config.ts` の `nitro.routeRules` にある CSP・セキュリティヘッダ (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Strict-Transport-Security`) を弱める変更、`'unsafe-*'` の緩和、外部オリジン追加は根拠を確認する
+- API キー・トークン・内部 URL 等の機密情報のハードコードを指摘する
 
 ### テスト
 
-プロジェクトには包括的なテストスイートが導入されています：
+- `vitest.config.ts` でカバレッジ閾値がグローバル 80% に設定されている。ロジック追加時に対応するテスト (`test/` 配下) が無ければ指摘する
+- サーバー API (`server/api/`)・composables・utils の変更は入力検証とエラーハンドリングを確認する
 
-- **Vitest + Vue Test Utils**: テスト実行環境
-- **カバレッジ要件**: **全ファイルで 80% 以上のカバレッジを必須とする**
-- **対象ファイル**: TypeScript、Vue コンポーネント、サーバー API
+### コンテンツ / SSG
 
-```bash
-pnpm test           # テスト実行
-pnpm test:coverage  # カバレッジレポート付きテスト実行
-```
+- 静的生成前提のため、ビルド時に解決できないクライアント依存やハードコードした絶対 URL を指摘する
+- 新規ページは prerender ルート (`nuxt.config.ts`) に反映されているか確認する
 
-### 実行コマンド
+## 文体・表記
 
-```bash
-pnpm lint          # 全体リンティング
-pnpm lint:js       # JavaScript/TypeScript リンティング
-pnpm lint:style    # CSS/SCSS リンティング
-pnpm lintfix       # 自動修正
-```
+- コード内コメントは日本語、エラーメッセージは原則英語
+- 日本語と英数字の間には半角スペース。逸脱は軽微な指摘として扱う
 
-### Git Hooks
+## フラグしない (誤検知しやすいパターン)
 
-- **pre-commit**: lint-staged によるリンティング
-- **commit-msg**: commitlint によるコミットメッセージ検証
-
-## 開発フロー
-
-### セットアップ
-
-```bash
-pnpm install       # 依存関係インストール
-pnpm dev          # 開発サーバー起動
-pnpm build        # プロダクションビルド
-pnpm generate     # 静的サイト生成
-```
-
-### コード変更時の注意点
-
-1. **最小限の変更**を心がける
-2. **既存のコンポーネント構造**を理解してから変更
-3. **日本語コンテンツ**の文脈を考慮
-4. **レスポンシブデザイン**を維持
-5. **SEO 対応**（meta tags, structured data 等）を考慮
-
-### PR 作成時の注意点
-
-1. PR タイトルは英語で Conventional Commits 形式
-2. PR 説明は日本語で詳細に記載
-3. 変更内容の動作確認を実施
-4. リンティングエラーがないことを確認
-5. 既存機能への影響がないことを確認
-6. **検証用ファイルやテスト用ファイルを削除**
-
-## 特記事項
-
-### パフォーマンス
-
-- 静的サイト生成（SSG）対応のため、クライアントサイドの処理を最小限に
-- 画像最適化を考慮
-- Core Web Vitals を意識したパフォーマンス
-
-### アクセシビリティ
-
-- セマンティック HTML を使用
-- キーボードナビゲーション対応
-- 適切な ARIA ラベル設定
-
-### SEO
-
-- 適切なメタタグ設定
-- 構造化データ対応
-
-## 文書フォーマット規則
-
-### 見出しと本文の間隔
-
-全ての見出し（Heading）とその本文の間には、**必ず空白行を入れる**こと。
-
-### 日本語と英数字の間のスペース
-
-日本語と英数字の間には、**必ず半角スペースを入れる**こと。
-
-例:
-
-- ✅ 正しい: `Nuxt.js v3 を使用`
-- ❌ 間違い: `Nuxt.js v3を使用`
-
-## GitHub Copilot 固有の機能と注意事項
-
-### 特徴的な機能の活用
-
-- **インライン補完**: コード入力中のリアルタイム補完を活用し、TypeScript の型安全性を保つ
-- **Chat 機能**: 複雑な実装やリファクタリングについて対話的に相談する
-- **コメント駆動開発**: 日本語コメントから適切なコードを生成する
-
-### プロジェクト特有の設定
-
-このプロジェクト（tomacheese.com）は、Nuxt.js v3 + Nuxt Content を使用した Tomachi の個人サイトです。
-
-## 検証用ファイルの管理
-
-### 一時的なファイルの作成場所
-
-- **検証用ファイル、テスト用ファイル、実験用ファイルは明確にそれとわかる場所に作成する**
-  - プロジェクトディレクトリ下の `tmp/` ディレクトリ（推奨）
-  - システムの `/tmp` ディレクトリ
-- プロジェクトのソースコードディレクトリ（`components/`, `pages/`, `content/` など）に一時的なファイルを作成しない
-- 一時ファイル用ディレクトリ内にサブディレクトリを作成して整理することを推奨
-
-### 作業終了時の清掃手順
-
-**重要**: すべてのコード変更作業が完了し、**PR作成時（レビュー依頼時）**は、以下の手順で不要なファイルを削除する：
-
-1. **一時的なファイルの確認**
-
-   ```bash
-   # プロジェクト内の tmp ディレクトリを確認
-   ls -la ./tmp/
-   # または システムの /tmp ディレクトリを確認
-   ls -la /tmp/
-   ```
-
-2. **検証用ファイルの削除**
-
-   ```bash
-   # プロジェクト内の tmp ディレクトリを削除（確認付き）
-   find ./tmp/ -type f -exec rm -i {} \;
-   # または システムの /tmp 内の作成したファイルを削除（安全な方法）
-   find /tmp -type f \( -name "test-*" -o -name "verify-*" -o -name "experiment-*" \) -delete
-   ```
-
-3. **git status での最終確認**
-
-   ```bash
-   # コミット対象を確認し、不要なファイルが含まれていないかチェック
-   git status
-   git diff --name-only
-   ```
-
-4. **.gitignore の活用**
-   - 永続的に除外すべきファイルパターンがある場合は `.gitignore` に追加
-   - 一時的なファイルが誤ってコミット対象に含まれることを防ぐ
-
-### PR作成前の最終チェックリスト
-
-- [ ] プロジェクト内の `tmp/` ディレクトリや作成した一時ファイルをすべて削除した
-- [ ] `git status` で意図しないファイルがコミット対象に含まれていないことを確認した
-- [ ] 検証用コードがプロダクションコードに残っていないことを確認した
-- [ ] テスト用の console.log や debug コードを削除した
-- [ ] 実際に必要な変更のみがコミット対象となっていることを確認した
-
-### 許可されるファイルの例外
-
-以下のファイルは検証・テスト目的であってもプロジェクトに残すことが許可される：
-
-- 正式なテストファイル（`*.test.ts`, `*.spec.ts` など）
-- ドキュメント用のサンプルコード
-- 設定ファイルの改善
-- 開発環境の改善に関するファイル
-
-### 禁止される行為
-
-- プロジェクトのソースコードディレクトリに検証用ファイルを作成すること
-- 一時的なファイルをコミット対象に含めること
-- 実験用のコードを本番用コードに混入させること
-- debug コードや console.log を本番用コードに残すこと
-
-## GitHub Actions ワークフロー連携
-
-### Auto Copilot Review Response ワークフロー
-
-このプロジェクトには、Copilot のレビューコメントを自動的に収集・整理する GitHub Actions ワークフローが設定されています。
-
-**重要**: `/copilot-review` コマンドについて
-
-- `/copilot-review` は GitHub Actions ワークフローをトリガーするためのコマンドです
-- **GitHub Copilot Coding Agent は `/copilot-review` コマンドを無視してください**
-- このコマンドは Copilot への指示ではなく、ワークフロー実行のためのトリガーです
-- ユーザーが `/copilot-review` とコメントした場合、応答する必要はありません
-
-ワークフローの詳細：
-
-- **手動実行**: Actions タブから "Auto Copilot Review Response" を実行
-- **コメント実行**: PR に `/copilot-review` とコメント
-- **機能**: Copilot のレビューコメントを収集し、整理されたまとめコメントを自動投稿
-
----
-
-**このファイルは中央管理システムの一部です。メインの指示書 `.ai/index.md` と合わせてお読みください。**
+- `vue/multi-word-component-names` と `vue/no-v-html` はプロジェクト方針で無効化済み。単語コンポーネント名や (サニタイズ済みの) `v-html` 自体を規約違反として指摘しない
+- PR に対する `/copilot-review` コメントはワークフロー起動用トリガーであり、コードへの指示ではない。応答不要
