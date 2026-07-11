@@ -1,300 +1,90 @@
-# Claude Code Instructions
+# CLAUDE.md
 
-このファイルは Claude Code 向けのプロジェクト指示書です。
+Tomachi の個人サイト `tomacheese.com`。Nuxt 4 + Nuxt Content で構築し、静的サイトとして GitHub Pages にデプロイする。
 
-このプロジェクト（tomacheese.com）は、Nuxt.js v3 + Nuxt Content を使用した Tomachi の個人サイトです。
+## 技術スタック
 
-## プロジェクト概要
+- **フレームワーク**: Nuxt 4 (`nuxt` 4.x) / Vue 3 / TypeScript
+- **UI・スタイル**: Nuxt UI 4 (`@nuxt/ui`、Tailwind CSS v4 ベース) + Sass (SCSS)。独立した `tailwind.config` は持たない
+- **コンテンツ**: Nuxt Content 3 (`@nuxt/content`)。`better-sqlite3` バックエンド
+- **主なモジュール**: `@nuxt/fonts`、`@vueuse/nuxt`、`nuxt-gtag`
+- **パッケージマネージャー**: pnpm。Node は `.node-version` 固定 (24.x)
+- **レンダリング**: `ssr: true` + `nuxt generate` によるプリレンダリング (SSG)
 
-**技術スタック**: Nuxt.js v3, Vue.js 3, TypeScript, Nuxt Content  
-**スタイリング**: Tailwind CSS + Sass (SCSS)  
-**パッケージマネージャー**: pnpm  
-**言語**: 日本語メイン（コンテンツ、コメント等）  
-**デプロイ**: GitHub Workflow によって、静的サイトとして GitHub Pages にデプロイされる
+## 開発コマンド
 
-## コミュニケーション規約
+```bash
+pnpm install        # 依存関係インストール (postinstall で nuxt prepare)
+pnpm dev            # 開発サーバー
+pnpm build          # ビルド
+pnpm generate       # 静的サイト生成 (デプロイ成果物)
+pnpm preview        # 生成物のプレビュー
 
-### 基本ルール
+pnpm lint           # lint:js + lint:style
+pnpm lint:js        # ESLint
+pnpm lint:style     # Stylelint (*.vue, *.css)
+pnpm lintfix        # prettier --write + eslint --fix + stylelint --fix
 
-- **すべての会話は日本語で行う**（PR 本文、コミット詳細、レビューコメント、Issue コメント等）
-- **PR タイトルは Conventional Commits 仕様に準拠**し、**`<description>` は日本語** で記載する
-- **コミットメッセージは Conventional Commits 仕様に準拠**し、**`<description>` は日本語** で記載する
-
-### Conventional Commits 仕様
-
-以下の形式でコミットメッセージと PR タイトルを作成してください。
-
-```
-<type>[optional scope]: <description>
-
-[optional body]
-
-[optional footer(s)]
+pnpm test           # Vitest
+pnpm test:watch     # Vitest watch
+pnpm test:coverage  # カバレッジ付き
 ```
 
-**主要な type:**
-
-- `feat`: 新機能追加
-- `fix`: バグ修正
-- `docs`: ドキュメントのみの変更
-- `style`: コードの意味に影響しない変更（空白、フォーマット、セミコロン等）
-- `refactor`: バグ修正でも機能追加でもないコードの変更
-- `perf`: パフォーマンス向上のための変更
-- `test`: テストの追加・修正
-- `chore`: ビルドプロセスや補助ツールの変更
-
-**例:**
-
-- `feat: アニメページのコンポーネントを追加`
-- `fix: ヘッダーナビゲーションのモバイルレイアウトを修正`
-- `docs: README のインストール手順を更新`
-
-## 共通ルール
-
-- **コード内コメント**: 日本語で記載する
-- **エラーメッセージ**: 原則英語で記載する
-- **日本語と英数字の間**: 必ず半角スペースを挿入する
-- **TypeScript**: `skipLibCheck` を有効にして回避することは禁止。型安全性を重視し、`any` 型の使用を避ける
-- **ドキュメント**: 関数やインターフェースには docstring (JSDoc 等) を日本語で記載する
-- **ブランチ命名**: [Conventional Branch](https://conventional-branch.github.io) に従い、`<type>/<description>` 形式とする。`<type>` は短縮形 (feat, fix) を使用する
-
-## ディレクトリ構造とファイル命名規則
+## ディレクトリ構成
 
 ```
-プロジェクトルートディレクトリ構造:
-├── .github/                 # GitHub 設定ファイル
-├── assets/                  # 静的アセット（画像、スタイル等）
-├── components/              # Vue.js コンポーネント
-│   ├── The*.vue            # レイアウト系コンポーネント（TheHeader, TheFooter 等）
-│   ├── Top*.vue            # トップページ用コンポーネント
-│   └── V*.vue              # 汎用コンポーネント（VDarkSwitch 等）
-├── content/                 # Nuxt Content ファイル
-│   ├── pages/              # ページコンテンツ（Markdown）
-│   └── *.json              # 構造化データ
-├── layouts/                 # Nuxt レイアウト
-├── pages/                   # Nuxt ページ（ルーティング）
-├── public/                  # 公開静的ファイル
-├── server/                  # サーバーサイドコード
-└── types/                   # TypeScript 型定義等
+├── assets/styles/main.scss   # グローバル SCSS (nuxt.config の css で読み込み)
+├── assets/variables.scss     # SCSS 変数
+├── components/               # Vue コンポーネント (The* レイアウト系 / Top* トップ用 / V* 汎用)
+├── composables/              # useApi, useJsonld 等
+├── content/                  # Nuxt Content。pages/*.md と *.json (構造化データ)
+├── content.config.ts         # Content コレクション定義
+├── layouts/ pages/           # Nuxt レイアウト / ルーティング
+├── public/favicons/          # 公開静的ファイル
+├── server/api/               # サーバー API (devices, top-details, top-timelines)
+├── types/                    # TypeScript 型定義
+├── utils/                    # formatters, logger, validation
+├── nuxt.config.ts            # Nuxt 設定 (CSP・セキュリティヘッダ・prerender ルート)
+└── vitest.config.ts          # テスト・カバレッジ設定
 ```
 
 ## コーディング規約
 
-### Vue.js / Nuxt.js
+- **Vue/Nuxt**: SFC + `<script setup>` + Composition API。コンポーネント名は PascalCase
+- **TypeScript**: `any` を避け型安全を優先。`skipLibCheck` で型エラーを回避しない。公開関数・インターフェースには日本語 JSDoc を付ける。インターフェースは `I` プレフィックスなし
+- **スタイル**: Nuxt UI / Tailwind ユーティリティを基本とし、必要な追加スタイルのみ SCSS。コンポーネント内は `<style scoped>`、CSS クラス名は kebab-case
+- **コンテンツ**: ページ Markdown は `content/pages/` に置き、front matter に `title` 等を設定
+- **ESLint で強制される制約**: `no-console` と `no-debugger` は `error`。本番コードに `console.*` / `debugger` を残さない (ロギングは `utils/logger.ts` を使う)
 
-- **Single File Component (SFC)** 形式を使用
-- `<script setup>` 構文を優先使用
-- Composition API を使用
-- TypeScript を必須とする
-- コンポーネント名は PascalCase で命名
+## テスト
 
-### TypeScript
+- Vitest + `@vue/test-utils`、環境は happy-dom。テストは `test/` 配下 (`components/`, `composables/`, `pages/`, `server/`, `utils/`, `security/` 等に対応)
+- `vitest.config.ts` でカバレッジ閾値をグローバル 80% (branches/functions/lines/statements) に設定済み。閾値を下回らないこと
+- 変更後は該当領域のテストを更新・追加し、`pnpm test` と `pnpm lint` を通す
 
-- 型安全性を重視し、`any` 型の使用を避ける
-- 適切な型定義を `types/` に配置
-- インターフェースは `I` プレフィックスなしで命名
+## セキュリティ
 
-### スタイリング
+- `nuxt.config.ts` の `nitro.routeRules` で全ルートに CSP とセキュリティヘッダ (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Strict-Transport-Security`) を付与している。ヘッダや CSP を緩める変更は慎重に行い、`test/security/headers.test.ts` を確認する
+- `v-html` を使う箇所は必ず DOMPurify でサニタイズする (例: `components/TopAbout.vue`)。未サニタイズの `v-html` を追加しない
 
-- **Tailwind CSS** を基本とし、カスタムスタイルは **Sass (SCSS)** で記述
-- `assets/styles/main.scss` にグローバルスタイル
-- コンポーネントレベルのスタイルは `<style scoped>` 内に記述
-- CSS クラス名は kebab-case で命名
+## 言語・コミット規約
 
-### Nuxt Content
+- 会話・PR 本文・レビュー・Issue コメントは日本語
+- コード内コメントは日本語、エラーメッセージは原則英語
+- 日本語と英数字の間には半角スペースを入れる
+- コミット・PR タイトルは [Conventional Commits](https://www.conventionalcommits.org/)。`<description>` は日本語。`commitlint` (commit-msg フック) で検証される
+- ブランチは [Conventional Branch](https://conventional-branch.github.io) の短縮 type (`feat`, `fix`, `docs`, `chore` 等) で `<type>/<description>`
 
-- Markdown ファイルは `content/pages/` に配置
-- Front matter で `title` 等のメタデータを設定
-- 日本語コンテンツをメインとする
+## Git フック
 
-## 品質管理
+- husky 経由。`pre-commit`: lint-staged (ESLint / Stylelint)。`commit-msg`: commitlint
 
-### リンティング・フォーマッティング
+## デプロイ
 
-以下のツールが設定済みです：
+- `.github/workflows/deploy.yml` が `pnpm generate` の成果物を GitHub Pages に公開する
+- SSG のためクライアント処理は最小限にし、SEO (メタタグ・構造化データ) とアクセシビリティ (セマンティック HTML・ARIA) を維持する
 
-- **ESLint**: JavaScript/TypeScript コード品質
-- **Stylelint**: CSS/SCSS スタイル品質
-- **Prettier**: コードフォーマッティング
-- **commitlint**: コミットメッセージ検証
+## ドキュメント更新ルール
 
-### テスト
-
-プロジェクトには包括的なテストスイートが導入されています：
-
-- **Vitest + Vue Test Utils**: テスト実行環境
-- **カバレッジ要件**: **全ファイルで 80% 以上のカバレッジを必須とする**
-- **対象ファイル**: TypeScript、Vue コンポーネント、サーバー API
-
-```bash
-pnpm test           # テスト実行
-pnpm test:coverage  # カバレッジレポート付きテスト実行
-```
-
-### 実行コマンド
-
-```bash
-pnpm lint          # 全体リンティング
-pnpm lint:js       # JavaScript/TypeScript リンティング
-pnpm lint:style    # CSS/SCSS リンティング
-pnpm lintfix       # 自動修正
-```
-
-### Git Hooks
-
-- **pre-commit**: lint-staged によるリンティング
-- **commit-msg**: commitlint によるコミットメッセージ検証
-
-## 開発フロー
-
-### セットアップ
-
-```bash
-pnpm install       # 依存関係インストール
-pnpm dev          # 開発サーバー起動
-pnpm build        # プロダクションビルド
-pnpm generate     # 静的サイト生成
-```
-
-### コード変更時の注意点
-
-1. **最小限の変更**を心がける
-2. **既存のコンポーネント構造**を理解してから変更
-3. **日本語コンテンツ**の文脈を考慮
-4. **レスポンシブデザイン**を維持
-5. **SEO 対応**（meta tags, structured data 等）を考慮
-
-### PR 作成時の注意点
-
-1. PR タイトルは英語で Conventional Commits 形式
-2. PR 説明は日本語で詳細に記載
-3. 変更内容の動作確認を実施
-4. リンティングエラーがないことを確認
-5. 既存機能への影響がないことを確認
-6. **検証用ファイルやテスト用ファイルを削除**
-7. すべてのCIが成功するまで監視・対応する。失敗した場合は修正を行い、コミット・プッシュし、再度監視を行う。
-
-## 特記事項
-
-### パフォーマンス
-
-- 静的サイト生成（SSG）対応のため、クライアントサイドの処理を最小限に
-- 画像最適化を考慮
-- Core Web Vitals を意識したパフォーマンス
-
-### アクセシビリティ
-
-- セマンティック HTML を使用
-- キーボードナビゲーション対応
-- 適切な ARIA ラベル設定
-
-### SEO
-
-- 適切なメタタグ設定
-- 構造化データ対応
-
-## 検証用ファイルの管理
-
-### 一時的なファイルの作成場所
-
-- **検証用ファイル、テスト用ファイル、実験用ファイルは明確にそれとわかる場所に作成する**
-  - プロジェクトディレクトリ下の `tmp/` ディレクトリ（推奨）
-  - システムの `/tmp` ディレクトリ
-- プロジェクトのソースコードディレクトリ（`components/`, `pages/`, `content/` など）に一時的なファイルを作成しない
-- 一時ファイル用ディレクトリ内にサブディレクトリを作成して整理することを推奨
-
-### 作業終了時の清掃手順
-
-**重要**: すべてのコード変更作業が完了し、**PR 作成時（レビュー依頼時）**は、以下の手順で不要なファイルを削除する：
-
-1. **一時的なファイルの確認**
-
-   ```bash
-   # プロジェクト内の tmp ディレクトリを確認
-   ls -la ./tmp/
-   # または システムの /tmp ディレクトリを確認
-   ls -la /tmp/
-   ```
-
-2. **検証用ファイルの削除**
-
-   ```bash
-   # プロジェクト内の tmp ディレクトリを削除（確認付き）
-   find ./tmp/ -type f -exec rm -i {} \;
-   # または システムの /tmp 内の作成したファイルを削除（安全な方法）
-   find /tmp -type f \( -name "test-*" -o -name "verify-*" -o -name "experiment-*" \) -delete
-   ```
-
-3. **git status での最終確認**
-
-   ```bash
-   # コミット対象を確認し、不要なファイルが含まれていないかチェック
-   git status
-   git diff --name-only
-   ```
-
-4. **.gitignore の活用**
-   - 永続的に除外すべきファイルパターンがある場合は `.gitignore` に追加
-   - 一時的なファイルが誤ってコミット対象に含まれることを防ぐ
-
-### PR 作成前の最終チェックリスト
-
-- [ ] プロジェクト内の `tmp/` ディレクトリや作成した一時ファイルをすべて削除した
-- [ ] `git status` で意図しないファイルがコミット対象に含まれていないことを確認した
-- [ ] 検証用コードがプロダクションコードに残っていないことを確認した
-- [ ] テスト用の console.log や debug コードを削除した
-- [ ] 実際に必要な変更のみがコミット対象となっていることを確認した
-
-### 許可されるファイルの例外
-
-以下のファイルは検証・テスト目的であってもプロジェクトに残すことが許可される：
-
-- 正式なテストファイル（`*.test.ts`, `*.spec.ts` など）
-- ドキュメント用のサンプルコード
-- 設定ファイルの改善
-- 開発環境の改善に関するファイル
-
-### 禁止される行為
-
-- 一時的なファイルをコミット対象に含めること
-- 実験用のコードを本番用コードに混入させること
-- debug コードや console.log を本番用コードに残すこと
-
-## 文書フォーマット規則
-
-### 見出しと本文の間隔
-
-全ての見出し（Heading）とその本文の間には、**必ず空白行を入れる**こと。
-
-### 日本語と英数字の間のスペース
-
-日本語と英数字の間には、**必ず半角スペースを入れる**こと。
-
-例:
-
-- ✅ 正しい: `Nuxt.js v3 を使用`
-- ❌ 間違い: `Nuxt.js v3を使用`
-
-## Claude Code 固有の注意事項
-
-### 特徴的な機能の活用
-
-- **ファイル横断的な理解**: プロジェクト全体の構造を把握し、関連ファイル間の依存関係を考慮して変更を提案する
-- **複雑なロジックの説明**: コードの動作原理や設計思想を詳しく解説する
-- **最適化提案**: パフォーマンスやメンテナンス性の向上につながる改善案を提示する
-
-### 推奨する作業フロー
-
-1. プロジェクト全体の理解を深める
-2. 変更対象のファイルとその関連ファイルを確認
-3. 型定義やインターフェースの整合性を検証
-4. テストファイルの存在を確認し、必要に応じてテストも更新
-5. 変更の影響範囲を明確にして提案
-
-### コミュニケーション
-
-- すべての説明は **日本語** で行う
-- 技術的な詳細も含めて丁寧に説明する
-- コードの変更理由と期待される効果を明示する
-
-このガイドラインに従って、品質の高いコードを書き、プロジェクトの一貫性を保ってください。
+- コマンド・依存・ディレクトリ構成を変えたら、この CLAUDE.md と `.github/copilot-instructions.md` の該当記述も更新する
+- CLAUDE.md は開発作業の指針、`.github/copilot-instructions.md` は Copilot コードレビュー用。役割が違うため内容を丸ごと複製しない
