@@ -72,12 +72,13 @@ pnpm test:coverage  # カバレッジ付き
 - 会話・PR 本文・レビュー・Issue コメントは日本語
 - コード内コメントは日本語、エラーメッセージは原則英語
 - 日本語と英数字の間には半角スペースを入れる
-- コミット・PR タイトルは [Conventional Commits](https://www.conventionalcommits.org/)。`<description>` は日本語。`commitlint` (commit-msg フック) で検証される
+- コミット・PR タイトルは [Conventional Commits](https://www.conventionalcommits.org/)。`<description>` は日本語。`commitlint`(`commitlint.config.js`)の設定がある
 - ブランチは [Conventional Branch](https://conventional-branch.github.io) の短縮 type (`feat`, `fix`, `docs`, `chore` 等) で `<type>/<description>`
 
-## Git フック
+## CI・品質チェック
 
-- husky 経由。`pre-commit`: lint-staged (ESLint / Stylelint)。`commit-msg`: commitlint
+- CI (push 時の `deploy.yml`、PR の Node CI) が `pnpm lint` と `pnpm test` を実行する
+- `lint-staged`・`commitlint` の設定はあるが、husky は v9 系で `package.json` の旧 v4 形式 `husky.hooks` を参照しないため、Git フックとしては現状機能していない。コミット前に手動で `pnpm lint` / `pnpm test` を通すこと
 
 ## デプロイ
 
