@@ -34,7 +34,7 @@
     "dompurify": "3.4.12",
     "nuxt": "4.4.8",
     "nuxt-gtag": "4.1.0",
-    "vue": "3.5.39",
+    "vue": "3.5.40",
     "vue-router": "5.2.0"
   },
   "devDependencies": {
