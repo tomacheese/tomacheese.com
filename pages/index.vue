@@ -121,13 +121,13 @@ useSeoMeta({
   }
 
   // モバイル対応 - 固定背景を無効化し、高さを調整
-  @media (max-width: theme('screens.md')) {
+  @media (max-width: 768px) {
     background-attachment: scroll;
     height: 50vh;
   }
 
   // 更にタブレットサイズでの最適化
-  @media (max-width: theme('screens.lg')) and (min-width: calc(theme('screens.md') + 1px)) {
+  @media (max-width: 1024px) and (min-width: 769px) {
     height: 60vh;
   }
 }
