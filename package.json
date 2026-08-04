@@ -54,7 +54,7 @@
     "happy-dom": "20.11.1",
     "husky": "9.1.7",
     "lint-staged": "17.3.0",
-    "postcss-html": "1.8.1",
+    "postcss-html": "2.0.0",
     "prettier": "3.9.6",
     "sass-embedded": "1.100.0",
     "stylelint": "17.14.1",
