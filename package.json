@@ -46,7 +46,7 @@
     "@nuxtjs/stylelint-module": "5.2.1",
     "@vitejs/plugin-vue": "6.0.9",
     "@vitest/coverage-v8": "5.0.1",
-    "@vue/test-utils": "2.5.0",
+    "@vue/test-utils": "2.5.1",
     "better-sqlite3": "13.0.3",
     "eslint": "10.10.0",
     "eslint-config-prettier": "10.1.8",
