@@ -44,7 +44,7 @@
     "@nuxt/fonts": "0.14.0",
     "@nuxt/test-utils": "4.3.2",
     "@nuxtjs/stylelint-module": "5.2.1",
-    "@vitejs/plugin-vue": "6.0.8",
+    "@vitejs/plugin-vue": "6.0.9",
     "@vitest/coverage-v8": "5.0.1",
     "@vue/test-utils": "2.5.0",
     "better-sqlite3": "13.0.3",
