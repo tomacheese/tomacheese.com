@@ -133,7 +133,8 @@ jobs:
             fi
 
             # Check for 404 errors
-            if grep -q "404\|Page Not Found\|statusCode.*404" "$file"; then
+            # Match rendered 404 content, not asset names like error-404.*.css
+            if grep -qE "Page Not Found|statusCode.{0,5}404|>404<" "$file"; then
               echo "❌ $page page contains 404 error"
               echo "📄 Content preview of $page:"
               head -20 "$file" | grep -E "(title|h1|404)" || \
