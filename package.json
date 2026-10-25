@@ -41,7 +41,7 @@
     "@commitlint/cli": "21.2.4",
     "@commitlint/config-conventional": "21.2.4",
     "@nuxt/eslint-config": "1.17.0",
-    "@nuxt/fonts": "1.0.1",
+    "@nuxt/fonts": "1.1.0",
     "@nuxt/test-utils": "4.3.4",
     "@nuxtjs/stylelint-module": "5.2.1",
     "@vitejs/plugin-vue": "6.0.10",
