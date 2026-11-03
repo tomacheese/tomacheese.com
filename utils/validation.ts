@@ -1,9 +1,9 @@
 /**
- * Article validation utilities for @nuxt/content v3
+ * @nuxt/content v3 の記事データを検証するユーティリティ
  */
 
 /**
- * Type definition for table of contents link
+ * 目次 (TOC) のリンク
  */
 export interface TocLink {
   id: string
@@ -13,7 +13,7 @@ export interface TocLink {
 }
 
 /**
- * Type definition for a valid article from @nuxt/content
+ * 検証済みの記事。title と path が必須
  */
 export interface ValidArticle {
   title: string
@@ -28,9 +28,7 @@ export interface ValidArticle {
 }
 
 /**
- * Validates if a content result is a valid article
- * @param result - Result from queryCollection query (ParsedContent or similar content object)
- * @returns True if the result is a valid article with required fields
+ * queryCollection の結果が、trim 後に空でない文字列の title と、文字列の path を持つかを判定する
  */
 export function isValidArticle(result: unknown): result is ValidArticle {
   if (

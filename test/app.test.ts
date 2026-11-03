@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import App from '~/app.vue'
 
-// Mock NuxtPage and NuxtLayout
+// NuxtPage と NuxtLayout をモックする
 const NuxtPageStub = {
   name: 'NuxtPage',
   template: '<div class="nuxt-page">Mock Page Content</div>',

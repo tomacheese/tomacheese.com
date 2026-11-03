@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import DeviceSection from '~/components/DeviceSection.vue'
 import type { Device } from '~/types/devices'
 
-// Mock formatPrice utility
+// formatPrice ユーティリティをモックする
 vi.mock('~/utils/formatters', () => ({
   formatPrice: vi.fn((price) =>
     price ? `${price.toLocaleString('ja-JP')}円` : '',

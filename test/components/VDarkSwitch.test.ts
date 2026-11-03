@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import VDarkSwitch from '~/components/VDarkSwitch.vue'
 
-// Mock Icon component
 const IconStub = {
   name: 'Icon',
   props: ['name', 'size'],
@@ -61,7 +60,7 @@ describe('VDarkSwitch', () => {
     const button = wrapper.find('button')
     const title = button.attributes('title')
 
-    // Title should be either light or dark mode switch text
+    // title はライトモードまたはダークモードへの切り替え文言のいずれか
     expect(
       title === 'ライトモードに切り替え' || title === 'ダークモードに切り替え',
     ).toBe(true)
@@ -79,7 +78,7 @@ describe('VDarkSwitch', () => {
     const icon = wrapper.find('.mock-icon')
     expect(icon.attributes('data-size')).toBe('16')
 
-    // Icon name should be either sun or moon
+    // アイコン名は太陽または月のいずれか
     const iconName = icon.attributes('data-name')
     expect(
       iconName === 'mdi:white-balance-sunny' ||
@@ -99,7 +98,6 @@ describe('VDarkSwitch', () => {
     const button = wrapper.find('button')
     await button.trigger('click')
 
-    // After click, the component should still exist
     expect(wrapper.exists()).toBe(true)
   })
 })

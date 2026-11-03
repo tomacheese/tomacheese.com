@@ -1,7 +1,7 @@
 # プルリクエスト
 
-> **重要**: PR の説明は必ず日本語で記載してください。  
-> PR タイトルは英語で Conventional Commits 形式に従って記載してください。
+> **重要**: PR のタイトルと説明は日本語で記載してください。  
+> PR タイトルは Conventional Commits 形式 (`<type>: <日本語の description>`) に従ってください。
 
 ## 変更内容
 
@@ -43,7 +43,7 @@
 
 ### プロジェクト規約
 
-- [ ] [GitHub Copilot Instructions](.github/copilot-instructions.md) に従って実装した
+- [ ] `AGENTS.md` に従って実装した
 - [ ] Conventional Commits 形式でコミットメッセージを作成した
 - [ ] 最小限の変更に留めた
 - [ ] 適切なコンポーネント構造を維持した

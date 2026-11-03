@@ -250,7 +250,7 @@ useSeoMeta({
   }
 }
 
-/* Content styling */
+/* コンテンツのスタイル */
 :deep(.content-container) {
   h1,
   h2,

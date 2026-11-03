@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 
-// Mock the JSON data first
+// 先に JSON データをモックする
 const mockDevicesData = {
   title: 'テストデバイス一覧',
   overview: {
@@ -15,19 +15,19 @@ const mockDevicesData = {
   },
 }
 
-// Mock the content import
+// content の import をモックする
 vi.mock('~/content/devices.json', () => ({
   default: mockDevicesData,
 }))
 
-// Mock h3 functions
+// h3 の関数をモックする
 vi.mock('h3', () => ({
   defineEventHandler: vi.fn((handler) => handler),
 }))
 
 describe('server/api/devices', () => {
   it('デバイスデータを正常に返す', async () => {
-    // Import the actual handler after mocking
+    // モック後に実際のハンドラーを import する
     const devicesHandler = await import('~/server/api/devices')
     const handler = devicesHandler.default
 

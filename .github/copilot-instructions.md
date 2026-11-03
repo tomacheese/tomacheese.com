@@ -1,12 +1,6 @@
 # GitHub Copilot コードレビュー指示書
 
-`tomacheese.com` — Nuxt 4 + Nuxt Content で構築した個人サイト。GitHub Pages に静的サイトとしてデプロイする。このファイルは Copilot のコードレビューが参照する。指摘・要約は日本語で行う。
-
-## 技術スタック (前提)
-
-- Nuxt 4 / Vue 3 / TypeScript / pnpm
-- Nuxt UI 4 (Tailwind CSS v4 ベース) + Sass (SCSS)
-- Nuxt Content 3、Vitest + happy-dom
+プロジェクトの概要・規約・開発コマンドは [AGENTS.md](../AGENTS.md) を参照する。このファイルは Copilot のコードレビューで重点的に確認する点だけをまとめる。指摘・要約は日本語で行う。
 
 ## レビューで重点的に確認する点
 
@@ -24,7 +18,7 @@
 ### セキュリティ
 
 - `v-html` は DOMPurify でサニタイズ必須 (既存例: `components/TopAbout.vue`)。未サニタイズの `v-html` は必ず指摘する
-- `nuxt.config.ts` の `nitro.routeRules` にある CSP・セキュリティヘッダ (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Strict-Transport-Security`) を弱める変更、`'unsafe-*'` の緩和、外部オリジン追加は根拠を確認する
+- `nuxt.config.ts` の `nitro.routeRules` にある CSP・セキュリティヘッダーを弱める変更、`'unsafe-*'` の緩和、外部オリジン追加は根拠を確認する
 - API キー・トークン・内部 URL 等の機密情報のハードコードを指摘する
 
 ### テスト

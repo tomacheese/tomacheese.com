@@ -1,13 +1,7 @@
 /**
- * Logger utility for development-only console output
- * Provides structured logging that only outputs in development environment
+ * コンソール出力用のロガー。info / warn は開発環境のみ出力し、error は常に出力する
  */
 export const logger = {
-  /**
-   * Log information messages (development only)
-   * @param message - The message to log
-   * @param data - Optional additional data to log
-   */
   info: (message: string, data?: unknown) => {
     if (import.meta.dev) {
       if (data !== undefined) {
@@ -20,11 +14,6 @@ export const logger = {
     }
   },
 
-  /**
-   * Log warning messages (development only)
-   * @param message - The warning message to log
-   * @param data - Optional additional data to log
-   */
   warn: (message: string, data?: unknown) => {
     if (import.meta.dev) {
       if (data !== undefined) {
@@ -37,11 +26,6 @@ export const logger = {
     }
   },
 
-  /**
-   * Log error messages (always shown)
-   * @param message - The error message to log
-   * @param error - Optional error object or additional data
-   */
   error: (message: string, error?: unknown) => {
     if (error !== undefined) {
       // eslint-disable-next-line no-console

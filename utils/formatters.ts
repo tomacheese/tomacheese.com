@@ -1,7 +1,5 @@
 /**
- * Format price number as Japanese yen currency
- * @param price - Price as number or undefined
- * @returns Formatted price string with yen symbol, or empty string if undefined
+ * 価格を「1,234円」形式に整形する。未指定の場合は空文字を返す
  */
 export function formatPrice(price: number | undefined): string {
   if (price === undefined || price === null) {
@@ -11,9 +9,7 @@ export function formatPrice(price: number | undefined): string {
 }
 
 /**
- * Format date string in yyyy/MM/dd format
- * @param dateString - Date in YYYY-MM-DD format
- * @returns Formatted date string in yyyy/MM/dd format (e.g., "2024/12/16")
+ * YYYY-MM-DD 形式の日付文字列を yyyy/MM/dd 形式に整形する (例: 2024/12/16)
  */
 export function formatDate(dateString: string): string {
   const date = new Date(dateString)

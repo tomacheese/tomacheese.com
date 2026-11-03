@@ -250,7 +250,7 @@ defineProps<Props>()
   line-height: 1.5;
 }
 
-/* Component-specific styles */
+/* コンポーネント固有のスタイル */
 .components-categories {
   margin-top: var(--space-6);
 }
@@ -340,7 +340,7 @@ defineProps<Props>()
   }
 }
 
-/* Mobile device specific styles */
+/* モバイル向けスタイル */
 .smartwatch-item {
   background: var(--color-surface);
   border: 1px solid var(--color-border);

@@ -1,7 +1,3 @@
-/**
- * API related type definitions
- */
-
 export interface ApiResponse<T> {
   body?: T
   status?: number

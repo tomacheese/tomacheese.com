@@ -1,10 +1,8 @@
 import { vi } from 'vitest'
 
-// Mock Nuxt global functions
 global.defineEventHandler = vi.fn((handler) => handler)
 global.createError = vi.fn((error) => new Error(error.statusMessage))
 
-// Mock Vue composables globally
 global.useColorMode = vi.fn(() => ({
   value: 'light',
   preference: 'light',
@@ -21,7 +19,6 @@ global.useFetch = vi.fn(() => ({
   pending: { value: false },
 }))
 
-// Mock @nuxt/ui Icon component
 vi.mock('#components', () => ({
   UIcon: {
     name: 'UIcon',
@@ -31,7 +28,6 @@ vi.mock('#components', () => ({
   },
 }))
 
-// Mock nuxt runtime
 vi.mock('#app', () => ({
   useNuxtApp: vi.fn(() => ({})),
   navigateTo: vi.fn(),

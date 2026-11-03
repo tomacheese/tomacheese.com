@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest'
 import ErrorMessage from '~/components/ErrorMessage.vue'
 
 describe('ErrorMessage', () => {
-  it('displays default error message and icon', () => {
+  it('デフォルトのエラーメッセージとアイコンを表示する', () => {
     const wrapper = mount(ErrorMessage)
 
     expect(wrapper.text()).toContain('⚠️')
@@ -14,7 +14,7 @@ describe('ErrorMessage', () => {
     expect(wrapper.find('.retry-button').exists()).toBe(false)
   })
 
-  it('displays custom message and icon', () => {
+  it('指定したメッセージとアイコンを表示する', () => {
     const wrapper = mount(ErrorMessage, {
       props: {
         message: 'カスタムエラーメッセージ',
@@ -26,7 +26,7 @@ describe('ErrorMessage', () => {
     expect(wrapper.text()).toContain('カスタムエラーメッセージ')
   })
 
-  it('shows retry button when retry prop is true', () => {
+  it('retry prop が true のときに再試行ボタンを表示する', () => {
     const wrapper = mount(ErrorMessage, {
       props: {
         retry: true,
@@ -37,7 +37,7 @@ describe('ErrorMessage', () => {
     expect(wrapper.find('.retry-button').text()).toBe('再試行')
   })
 
-  it('emits retry event when retry button is clicked', async () => {
+  it('再試行ボタンのクリックで retry イベントを発行する', async () => {
     const wrapper = mount(ErrorMessage, {
       props: {
         retry: true,
@@ -49,7 +49,7 @@ describe('ErrorMessage', () => {
     expect(wrapper.emitted().retry).toHaveLength(1)
   })
 
-  it('has proper accessibility attributes', () => {
+  it('適切なアクセシビリティ属性を持つ', () => {
     const wrapper = mount(ErrorMessage)
 
     expect(wrapper.find('[role="alert"]').exists()).toBe(true)

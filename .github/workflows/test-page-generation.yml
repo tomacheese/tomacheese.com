@@ -31,15 +31,12 @@ jobs:
 
       - name: Verify critical files before build
         run: |
-          # Verify that critical files exist before attempting to build
           echo "🔍 Verifying critical files exist before build..."
 
-          # Check content files
           test -f content/devices.json || \
             (echo "❌ content/devices.json missing" && exit 1)
           echo "✅ content/devices.json exists"
 
-          # Check Vue components
           test -f pages/devices.vue || \
             (echo "❌ pages/devices.vue missing" && exit 1)
           echo "✅ pages/devices.vue exists"
@@ -48,12 +45,10 @@ jobs:
             (echo "❌ components/DeviceSection.vue missing" && exit 1)
           echo "✅ components/DeviceSection.vue exists"
 
-          # Check API endpoint
           test -f server/api/devices.ts || \
             (echo "❌ server/api/devices.ts missing" && exit 1)
           echo "✅ server/api/devices.ts exists"
 
-          # Check utilities and types
           test -f utils/formatters.ts || \
             (echo "❌ utils/formatters.ts missing" && exit 1)
           echo "✅ utils/formatters.ts exists"
@@ -74,10 +69,10 @@ jobs:
 
       - name: Test required pages exist
         run: |
-          # Check that required pages are generated with retry logic
+          # 必須ページが生成されていることをリトライ付きで確認する
           echo "🔍 Checking that all required pages are generated..."
 
-          # Function to check file existence with retry
+          # ファイルの存在をリトライ付きで確認する関数
           check_file_exists() {
             local page=$1
             local file=$2
@@ -100,7 +95,6 @@ jobs:
             return 1
           }
 
-          # Check each required page
           check_file_exists "/me" ".output/public/me/index.html"
           check_file_exists "/about" ".output/public/about/index.html"
           check_file_exists "/devices" ".output/public/devices/index.html"
@@ -111,17 +105,14 @@ jobs:
 
       - name: Test page content validity
         run: |
-          # Check that pages contain expected content and are not 404 pages
           echo "🔍 Checking page content validity..."
 
-          # Function to check for 404 errors with better debugging
           check_page_404() {
             local page=$1
             local file=$2
 
             echo "🔍 Checking $page page content..."
 
-            # Check file size first
             local file_size=$(stat -c%s "$file" 2>/dev/null || echo "0")
             echo "📏 File size: $file_size bytes"
 
@@ -132,8 +123,7 @@ jobs:
               return 1
             fi
 
-            # Check for 404 errors
-            # Match rendered 404 content, not asset names like error-404.*.css
+            # error-404.*.css のようなアセット名ではなく、描画された 404 の内容に一致させる
             if grep -qE "Page Not Found|statusCode.{0,5}404|>404<" "$file"; then
               echo "❌ $page page contains 404 error"
               echo "📄 Content preview of $page:"
@@ -142,7 +132,6 @@ jobs:
               return 1
             fi
 
-            # Check for basic HTML structure
             if ! grep -q "<html" "$file"; then
               echo "❌ $page page missing HTML structure"
               echo "📄 Content preview:"
@@ -163,12 +152,10 @@ jobs:
 
       - name: Test devices page specific content
         run: |
-          # Specific validation for devices page to ensure it's properly generated
           echo "🔍 Validating devices page specific content..."
 
           devices_file=".output/public/devices/index.html"
 
-          # Check if devices page contains expected Japanese content
           if ! grep -q "デバイス一覧" "$devices_file"; then
             echo "❌ Devices page missing title 'デバイス一覧'"
             echo "📄 Title content in devices page:"
@@ -179,7 +166,6 @@ jobs:
             exit 1
           fi
 
-          # Check if devices page contains component content
           if ! grep -q "メインPC\|ノートPC\|サーバ" "$devices_file"; then
             echo "❌ Devices page missing expected device sections"
             echo "📄 Device sections in page:"
@@ -188,7 +174,6 @@ jobs:
             exit 1
           fi
 
-          # Check if devices API endpoint was called successfully
           devices_payload=".output/public/devices/_payload.json"
           if [ ! -f "$devices_payload" ]; then
             echo "❌ Devices payload file not found"
@@ -201,10 +186,8 @@ jobs:
 
       - name: Test page titles
         run: |
-          # Check that pages have proper titles with better debugging
           echo "🔍 Checking page titles..."
 
-          # Function to check page title with debugging
           check_page_title() {
             local page=$1
             local file=$2

@@ -1,14 +1,14 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { useApi } from '~/composables/useApi'
 
-// Mock the logger module
+// logger モジュールをモックする
 vi.mock('~/utils/logger', () => ({
   logger: {
     error: vi.fn(),
   },
 }))
 
-// Mock $fetch
+// $fetch をモックする
 global.$fetch = vi.fn()
 
 describe('useApi', () => {
@@ -17,7 +17,7 @@ describe('useApi', () => {
   })
 
   describe('handleApiError', () => {
-    it('converts Error object to ApiError', () => {
+    it('Error オブジェクトを ApiError に変換する', () => {
       const { handleApiError } = useApi()
       const error = new Error('Test error message')
 
@@ -29,7 +29,7 @@ describe('useApi', () => {
       })
     })
 
-    it('converts unknown error to generic ApiError', () => {
+    it('不明なエラーを汎用の ApiError に変換する', () => {
       const { handleApiError } = useApi()
       const error = 'string error'
 
@@ -43,7 +43,7 @@ describe('useApi', () => {
   })
 
   describe('fetchWithErrorHandling', () => {
-    it('returns data body on successful fetch', async () => {
+    it('取得に成功した場合は body を返す', async () => {
       const { fetchWithErrorHandling } = useApi()
       const mockData = { body: ['test', 'data'] }
 
@@ -55,7 +55,7 @@ describe('useApi', () => {
       expect($fetch).toHaveBeenCalledWith('/test-url')
     })
 
-    it('returns null when data body is undefined', async () => {
+    it('body が undefined の場合は null を返す', async () => {
       const { fetchWithErrorHandling } = useApi()
       const mockData = { status: 200 }
 
@@ -66,7 +66,7 @@ describe('useApi', () => {
       expect(result).toBeNull()
     })
 
-    it('returns null and logs error on fetch failure', async () => {
+    it('取得に失敗した場合はエラーをログに出して null を返す', async () => {
       const { fetchWithErrorHandling } = useApi()
       const error = new Error('Fetch failed')
 

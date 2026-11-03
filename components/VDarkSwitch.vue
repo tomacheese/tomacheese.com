@@ -26,7 +26,7 @@ function toggleTheme() {
   colorMode.preference = isDark.value ? 'light' : 'dark'
 }
 
-// Apply theme class to document
+// テーマのクラスを html 要素へ反映する
 watchEffect(() => {
   if (import.meta.client) {
     const html = document.documentElement

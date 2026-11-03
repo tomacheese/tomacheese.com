@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
 import DefaultLayout from '~/layouts/default.vue'
 
-// Mock the layout components
+// レイアウトのコンポーネントをモックする
 const TheHeaderStub = {
   name: 'TheHeader',
   template: '<div class="header">Mock Header</div>',

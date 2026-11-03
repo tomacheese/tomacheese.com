@@ -32,13 +32,13 @@
           </div>
         </div>
 
-        <!-- Mobile menu button -->
+        <!-- モバイルメニューボタン -->
         <button class="mobile-menu-btn" @click="toggleMobileMenu">
           <Icon :name="mobileMenuOpen ? 'mdi:close' : 'mdi:menu'" size="24" />
         </button>
       </nav>
 
-      <!-- Mobile menu -->
+      <!-- モバイルメニュー -->
       <div v-if="mobileMenuOpen" class="mobile-menu">
         <template v-for="item in items" :key="item.title">
           <NuxtLink
