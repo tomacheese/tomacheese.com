@@ -26,7 +26,7 @@ export interface DeviceSection {
   categories?: Record<string, DeviceCategory>
 }
 
-// Specific device types for better type safety
+// デバイス種別ごとの型
 export interface MobileDevice {
   name: string
   notes?: string
@@ -44,7 +44,7 @@ export interface Device {
   title: string
   description?: string
   sections?: Record<string, DeviceSection>
-  // Additional properties for different device types
+  // デバイス種別ごとの追加プロパティ
   specs?: string[]
   warranty?: string
   totalPrice?: number | string
@@ -53,9 +53,9 @@ export interface Device {
   notes?: string
   related?: string
   links?: DeviceLink[]
-  // Generic devices property that can hold different types of devices
+  // 種別を問わず保持できる汎用の devices プロパティ
   devices?: MobileDevice[] | SmartWatch[] | string[]
-  // Separate properties for each device type to ensure type safety
+  // 型安全のため種別ごとに分けたプロパティ
   mobileDevices?: MobileDevice[]
   smartWatches?: SmartWatch[]
   otherDevices?: string[]

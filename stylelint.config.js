@@ -1,10 +1,10 @@
 module.exports = {
   extends: ['stylelint-config-standard'],
-  // Override configuration for Vue Single File Components (SFCs)
+  // Vue SFC 向けの設定を上書きする
   overrides: [
     {
       files: ['**/*.vue'],
-      customSyntax: 'postcss-html', // Required for parsing CSS within Vue SFCs
+      customSyntax: 'postcss-html', // Vue SFC 内の CSS を解析するために必要
     },
   ],
   ignoreFiles: [

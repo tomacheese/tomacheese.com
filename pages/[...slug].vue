@@ -31,25 +31,23 @@ import { logger } from '~/utils/logger'
 const route = useRoute()
 let slug = route.params.slug as string | string[]
 
-// Handle slug array (catch-all route)
 if (Array.isArray(slug)) {
   slug = slug.join('/')
 }
 
-// Handle special slug mappings (from original site)
+// 旧サイトの URL からの特別なマッピング
 if (slug === 'pc') slug = 'devices'
 
-// Redirect devices to the dedicated static page
+// devices は専用の静的ページへリダイレクトする
 if (slug === 'devices') {
   await navigateTo('/devices', { redirectCode: 301 })
 }
 
-// Use Nuxt Content v3 syntax with correct schema
 const { data: article, error } = await useLazyAsyncData(
   `content-${slug}`,
   async () => {
     try {
-      // Query by path using the correct field name
+      // path フィールドで記事を取得する
       const result = await queryCollection('content')
         .where('path', '=', `/pages/${slug}`)
         .first()
@@ -171,7 +169,7 @@ useSeoMeta({
   }
 }
 
-/* Content styling */
+/* コンテンツのスタイル */
 :deep(.content-container) {
   h1,
   h2,
@@ -183,7 +181,7 @@ useSeoMeta({
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
 
-    /* Hide the hash icon in heading anchors (Nuxt UI prose component) */
+    /* 見出しアンカーのハッシュアイコンを非表示にする (Nuxt UI の prose コンポーネント) */
     a[href^='#'] > span:has(.iconify) {
       display: none;
     }

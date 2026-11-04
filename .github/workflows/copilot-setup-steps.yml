@@ -27,9 +27,9 @@ jobs:
             fonts-noto-cjk \
             fonts-ipafont \
             fonts-ipaexfont \
-            locales  # Required for locale-gen command
+            locales  # locale-gen コマンドに必要
 
-          # Configure UTF-8 Japanese locale
+          # UTF-8 の日本語ロケールを設定する
           sudo locale-gen ja_JP.UTF-8
           echo "LANG=ja_JP.UTF-8" >> $GITHUB_ENV
 

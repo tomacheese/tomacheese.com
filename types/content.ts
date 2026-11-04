@@ -1,7 +1,3 @@
-/**
- * Content related type definitions
- */
-
 export interface TimelineItem {
   icon: string
   date: string

@@ -1,15 +1,12 @@
 /**
- * API utilities composable
- * Provides consistent error handling and API interaction patterns
+ * API 呼び出しとエラー処理を共通化する composable
  */
 import { logger } from '~/utils/logger'
 import type { ApiResponse, ApiError } from '~/types/api'
 
 export const useApi = () => {
   /**
-   * Handle API errors in a consistent way
-   * @param error - The error object to handle
-   * @returns Standardized error object
+   * 任意のエラーを ApiError に正規化する
    */
   const handleApiError = (error: unknown): ApiError => {
     if (error instanceof Error) {
@@ -25,9 +22,7 @@ export const useApi = () => {
   }
 
   /**
-   * Fetch data with consistent error handling
-   * @param url - The URL to fetch from
-   * @returns The response body or null on error
+   * URL からデータを取得し、レスポンスの body を返す。失敗時はログを出して null を返す
    */
   const fetchWithErrorHandling = async <T>(url: string): Promise<T | null> => {
     try {

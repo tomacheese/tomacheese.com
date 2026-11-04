@@ -14,7 +14,7 @@ describe('formatters', () => {
     })
 
     it('nullの場合は空文字を返す', () => {
-      // @ts-expect-error Testing null input
+      // @ts-expect-error null 入力のテスト
       expect(formatPrice(null)).toBe('')
     })
 

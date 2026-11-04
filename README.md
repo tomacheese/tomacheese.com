@@ -1,6 +1,6 @@
-# tomacheese.com v3
+# tomacheese.com
 
-Nuxt.js v3 + Nuxt Content で構築された Tomachi Site のリニューアル版
+Nuxt 4 + Nuxt Content で構築した Tomachi Site。静的サイトとして GitHub Pages にデプロイする。開発の規約は [AGENTS.md](AGENTS.md) を参照。
 
 ## 🤖 Auto Copilot Review Response
 
@@ -36,8 +36,10 @@ pnpm install
 pnpm dev
 ```
 
-### ビルド（SPA）
+### 静的サイト生成 (SSG)
 
 ```bash
 pnpm generate
 ```
+
+成果物は `.output/public/` に出力される。

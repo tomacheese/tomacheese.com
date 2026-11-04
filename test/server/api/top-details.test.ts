@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 
-// Mock Node.js modules first
+// 先に Node.js のモジュールをモックする
 const mockReadFileSync = vi.fn()
 vi.mock('fs', () => ({
   default: {
@@ -14,13 +14,13 @@ vi.mock('path', () => ({
   },
 }))
 
-// Mock Nuxt utilities
+// Nuxt のユーティリティをモックする
 vi.mock('h3', () => ({
   defineEventHandler: vi.fn((handler) => handler),
   createError: vi.fn((error) => new Error(error.statusMessage)),
 }))
 
-// Create a mock handler function that simulates the API logic
+// API のロジックを模したモックハンドラーを作る
 const createMockHandler = () => {
   return async () => {
     try {

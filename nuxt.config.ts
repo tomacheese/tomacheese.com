@@ -1,6 +1,6 @@
 import { logger } from './utils/logger'
 
-// Content Security Policy for enhanced security
+// セキュリティ強化のための Content Security Policy
 const CSP_POLICY =
   [
     "default-src 'self'",
@@ -12,7 +12,6 @@ const CSP_POLICY =
     "frame-ancestors 'none'",
   ].join('; ') + ';'
 
-// Runtime config type safety
 interface RuntimeConfig {
   public: {
     baseName: string
@@ -99,7 +98,6 @@ export default defineNuxtConfig({
           type: 'image/x-icon',
           href: '/favicons/favicon.ico',
         },
-        // Fonts are now handled by @nuxt/fonts module for better performance
       ],
     },
   },
@@ -111,7 +109,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // Content configuration
   },
 
   vite: {
@@ -191,11 +188,11 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false,
       crawlLinks: true,
-      // Ensure content is properly accessible during prerendering
+      // プリレンダリング中にコンテンツへアクセスできるようにする
       routes: ['/about', '/anime', '/devices', '/me'],
     },
     cloudflare: {
-      // Initialize cloudflare config to prevent undefined access in preset
+      // プリセットでの未定義参照を防ぐため cloudflare 設定を空で初期化する
     },
     routeRules: {
       '/**': {

@@ -1,6 +1,3 @@
-/**
- * JSON-LD value types based on JSON-LD specification
- */
 export type JsonLdValue =
   | string
   | number
@@ -8,9 +5,6 @@ export type JsonLdValue =
   | JsonLdObject
   | JsonLdValue[]
 
-/**
- * JSON-LD object structure
- */
 export interface JsonLdObject {
   '@context'?:
     | string

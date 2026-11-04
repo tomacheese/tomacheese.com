@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { useJsonld } from '~/composables/useJsonld'
 
-// Mock useHead as a global
 global.useHead = vi.fn()
 
 describe('composables/useJsonld', () => {

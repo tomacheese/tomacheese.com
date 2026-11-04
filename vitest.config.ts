@@ -32,7 +32,7 @@ export default defineConfig({
         },
       },
     },
-    // Global test setup
+    // テストのグローバルセットアップ
     globals: true,
     setupFiles: ['./test/setup.ts'],
   },
