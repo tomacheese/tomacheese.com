@@ -33,7 +33,7 @@
     "@vueuse/nuxt": "15.0.0",
     "dompurify": "3.4.17",
     "nuxt": "4.6.4",
-    "nuxt-gtag": "5.0.0",
+    "nuxt-gtag": "5.1.0",
     "vue": "3.5.45",
     "vue-router": "5.5.0"
   },
